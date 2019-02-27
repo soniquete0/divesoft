@@ -1,0 +1,78 @@
+{
+  "name": "ExpertiseList",
+  "data": {
+    "title": "Odbornosti",
+    "expertiseList": [
+      {
+        "title": "Alergologie",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "Gynekologie",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "Chirurgie",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "CT/MR",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "eeg",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "foniatrie",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "neurologie",
+        "url": "",
+        "image": {}
+      },
+      {
+        "title": "gyneorlkologie",
+        "url": "",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "expertiseList": {
+          "type": "array",
+          "title": "Odbornosti",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Nazev odbornosti"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

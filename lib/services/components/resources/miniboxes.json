@@ -1,0 +1,100 @@
+{
+  "name": "MiniBoxes",
+  "data": {
+    "title": "Jaké služby nabízíme",
+    "dividerOnTop": true,
+    "miniBoxes": [
+      {
+        "title": "Měření tlaku",
+        "gradientColor": "#00aad0",
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "225"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Měření cukru",
+        "gradientColor": "#00aad0",
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "225"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Testování paměti",
+        "gradientColor": "#00aad0",
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "400"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Odvikání kouření",
+        "gradientColor": "#00aad0",
+        "image": {
+          "recommendedSizes": {
+            "width": "295",
+            "height": "225"
+          }
+        },
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "dividerOnTop": {
+          "type": "boolean",
+          "title": "Display divider on top?"
+        },
+        "miniBoxes": {
+          "type": "array",
+          "title": "Mini boxes",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "gradientColor": {
+                "type": "enum",
+                "title": "Background Gradient Color",
+                "options": {
+                  "#00aad0": "Light Blue",
+                  "#00adcc": "Blue",
+                  "#ef404c": "Red",
+                  "#faa74a": "Orange",
+                  "#3eac49": "Green",
+                  "white": "White",
+                  "black": "Black"
+                }
+              },
+              "image": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

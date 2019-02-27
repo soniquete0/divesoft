@@ -1,0 +1,51 @@
+h1,
+h2,
+h3,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+  color: $green;
+  text-align: center;
+  line-height: 1;
+  padding-bottom: 45px;
+  margin-bottom: 0;
+
+
+  @include md {
+    padding: 45px;
+  }
+}
+
+h1 {
+  @include fluid-type(26px, 42px);
+}
+
+h2 {
+  @include fluid-type(26px, 40px);
+}
+
+h3 {
+  @include fluid-type(26px, 32px);
+}
+
+h4 {
+  font-size: 2.4rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+p {
+  line-height: 30px;
+}
+
+.gradientHeading {
+  @include webkitGradientText;
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Benefits",
+
+  "data": {
+    "items": [
+      {
+        "text": "Přívětivý personál",
+        "image": {}
+      },
+      {
+        "text": "Přívětivý personál",
+        "image": {}
+      },
+      {
+        "text": "Přívětivý personál",
+        "image": {}
+      },
+      {
+        "text": "Přívětivý personál",
+        "image": {}
+      }
+    ]
+  },
+
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "title": "Benefits",
+          "items": {
+            "properties": {
+              "text": {
+                "type": "text",
+                "title": "Text"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

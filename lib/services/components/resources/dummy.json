@@ -1,0 +1,17 @@
+{
+  "name": "Dummy",
+  "data": {
+    "text": "Default Dummy Text"
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "text",
+          "title": "Dummy Text"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.loader {
+  margin: 24px auto;
+  width: auto;
+  position: relative;
+  width: 65px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+
+   span {
+    display: inline-block;
+    bottom: 50%;
+    width: 4px;
+    height: 5px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    animation: grow 1000ms ease-in-out infinite forwards;
+    position: absolute;
+    left: 10px;
+  }
+
+   @for $i from 1 through 6 {
+    span:nth-child(#{$i + 1}) {
+      animation-delay: $i * 83ms;
+      left: $i * 8px + 10px;
+    }
+  }
+}
+
+ @keyframes grow {
+  0% {
+    background: rgba(0, 0, 0, 0.1);
+    height: 5px;
+    transform: translate3d(0px, 0, 0);
+  }
+
+   50% {
+    background: $lightBlue;
+    height: 30px;
+    transform: translate3d(0, 15px, 0);
+  }
+
+   100% {
+    background: rgba(0, 0, 0, 0.1);
+    height: 5px;
+    transform: translate3d(0, 0, 0);
+  }
+}

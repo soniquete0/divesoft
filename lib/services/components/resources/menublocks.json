@@ -1,0 +1,150 @@
+{
+  "name": "MenuBlocks",
+  "data": {
+    "menuBlocks": [
+      {
+        "title": "Akce a slevy",
+        "color": "#00adcc",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Klub výhod",
+        "color": "#00adcc",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Lékárna",
+        "color": "#00adcc",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Dermocentrum",
+        "color": "#ef404c",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Zdravotní potřeby",
+        "color": "#faa74a",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Přírodní lékarna",
+        "color": "#3eac49",
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "250"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "80",
+            "height": "80"
+          }
+        },
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "menuBlocks": {
+          "type": "array",
+          "title": "Menu Blocks",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "color": {
+                "type": "enum",
+                "title": "Background Gradient Color",
+                "options": {
+                  "#00adcc": "Blue",
+                  "#ef404c": "Red",
+                  "#faa74a": "Orange",
+                  "#3eac49": "Green",
+                  "white": "White",
+                  "black": "Black"
+                }
+              },
+              "image": {
+                "type": "image"
+              },
+              "icon": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

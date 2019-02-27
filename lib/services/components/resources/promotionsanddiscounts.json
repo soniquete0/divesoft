@@ -1,0 +1,70 @@
+{
+  "name": "PromotionsAndDiscounts",
+  "data": {
+    "title": "Akce a slevy",
+    "items": [
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "items": {
+          "type": "array",
+          "title": "Promotions",
+          "items": {
+            "properties": {
+              "image": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Headline",
+  "data": {
+    "title": "Default headline",
+    "displayOnTop": true
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Headline"
+        },
+        "displayOnTop": {
+          "type": "boolean",
+          "title": "Add indent at the top?"
+        }
+      }
+    }
+  }
+}

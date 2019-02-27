@@ -1,0 +1,65 @@
+{
+  "name": "JobPositions",
+  "data": {
+    "title": "Výpis aktuálních pozic",
+    "positions": [
+      {
+        "name": "Dermatolog",
+        "url": "",
+        "polyclinic": "Polyclinic 1",
+        "image": {}
+      },
+      {
+        "name": "Gynekolog",
+        "url": "",
+        "polyclinic": "Polyclinic 2",
+        "image": {}
+      },
+      {
+        "name": "Ortoped",
+        "url": "",
+        "polyclinic": "Polyclinic 3",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "positions": {
+          "type": "array",
+          "title": "Positions",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Name of position"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              },
+              "polyclinic": {
+                "type": "enum",
+                "title": "Polyclinic",
+                "options": {
+                  "Polyclinic 1": "Polyclinic 1",
+                  "Polyclinic 2": "Polyclinic 2",
+                  "Polyclinic 3": "Polyclinic 3"
+                }
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

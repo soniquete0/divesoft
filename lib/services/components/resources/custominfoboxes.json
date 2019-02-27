@@ -1,0 +1,101 @@
+{
+  "name": "CustomInfoBoxes",
+  "data": {
+    "title": "",
+    "boxes": [
+      {
+        "title": "Navštivte i naše Dermocentrum",
+        "gradientColor": "#00aad0",
+        "button": "btn--whiteBorder",
+        "titleColor": "#ffffff",
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
+      },
+      {
+        "title": "široký výběr zdravýchpotravin",
+        "gradientColor": "#5a2a20",
+        "button": "btn--whiteBorder",
+        "titleColor": "#ffffff",
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
+      },
+      {
+        "title": "Máme široký výběr zdravotnických potřeb",
+        "gradientColor": "#ffffff",
+        "button": "btn--greenBorder",
+        "titleColor": "#ffffff",
+        "image": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        }
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "boxes": {
+          "type": "array",
+          "title": "Boxes",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Text"
+              },
+              "gradientColor": {
+                "type": "enum",
+                "title": "Background gradient color",
+                "options": {
+                  "#ffffff": "white",
+                  "#00aad0": "blue",
+                  "#5a2a20": "brown"
+                }
+              },
+              "button": {
+                "type": "enum",
+                "title": "type of button",
+                "options": {
+                  "btn--whiteBorder": "whiteBorder",
+                  "btn--greenBorder": "greenBorder",
+                  "btn--greenBkg": "greenBackground"
+                }
+              },
+              "titleColor": {
+                "type": "enum",
+                "title": "Color of title",
+                "options": {
+                  "#ffffff": "white",
+                  "#00aad0": "blue",
+                  "#2eac6c": "green"
+                }
+              },
+              "link": {
+                "type": "urlAutocomplete",
+                "title": "Link Url"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

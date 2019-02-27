@@ -1,0 +1,19 @@
+// INITAL STYLES
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+
+@import 'mediaQueries';
+@import 'mixins';
+@import 'variables';
+@import 'text';
+@import 'forms';
+
+// COMPONENTS STYLES
+@import 'general';
+@import '../src/components/Header/style.scss';
+
+// PARTIALS
+@import '../src/partials/Button/style.scss';
+@import '../src/partials/SvgIcon/style.scss';
+@import '../src/partials/Media/style.scss';
+@import '../src/partials/Loader/style.scss';

@@ -1,0 +1,126 @@
+{
+  "name": "Blog",
+  "data": {
+    "title": "",
+    "displaySearch": true,
+    "blogItems": [
+      {
+        "title": "Lorem ipsum",
+        "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "#3eac49"
+      },
+      {
+        "title": "Lorem ipsum",
+        "text": "„Epilepsie při vhodné léčbě těhotenství nebrání“",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "#f6ac59",
+        "special": true
+      },
+      {
+        "title": "Lorem ipsum",
+        "text": "Pro věrné zákazníky našich lékáren máme věrnostní program",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "#e7535e"
+      },
+      {
+        "title": "Lorem ipsum",
+        "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "#2473ba"
+      },
+      {
+        "title": "Lorem ipsum",
+        "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "black"
+      },
+      {
+        "title": "Lorem ipsum",
+        "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        "img": {
+          "recommendedSizes": {
+            "width": "400",
+            "height": "400"
+          }
+        },
+        "color": "white"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "displaySearch": {
+          "type": "boolean",
+          "title": "Display Search?"
+        },
+        "blogItems": {
+          "type": "array",
+          "title": "Blocks",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "text": {
+                "type": "text",
+                "title": "Text"
+              },
+              "img": {
+                "type": "image"
+              },
+              "color": {
+                "type": "enum",
+                "title": "Color",
+                "options": {
+                  "#2473ba": "Blue",
+                  "#3eac49": "Green",
+                  "#e7535e": "Red",
+                  "#f6ac59": "Orange",
+                  "black": "Black",
+                  "white": "White"
+                }
+              },
+              "special": {
+                "type": "boolean",
+                "title": "Make this block special?"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "name": "Carousel",
+  "data": {
+    "displayOnTop": true,
+    "slides": [
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "1100",
+            "height": "490"
+          }
+        },
+        "title": "Sleva na vitamíny",
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "1100",
+            "height": "490"
+          }
+        },
+        "title": "Pro kojence",
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "1100",
+            "height": "490"
+          }
+        },
+        "title": "Péče o tělo",
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "1100",
+            "height": "490"
+          }
+        },
+        "title": "Nadpis akce 1",
+        "url": ""
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "1100",
+            "height": "490"
+          }
+        },
+        "title": "Nadpis akce 2",
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "displayOnTop": {
+          "type": "boolean",
+          "title": "Add indent at the top?"
+        },
+        "slides": {
+          "type": "array",
+          "title": "Slides - recommended 5 slides",
+          "items": {
+            "properties": {
+              "image": {
+                "type": "image"
+              },
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

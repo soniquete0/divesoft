@@ -1,0 +1,53 @@
+{
+  "name": "ClubBenefits",
+  "data": {
+    "buttonTitle": "Chci výhody klubu",
+    "buttonUrl": "",
+    "conditionsUrl": "",
+    "benefits": [
+      {
+        "title": "Sleva až **50 % z doplatku na léky** na recept pro klienty **starší než 60 let**"
+      },
+      {
+        "title": "Každý měsíc **akční ceny vybraných výrobků** z akčního letáku"
+      },
+      {
+        "title": "**Bonusy** za nákup volného prodeje, **kosmetiky a zdravé výživy**"
+      },
+      {
+        "title": "Možnost **výměny nepoužitého zboží či vrácení peněz** až týden po nákupu vyjma léčiv"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "buttonTitle": {
+          "type": "text",
+          "title": "Button title"
+        },
+        "buttonUrl": {
+          "type": "urlAutocomplete",
+          "title": "Button Url"
+        },
+        "conditionsUrl": {
+          "type": "urlAutocomplete",
+          "title": "Conditions Url"
+        },
+        "benefits": {
+          "type": "array",
+          "title": "Club benefits",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "markdown",
+                "title": "Title"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

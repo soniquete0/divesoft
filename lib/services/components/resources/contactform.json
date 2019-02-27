@@ -1,0 +1,22 @@
+{
+  "name": "ContactForm",
+  "data": {
+    "title": "pokud se chcete zeptat, koktaktujte nás",
+    "gdprLink": ""
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "title"
+        },
+        "gdprLink": {
+          "type": "urlAutocomplete",
+          "title": "Gdpr Link"
+        }
+      }
+    }
+  }
+}

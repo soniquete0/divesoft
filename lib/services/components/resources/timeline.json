@@ -1,0 +1,86 @@
+{
+  "name": "Timeline",
+  "data": {
+    "title": "časová Osa",
+    "items": [
+      {
+        "name": "Budějovická",
+        "year": "2008",
+        "position": 10,  
+        "color": "blue",
+        "descriptionA": "Otevřena",
+        "descriptionB": "Poliklinika",
+        "icon": {}
+      },
+      {
+        "name": "Vysočanská",
+        "year": "2013",
+        "position": 50,
+        "color": "red",
+        "descriptionA": "Otevřena",
+        "descriptionB": "3. poliklinika",
+        "icon": {}
+      },
+      {
+        "name": "Vysočanská",
+        "year": "2014",
+        "position": 90,
+        "color": "green",
+        "descriptionA": "Otevřeno",
+        "descriptionB": "Mamacentrum",
+        "icon": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "items": {
+          "type": "array",
+          "title": "Time Items",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Name"
+              },
+              "year": {
+                "type": "text",
+                "title": "Year"
+              },
+              "color": {
+                "type": "enum",
+                "title": "Color",
+                "options": {
+                  "red": "Red",
+                  "blue": "Blue",
+                  "green": "Green"
+                }
+              },
+              "descriptionA": {
+                "type": "text",
+                "title": "Text A"
+              },
+              "descriptionB": {
+                "type": "text",
+                "title": "Text B"
+              },
+              "position": {
+                "type": "number",
+                "title": "Position Percentage"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

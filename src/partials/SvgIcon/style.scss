@@ -1,0 +1,36 @@
+.svgIcon {
+  transition: 300ms $customEase;
+  width: 25px;
+  height: 25px;
+
+  .pointable {
+    cursor: pointer;
+  }
+
+  &--gray {
+    fill: #cccccc;
+  }
+
+  &--lightBlue {
+    fill: $lightBlue;
+  }
+  &--white {
+    fill: $white;
+  }
+}
+
+.closeIcon {
+
+}
+
+.arrowIcon {
+
+}
+
+.fbIcon {
+
+}
+
+.searchIcon {
+  
+}

@@ -1,0 +1,90 @@
+{
+  "name": "InfoRectangles",
+  "data": {
+    "infoRectangles": [
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "225"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "83",
+            "height": "83"
+          }
+        },
+        "title": "Leták ke stažení",
+        "url": "",
+        "titleColor": "#ffffff",
+        "gradientColor": "#00aad0"
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "610",
+            "height": "225"
+          }
+        },
+        "icon": {
+          "recommendedSizes": {
+            "width": "83",
+            "height": "83"
+          }
+        },
+        "title": "Kupón pro členy klubu",
+        "url": "",
+        "titleColor": "#ffffff",
+        "gradientColor": "#2eac6c"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "infoRectangles": {
+          "type": "array",
+          "title": "Rectangles",
+          "items": {
+            "properties": {
+              "image": {
+                "type": "image"
+              },
+              "icon": {
+                "type": "image"
+              },
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "Url"
+              },
+              "titleColor": {
+                "type": "enum",
+                "title": "Color of title",
+                "options": {
+                  "#ffffff": "white",
+                  "#00aad0": "blue",
+                  "#2eac6c": "green"
+                }
+              },
+              "gradientColor": {
+                "type": "enum",
+                "title": "Color of gradient",
+                "options": {
+                  "#ffffff": "white",
+                  "#00aad0": "blue",
+                  "#2eac6c": "green"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

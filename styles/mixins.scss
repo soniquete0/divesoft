@@ -1,0 +1,128 @@
+@mixin background-image($size: contain, $position: center) {
+  background-position: $position;
+  background-size: $size;
+  background-repeat: no-repeat;
+}
+
+@mixin vertical-center() {
+  top: 50%;
+  transform: translate3d(0, -50%, 0);
+}
+
+@mixin horizontal-center() {
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+
+@mixin vertical-horizontal-center() {
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, 0, 0);
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin reset-list() {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li::before {
+    display: none;
+  }
+
+  li + li {
+    margin-top: 0;
+  }
+}
+
+@mixin flexChild($numberOfItems, $gutter) {
+  flex-basis: 100%;
+  margin-bottom: $gutter;
+
+  @include md {
+    flex-basis: calc((100% / #{$numberOfItems}) - #{$gutter});
+    margin-bottom: 0;
+  }
+}
+
+@mixin topBottomgradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, top, bottom, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}
+
+@mixin leftRightGradient($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient(left, $from, $to);
+  background-image: -webkit-linear-gradient(left, $from, $to);
+  background-image: -o-linear-gradient(left, $from, $to);
+}
+
+@mixin webkitGradientText() {
+  background: -webkit-linear-gradient(left, $green, $lightBlue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin blockAnimation() {
+  transition: 300ms ease;
+
+  &:after {
+    @include pseudo;
+    height: 6px;
+    width: 0;
+    transition: 300ms ease 50ms;
+    @include leftRightGradient($green, $lightBlue);
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover {
+    @include md {
+      transform: translateY(-3px);
+
+      &:after {
+        width: 100%;
+        right: auto;
+        left: 0;
+      }
+    }
+  }
+}
+
+@mixin fluid-type($min-font-size, $max-font-size, $min-vw: 480px, $max-vw: $layoutMinWidth) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    font-size: $min-font-size;
+
+    @if $min-vw != $max-vw {
+      @media only screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+    }
+
+    @media only screen and (min-width: $max-vw) {
+      font-size: $max-font-size;
+    }
+  } @else {
+    @error "Detected mixed units. Please use the same units for all parameters.";
+  }
+}
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}

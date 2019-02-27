@@ -1,0 +1,27 @@
+{
+  "name": "CareerForm",
+  "data": {
+    "title": "Nenašli jste pozici, kterou hledáte",
+    "text": "Máte-li zájem o práci u nás, **vyplňte formulář** a my vás zařadíme do databáze zájemců.",
+    "gdprLink": ""
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "text": {
+          "type": "markdown",
+          "title": "Text"
+        },
+        "gdprLink": {
+          "type": "urlAutocomplete",
+          "title": "Gdpr Link"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Pharmacies",
+  "data": {
+    "pharmacies": [
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "210",
+            "height": "30"
+          }
+        },
+        "text": "**A. Staška 1670/80,** Praha 4, 140 00"
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "210",
+            "height": "30"
+          }
+        },
+        "text": "**Roškotova 1225/1,** Praha 4, 140 00"
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "210",
+            "height": "30"
+          }
+        },
+        "text": "**Sokolovská 810/304,** Praha 9, 190 61"
+      },
+      {
+        "image": {
+          "recommendedSizes": {
+            "width": "210",
+            "height": "30"
+          }
+        },
+        "text": "**Budějovická 1667/64,** Praha 4, 140 00"
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "pharmacies": {
+          "type": "array",
+          "title": "Pharmacies",
+          "items": {
+            "properties": {
+              "image": {
+                "type": "image"
+              },
+              "text": {
+                "type": "markdown",
+                "title": "Address"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "PharmacieInfo",
+  "data": {
+    "geo": "Antala Staška 1670/80 140 00 Praha 4",
+    "phone": "+420 261 006 111",
+    "officeHours": "Po - Pá 7:00 - 19:00",
+    "transport": "Metro C stanice Budějovická",
+    "transportImage": {
+      "recommendedSizes": {
+        "width": "50",
+        "height": "50"
+      }
+    }
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "geo": {
+          "type": "text",
+          "title": "Address"
+        },
+        "phone": {
+          "type": "text",
+          "title": "Phone number"
+        },
+        "officeHours": {
+          "type": "text",
+          "tittle": "Office Hours"
+        },
+        "transport": {
+          "type": "text",
+          "title": "Transport"
+        },
+        "transportImage": {
+          "type": "image"
+        }
+      }
+    }
+  }
+}

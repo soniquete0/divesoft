@@ -1,0 +1,31 @@
+{
+  "name": "TextBlockWithImage",
+  "data": {
+    "title": "Lorem ipsum",
+    "image": {
+      "recommendedSizes": {
+        "width": "820",
+        "height": "360"
+      }
+    },
+    "text": "Popis problému Lorem ipsum dolor sit amet, consectetur adipiscing **elit.**"
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "image": {
+          "type": "image"
+        },
+        "text": {
+          "type": "markdown",
+          "title": "Text"
+        }
+      }
+    }
+  }
+}

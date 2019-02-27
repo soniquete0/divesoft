@@ -1,0 +1,60 @@
+{
+  "name": "MedicalGroup",
+  "data": {
+    "title": "Součástí skupiny medicon jsou tyto společnosti",
+    "companies": [
+      {
+        "name": "Medicon a.s",
+        "subtitle": "poskytovatel ambulantní péče",
+        "text": "IČ: 284 63 293, se sídlem Praha 4, Antala Staška 1670/80, PSČ 140 46, zápis v OR vedeném u Městského soudu v Praze, oddíl B, vložka 14685 "
+      },
+      {
+        "name": "Clinicum a.s",
+        "subtitle": "Lorem Ipsum Dolor",
+        "text": "Convallis sed praesent a curae sodales ullamcorper nisl a vestibulum neque parturient primis egestas."
+      },
+      {
+        "name": "Medicon Equipment s.r.o",
+        "subtitle": "Lorem Ipsum Dolor",
+        "text": "Convallis sed praesent a curae sodales ullamcorper nisl a vestibulum neque parturient primis egestas."
+      },
+      {
+        "name": "Medicon Hospitals s.r.o",
+        "subtitle": "Lorem Ipsum Dolor",
+        "text": "Convallis sed praesent a curae sodales ullamcorper nisl a vestibulum neque parturient primis egestas."
+      }
+    ]
+  },
+
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "companies": {
+          "type": "array",
+          "title": "Companies",
+          "items": {
+            "properties": {
+              "name": {
+                "type": "text",
+                "title": "Company Name"
+              },
+              "subtitle": {
+                "type": "text",
+                "title": "Company Subtitle"
+              },
+              "text": {
+                "type": "markdown",
+                "title": "Text"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

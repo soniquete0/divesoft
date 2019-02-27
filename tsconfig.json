@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build",
+    "module": "esnext",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "es6",
+      "esnext"
+    ],
+    "jsx": "react",
+    "sourceMap": true,
+    "rootDir": "src",
+    "declaration": true,
+    "declarationDir": "lib/@types",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@source/*": ["./src/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types"
+    ]
+  },
+  "exclude": [
+    "build",
+    "lib",
+    "node_module",
+    "config",
+    "scripts",
+    "styles"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "PolyclinicBoxes",
+  "data": {
+    "title": "title",
+    "polyclinics": [
+      {
+        "url": "",
+        "image": {}
+      },
+      {
+        "url": "",
+        "image": {}
+      },
+      {
+        "url": "",
+        "image": {}
+      },
+      {
+        "url": "",
+        "image": {}
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "polyclinics": {
+          "type": "array",
+          "title": "Polyclinics",
+          "items": {
+            "properties": {
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "Polyclinic Url"
+              },
+              "image": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
