@@ -86,18 +86,13 @@
 
   &--greenBkg {
     color: white;
-    background-image: linear-gradient(to right, $green 0%, $lightBlue 100%);
     background-repeat: no-repeat;
     background-position: center;
     padding: 14px 36px;
 
     &:hover {
       color: white;
-      
-      @include md {
-        background-image: linear-gradient(to right, $green 0%, $green 100%);
-        background-color: $green;
-      }
+  
 
       .arrow {
         border-color: white;
@@ -110,42 +105,18 @@
     border: 2px solid white;
     background-color: transparent;
 
-    &:hover {
-      @include md {
-        color: $green;
-        background-color: white;
-
-        .arrow {
-          border-color: $green;
-        }
-      }
-    }
   }
 
   &--greenBorder {
-    color: $green;
     background-color: transparent;
     border: 2px solid transparent;
-    border-image: linear-gradient(to right, $green 0%, $lightBlue 100%);
     border-image-slice: 1;
     transition: auto;
-
-    .arrow {
-      border-color: $green;
-    }
-
-    &:hover {
-      border: 2px solid $green;
-    }
   }
 
   &--greyBkg {
     background-color: #f4f5f7;
     text-transform: none;
-
-    .arrow {
-      border-color: $green;
-    }
   }
 
   &--fullWidth {

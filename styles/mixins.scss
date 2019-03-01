@@ -66,35 +66,9 @@
 }
 
 @mixin webkitGradientText() {
-  background: -webkit-linear-gradient(left, $green, $lightBlue);
+  background: -webkit-linear-gradient(left, $green, Blue);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-@mixin blockAnimation() {
-  transition: 300ms ease;
-
-  &:after {
-    @include pseudo;
-    height: 6px;
-    width: 0;
-    transition: 300ms ease 50ms;
-    @include leftRightGradient($green, $lightBlue);
-    right: 0;
-    bottom: 0;
-  }
-
-  &:hover {
-    @include md {
-      transform: translateY(-3px);
-
-      &:after {
-        width: 100%;
-        right: auto;
-        left: 0;
-      }
-    }
-  }
 }
 
 @mixin fluid-type($min-font-size, $max-font-size, $min-vw: 480px, $max-vw: $layoutMinWidth) {

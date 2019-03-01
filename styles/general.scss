@@ -1,176 +1,21 @@
-html {
-  font-display: auto;
-  overflow-x: hidden;
-}
-
 body {
-  color: $darkGray;
-  line-height: 24px;
-  font-family: $mons;
-  font-size: 1.6rem;
-  line-height: 24px;
+  font-size: 16px;
+  background-color: white;
+  font-family: $corridor;
+  line-height: 23px;
+  font-weight: 400;
+  color: #343434;
+  line-height: 1.15;
   padding: 0;
-  overflow: hidden;
-}
-
-.container {
-  display: block;
-  margin: 0 auto;
-  width: 90%;
-
-  @include xl {
-    max-width: $layoutMinWidth;
-  }
-}
-
-.fullWidthContainer {
-  display: block;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.hCenterBlock {
-  display: block;
-  margin: 0 auto;
-}
-
-.flexRow {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-
-  @include md {
-    flex-flow: row wrap;
-  }
-}
-
-.flexColumn {
-  display: flex;
-  flex-flow: column wrap;
-}
-
-.flexAlign {
-  &--start {
-    justify-content: start;
-  }
-  &--end {
-    justify-content: end;
-  }
-  &--space-between {
-    justify-content: space-between;
-  }
-  &--space-around {
-    justify-content: space-around;
-  }
-  &--center {
-    justify-content: center;
-  }
-}
-
-.grid {
-  display: grid;
-  grid-gap: 20px;
-
-  &--vCenterBlock {
-    align-items: center;
-  }
-}
-
-.grid-container {
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-gap: 20px;
-  box-sizing: border-box;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-}
-
-//LIST STYLES
-
-ol,
-ul {
   margin: 0;
-  padding: 0;
-  list-style: none;
-
-  li {
-    padding: 5px 5px 5px 15px;
-    position: relative;
-
-    &:before {
-      width: 8px;
-      height: 8px;
-      display: block;
-      background-color: $green;
-      @include pseudo;
-      border-radius: 50%;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
 }
 
-cite {
-  line-height: 44px;
-  font-weight: 600;
+ul, ol {
+  padding-left: 2em;
+  line-height: 1.4;
 }
 
-.horizontal-line {
-  width: 75px;
-  height: 5px;
-  background-image: linear-gradient(to right, $green 0%, $lightBlue 100%);
-}
-
-.checkbox {
-  position: absolute;
-  opacity: 0;
-
-  & + label {
-    position: relative;
-    cursor: pointer;
-    padding: 0;
-  }
-
-  & + label:before {
-    content: '';
-    margin-right: 10px;
-    display: inline-block;
-    vertical-align: text-top;
-    width: 25px;
-    height: 25px;
-    border: 2px solid #cecece;
-    transition: 300ms ease;
-    background-color: #f4f5f7;
-  }
-
-  &:hover + label:before {
-    @include md {
-      box-shadow: 0 0 0 2px rgba($green, 0.5);
-    }
-  }
-
-  &:disabled + label {
-    color: #b8b8b8;
-    cursor: auto;
-  }
-
-  &:disabled + label:before {
-    box-shadow: none;
-    background: #ddd;
-  }
-
-  &:checked + label:after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    left: 6px;
-    top: 8px;
-    height: 7px;
-    width: 14px;
-    border-left: 2px solid $green;
-    border-bottom: 2px solid $green;
-    transform: rotate(-55deg);
-  }
+input {
+  border: 2px solid #e7e7e7;
+  padding: 4px 8px;
 }

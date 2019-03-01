@@ -1,5 +1,15 @@
 @import './components/Hamburger/style.scss';
 
+// .header {
+//   ul {
+//     list-style: none;
+
+//     li {
+//       display: inline;
+//     }
+//   }
+// }
+
 .header {
   background-color: #fff;
   width: 100%;
@@ -68,7 +78,6 @@
   }
 
   &__wrapper {
-    @extend .flexRow;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
@@ -81,7 +90,6 @@
   }
 
   nav {
-    @extend .flexRow;
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
@@ -112,7 +120,6 @@
 
         a {
           color: #3c3c3b;
-          font-family: $mons;
           font-size: 1.4rem;
           font-weight: 400;
           text-transform: uppercase;
@@ -219,7 +226,6 @@
 
         a {
           color: #3c3c3b;
-          font-family: $mons;
           font-size: 1.8rem;
           font-weight: 400;
           text-transform: uppercase;

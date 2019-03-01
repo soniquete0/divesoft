@@ -57,15 +57,6 @@ var Header = /** @class */ (function (_super) {
     __extends(Header, _super);
     function Header(props) {
         var _this = _super.call(this, props) || this;
-        _this.getVertex = function () {
-            var offsetLeft = _this.headerWrapper.current && _this.headerWrapper.current.offsetLeft + 61;
-            var windowWidth = window.innerWidth;
-            var vX = (offsetLeft * 100) / windowWidth;
-            vX === 0 ? vX = 9.5 : vX = vX;
-            _this.setState({
-                vX: vX,
-            });
-        };
         _this.closeMenu = function () {
             _this.setState({
                 menuActive: false,
@@ -77,12 +68,9 @@ var Header = /** @class */ (function (_super) {
             });
         };
         _this.headerWrapper = React.createRef();
-        _this.state = { vX: 9.5, menuActive: false };
+        _this.state = { menuActive: false };
         return _this;
     }
-    Header.prototype.componentDidMount = function () {
-        this.getVertex();
-    };
     Header.prototype.render = function () {
         var _this = this;
         this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
@@ -100,32 +88,48 @@ var Header = /** @class */ (function (_super) {
             }
             var navigations = context.navigationsData, languageCode = context.languageData.code;
             var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
-            var mainNav = 'main';
             var topNav = 'top';
-            var mainNavItems = transformedNavigations && transformedNavigations[mainNav] ? transformedNavigations[mainNav] : [];
             var topNavItems = transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
-            return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
-                React.createElement("div", { className: 'header__top' },
-                    React.createElement("div", { style: { position: 'relative' }, className: 'container' },
-                        React.createElement("ul", { className: 'header__top__list' }, topNavItems && topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                            React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); })))),
+            return (
+            // <div class="top">
+            //   <div class="container">
+            //     <div class="row">
+            //       <a href="#" class="top__logo col" />
+            //       <ul class="top__menu col">
+            //         <li>
+            //           <a href="#">Home</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 2</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 3</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 4</a>
+            //         </li>
+            //       </ul>
+            //       <div class="top__right col">
+            //         icons
+            //       </div>
+            //     </div>
+            //   </div>
+            // </div>
+            React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo' },
                             React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/divesoft/images/logo.png", alt: "logo" }))),
                         React.createElement("nav", null,
-                            React.createElement("ul", null, mainNavItems &&
-                                mainNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                            React.createElement("ul", null, topNavItems &&
+                                topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
                                     React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); })),
                             React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
-                React.createElement("div", { className: 'header__iso' },
-                    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 100 100", preserveAspectRatio: "none" },
-                        React.createElement("polygon", { fill: "white", points: "0,0 0,50 " + _this.state.vX + ",100 100,0" }))),
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
-                        React.createElement("ul", null, mainNavItems &&
-                            mainNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url && navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
+                        React.createElement("ul", null, topNavItems &&
+                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url && navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

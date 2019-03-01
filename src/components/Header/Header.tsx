@@ -51,7 +51,6 @@ export interface HeaderProps {
 }
 
 export interface HeaderState {
-  vX: number;
   menuActive: boolean;
 }
 
@@ -62,19 +61,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   constructor(props: HeaderProps) {
     super(props);
     this.headerWrapper = React.createRef();
-    this.state = { vX: 9.5, menuActive: false };
-  }
-
-  getVertex = () => {
-    let offsetLeft = this.headerWrapper.current && this.headerWrapper.current.offsetLeft + 61;
-    let windowWidth = window.innerWidth;
-    let vX = (offsetLeft * 100) / windowWidth;
-    
-    vX === 0 ? vX = 9.5 : vX = vX;
-
-    this.setState({
-      vX,
-    });
+    this.state = { menuActive: false };
   }
 
   closeMenu = () => {
@@ -87,10 +74,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.setState({
       menuActive: !this.state.menuActive,
     });
-  }
-
-  componentDidMount() {
-    this.getVertex();
   }
 
   public render() {
@@ -120,30 +103,38 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
           const transformedNavigations = this.transformNavigationsIntoTree(navigations, data.pagesUrls);
 
-          const mainNav = 'main';
           const topNav = 'top';
 
-          const mainNavItems =
-            transformedNavigations && transformedNavigations[mainNav] ? transformedNavigations[mainNav] : [];
-          
           const topNavItems =
             transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
           
           return (
+            // <div class="top">
+            //   <div class="container">
+            //     <div class="row">
+            //       <a href="#" class="top__logo col" />
+            //       <ul class="top__menu col">
+            //         <li>
+            //           <a href="#">Home</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 2</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 3</a>
+            //         </li>
+            //         <li>
+            //           <a href="#">Page 4</a>
+            //         </li>
+            //       </ul>
+            //       <div class="top__right col">
+            //         icons
+            //       </div>
+            //     </div>
+            //   </div>
+            // </div>
+
             <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
-              <div className={'header__top'}>
-                <div style={{ position: 'relative' }} className={'container'}>
-                  <ul className={'header__top__list'}>
-                    {topNavItems && topNavItems.map((navItem, i) => (
-                      <li key={i}>
-                        <Link url={navItem.url && navItem.url}>
-                          {navItem.name || navItem.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
               <div className="container">
                 <div className={'header__wrapper'} ref={this.headerWrapper}>
                   <div className={'header__logo'}>
@@ -153,8 +144,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   </div>
                   <nav>
                     <ul>
-                      {mainNavItems &&
-                        mainNavItems.map((navItem, i) => (
+                      {topNavItems &&
+                        topNavItems.map((navItem, i) => (
                           <li key={i}>
                             <Link url={navItem.url && navItem.url}>
                               {navItem.name || navItem.title}
@@ -166,17 +157,12 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   </nav>
                 </div>
               </div>
-              <div className={'header__iso'}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <polygon fill="white" points={`0,0 0,50 ${this.state.vX},100 100,0`} />
-                </svg>
-              </div>
 
               <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
                 <div className={'hiddenMenu__wrapper'}>
                   <ul>
-                    {mainNavItems &&
-                      mainNavItems.map((navItem, i) => (
+                    {topNavItems &&
+                      topNavItems.map((navItem, i) => (
                         <li key={i}>
                           {
                             <Link url={navItem.url && navItem.url} onClick={() => this.closeMenu()}>

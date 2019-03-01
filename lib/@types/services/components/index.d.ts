@@ -11,7 +11,7 @@ declare class ComponentsService {
     /***/
     getComponent(type: string): typeof Header | (() => JSX.Element);
     /***/
-    getComponentResource(type: string): typeof resources.footer;
+    getComponentResource(type: string): typeof resources.header;
     getForm(type: string): () => JSX.Element;
 }
 export default ComponentsService;
