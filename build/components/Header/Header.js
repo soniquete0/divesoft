@@ -27,7 +27,6 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
-import Hamburger from './components/Hamburger';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
@@ -90,46 +89,20 @@ var Header = /** @class */ (function (_super) {
             var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
             var topNav = 'top';
             var topNavItems = transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
-            return (
-            // <div class="top">
-            //   <div class="container">
-            //     <div class="row">
-            //       <a href="#" class="top__logo col" />
-            //       <ul class="top__menu col">
-            //         <li>
-            //           <a href="#">Home</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 2</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 3</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 4</a>
-            //         </li>
-            //       </ul>
-            //       <div class="top__right col">
-            //         icons
-            //       </div>
-            //     </div>
-            //   </div>
-            // </div>
-            React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
+            return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
                 React.createElement("div", { className: "container" },
-                    React.createElement("div", { className: 'header__wrapper', ref: _this.headerWrapper },
+                    React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo' },
                             React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
-                                React.createElement("img", { src: "/assets/divesoft/images/logo.png", alt: "logo" }))),
+                                React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                         React.createElement("nav", null,
                             React.createElement("ul", null, topNavItems &&
                                 topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); })),
-                            React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu })))),
-                React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
-                    React.createElement("div", { className: 'hiddenMenu__wrapper' },
-                        React.createElement("ul", null, topNavItems &&
-                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url && navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
+                                    React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
+                        React.createElement("div", { className: 'header__controls' },
+                            React.createElement("img", { src: "/assets/divesoft/images/search.svg", alt: "search" }),
+                            React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account" }),
+                            React.createElement("button", null, "e-shop"))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

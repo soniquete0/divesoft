@@ -3,5 +3,5 @@ import Header from './Header';
 
 export {
   AlertNotFound,
-  Header
+  Header,
 };

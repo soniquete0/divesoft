@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
-import { AlertNotFound, Header } from '../../components';
+import { AlertNotFound, Header, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 WebFont.load({
@@ -26,7 +26,7 @@ WebFont.load({
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
         this.Types = {
-            HEADER: 'Header'
+            HEADER: 'Header',
         };
     }
     /***/

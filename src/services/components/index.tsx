@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 import WebFont from 'webfontloader';
+
 import {
   AlertNotFound,
-  Header
+  Header,
 } from '../../components';
 import * as resources from './resources';
 
@@ -19,7 +20,7 @@ WebFont.load({
  */
 class ComponentsService {
   Types: LooseObject<string> = {
-    HEADER: 'Header'
+    HEADER: 'Header',
   };
 
   /***/

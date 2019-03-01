@@ -109,37 +109,15 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
           
           return (
-            // <div class="top">
-            //   <div class="container">
-            //     <div class="row">
-            //       <a href="#" class="top__logo col" />
-            //       <ul class="top__menu col">
-            //         <li>
-            //           <a href="#">Home</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 2</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 3</a>
-            //         </li>
-            //         <li>
-            //           <a href="#">Page 4</a>
-            //         </li>
-            //       </ul>
-            //       <div class="top__right col">
-            //         icons
-            //       </div>
-            //     </div>
-            //   </div>
-            // </div>
-
             <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
               <div className="container">
-                <div className={'header__wrapper'} ref={this.headerWrapper}>
+                <div 
+                  className={'header__wrapper d-flex justify-content-between align-items-center'} 
+                  ref={this.headerWrapper}
+                >
                   <div className={'header__logo'}>
                     <Link url={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
-                      <img src="/assets/divesoft/images/logo.png" alt="logo" />
+                      <img src="/assets/divesoft/images/logo.svg" alt="logo" />
                     </Link>
                   </div>
                   <nav>
@@ -153,24 +131,12 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                           </li>
                         ))}
                     </ul>
-                    <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
                   </nav>
-                </div>
-              </div>
-
-              <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
-                <div className={'hiddenMenu__wrapper'}>
-                  <ul>
-                    {topNavItems &&
-                      topNavItems.map((navItem, i) => (
-                        <li key={i}>
-                          {
-                            <Link url={navItem.url && navItem.url} onClick={() => this.closeMenu()}>
-                              {navItem.name || navItem.title}
-                            </Link>}
-                        </li>
-                      ))}
-                  </ul>
+                  <div className={'header__controls'}>
+                    <img src="/assets/divesoft/images/search.svg" alt="search"/>
+                    <img src="/assets/divesoft/images/user.svg" alt="account"/>
+                    <button>e-shop</button>
+                  </div>
                 </div>
               </div>
             </header>
