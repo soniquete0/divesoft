@@ -14,6 +14,7 @@ const Hamburger = (props: HamburgerProps) => {
       <div className={`hamburgerActive`}>
         <div />
       </div>
+      <p style={{ margin: '0', padding: '0 10px' }}>Menu</p>
     </div>
   );
 };

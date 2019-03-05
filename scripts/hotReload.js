@@ -116,7 +116,7 @@ const watchListener = (root) => (eventType, filename) => {
 const addWatchRecursive = (root) => {
   const options = {
     persistent: true,
-    recursive: false,
+    recursive: true,
   };
   fs.watch(root, options, debounce(watchListener(root), 200));
    // Get all folders and add watches on them

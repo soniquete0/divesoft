@@ -3,13 +3,14 @@
 @import '../node_modules/bootstrap/scss/bootstrap-grid';
 
 @import 'mediaQueries';
-@import 'mixins';
 @import 'variables';
-@import 'text';
+@import 'general';
+@import 'mixins';
 @import 'forms';
+@import 'text';
 
 // COMPONENTS STYLES
-@import 'general';
+
 @import '../src/components/Header/style.scss';
 
 // PARTIALS

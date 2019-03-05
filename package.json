@@ -11,8 +11,8 @@
   "scripts": {
     "babel": "babel build --out-dir lib",
     "build": "yarn compile && yarn babel && yarn resolveDefs",
-    "clean": "rm -rf ./lib",
-    "cleanOnlyTypes": "rm -rf ./lib/@types",
+    "clean": "sudo rm -rf ./lib",
+    "cleanOnlyTypes": "sudo rm -rf ./lib/@types",
     "compile": "tsc --build tsconfig.build.json",
     "rebuild": "yarn cleanOnlyTypes && yarn build && yarn copyFormJson",
     "resolveDefs": "node scripts/resolveDefinitions.js ",

@@ -32,6 +32,8 @@ import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
+import Hamburger from './components/Hamburger';
+import Country from './components/Country/Country';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client \n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client \n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -92,17 +94,23 @@ var Header = /** @class */ (function (_super) {
             return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', ref: _this.headerWrapper },
-                        React.createElement("div", { className: 'header__logo' },
+                        React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
+                            React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
                             React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                         React.createElement("nav", null,
                             React.createElement("ul", null, topNavItems &&
                                 topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
                                     React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
-                        React.createElement("div", { className: 'header__controls' },
+                        React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                             React.createElement("img", { src: "/assets/divesoft/images/search.svg", alt: "search" }),
                             React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account" }),
-                            React.createElement("button", null, "e-shop"))))));
+                            React.createElement("button", null, "e-shop")),
+                        React.createElement(Country, null))),
+                React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
+                    React.createElement("div", { className: 'hiddenMenu__wrapper' },
+                        React.createElement("ul", null, topNavItems &&
+                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url && navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

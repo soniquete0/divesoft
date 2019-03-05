@@ -7,14 +7,44 @@
   background-color: #fff;
 
   &__wrapper {
-    padding: 35px 0;
+    padding: 15px 0;
+    position: relative;
+
+    @include sm {
+      padding: 35px 0;
+    }
+  }
+
+  &__select {
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    select {
+      outline: none;
+      border: none;
+      background: transparent;
+      color: $lightGrey;
+      font-size: 15px;
+      width:75px;
+    }
+
+    @include xl {
+      right: -10%;
+      top: 20%;
+    }
+
   }
 
   &__logo {
-    width: 157px;
+    width: 210px;
 
     img {
-      height: 50px;
+      height: 40px;
+
+      @include sm {
+        height: 50px;
+      }
     }
   }
 
@@ -37,14 +67,30 @@
         }
       }
     }
+
+    @include max-xl {
+      display: none;
+    }
   }
 
   &__controls {
     height: 40px;
+    width: 200px;
+    
+    @include max-sm {
+      width: 50px;
+    }
 
     img {
       height: 20px;
-      margin-right: 20px;
+      
+      @include max-sm {
+        margin-right: 0;
+
+        &:last-of-type {
+          display: none;
+        }
+      }
     }
 
     button {
@@ -61,6 +107,83 @@
       background-repeat: no-repeat;
       background-position: 15px center;
       background-image: url('/assets/divesoft/images/bag.svg');
+
+      @include max-sm {
+        font-size: 1px;
+        color: transparent;
+        width: 20px;
+        background-color: transparent;
+        background-size: 18px 18px;
+        background-position: center center;
+        background-image: url('/assets/divesoft/images/black-bag.svg');
+      }
+    }
+  }
+
+  .hiddenMenu {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    background-color: white;
+    height: 100vh;
+    transform: translate3d(calc(100% + 100px), 0, 0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
+    z-index: -1;
+    width: 100%;
+  
+    @include md {
+      width: 100%;
+    }
+  
+    &--active {
+      transform: translate3d(0, 0, 0);
+    }
+  
+    &__wrapper {
+      padding: 100px 30px 50px 30px;
+      overflow-y: scroll;
+      max-height: 100%;
+      display: grid;
+      height: 100%;
+  
+      @include md {
+        padding: 150px 50px 50px 50px;
+      }
+  
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 100%;
+      }
+  
+      &::-webkit-scrollbar-thumb {
+        background: $darkGrey;
+        border-radius: 10px;
+      }
+  
+      &::-webkit-scrollbar-track {
+        background: #f8f8f8;
+      }
+  
+      ul {
+        @include reset-list;
+        align-self: center;
+  
+        li {
+          text-align: center;
+          color: $darkGrey;
+          padding-bottom: 15px;
+  
+          a {
+            color: $darkGrey;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 }

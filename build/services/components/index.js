@@ -11,15 +11,16 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-import WebFont from 'webfontloader';
+// import WebFont from 'webfontloader';
 import { AlertNotFound, Header, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
-WebFont.load({
-    google: {
-        families: ['Montserrat:400,500,600,700:latin-ext'],
-    },
-});
+// WebFont.load({
+//   custom: {
+//     families: ['Corridor'],
+//     urls: ['/styles/fonts.css']
+//   }
+// });
 /**
  *
  */

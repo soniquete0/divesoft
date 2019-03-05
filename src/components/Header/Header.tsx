@@ -1,10 +1,12 @@
 import * as React from 'react';
-import Hamburger from './components/Hamburger';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
+import Hamburger from './components/Hamburger';
+import Country from './components/Country/Country';
 
 const GET_CONTEXT = gql`
   {
@@ -114,8 +116,9 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 <div 
                   className={'header__wrapper d-flex justify-content-between align-items-center'} 
                   ref={this.headerWrapper}
-                >
-                  <div className={'header__logo'}>
+                > 
+                  <div className={'header__logo d-flex justify-content-between align-items-center'}>
+                    <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
                     <Link url={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
                       <img src="/assets/divesoft/images/logo.svg" alt="logo" />
                     </Link>
@@ -132,11 +135,28 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         ))}
                     </ul>
                   </nav>
-                  <div className={'header__controls'}>
+                  <div className={'header__controls d-flex justify-content-between align-items-center'}>
                     <img src="/assets/divesoft/images/search.svg" alt="search"/>
                     <img src="/assets/divesoft/images/user.svg" alt="account"/>
                     <button>e-shop</button>
                   </div>
+                  <Country />
+                </div>
+              </div>
+
+              <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
+                <div className={'hiddenMenu__wrapper'}>
+                  <ul>
+                    {topNavItems &&
+                      topNavItems.map((navItem, i) => (
+                        <li key={i}>
+                          {
+                            <Link url={navItem.url && navItem.url} onClick={() => this.closeMenu()}>
+                              {navItem.name || navItem.title}
+                            </Link>}
+                        </li>
+                      ))}
+                  </ul>
                 </div>
               </div>
             </header>
