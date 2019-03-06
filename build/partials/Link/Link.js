@@ -23,11 +23,11 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
-import Loader from '../Loader';
 import { adopt } from 'react-adopt';
+import { Query } from 'react-apollo';
+import { Link } from 'react-router-dom';
+import Loader from '../Loader';
 var isExternalLink = function (url) {
     var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
     return pattern.test(url);

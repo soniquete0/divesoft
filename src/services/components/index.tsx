@@ -5,6 +5,7 @@ import { isObjectLike } from 'lodash';
 import {
   AlertNotFound,
   Header,
+  Footer,
 } from '../../components';
 import * as resources from './resources';
 
@@ -22,6 +23,7 @@ import * as resources from './resources';
 class ComponentsService {
   Types: LooseObject<string> = {
     HEADER: 'Header',
+    FOOTER: 'Footer',
   };
 
   /***/
@@ -38,6 +40,8 @@ class ComponentsService {
     switch (type) {
       case this.Types.HEADER:
         return Header;
+      case this.Types.FOOTER:
+        return Footer;
         
       default:
         return () => <AlertNotFound type="component" />;

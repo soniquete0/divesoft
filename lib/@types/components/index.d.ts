@@ -1,3 +1,4 @@
 import AlertNotFound from './AlertNotFound';
 import Header from './Header';
-export { AlertNotFound, Header, };
+import Footer from './Footer';
+export { AlertNotFound, Header, Footer, };

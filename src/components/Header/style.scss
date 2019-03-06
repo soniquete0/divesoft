@@ -42,9 +42,7 @@
     img {
       height: 40px;
 
-      @include sm {
-        height: 50px;
-      }
+      @include sm { height: 50px; }
     }
   }
 
@@ -54,14 +52,15 @@
     ul {
       li {
         display: inline;
-        text-transform: uppercase;
         margin-right: 30px;
+        text-transform: uppercase;
 
         a {
           color: $darkGrey;
           transition: $customEase;
 
           &:hover {
+            color: $red;
             text-decoration: none;
           }
         }
@@ -121,18 +120,18 @@
   }
 
   .hiddenMenu {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    background-color: white;
-    height: 100vh;
-    transform: translate3d(calc(100% + 100px), 0, 0);
     position: absolute;
-    right: 0;
     top: 0;
-    width: 100%;
-    box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
+    right: 0;
     z-index: -1;
     width: 100%;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(calc(100% + 100px), 0, 0);
+    box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
   
     @include md {
       width: 100%;
@@ -173,14 +172,14 @@
   
         li {
           text-align: center;
-          color: $darkGrey;
           padding-bottom: 15px;
   
           a {
             color: $darkGrey;
             font-size: 1.2rem;
             text-transform: uppercase;
-            cursor: pointer;
+
+            &:hover { color: $red; }
           }
         }
       }

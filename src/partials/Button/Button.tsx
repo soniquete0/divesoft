@@ -4,7 +4,6 @@ import Link from '../Link';
 export interface ButtonProps {
   classes?: string;
   children: string;
-  noArrow?: boolean;
   url?: LooseObject;
 }
 
@@ -14,7 +13,6 @@ const Button = (props: ButtonProps) => {
     return (
       <Link className={`btn ${props.classes}`} url={props.url && props.url.url}>
         {props.children}
-        {!props.noArrow && <span className="arrow" />}
       </Link>
     );
   } else {
@@ -22,7 +20,6 @@ const Button = (props: ButtonProps) => {
       // button with no link
       <button className={`btn ${props.classes}`}>
         {props.children}
-        {!props.noArrow && <span className="arrow" />}
       </button>
     );
   }

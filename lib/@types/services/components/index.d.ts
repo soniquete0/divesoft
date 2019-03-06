@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Header } from '../../components';
+import { Header, Footer } from '../../components';
 import * as resources from './resources';
 /**
  *
@@ -9,7 +9,7 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): typeof Header | (() => JSX.Element);
+    getComponent(type: string): typeof Header | typeof Footer | (() => JSX.Element);
     /***/
     getComponentResource(type: string): typeof resources.header;
     getForm(type: string): () => JSX.Element;

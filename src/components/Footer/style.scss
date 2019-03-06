@@ -1,0 +1,198 @@
+.footer {
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url('/assets/divesoft/images/footer-bg.jpg');
+  
+  h6 { text-transform: uppercase; }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: #d1d1d1;
+  }
+
+  &__newsletter {
+    text-align: center;
+    padding: 80px 0 55px 0;
+
+    p {
+      font-size: 18px;
+      color: $lightGrey;
+    }
+
+    input {
+      width: 300px;
+      height: 50px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      line-height: 50px;
+      background: white;
+      color: $lightGrey;
+      padding-left: 55px;
+      background-size: 22px 16px;
+      background-repeat: no-repeat;
+      background-position: 20px center;
+      background-image: url('/assets/divesoft/images/mail-icon.svg');
+
+      @include max-sm {
+        width: 240px;
+      }
+      @include max-xs {
+        width: 180px;
+      }
+    }
+
+    .btn {
+      width: 140px;
+      display: initial;
+
+      @include max-sm {
+        width: inherit;
+      }
+      @include max-xs {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+  }
+
+  &__navigation {
+    padding: 55px 0 40px 0;
+
+    ul {
+      @include reset-list();
+
+      @include max-xl {
+        padding-bottom: 30px;
+      }
+
+      li {
+        position: relative;
+        padding-left: 22px;
+
+        &:before {
+          position: absolute;
+          left: 0;
+          top: 6px;
+          content: " ";
+          padding: 3px;
+          border: solid $red;
+          display: inline-block;
+          border-width: 0 3px 3px 0;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &__contacts {
+      p {
+        margin: 0;
+        padding: 0;
+        line-height: 1.7;
+        color: $lightGrey;
+      }
+
+      @include max-md {
+        width: 50% !important;
+        text-align: center !important;
+      }
+    }
+
+    &__item {
+      @include max-md {
+        h6 { text-align: center; }
+
+        ul {
+          text-align: center;
+
+          a {
+            position: relative;
+
+            &:before {
+              position: absolute;
+              left: -20px;
+              top: 3px;
+              content: " ";
+              padding: 3px;
+              border: solid $red;
+              display: inline-block;
+              border-width: 0 3px 3px 0;
+              transform: rotate(-45deg);
+              -webkit-transform: rotate(-45deg);
+            }
+          }
+
+          li {
+            padding: 0;
+
+            &:before {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    @include max-lg {
+      justify-content: center !important;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 40px;
+
+    p {
+      margin: 0;
+      padding: 0;
+      color: #5c5c5c;
+      text-align: center;
+    }
+
+    &__social {
+      width: 100%;
+      padding-bottom: 40px;
+      
+      a {
+        div {
+          width: 50px;
+          height: 50px;
+          border-radius: 50px;
+          background-color: white;
+        }
+
+        &:not(:last-child) {
+          margin-right: 25px;
+        }
+
+        &:nth-of-type(1) {
+          div {
+            background-size: 10px 22px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("/assets/divesoft/images/fb.svg");
+          }
+        }
+        &:nth-of-type(2) {
+          div {
+            background-size: 25px 19px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("/assets/divesoft/images/you.svg");
+          }
+        }
+        &:nth-of-type(3) {
+          div {
+            background-size: 23px 23px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("/assets/divesoft/images/inta.svg");
+          }
+        }
+      }
+    }
+  }
+}
