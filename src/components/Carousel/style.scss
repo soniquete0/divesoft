@@ -1,0 +1,110 @@
+.carousel {
+  padding-top: 120px;
+
+  @include max-sm { padding-top: 70px; }
+
+  .mediaRatio  {
+    height: 700px;
+    padding-top: 0!important;
+
+    @include max-md {
+      height: 500px;
+    }
+    @include max-sm {
+      height: 400px;
+    }
+  }
+
+  .alice-carousel {
+
+    &__stage-item {
+      width: 100% !important;
+    }
+
+    &__dots {
+      position: relative;
+      left: 0;
+      bottom: 80px;
+    }
+
+    &__dots-item {
+      width: 60px;
+      height: 4px;
+      border-radius: 0;
+      background-color: #ffffff;
+    }
+  }
+  .alice-carousel__dots-item.__active {
+    background-color: $red;
+  }
+
+  h1 {
+    @include max-md {
+      font-size: 1.8rem;
+    }
+  }
+
+  h2 { 
+    text-transform: none;
+  
+    @include max-md {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__images {
+    max-height: 700px;
+    
+    @include max-md {
+      height: 500px;
+    }
+
+    @include max-sm {
+      height: 400px;
+    }
+
+    &__img {
+      position: relative;
+
+      .center {
+        width: 100%;
+        text-align: center;
+        left: 0;
+      }
+
+      &__content {
+        width: 500px;
+        position: absolute;
+        z-index: 2;
+        top: 20%;
+
+        @include max-md {
+          width: 400px;
+          top: 30%;
+        }
+
+        @include max-sm {
+          width: 300px;
+          top: 20%;
+        }
+
+        &__btnHolder {
+          max-width: 60%;
+          
+          @include max-sm {
+            max-width: 80%;
+          }
+        }
+
+        p { 
+          font-size: 1.5rem;
+          color: #808080;
+
+          @include max-md {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

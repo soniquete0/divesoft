@@ -6,6 +6,7 @@ import {
   AlertNotFound,
   Header,
   Footer,
+  Carousel,
 } from '../../components';
 import * as resources from './resources';
 
@@ -24,6 +25,7 @@ class ComponentsService {
   Types: LooseObject<string> = {
     HEADER: 'Header',
     FOOTER: 'Footer',
+    CAROUSEL: 'Carousel',
   };
 
   /***/
@@ -42,6 +44,8 @@ class ComponentsService {
         return Header;
       case this.Types.FOOTER:
         return Footer;
+      case this.Types.CAROUSEL:
+        return Carousel;
         
       default:
         return () => <AlertNotFound type="component" />;

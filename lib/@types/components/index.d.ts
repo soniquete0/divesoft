@@ -1,4 +1,5 @@
 import AlertNotFound from './AlertNotFound';
 import Header from './Header';
 import Footer from './Footer';
-export { AlertNotFound, Header, Footer, };
+import Carousel from './Carousel';
+export { AlertNotFound, Header, Footer, Carousel, };

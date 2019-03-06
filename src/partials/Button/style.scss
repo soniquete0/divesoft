@@ -13,4 +13,14 @@
   font-family: $corridor;
   text-transform: uppercase;
   background-color: $red;
+
+  &--bordered {
+    color: $red;
+    border: 2px solid $red;
+    background-color: transparent;
+  }
+
+  &--center {
+    margin: 0 auto;
+  }
 }

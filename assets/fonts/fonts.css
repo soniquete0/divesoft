@@ -6,12 +6,10 @@
 
 @font-face {
   font-family: 'Corridor';
-  font-weight: 500;
   src: url("./Corridor-Medium.otf") format("opentype");
 }
 
 @font-face {
   font-family: 'Corridor';
-  font-weight: 600;
   src: url("./Corridor-Demi-Bold.otf") format("opentype");
 }
