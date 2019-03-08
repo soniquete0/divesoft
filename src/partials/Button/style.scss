@@ -8,16 +8,26 @@
   font-weight: 400;
   text-align: center;
   padding: 16px 35px;
-  transition: ease 0.2s;
   box-sizing: border-box;
   font-family: $corridor;
+  transition: $customEase;
   text-transform: uppercase;
   background-color: $red;
+
+  &:hover {
+    color: $white;
+    background-color: #f72c2c;
+  }
 
   &--bordered {
     color: $red;
     border: 2px solid $red;
     background-color: transparent;
+
+    &:hover {
+      color: white;
+      background-color: $red;
+    }
   }
 
   &--center {

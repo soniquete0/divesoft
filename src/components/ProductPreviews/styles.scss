@@ -1,0 +1,107 @@
+.product-previews {
+  padding: 100px 0;
+
+  @include max-md {
+    padding: 45px 0;
+  }
+
+  .btn { width: 180px; }
+
+  &__top {
+    text-align: center;
+    padding-bottom: 40px;
+    
+    p {
+      font-size: 1.5rem;
+      color: $lightGrey;
+      margin: 0;
+      padding: 0;
+
+      @include max-md {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .col {
+    padding: 0;
+  }
+
+  @include max-lg {
+    .row {
+      display: block !important;
+      margin: 0 !important;
+    }
+  }
+
+  &__list {
+    min-height: 500px;
+    width: 100%;
+  }
+
+  &__item {
+    width: 100%;
+    display: block;
+    height: 500px;
+    position: relative;
+    background-size: cover;
+
+    @include max-lg {
+      height: 300px;
+    }
+
+    @include max-md {
+      height: 250px;
+    }
+
+    &__content {
+      width: 65%;
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+
+    &__description {
+      font-size: 1.1rem;
+      color: #242424;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__title {
+      color: #242424;
+
+      @include max-lg {
+        font-size: 1.5rem;
+      }
+
+      @include max-md {
+        font-size: 1.25rem;
+      }
+    }
+
+    &:hover {
+      color: $darkGrey;
+    }
+
+    &--small {
+      height: 250px;
+
+      &__title {
+        font-size: 1.5rem;
+
+        @include max-md {
+          font-size: 1.25rem;
+        }
+      }
+    }
+
+    &__divider {
+      width: 50px;
+      height: 2px;
+      display: block;
+      margin: 15px 0;
+      background-color: #c5c5c5;
+    }
+  }
+}

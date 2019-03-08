@@ -7,6 +7,7 @@ import {
   Header,
   Footer,
   Carousel,
+  ProductPreviews,
 } from '../../components';
 import * as resources from './resources';
 
@@ -26,6 +27,7 @@ class ComponentsService {
     HEADER: 'Header',
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
+    PRODUCTPREVIEWS: 'ProductPreviews',
   };
 
   /***/
@@ -46,6 +48,8 @@ class ComponentsService {
         return Footer;
       case this.Types.CAROUSEL:
         return Carousel;
+      case this.Types.PRODUCTPREVIEWS:
+        return ProductPreviews;
         
       default:
         return () => <AlertNotFound type="component" />;

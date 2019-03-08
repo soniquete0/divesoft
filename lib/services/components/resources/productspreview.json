@@ -1,0 +1,81 @@
+{
+  "name": "ProductPreviews",
+  "data": {
+    "productPreviews": [
+      {
+        "title": "Divesoft BOV, DSV ADV, accessories and loops",
+        "description": "BOV/DSV/ADV",
+        "image": {
+          "recommendedSizes": {
+            "width": "590",
+            "height": "500"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Timer, computers and software",
+        "description": "Analyzer He/O2",
+        "image": {
+          "recommendedSizes": {
+            "width": "590",
+            "height": "500"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Timer, computers and software",
+        "description": "Analyzer He/O2",
+        "image": {
+          "recommendedSizes": {
+            "width": "590",
+            "height": "500"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "Accessories, accessories sets and spare parts",
+        "description": "Analyzer He/O2",
+        "image": {
+          "recommendedSizes": {
+            "width": "590",
+            "height": "500"
+          }
+        },
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "productPreviews": {
+          "type": "array",
+          "title": "Product Previews (max. 4 items)",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "description": {
+                "type": "text",
+                "title": "Description"
+              },
+              "image": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

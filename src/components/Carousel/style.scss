@@ -16,6 +16,15 @@
   }
 
   .alice-carousel {
+    height: 700px;
+    overflow: hidden;
+    
+    @include max-md {
+      height: 500px;
+    }
+    @include max-sm {
+      height: 400px;
+    }
 
     &__stage-item {
       width: 100% !important;

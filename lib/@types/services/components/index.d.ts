@@ -9,7 +9,7 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): typeof Header | typeof Footer | typeof Carousel | (() => JSX.Element);
+    getComponent(type: string): typeof Header | typeof Footer | typeof Carousel | ((props: import("../../components/ProductPreviews/ProductPreviews").ProductPreviewsProps) => JSX.Element);
     /***/
     getComponentResource(type: string): typeof resources.header;
     getForm(type: string): () => JSX.Element;
