@@ -93,7 +93,11 @@ class Slider extends React.Component<SliderProps, SliderState> {
   }
 
   slideWidth = () => {
-    return document.querySelector('.slider__slide').clientWidth;
+    if (document.querySelector('.slider__slide')) {
+      return document.querySelector('.slider__slide').clientWidth;
+    } else {
+      return 0; // fix for backoffice
+    }
   }
 
   render() {

@@ -111,7 +111,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
             transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
           
           return (
-            <header className={`header ${this.state.menuActive ? 'menuActive' : ''}`}>
+            <header 
+              className={`header`}
+              style={
+                this.state.menuActive ? 
+                {overflow: 'inherit'} : 
+                {overflow: 'hidden'}
+              }
+            >
               <div className="container">
                 <div 
                   className={'header__wrapper d-flex justify-content-between align-items-center'} 

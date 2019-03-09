@@ -3,5 +3,6 @@ import * as header from './header.json';
 import * as footer from './footer.json';
 import * as carousel from './carousel.json';
 import * as productpreviews from './productpreviews.json';
-export { def as default, header, footer, carousel, productpreviews, };
+import * as newsandevents from './newsandevents.json';
+export { def as default, header, footer, carousel, productpreviews, newsandevents, };
 //# sourceMappingURL=index.js.map

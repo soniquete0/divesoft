@@ -63,7 +63,12 @@ var Slider = /** @class */ (function (_super) {
             }
         };
         _this.slideWidth = function () {
-            return document.querySelector('.slider__slide').clientWidth;
+            if (document.querySelector('.slider__slide')) {
+                return document.querySelector('.slider__slide').clientWidth;
+            }
+            else {
+                return 0; // fix for backoffice
+            }
         };
         _this.state = {
             slides: [],

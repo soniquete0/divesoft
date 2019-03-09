@@ -1,0 +1,118 @@
+.newsAndEvents {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 80px 0 100px 0;
+
+  .btn {
+    width: 200px;
+    margin: 0 auto;
+  }
+
+  @include max-xl {
+    padding: 40px 0;
+  }
+
+  h3 {
+    text-align: center;
+    padding-bottom: 55px;
+
+    @include max-md {
+      padding-bottom: 25px;
+    }
+  }
+
+  &__list {
+    @include max-xl {
+      display: block !important;
+    }
+
+    &__item {
+      width: 100%;
+      display: block;
+      max-width: 356px;
+      margin-bottom: 25px;
+      -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+      -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+      box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.1);
+
+      @include max-xl {
+        margin: 0 auto;
+        margin-bottom: 30px;
+      }
+
+      @include max-sm {
+        max-width: 300px;
+      }
+
+      .mediaRatio {
+        padding: 0 !important;
+        height: 263px;
+        width: 356px;
+
+        &:after {
+          position: absolute;
+          bottom: 0;
+          left: 45%;
+          content: '';
+          display: block;
+          border-left: 18px solid transparent;
+          border-right: 18px solid transparent;
+          border-bottom: 18px solid white;
+        }
+      }
+
+      &__content {
+        width: 100%;
+        position: relative;
+        background-color: white;
+        padding: 24px 10px 50px 20px;
+
+        span {
+          color: $red;
+          font-size: 24px;
+        }
+
+        p {
+          color: $lightGrey;
+        }
+
+        &--date {
+          margin: 0;
+        }
+
+        &--text {
+          margin: 0;
+          padding: 0;
+          line-height: 25px;
+          max-height: 75px;
+          overflow: hidden;
+        }
+
+        a {
+          position: absolute;
+          bottom: 20px;
+          right: 20px;
+          color: $red;
+
+          &:hover {
+            text-decoration: underline;
+          }
+
+          &:before {
+            position: relative;
+            left: -10px;
+            top: -1px;
+            content: " ";
+            padding: 3px;
+            border: solid $red;
+            display: inline-block;
+            border-width: 0 3px 3px 0;
+            transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}

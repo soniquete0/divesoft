@@ -3,6 +3,7 @@ import * as header from './header.json';
 import * as footer from './footer.json';
 import * as carousel from './carousel.json';
 import * as productpreviews from './productpreviews.json';
+import * as newsandevents from './newsandevents.json';
 
 export {
   def as default,
@@ -10,4 +11,5 @@ export {
   footer,
   carousel,
   productpreviews,
+  newsandevents,
 };

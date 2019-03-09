@@ -91,7 +91,9 @@ var Header = /** @class */ (function (_super) {
             var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
             var topNav = 'top';
             var topNavItems = transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
-            return (React.createElement("header", { className: "header " + (_this.state.menuActive ? 'menuActive' : '') },
+            return (React.createElement("header", { className: "header", style: _this.state.menuActive ?
+                    { overflow: 'inherit' } :
+                    { overflow: 'hidden' } },
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },

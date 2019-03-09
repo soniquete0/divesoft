@@ -8,6 +8,7 @@ import {
   Footer,
   Carousel,
   ProductPreviews,
+  NewsAndEvents,
 } from '../../components';
 import * as resources from './resources';
 
@@ -28,6 +29,7 @@ class ComponentsService {
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
     PRODUCTPREVIEWS: 'ProductPreviews',
+    NEWSANDEVENTS: 'NewsAndEvents',
   };
 
   /***/
@@ -50,6 +52,8 @@ class ComponentsService {
         return Carousel;
       case this.Types.PRODUCTPREVIEWS:
         return ProductPreviews;
+      case this.Types.NEWSANDEVENTS:
+        return NewsAndEvents;
         
       default:
         return () => <AlertNotFound type="component" />;

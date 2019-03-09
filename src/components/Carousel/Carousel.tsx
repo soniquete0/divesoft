@@ -4,7 +4,6 @@ import Button from '@source/partials/Button';
 import Slider from '@source/partials/Slider';
 import Media from '@source/partials/Media';
 import List from '../List';
-import { throws } from 'assert';
 
 interface Slide {
   image: LooseObject;

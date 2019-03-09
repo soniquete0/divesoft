@@ -21,7 +21,7 @@
   &__select {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 10px;
     
     select {
       outline: none;
@@ -29,14 +29,16 @@
       background: transparent;
       color: $lightGrey;
       font-size: 15px;
-      width:75px;
+      width: 75px;
     }
 
-    @include xl {
+    @media (min-width: 1350px) {
       right: -10%;
-      top: 20%;
     }
 
+    @include max-sm {
+      top: 0;
+    }
   }
 
   &__logo {

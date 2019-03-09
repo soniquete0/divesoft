@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import ProductPreviews from './ProductPreviews';
+import NewsAndEvents from './NewsAndEvents';
 
 export {
   AlertNotFound,
@@ -10,4 +11,5 @@ export {
   Footer,
   Carousel,
   ProductPreviews,
+  NewsAndEvents,
 };
