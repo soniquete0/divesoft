@@ -1,5 +1,7 @@
-.carousel {
+.slider {
   padding-top: 120px;
+  max-height: 820px;
+  overflow: hidden;
 
   @include max-sm { padding-top: 70px; }
 
@@ -14,94 +16,65 @@
       height: 400px;
     }
   }
+}
 
-  .alice-carousel {
-    height: 700px;
-    overflow: hidden;
-    
-    @include max-md {
-      height: 500px;
-    }
-    @include max-sm {
-      height: 400px;
-    }
-
-    &__stage-item {
-      width: 100% !important;
-    }
-
-    &__dots {
-      position: relative;
-      left: 0;
-      bottom: 80px;
-    }
-
-    &__dots-item {
-      width: 60px;
-      height: 4px;
-      border-radius: 0;
-      background-color: #ffffff;
-    }
-  }
-  .alice-carousel__dots-item.__active {
-    background-color: $red;
-  }
-
-  h1 {
-    @include max-md {
-      font-size: 1.8rem;
-    }
-  }
-
-  h2 { 
-    text-transform: none;
-  
-    @include max-md {
-      font-size: 1.2rem;
-    }
-  }
-
+.carousel {
   &__images {
-    max-height: 700px;
-    
-    @include max-md {
-      height: 500px;
-    }
-
-    @include max-sm {
-      height: 400px;
-    }
-
     &__img {
       position: relative;
 
+      h1 {
+        @include max-md {
+          font-size: 1.8rem;
+        }
+      }
+    
+      h2 { 
+        text-transform: none;
+      
+        @include max-md {
+          font-size: 1.2rem;
+        }
+      }
+      
       .center {
+        left: 0;
         width: 100%;
         text-align: center;
-        left: 0;
+        padding: 0 25px;
       }
 
       &__content {
         width: 500px;
         position: absolute;
         z-index: 2;
-        top: 20%;
+        top: 25%;
 
         @include max-md {
-          width: 400px;
+          left: 0;
           top: 30%;
+          width: 10%;
+          text-align: center;
+          padding: 0 25px;
         }
 
         @include max-sm {
-          width: 300px;
           top: 20%;
+          left: 0;
+          width: 100%;
+          padding: 0 25px;
+          text-align: center;
         }
 
         &__btnHolder {
-          max-width: 60%;
-          
-          @include max-sm {
-            max-width: 80%;
+          max-width: 320px;
+
+          @include max-md {
+            margin: 0 auto;
+          }
+
+          .btn {
+            width: 100%;
           }
         }
 

@@ -62,7 +62,6 @@
     "moment": "^2.23.0",
     "obj-traverse": "^1.0.0",
     "react-adopt": "^0.6.0",
-    "react-alice-carousel": "^1.13.0",
     "react-apollo": "^2.3.3",
     "react-geocode": "^0.1.2",
     "react-geolocated": "^2.4.0",

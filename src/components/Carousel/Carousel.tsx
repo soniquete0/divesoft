@@ -1,10 +1,10 @@
 import * as React from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
 
 import Button from '@source/partials/Button';
+import Slider from '@source/partials/Slider';
 import Media from '@source/partials/Media';
 import List from '../List';
+import { throws } from 'assert';
 
 interface Slide {
   image: LooseObject;
@@ -24,8 +24,6 @@ export interface CarouselProps {
 }
 
 export interface CarouselState {
-  currentIndex: number;
-  itemsInSlide: number;
   // tslint:disable-next-line:no-any
   galleryItems: any;
 }
@@ -35,15 +33,9 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     super(props);
 
     this.state = {
-      currentIndex: 0,
-      itemsInSlide: 1,
       galleryItems: this.galleryItems(),
     };
   }  
-
-   slideTo = (i) => {
-    this.setState({ currentIndex: i });
-  }
 
    galleryItems() {  
     const { slides } = this.props.data;
@@ -69,7 +61,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
                   {slide.buttonTitle && 
                     <div 
                       className={'carousel__images__img__content__btnHolder'} 
-                      style={slide.isCentred ? {maxWidth: '50%', margin: '0 auto'} : {}}
+                      style={slide.isCentred ? {margin: '0 auto'} : {}}
                     >
                       <Button 
                         classes={`${slide.isBackgroundBlack ? '' : 'btn--bordered'} 
@@ -81,7 +73,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
                     </div>}
                 </div>
               </div>
-              <Media key={i} type={'image'} data={slide.image} />
+              <Media key={i} type={'image'} data={slide.image}/>
             </div>
           );
         }
@@ -92,27 +84,11 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
 
    public render() {
     const { slides } = this.props.data;
-    
+
     return (
       <List data={slides}>
-        {({ data }) => (
-          <div className={'carousel'}>
-            <div className={'carousel__images'}>
-              <AliceCarousel 
-                autoPlay={true}
-                dotsDisabled={false}
-                buttonsDisabled={true}
-                autoPlayInterval={10000}
-                infinite={false}
-                items={this.state.galleryItems}
-                onSlideChanged={(e) => {
-                  this.setState({ currentIndex: e.item }); 
-                }}
-                slideToIndex={this.state.currentIndex}
-              />
-            </div>
-          </div>    
-        )}
+        {({ data }) => 
+          <Slider slides={this.state.galleryItems} autoplay={true} delay={10000} showArrows={false} showDots={true}/>}
       </List>
     );
   }

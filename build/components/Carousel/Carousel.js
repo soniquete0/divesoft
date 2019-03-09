@@ -12,21 +12,15 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
 import Button from '@source/partials/Button';
+import Slider from '@source/partials/Slider';
 import Media from '@source/partials/Media';
 import List from '../List';
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
     function Carousel(props) {
         var _this = _super.call(this, props) || this;
-        _this.slideTo = function (i) {
-            _this.setState({ currentIndex: i });
-        };
         _this.state = {
-            currentIndex: 0,
-            itemsInSlide: 1,
             galleryItems: _this.galleryItems(),
         };
         return _this;
@@ -46,7 +40,7 @@ var Carousel = /** @class */ (function (_super) {
                                     React.createElement("h1", { style: slide.isBackgroundBlack ? { color: 'white' } : {} }, slide.title),
                                 slide.description && React.createElement("p", null, slide.description),
                                 slide.buttonTitle &&
-                                    React.createElement("div", { className: 'carousel__images__img__content__btnHolder', style: slide.isCentred ? { maxWidth: '50%', margin: '0 auto' } : {} },
+                                    React.createElement("div", { className: 'carousel__images__img__content__btnHolder', style: slide.isCentred ? { margin: '0 auto' } : {} },
                                         React.createElement(Button, { classes: (slide.isBackgroundBlack ? '' : 'btn--bordered') + " \n                                  " + (slide.isCentred ? 'btn--center' : ''), url: slide.url }, slide.buttonTitle)))),
                         React.createElement(Media, { key: i, type: 'image', data: slide.image })));
                 }
@@ -59,11 +53,7 @@ var Carousel = /** @class */ (function (_super) {
         var slides = this.props.data.slides;
         return (React.createElement(List, { data: slides }, function (_a) {
             var data = _a.data;
-            return (React.createElement("div", { className: 'carousel' },
-                React.createElement("div", { className: 'carousel__images' },
-                    React.createElement(AliceCarousel, { autoPlay: true, dotsDisabled: false, buttonsDisabled: true, autoPlayInterval: 10000, infinite: false, items: _this.state.galleryItems, onSlideChanged: function (e) {
-                            _this.setState({ currentIndex: e.item });
-                        }, slideToIndex: _this.state.currentIndex }))));
+            return React.createElement(Slider, { slides: _this.state.galleryItems, autoplay: true, delay: 10000, showArrows: false, showDots: true });
         }));
     };
     return Carousel;

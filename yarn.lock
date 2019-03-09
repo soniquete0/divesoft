@@ -4259,7 +4259,7 @@ prompts@^0.1.9:
     kleur "^2.0.1"
     sisteransi "^0.1.1"
 
-prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
+prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -4325,14 +4325,6 @@ react-adopt@^0.6.0:
     hoist-non-react-statics "^2.5.0"
     react "^16.3.2"
     react-display-name "^0.2.4"
-
-react-alice-carousel@^1.13.0:
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/react-alice-carousel/-/react-alice-carousel-1.13.1.tgz#6c3d1d8f5358cafd6a90de3212c3d424fc48dfe0"
-  integrity sha512-FK+K3WRwFUh/jQHld5P4Mi3swguhBsEotYT6iG5Sg/+C96Fi2YFnqt+cVB2ssfWJXMXqz5kvq6Z4ZfbFZrf0pA==
-  dependencies:
-    prop-types "^15.5.10"
-    react-swipeable "^4.3.0"
 
 react-apollo@^2.3.3:
   version "2.5.1"

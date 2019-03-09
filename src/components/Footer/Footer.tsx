@@ -111,7 +111,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
             [];
           
           return (
-            <div>
+            <div>              
               <footer className={'footer'}>
                 <div className={'container'}>
                   <div className={'footer__newsletter'}>
