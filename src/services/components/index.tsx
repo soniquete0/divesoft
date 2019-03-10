@@ -6,9 +6,10 @@ import {
   AlertNotFound,
   Header,
   Footer,
+  AboutUs,
   Carousel,
-  ProductPreviews,
   NewsAndEvents,
+  ProductPreviews,
 } from '../../components';
 import * as resources from './resources';
 
@@ -27,9 +28,10 @@ class ComponentsService {
   Types: LooseObject<string> = {
     HEADER: 'Header',
     FOOTER: 'Footer',
+    ABOUTUS: 'AboutUs',
     CAROUSEL: 'Carousel',
-    PRODUCTPREVIEWS: 'ProductPreviews',
     NEWSANDEVENTS: 'NewsAndEvents',
+    PRODUCTPREVIEWS: 'ProductPreviews',
   };
 
   /***/
@@ -48,12 +50,14 @@ class ComponentsService {
         return Header;
       case this.Types.FOOTER:
         return Footer;
+      case this.Types.ABOUTUS:
+        return AboutUs;
       case this.Types.CAROUSEL:
         return Carousel;
-      case this.Types.PRODUCTPREVIEWS:
-        return ProductPreviews;
       case this.Types.NEWSANDEVENTS:
         return NewsAndEvents;
+      case this.Types.PRODUCTPREVIEWS:
+        return ProductPreviews;
         
       default:
         return () => <AlertNotFound type="component" />;

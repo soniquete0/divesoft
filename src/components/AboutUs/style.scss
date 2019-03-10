@@ -1,0 +1,57 @@
+.aboutUs {
+  padding: 75px 0 100px 0;
+
+  @include max-md {
+    padding: 55px 0;
+  }
+  @include max-sm {
+    padding: 35px 0;
+  }
+
+  .col { padding: 0; }
+
+  &__block {
+    width: 100%;
+    padding: 40px;
+    height: 390px;
+    max-height: 390px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    @include max-md {
+      height: 100%;
+      max-height: 100%;
+    }
+
+    &--right {
+      p { 
+        width: 55%;
+        @include max-md { width: 60%; }
+      }
+    }
+
+    &:hover {
+      p { color: $lightGrey; }
+      h3 { color: $darkGrey; }
+    }
+
+    p {
+      line-height: 28px;
+      color: white;
+    }
+
+    h3 { color: white; }
+    h4 { color: #ababab; }
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 40px;
+
+    @include max-sm {
+      position: relative;
+      bottom: 0;
+    }
+  }
+}

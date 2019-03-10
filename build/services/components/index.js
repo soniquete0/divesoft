@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, Header, Footer, Carousel, ProductPreviews, NewsAndEvents, } from '../../components';
+import { AlertNotFound, Header, Footer, AboutUs, Carousel, NewsAndEvents, ProductPreviews, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -29,9 +29,10 @@ var ComponentsService = /** @class */ (function () {
         this.Types = {
             HEADER: 'Header',
             FOOTER: 'Footer',
+            ABOUTUS: 'AboutUs',
             CAROUSEL: 'Carousel',
-            PRODUCTPREVIEWS: 'ProductPreviews',
             NEWSANDEVENTS: 'NewsAndEvents',
+            PRODUCTPREVIEWS: 'ProductPreviews',
         };
     }
     /***/
@@ -49,12 +50,14 @@ var ComponentsService = /** @class */ (function () {
                 return Header;
             case this.Types.FOOTER:
                 return Footer;
+            case this.Types.ABOUTUS:
+                return AboutUs;
             case this.Types.CAROUSEL:
                 return Carousel;
-            case this.Types.PRODUCTPREVIEWS:
-                return ProductPreviews;
             case this.Types.NEWSANDEVENTS:
                 return NewsAndEvents;
+            case this.Types.PRODUCTPREVIEWS:
+                return ProductPreviews;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

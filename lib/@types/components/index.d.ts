@@ -4,4 +4,5 @@ import Footer from './Footer';
 import Carousel from './Carousel';
 import ProductPreviews from './ProductPreviews';
 import NewsAndEvents from './NewsAndEvents';
-export { AlertNotFound, Header, Footer, Carousel, ProductPreviews, NewsAndEvents, };
+import AboutUs from './AboutUs';
+export { AlertNotFound, Header, Footer, AboutUs, Carousel, NewsAndEvents, ProductPreviews, };
