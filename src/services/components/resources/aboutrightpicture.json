@@ -1,0 +1,36 @@
+{
+  "name": "AboutRightPicture",
+  "data": {
+    "title": "History",
+    "subtitle": "Divesoft is dedicated to providing customers with superior quality specialized diving equipment.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc. Sed vehicula condimentum nulla non dictum.",
+    "img": {
+      "recommendedSizes": {
+        "width": "450",
+        "height": "450"
+      }
+    }
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "subtitle": {
+          "type": "text",
+          "title": "Subtitle"
+        },
+        "text": {
+          "type": "markdown",
+          "title": "Text"
+        },
+        "img": {
+          "type": "image"
+        }
+      }
+    }
+  }
+}

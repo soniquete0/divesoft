@@ -6,4 +6,5 @@ import Carousel from './Carousel';
 import AboutUsHome from './AboutUsHome';
 import NewsAndEvents from './NewsAndEvents';
 import ProductPreviews from './ProductPreviews';
-export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, };
+import AboutRightPicture from './AboutRightPicture';
+export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, };

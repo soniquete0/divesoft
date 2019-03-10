@@ -6,6 +6,7 @@ import * as carousel from './carousel.json';
 import * as aboutushome from './aboutushome.json';
 import * as newsandevents from './newsandevents.json';
 import * as productpreviews from './productpreviews.json';
+import * as aboutrightpicture from './aboutrightpicture.json';
 
 export {
   def as default,
@@ -16,4 +17,5 @@ export {
   aboutushome,
   newsandevents,
   productpreviews,
+  aboutrightpicture,
 };

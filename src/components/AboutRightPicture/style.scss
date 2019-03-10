@@ -1,0 +1,56 @@
+.aboutRightPicture {
+  padding: 80px 0;
+
+  @include max-md { padding: 40px 0; }
+
+  &__content {
+
+    h2 {
+      position: relative;
+      @include max-sm { font-size: 1.9rem; }
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        display: block;
+        width: 24px;
+        height: 24px;
+        top: -15px;
+        left: -20px;
+        border-color: $red;
+        border-style: solid;
+        border-width: 6px 0 0 6px;
+
+        @include max-md {
+          top: -8px;
+          left: -8px;
+          border-width: 4px 0 0 4px;
+        }
+      }
+    }
+
+    h4 {
+      color: $lightGrey;
+      @include max-sm { font-size: 1.125rem; }
+    }
+
+    p {
+      color: $lightGrey;
+      line-height: 30px;
+    }
+  }
+
+  .mediaRatio {
+    padding: 0 !important;
+    height: 100%;
+    width: 100%;
+    min-height: 450px;
+    min-width: 450px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+
+    @include max-sm {
+      min-width: 280px;
+      min-height: 280px;
+    }
+  }
+}

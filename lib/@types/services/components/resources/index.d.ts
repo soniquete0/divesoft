@@ -6,4 +6,5 @@ import * as carousel from './carousel.json';
 import * as aboutushome from './aboutushome.json';
 import * as newsandevents from './newsandevents.json';
 import * as productpreviews from './productpreviews.json';
-export { def as default, hero, header, footer, carousel, aboutushome, newsandevents, productpreviews, };
+import * as aboutrightpicture from './aboutrightpicture.json';
+export { def as default, hero, header, footer, carousel, aboutushome, newsandevents, productpreviews, aboutrightpicture, };

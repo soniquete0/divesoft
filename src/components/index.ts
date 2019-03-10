@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import AboutUsHome from './AboutUsHome';
 import NewsAndEvents from './NewsAndEvents';
 import ProductPreviews from './ProductPreviews';
+import AboutRightPicture from './AboutRightPicture';
 
 export {
   AlertNotFound,
@@ -16,4 +17,5 @@ export {
   AboutUsHome,
   NewsAndEvents,
   ProductPreviews,
+  AboutRightPicture,
 };
