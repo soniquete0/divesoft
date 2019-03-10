@@ -49,11 +49,9 @@ var Carousel = /** @class */ (function (_super) {
         return images;
     };
     Carousel.prototype.render = function () {
-        var _this = this;
-        var slides = this.props.data.slides;
-        return (React.createElement(List, { data: slides }, function (_a) {
+        return (React.createElement(List, { data: this.state.galleryItems }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { slides: _this.state.galleryItems, autoplay: true, delay: 10000, showArrows: false, showDots: true });
+            return React.createElement(Slider, { delay: 10000, slides: data, autoplay: true, showDots: true, showArrows: true });
         }));
     };
     return Carousel;

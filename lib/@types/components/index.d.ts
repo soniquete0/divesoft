@@ -1,8 +1,9 @@
 import AlertNotFound from './AlertNotFound';
+import Hero from './Hero';
 import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
-import ProductPreviews from './ProductPreviews';
+import AboutUsHome from './AboutUsHome';
 import NewsAndEvents from './NewsAndEvents';
-import AboutUs from './AboutUs';
-export { AlertNotFound, Header, Footer, AboutUs, Carousel, NewsAndEvents, ProductPreviews, };
+import ProductPreviews from './ProductPreviews';
+export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, };

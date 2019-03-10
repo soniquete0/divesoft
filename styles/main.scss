@@ -10,10 +10,11 @@
 @import 'text';
 
 // COMPONENTS STYLES
+@import '../src/components/Hero/style.scss';
 @import '../src/components/Header/style.scss';
 @import '../src/components/Footer/style.scss';
-@import '../src/components/AboutUs/style.scss';
 @import '../src/components/Carousel/style.scss';
+@import '../src/components/AboutUsHome/style.scss';
 @import '../src/components/NewsAndEvents/style.scss';
 @import '../src/components/ProductPreviews/styles.scss';
 

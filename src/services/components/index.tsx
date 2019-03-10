@@ -4,10 +4,11 @@ import { isObjectLike } from 'lodash';
 
 import {
   AlertNotFound,
+  Hero,
   Header,
   Footer,
-  AboutUs,
   Carousel,
+  AboutUsHome,
   NewsAndEvents,
   ProductPreviews,
 } from '../../components';
@@ -26,10 +27,11 @@ import * as resources from './resources';
  */
 class ComponentsService {
   Types: LooseObject<string> = {
+    HERO: 'Hero',
     HEADER: 'Header',
     FOOTER: 'Footer',
-    ABOUTUS: 'AboutUs',
     CAROUSEL: 'Carousel',
+    ABOUTUSHOME: 'AboutUsHome',
     NEWSANDEVENTS: 'NewsAndEvents',
     PRODUCTPREVIEWS: 'ProductPreviews',
   };
@@ -46,15 +48,17 @@ class ComponentsService {
   /***/
   getComponent(type: string) {
     switch (type) {
+      case this.Types.HERO:
+        return Hero;
       case this.Types.HEADER:
         return Header;
       case this.Types.FOOTER:
         return Footer;
-      case this.Types.ABOUTUS:
-        return AboutUs;
       case this.Types.CAROUSEL:
         return Carousel;
-      case this.Types.NEWSANDEVENTS:
+      case this.Types.ABOUTUSHOME:
+        return AboutUsHome;
+        case this.Types.NEWSANDEVENTS:
         return NewsAndEvents;
       case this.Types.PRODUCTPREVIEWS:
         return ProductPreviews;

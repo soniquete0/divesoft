@@ -1,8 +1,8 @@
 import * as React from 'react';
-export interface AboutUsState {
+export interface AboutUsHomeState {
     hover: boolean;
 }
-export interface AboutUsProps {
+export interface AboutUsHomeProps {
     data: {
         leftTitle: string;
         leftSubtitle: string;
@@ -18,9 +18,9 @@ export interface AboutUsProps {
         rightImg?: LooseObject;
     };
 }
-declare class AboutUs extends React.Component<AboutUsProps, AboutUsState> {
-    constructor(props: AboutUsProps);
+declare class AboutUsHome extends React.Component<AboutUsHomeProps, AboutUsHomeState> {
+    constructor(props: AboutUsHomeProps);
     toggleHover: () => void;
     render(): JSX.Element;
 }
-export default AboutUs;
+export default AboutUsHome;

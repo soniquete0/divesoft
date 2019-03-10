@@ -1,4 +1,4 @@
-.aboutUs {
+.aboutUsHome {
   padding: 75px 0 100px 0;
 
   @include max-md {
@@ -34,6 +34,8 @@
     &:hover {
       p { color: $lightGrey; }
       h3 { color: $darkGrey; }
+
+      p { width: 100%; }
     }
 
     p {

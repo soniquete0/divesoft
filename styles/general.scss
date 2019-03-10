@@ -13,3 +13,8 @@ ul, ol {
   padding-left: 2em;
   line-height: 1.4;
 }
+
+.topWrapper {
+  padding-top: 120px;
+  @include max-sm { padding-top: 70px; }
+}

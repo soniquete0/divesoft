@@ -82,12 +82,17 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
   }
 
    public render() {
-    const { slides } = this.props.data;
 
     return (
-      <List data={slides}>
+      <List data={this.state.galleryItems}>
         {({ data }) => 
-          <Slider slides={this.state.galleryItems} autoplay={true} delay={10000} showArrows={false} showDots={true}/>}
+          <Slider 
+            delay={10000}
+            slides={data}
+            autoplay={true} 
+            showDots={true}
+            showArrows={true} 
+          />}
       </List>
     );
   }

@@ -3,11 +3,11 @@ import * as React from 'react';
 import Button from '@source/partials/Button';
 import getImageUrl from '@source/helpers/getImageUrl';
 
-export interface AboutUsState {
+export interface AboutUsHomeState {
   hover: boolean;
 }
 
-export interface AboutUsProps {
+export interface AboutUsHomeProps {
   data: {
     leftTitle: string;
     leftSubtitle: string;
@@ -24,8 +24,8 @@ export interface AboutUsProps {
   };
 }
 
-class AboutUs extends React.Component<AboutUsProps, AboutUsState> {
-  constructor(props: AboutUsProps) {
+class AboutUsHome extends React.Component<AboutUsHomeProps, AboutUsHomeState> {
+  constructor(props: AboutUsHomeProps) {
     super(props);
 
     this.state = {
@@ -52,12 +52,12 @@ class AboutUs extends React.Component<AboutUsProps, AboutUsState> {
     } = this.props.data;
 
     return (
-      <div className={'aboutUs'}>
+      <div className={'aboutUsHome'}>
         <div className="container">
           <div className="row">
             <div className="col-12 col-xl-6">
               <div 
-                className={'aboutUs__block'} 
+                className={'aboutUsHome__block'} 
                 style={this.state.hover ?
                   { backgroundImage: leftImg && `url(${getImageUrl(leftImg)})` } :
                   { background: 'white !important'}}
@@ -87,7 +87,7 @@ class AboutUs extends React.Component<AboutUsProps, AboutUsState> {
             </div>
             <div className="col-12 col-xl-6">
               <div 
-                className={'aboutUs__block aboutUs__block--right'} 
+                className={'aboutUsHome__block aboutUsHome__block--right'} 
                 onMouseEnter={this.toggleHover}
                 onMouseLeave={this.toggleHover}
                 style={
@@ -110,4 +110,4 @@ class AboutUs extends React.Component<AboutUsProps, AboutUsState> {
   }
 }
 
-export default AboutUs;
+export default AboutUsHome;

@@ -1,0 +1,39 @@
+.hero {
+  padding: 80px 0;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  @include max-md {
+    padding: 60px 0;
+    h1 { font-size: 2.25rem; }
+  }
+
+  @include max-sm {
+    padding: 40px 0;
+    h1 { font-size: 1.9rem; }
+  }
+
+  &__content {
+    text-align: center;
+
+    p {
+      font-size: 1.5rem;
+      color: $lightGrey;
+
+      @include max-md {
+        font-size: 1.25rem;
+      }
+
+      @include max-sm {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .btn {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

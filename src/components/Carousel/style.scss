@@ -1,8 +1,7 @@
 .slider {
-  padding-top: 120px;
   max-height: 820px;
   overflow: hidden;
-
+  padding-top: 120px;
   @include max-sm { padding-top: 70px; }
 
   .mediaRatio  {

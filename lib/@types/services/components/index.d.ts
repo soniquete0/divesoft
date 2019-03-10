@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { Header, Footer, AboutUs, Carousel, NewsAndEvents } from '../../components';
+import { Header, Footer, Carousel, AboutUsHome, NewsAndEvents } from '../../components';
 import * as resources from './resources';
 /**
  *
@@ -9,9 +9,9 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): typeof Header | typeof Footer | typeof Carousel | ((props: import("../../components/ProductPreviews/ProductPreviews").ProductPreviewsProps) => JSX.Element) | typeof NewsAndEvents | typeof AboutUs;
+    getComponent(type: string): ((props: import("../../components/Hero/Hero").HeroProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof AboutUsHome | typeof NewsAndEvents | ((props: import("../../components/ProductPreviews/ProductPreviews").ProductPreviewsProps) => JSX.Element);
     /***/
-    getComponentResource(type: string): typeof resources.header;
+    getComponentResource(type: string): typeof resources.hero;
     getForm(type: string): () => JSX.Element;
 }
 export default ComponentsService;
