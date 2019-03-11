@@ -10,5 +10,6 @@ import NewsAndEvents from './NewsAndEvents';
 import ProductsPreview from './ProductsPreview';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
-export { AlertNotFound, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, NewsAndEvents, ProductsPreview, AboutLeftPicture, AboutRightPicture, };
+import ProductComponents from './ProductComponents';
+export { AlertNotFound, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, NewsAndEvents, ProductsPreview, AboutLeftPicture, AboutRightPicture, ProductComponents, };
 //# sourceMappingURL=index.js.map

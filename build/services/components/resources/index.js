@@ -10,5 +10,6 @@ import * as newsandevents from './newsandevents.json';
 import * as productspreview from './productspreview.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
-export { def as default, hero, header, footer, carousel, downloads, aboutushome, productsmenu, newsandevents, productspreview, aboutleftpicture, aboutrightpicture, };
+import * as productcomponents from './productcomponents.json';
+export { def as default, hero, header, footer, carousel, downloads, aboutushome, productsmenu, newsandevents, productspreview, aboutleftpicture, aboutrightpicture, productcomponents, };
 //# sourceMappingURL=index.js.map
