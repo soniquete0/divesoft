@@ -12,6 +12,7 @@ import {
   NewsAndEvents,
   ProductPreviews,
   AboutRightPicture,
+  AboutLeftPicture,
 } from '../../components';
 import * as resources from './resources';
 
@@ -36,6 +37,7 @@ class ComponentsService {
     NEWSANDEVENTS: 'NewsAndEvents',
     PRODUCTPREVIEWS: 'ProductPreviews',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
+    ABOUTLEFTPICTURE: 'AboutLeftPicture',
   };
 
   /***/
@@ -66,7 +68,9 @@ class ComponentsService {
         return ProductPreviews;
       case this.Types.ABOUTRIGHTPICTURE: 
         return AboutRightPicture;
-        
+      case this.Types.ABOUTLEFTPICTURE:
+        return AboutLeftPicture;
+      
       default:
         return () => <AlertNotFound type="component" />;
     }

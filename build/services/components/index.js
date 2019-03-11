@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, } from '../../components';
+import { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, AboutLeftPicture, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -35,6 +35,7 @@ var ComponentsService = /** @class */ (function () {
             NEWSANDEVENTS: 'NewsAndEvents',
             PRODUCTPREVIEWS: 'ProductPreviews',
             ABOUTRIGHTPICTURE: 'AboutRightPicture',
+            ABOUTLEFTPICTURE: 'AboutLeftPicture',
         };
     }
     /***/
@@ -64,6 +65,8 @@ var ComponentsService = /** @class */ (function () {
                 return ProductPreviews;
             case this.Types.ABOUTRIGHTPICTURE:
                 return AboutRightPicture;
+            case this.Types.ABOUTLEFTPICTURE:
+                return AboutLeftPicture;
             default:
                 return function () { return React.createElement(AlertNotFound, { type: "component" }); };
         }

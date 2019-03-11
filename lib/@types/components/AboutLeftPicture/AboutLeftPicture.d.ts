@@ -1,5 +1,5 @@
 /// <reference types="react" />
-export interface AboutRightPictureProps {
+export interface AboutLeftPictureProps {
     data: {
         title: string;
         subtitle: string;
@@ -8,5 +8,5 @@ export interface AboutRightPictureProps {
         paddingTop: boolean;
     };
 }
-declare const AboutRightPicture: (props: AboutRightPictureProps) => JSX.Element;
-export default AboutRightPicture;
+declare const AboutLeftPicture: (props: AboutLeftPictureProps) => JSX.Element;
+export default AboutLeftPicture;

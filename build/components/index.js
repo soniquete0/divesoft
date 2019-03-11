@@ -7,5 +7,6 @@ import AboutUsHome from './AboutUsHome';
 import NewsAndEvents from './NewsAndEvents';
 import ProductPreviews from './ProductPreviews';
 import AboutRightPicture from './AboutRightPicture';
-export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, };
+import AboutLeftPicture from './AboutLeftPicture';
+export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, AboutLeftPicture, };
 //# sourceMappingURL=index.js.map

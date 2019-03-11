@@ -9,7 +9,8 @@
         "width": "450",
         "height": "450"
       }
-    }
+    },
+    "paddingTop": false
   },
   "form": {
     "schema": {
@@ -29,6 +30,10 @@
         },
         "img": {
           "type": "image"
+        },
+        "paddingTop": {
+          "type": "boolean",
+          "title": "Remove indent at top?"
         }
       }
     }

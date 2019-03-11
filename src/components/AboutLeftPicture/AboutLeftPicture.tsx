@@ -2,7 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Media from '@source/partials/Media';
 
-export interface AboutRightPictureProps {
+export interface AboutLeftPictureProps {
   data: {
     title: string;
     subtitle: string;
@@ -12,25 +12,25 @@ export interface AboutRightPictureProps {
   };
 }
 
-const AboutRightPicture = (props: AboutRightPictureProps) => {
+const AboutLeftPicture = (props: AboutLeftPictureProps) => {
   const { title, subtitle, text, img, paddingTop } = props.data;
 
   return (
     <div 
-      className={'aboutRightPicture'}
+      className={'aboutLeftPicture'} 
       style={paddingTop ? {paddingTop: 0} : {}}
     >
       <div className="container">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <div className={'aboutRightPicture__content'}>
+            {img && <Media type={'image'} data={img} />}
+          </div>
+          <div className="col-12 col-lg-6">
+            <div className={'aboutLeftPicture__content'}>
               {title && <h2>{title}</h2>}
               {subtitle && <h4>{subtitle}</h4>}
               {text && <ReactMarkdown source={text} />}
             </div>
-          </div>
-          <div className="col-12 col-lg-6">
-            {img && <Media type={'image'} data={img} />}
           </div>
         </div>
       </div>
@@ -38,4 +38,4 @@ const AboutRightPicture = (props: AboutRightPictureProps) => {
   );
 };
 
-export default AboutRightPicture;
+export default AboutLeftPicture;
