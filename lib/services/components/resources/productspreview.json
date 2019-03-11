@@ -1,47 +1,47 @@
 {
-  "name": "ProductPreviews",
+  "name": "ProductsPreview",
   "data": {
-    "productPreviews": [
+    "products": [
       {
-        "title": "Divesoft BOV, DSV ADV, accessories and loops",
-        "description": "BOV/DSV/ADV",
-        "image": {
+        "title": "Accessories",
+        "description": "Backplates, Consumables. Tanks.",
+        "img": {
           "recommendedSizes": {
-            "width": "590",
-            "height": "500"
+            "width": "235",
+            "height": "235"
           }
         },
         "url": ""
       },
       {
-        "title": "Timer, computers and software",
-        "description": "Analyzer He/O2",
-        "image": {
+        "title": "Accessories sets",
+        "description": "Protection, maintenance, cleaning.",
+        "img": {
           "recommendedSizes": {
-            "width": "590",
-            "height": "500"
+            "width": "235",
+            "height": "235"
           }
         },
         "url": ""
       },
       {
-        "title": "Timer, computers and software",
-        "description": "Analyzer He/O2",
-        "image": {
+        "title": "Spare parts",
+        "description": "Spare parts and components.",
+        "img": {
           "recommendedSizes": {
-            "width": "590",
-            "height": "500"
+            "width": "235",
+            "height": "235"
           }
         },
         "url": ""
       },
       {
-        "title": "Accessories, accessories sets and spare parts",
-        "description": "Analyzer He/O2",
-        "image": {
+        "title": "Spare parts kits",
+        "description": "Completly Liberty spare parts kits.",
+        "img": {
           "recommendedSizes": {
-            "width": "590",
-            "height": "500"
+            "width": "235",
+            "height": "235"
           }
         },
         "url": ""
@@ -52,9 +52,9 @@
     "schema": {
       "type": "object",
       "properties": {
-        "productPreviews": {
+        "products": {
           "type": "array",
-          "title": "Product Previews (max. 4 items)",
+          "title": "Products",
           "items": {
             "properties": {
               "title": {
@@ -65,7 +65,7 @@
                 "type": "text",
                 "title": "Description"
               },
-              "image": {
+              "img": {
                 "type": "image"
               },
               "url": {

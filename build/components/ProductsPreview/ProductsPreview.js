@@ -1,37 +1,17 @@
-import * as React from 'react';
-import Link from '@source/partials/Link';
-import getImageUrl from '@source/helpers/getImageUrl';
-var ProductsPreview = function (props) {
-    var productPreviews = props.data.productPreviews;
-    console.log(productPreviews);
-    return (React.createElement("div", { className: "container" },
-        React.createElement("div", { className: "products-preview row" },
-            React.createElement("div", { className: "col" }, productPreviews[0] &&
-                React.createElement(Link, { key: '1', url: productPreviews[0].url && productPreviews[0].url.url, style: productPreviews[0].image ?
-                        { backgroundImage: "url(" + getImageUrl(productPreviews[0].image) + ")" } : {} },
-                    productPreviews[0].description && React.createElement("p", null, productPreviews[0].description),
-                    React.createElement("div", { className: 'products-preview__divider' }),
-                    productPreviews[0].title && React.createElement("p", null, productPreviews[0].title))),
-            React.createElement("div", { className: "col" },
-                React.createElement("div", { className: "row" },
-                    React.createElement("div", { className: "col" }, productPreviews[1] &&
-                        React.createElement(Link, { key: '2', url: productPreviews[1].url && productPreviews[1].url.url, style: productPreviews[1].image ?
-                                { backgroundImage: "url(" + getImageUrl(productPreviews[1].image) + ")" } : {} },
-                            productPreviews[1].description && React.createElement("p", null, productPreviews[1].description),
-                            React.createElement("div", { className: 'products-preview__divider' }),
-                            productPreviews[1].title && React.createElement("p", null, productPreviews[1].title))),
-                    React.createElement("div", { className: "col" }, productPreviews[2] &&
-                        React.createElement(Link, { key: '3', url: productPreviews[2].url && productPreviews[2].url.url, style: productPreviews[2].image ?
-                                { backgroundImage: "url(" + getImageUrl(productPreviews[2].image) + ")" } : {} },
-                            productPreviews[2].description && React.createElement("p", null, productPreviews[2].description),
-                            React.createElement("div", { className: 'products-preview__divider' }),
-                            productPreviews[2].title && React.createElement("p", null, productPreviews[2].title)))),
-                React.createElement("div", { className: "row" }, productPreviews[3] &&
-                    React.createElement(Link, { key: '4', url: productPreviews[3].url && productPreviews[3].url.url, style: productPreviews[3].image ?
-                            { backgroundImage: "url(" + getImageUrl(productPreviews[3].image) + ")" } : {} },
-                        productPreviews[3].description && React.createElement("p", null, productPreviews[3].description),
-                        React.createElement("div", { className: 'products-preview__divider' }),
-                        productPreviews[3].title && React.createElement("p", null, productPreviews[3].title)))))));
-};
+import React from 'react';
+import List from '../List';
+import Media from '@source/partials/Media';
+import Button from '@source/partials/Button';
+var ProductsPreview = function (props) { return (React.createElement(List, { data: props.data.products }, function (_a) {
+    var data = _a.data;
+    return (React.createElement("div", { className: 'productsPreview' },
+        React.createElement("div", { className: "container" },
+            React.createElement("div", { className: "row productsPreview__list" }, data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },
+                React.createElement("div", { className: 'productsPreview__list__item' },
+                    React.createElement(Media, { type: 'image', data: item.img }),
+                    item.title && React.createElement("h5", null, item.title),
+                    item.description && React.createElement("p", null, item.description),
+                    React.createElement(Button, { url: item.url }, "shop now")))); })))));
+})); };
 export default ProductsPreview;
 //# sourceMappingURL=ProductsPreview.js.map
