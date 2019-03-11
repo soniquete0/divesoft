@@ -1,0 +1,81 @@
+.productComponents {
+  padding: 100px 0;
+  background-color: #f4f4f4;
+  @include max-md { padding: 40px 0; }
+
+  h2 { text-align: center; }
+  &__title {
+    text-align: center;
+    color: $lightGrey;
+    font-size: 1.5rem;
+    @include max-md { font-size: 1.225rem }
+  }
+
+  .mediaRatio {
+    padding: 0 !important;
+    min-height: 130px;
+    max-height: 130px;
+    min-width: 130px;
+    max-width: 130px;
+    height: 130px;
+    width: 35%;
+    float: left;
+  }
+
+  &__list {
+
+    .col-12, .col-md-6, .col-lg-4 { padding: 8px 8px; }
+
+    &__item {
+      width: 100%;
+      min-width: 350px;
+      position: relative;
+      @include clearfix;
+
+      &__content {
+        width: 60%;
+        float: left;
+        max-height: 140px;
+        padding-left: 15px;
+        overflow: hidden;
+  
+        p {
+          margin: 0;
+          color: $lightGrey;
+        }
+        a {
+          color: $red;
+          &:hover { text-decoration: underline; }
+        }
+      }
+    }
+  }
+  
+  // MOBILE
+  .slider { 
+    padding-top: 0; 
+
+    &__arrow {
+      top: 25%;
+      border-color: $red;
+    }
+  }
+
+  &__mobileItem {
+    text-align: center;
+    
+    h5 { padding: 25px 0; }
+
+    p {
+      margin: 0;
+      color: $lightGrey;
+    }
+
+    a { color: $red; }
+    
+    .mediaRatio {
+      float: none;
+      margin: 0 auto;
+    }
+  }
+}

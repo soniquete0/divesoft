@@ -4,6 +4,14 @@
   background-repeat: no-repeat;
 }
 
+@mixin clearfix() {
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
 @mixin vertical-center() {
   top: 50%;
   transform: translate3d(0, -50%, 0);

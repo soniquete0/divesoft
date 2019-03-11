@@ -15,6 +15,7 @@ import {
   ProductsPreview,
   AboutLeftPicture,
   AboutRightPicture,
+  ProductComponents,
 } from '../../components';
 
 import * as resources from './resources';
@@ -43,6 +44,7 @@ class ComponentsService {
     PRODUCTSPREVIEW: 'ProductsPreview',
     ABOUTLEFTPICTURE: 'AboutLeftPicture',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
+    PRODUCTCOMPONENTS: 'ProductComponents',
   };
 
   /***/
@@ -78,6 +80,8 @@ class ComponentsService {
         return AboutLeftPicture;
       case this.Types.ABOUTRIGHTPICTURE: 
         return AboutRightPicture;
+      case this.Types.PRODUCTCOMPONENTS:
+        return ProductComponents;
       
       default:
         return () => <AlertNotFound type="component" />;

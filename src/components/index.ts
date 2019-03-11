@@ -10,6 +10,7 @@ import NewsAndEvents from './NewsAndEvents';
 import ProductsPreview from './ProductsPreview';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
+import ProductComponents from './ProductComponents';
 
 export {
   AlertNotFound,
@@ -24,4 +25,5 @@ export {
   ProductsPreview,
   AboutLeftPicture,
   AboutRightPicture,
+  ProductComponents,
 };

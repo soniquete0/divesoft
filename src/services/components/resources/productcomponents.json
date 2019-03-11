@@ -1,0 +1,113 @@
+{
+  "name": "ProductComponents",
+  "data": {
+    "title": "Fault-tolerant rebreather",
+    "description": "The Liberty rebreather is designed to be fault-tolerant. No single malfunction in the electronic system could cause a breakdown of the whole apparatus. And even multiple malfunctions often do not lead to a complete breakdown.",
+    "components": [
+      {
+        "title": "4 oxygen sensors",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "2 helium sensors patented technology",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "2 methods of ppO2 measurement",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "2 independent computers",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "2 solenoid valves",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      },
+      {
+        "title": "4 displays",
+        "description": "Lorem ipsum dolor sit amet, lore conse ctetur…",
+        "image": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "url": ""
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "description": {
+          "type": "text",
+          "title": "Description"
+        },
+        "components": {
+          "type": "array",
+          "title": "Components",
+          "items": {
+            "properties": {
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "description": {
+                "type": "text",
+                "title": "Description"
+              },
+              "image": {
+                "type": "image"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
