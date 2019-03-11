@@ -8,6 +8,7 @@ import NewsAndEvents from './NewsAndEvents';
 import ProductPreviews from './ProductPreviews';
 import AboutRightPicture from './AboutRightPicture';
 import AboutLeftPicture from './AboutLeftPicture';
+import Downloads from './Downloads';
 
 export {
   AlertNotFound,
@@ -20,4 +21,5 @@ export {
   ProductPreviews,
   AboutRightPicture,
   AboutLeftPicture,
+  Downloads,
 };

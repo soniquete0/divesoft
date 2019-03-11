@@ -8,6 +8,7 @@ import * as newsandevents from './newsandevents.json';
 import * as productpreviews from './productpreviews.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
+import * as downloads from './downloads.json';
 
 export {
   def as default,
@@ -20,4 +21,5 @@ export {
   productpreviews,
   aboutrightpicture,
   aboutleftpicture,
+  downloads,
 };

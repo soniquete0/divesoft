@@ -8,5 +8,6 @@ import NewsAndEvents from './NewsAndEvents';
 import ProductPreviews from './ProductPreviews';
 import AboutRightPicture from './AboutRightPicture';
 import AboutLeftPicture from './AboutLeftPicture';
-export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, AboutLeftPicture, };
+import Downloads from './Downloads';
+export { AlertNotFound, Hero, Header, Footer, Carousel, AboutUsHome, NewsAndEvents, ProductPreviews, AboutRightPicture, AboutLeftPicture, Downloads, };
 //# sourceMappingURL=index.js.map

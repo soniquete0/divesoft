@@ -1,0 +1,66 @@
+.downloads {
+  padding: 100px 0;
+  
+  &__title {
+    text-align: center;
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.5rem;
+    color: $lightGrey;
+
+    @include max-xl {
+      font-size: 1.125rem;
+    }
+  }
+
+  @include max-xl {
+    padding: 40px 0;
+  }
+
+  .mediaRatio {
+    position: absolute;
+    padding: 0 !important;
+    height: 50px;
+    width: 50px;
+    top: 0;
+    left: 0;
+
+    @include max-md {
+      left: 15px;
+    }
+  }
+
+  &__list {
+
+    &__item {
+      position: relative;
+
+      @include max-md {
+        padding-left: 25px;
+
+        &:not(:last-child) {
+          margin-bottom: 35px;
+        }
+      }
+
+      h4 {
+        padding-left: 50px;
+
+        @include max-xl {
+          font-size: 1.25rem;
+        }
+      }
+
+      a {
+        width: 100%;
+        color: $red;
+        display: block;
+        padding-left: 50px;
+
+        &:hover { text-decoration: underline; }
+      }
+    }
+  }
+}
