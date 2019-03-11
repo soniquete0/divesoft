@@ -1,9 +1,9 @@
 {
-  "name": "ProductPreviews",
+  "name": "ProductsMenu",
   "data": {
     "title": "The best for you",
     "subTitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "productPreviews": [
+    "products": [
       {
         "title": "Divesoft BOV, DSV ADV, accessories and loops",
         "description": "BOV/DSV/ADV",
@@ -66,9 +66,9 @@
           "type": "text",
           "title": "Subtitle"
         },
-        "productPreviews": {
+        "products": {
           "type": "array",
-          "title": "Product Previews (max. 4 items)",
+          "title": "Products (max. 4 items)",
           "items": {
             "properties": {
               "title": {

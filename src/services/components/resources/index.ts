@@ -3,12 +3,13 @@ import * as hero from './hero.json';
 import * as header from './header.json';
 import * as footer from './footer.json';
 import * as carousel from './carousel.json';
-import * as aboutushome from './aboutushome.json';
-import * as newsandevents from './newsandevents.json';
-import * as productpreviews from './productpreviews.json';
-import * as aboutrightpicture from './aboutrightpicture.json';
-import * as aboutleftpicture from './aboutleftpicture.json';
 import * as downloads from './downloads.json';
+import * as aboutushome from './aboutushome.json';
+import * as productsmenu from './productsmenu.json';
+import * as newsandevents from './newsandevents.json';
+import * as productspreview from './productspreview.json';
+import * as aboutleftpicture from './aboutleftpicture.json';
+import * as aboutrightpicture from './aboutrightpicture.json';
 
 export {
   def as default,
@@ -16,10 +17,11 @@ export {
   header,
   footer,
   carousel,
-  aboutushome,
-  newsandevents,
-  productpreviews,
-  aboutrightpicture,
-  aboutleftpicture,
   downloads,
+  aboutushome,
+  productsmenu,
+  newsandevents,
+  productspreview,
+  aboutleftpicture,
+  aboutrightpicture,
 };

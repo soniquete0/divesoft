@@ -14,16 +14,17 @@
 @import '../src/components/Header/style.scss';
 @import '../src/components/Footer/style.scss';
 @import '../src/components/Carousel/style.scss';
+@import '../src/components/Downloads/style.scss';
 @import '../src/components/AboutUsHome/style.scss';
 @import '../src/components/NewsAndEvents/style.scss';
-@import '../src/components/ProductPreviews/styles.scss';
-@import '../src/components/AboutRightPicture/style.scss';
+@import '../src/components/ProductsMenu/styles.scss';
+@import '../src/components/ProductsPreview/style.scss';
 @import '../src/components/AboutLeftPicture/style.scss';
-@import '../src/components/Downloads/style.scss';
+@import '../src/components/AboutRightPicture/style.scss';
 
 // PARTIALS
 @import '../src/partials/Button/style.scss';
-@import '../src/partials/SvgIcon/style.scss';
 @import '../src/partials/Media/style.scss';
 @import '../src/partials/Loader/style.scss';
 @import '../src/partials/Slider/style.scss';
+@import '../src/partials/SvgIcon/style.scss';

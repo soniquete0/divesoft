@@ -8,13 +8,15 @@ import {
   Header,
   Footer,
   Carousel,
-  AboutUsHome,
-  NewsAndEvents,
-  ProductPreviews,
-  AboutRightPicture,
-  AboutLeftPicture,
   Downloads,
+  AboutUsHome,
+  ProductsMenu,
+  NewsAndEvents,
+  ProductsPreview,
+  AboutLeftPicture,
+  AboutRightPicture,
 } from '../../components';
+
 import * as resources from './resources';
 
 // WEB FONTS
@@ -34,12 +36,13 @@ class ComponentsService {
     HEADER: 'Header',
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
-    ABOUTUSHOME: 'AboutUsHome',
-    NEWSANDEVENTS: 'NewsAndEvents',
-    PRODUCTPREVIEWS: 'ProductPreviews',
-    ABOUTRIGHTPICTURE: 'AboutRightPicture',
-    ABOUTLEFTPICTURE: 'AboutLeftPicture',
     DOWNLOADS: 'Downloads',
+    ABOUTUSHOME: 'AboutUsHome',
+    PRODUCTSMENU: 'ProductsMenu',
+    NEWSANDEVENTS: 'NewsAndEvents',
+    PRODUCTSPREVIEW: 'ProductsPreview',
+    ABOUTLEFTPICTURE: 'AboutLeftPicture',
+    ABOUTRIGHTPICTURE: 'AboutRightPicture',
   };
 
   /***/
@@ -47,7 +50,6 @@ class ComponentsService {
     const res = Object.keys(this.Types).map(key => {
       return this.Types[key];
     });
-
     return res;
   }
 
@@ -62,18 +64,20 @@ class ComponentsService {
         return Footer;
       case this.Types.CAROUSEL:
         return Carousel;
-      case this.Types.ABOUTUSHOME:
-        return AboutUsHome;
-        case this.Types.NEWSANDEVENTS:
-        return NewsAndEvents;
-      case this.Types.PRODUCTPREVIEWS:
-        return ProductPreviews;
-      case this.Types.ABOUTRIGHTPICTURE: 
-        return AboutRightPicture;
-      case this.Types.ABOUTLEFTPICTURE:
-        return AboutLeftPicture;
       case this.Types.DOWNLOADS:
         return Downloads;
+      case this.Types.ABOUTUSHOME:
+        return AboutUsHome;
+      case this.Types.PRODUCTSMENU:
+        return ProductsMenu;
+      case this.Types.NEWSANDEVENTS:
+        return NewsAndEvents;
+      case this.Types.PRODUCTSPREVIEW:
+        return ProductsPreview;
+      case this.Types.ABOUTLEFTPICTURE:
+        return AboutLeftPicture;
+      case this.Types.ABOUTRIGHTPICTURE: 
+        return AboutRightPicture;
       
       default:
         return () => <AlertNotFound type="component" />;

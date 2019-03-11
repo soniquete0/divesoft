@@ -3,12 +3,13 @@ import Hero from './Hero';
 import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
-import AboutUsHome from './AboutUsHome';
-import NewsAndEvents from './NewsAndEvents';
-import ProductPreviews from './ProductPreviews';
-import AboutRightPicture from './AboutRightPicture';
-import AboutLeftPicture from './AboutLeftPicture';
 import Downloads from './Downloads';
+import AboutUsHome from './AboutUsHome';
+import ProductsMenu from './ProductsMenu';
+import NewsAndEvents from './NewsAndEvents';
+import ProductsPreview from './ProductsPreview';
+import AboutLeftPicture from './AboutLeftPicture';
+import AboutRightPicture from './AboutRightPicture';
 
 export {
   AlertNotFound,
@@ -16,10 +17,11 @@ export {
   Header,
   Footer,
   Carousel,
-  AboutUsHome,
-  NewsAndEvents,
-  ProductPreviews,
-  AboutRightPicture,
-  AboutLeftPicture,
   Downloads,
+  AboutUsHome,
+  ProductsMenu,
+  NewsAndEvents,
+  ProductsPreview,
+  AboutLeftPicture,
+  AboutRightPicture,
 };
