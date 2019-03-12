@@ -13,6 +13,7 @@ import {
   ProductsMenu,
   NewsAndEvents,
   ProductsPreview,
+  GalleryAndVideo,
   AboutLeftPicture,
   AboutRightPicture,
   ProductComponents,
@@ -42,6 +43,7 @@ class ComponentsService {
     PRODUCTSMENU: 'ProductsMenu',
     NEWSANDEVENTS: 'NewsAndEvents',
     PRODUCTSPREVIEW: 'ProductsPreview',
+    GALLERYANDVIDEO: 'GalleryAndVideo',
     ABOUTLEFTPICTURE: 'AboutLeftPicture',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
     PRODUCTCOMPONENTS: 'ProductComponents',
@@ -74,6 +76,8 @@ class ComponentsService {
         return ProductsMenu;
       case this.Types.NEWSANDEVENTS:
         return NewsAndEvents;
+      case this.Types.GALLERYANDVIDEO:
+        return GalleryAndVideo;
       case this.Types.PRODUCTSPREVIEW:
         return ProductsPreview;
       case this.Types.ABOUTLEFTPICTURE:

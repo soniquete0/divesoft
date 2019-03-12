@@ -41,7 +41,7 @@ class Media extends React.Component<MediaProps, MediaState> {
 
     return (
       <div
-        className={'mediaRatio'}
+        className={'mediaRatio mediaRatio--video'}
         style={{
           paddingTop: `${(parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
             parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *

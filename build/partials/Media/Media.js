@@ -32,7 +32,7 @@ var Media = /** @class */ (function (_super) {
     }
     Media.prototype.renderAsVideoEmbed = function (data) {
         var embedUrl = data.url;
-        return (React.createElement("div", { className: 'mediaRatio', style: {
+        return (React.createElement("div", { className: 'mediaRatio mediaRatio--video', style: {
                 paddingTop: (parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
                     parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
                     100 + "%",

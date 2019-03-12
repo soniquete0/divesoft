@@ -7,6 +7,7 @@ import Downloads from './Downloads';
 import AboutUsHome from './AboutUsHome';
 import ProductsMenu from './ProductsMenu';
 import NewsAndEvents from './NewsAndEvents';
+import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
@@ -22,6 +23,7 @@ export {
   AboutUsHome,
   ProductsMenu,
   NewsAndEvents,
+  GalleryAndVideo,
   ProductsPreview,
   AboutLeftPicture,
   AboutRightPicture,

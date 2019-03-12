@@ -8,8 +8,9 @@ import * as aboutushome from './aboutushome.json';
 import * as productsmenu from './productsmenu.json';
 import * as newsandevents from './newsandevents.json';
 import * as productspreview from './productspreview.json';
+import * as galleryandvideo from './galleryandvideo.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
-export { def as default, hero, header, footer, carousel, downloads, aboutushome, productsmenu, newsandevents, productspreview, aboutleftpicture, aboutrightpicture, productcomponents, };
+export { def as default, hero, header, footer, carousel, downloads, aboutushome, productsmenu, newsandevents, productspreview, galleryandvideo, aboutleftpicture, aboutrightpicture, productcomponents, };
 //# sourceMappingURL=index.js.map
