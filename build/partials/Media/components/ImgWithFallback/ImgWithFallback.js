@@ -104,7 +104,7 @@ var ImgWithFallback = /** @class */ (function (_super) {
             return React.createElement("div", { className: 'mediaImageLoader' });
         }
         else {
-            return (React.createElement("div", { className: 'mediaRatio', style: {
+            return (React.createElement("div", { className: "mediaRatio " + this.props.class, style: {
                     paddingTop: (parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
                         parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
                         100 + "%",

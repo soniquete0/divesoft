@@ -3,6 +3,7 @@ export interface ImgWithFallbackProps {
     alt?: string;
     originalSrc?: string;
     baseUrl: string;
+    class?: string;
     hash: string;
     recommendedSizes: LooseObject;
     originalData: LooseObject;

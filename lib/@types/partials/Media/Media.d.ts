@@ -2,6 +2,7 @@ import * as React from 'react';
 export interface MediaProps {
     type: string;
     data: any;
+    class?: string;
 }
 export interface MediaState {
 }

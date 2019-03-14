@@ -2,6 +2,7 @@ import React from 'react';
 
 import List from '../List';
 import Media from '@source/partials/Media';
+import GalleryItem from './components/GalleryItem';
 
 interface Image {
   image: LooseObject;
@@ -43,29 +44,35 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                   {video && <Media type={'embeddedVideo'} data={video} />}
                 </div>
                 <div className="col">
-                  <div className="row">
-                    {data && data.length >= 2 && data.slice(0, 2).map((item, i) => (
-                      <div key={i} className={'galleryAndVideo__content__img col-12 col-md-6'}>
-                        <Media type={'image'} data={item.image} />
-                      </div>
+                    {data.length < 4 && <div className="row">
+                    {data && data.map((item, i) => (
+                      <GalleryItem 
+                        key={i} 
+                        image={item.image} 
+                        gridClasses={'col-6 col-md-3 col-xl-6'} 
+                      />
                     ))}
-                  </div>
+                  </div>}
                   <div className="row">
-                    {data && data.length >= 4 && data.slice(2, 4).map((item, i) => (
-                      <div key={i} className={'galleryAndVideo__content__img col-12 col-md-6'}>
-                        <Media type={'image'} data={item.image} />
-                      </div>
+                    {data && data.length >= 4 && data.slice(0, 4).map((item, i) => (
+                      <GalleryItem 
+                        key={i} 
+                        image={item.image} 
+                        gridClasses={'col-6 col-md-3 col-xl-6'} 
+                      />
                     ))}
                   </div>
                 </div>
               </div>
 
               {this.state.showMore && 
-                <div className="row" style={{ marginTop: 15 }}>
+                <div className="row">
                   {data.slice(4, data.length - 1).map((item, i) => (
-                    <div key={i} className={'galleryAndVideo__more col-12 col-md-6 col-xl-3'}>
-                      <Media type={'image'} data={item.image} />
-                    </div>
+                    <GalleryItem 
+                      key={i} 
+                      image={item.image} 
+                      gridClasses={'col-6 col-md-3'} 
+                    />
                   ))}
                 </div>
               }
@@ -74,7 +81,7 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                 <button 
                   className={'btn'} 
                   onClick={() => this.setState({ showMore: !this.state.showMore })}
-                >Show more
+                >{this.state.showMore ? 'Show less' : 'Show more'}
                 </button>}
             </div>
           </div>

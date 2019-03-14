@@ -34,8 +34,8 @@ import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
 import Hamburger from './components/Hamburger';
 import Country from './components/Country/Country';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client \n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client \n  }\n"])));
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
+var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
     context: function (_a) {
         var render = _a.render;
@@ -45,11 +45,11 @@ var ComposedQuery = adopt({
         });
     },
     getPagesUrls: function (_a) {
-        var render = _a.render, languageData = _a.context.languageData;
-        if (!languageData) {
+        var render = _a.render, _b = _a.context, languageData = _b.languageData, websiteData = _b.websiteData;
+        if (!(languageData && websiteData)) {
             return render({});
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id } }, function (data) {
+        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
@@ -77,11 +77,7 @@ var Header = /** @class */ (function (_super) {
         this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
-            if (!context.navigationsData ||
-                !context.languageData ||
-                !context.languagesData ||
-                !data ||
-                !data.pagesUrls) {
+            if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
                 return React.createElement(Loader, null);
             }
             if (error) {
@@ -101,9 +97,8 @@ var Header = /** @class */ (function (_super) {
                             React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                         React.createElement("nav", null,
-                            React.createElement("ul", null, topNavItems &&
-                                topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                    React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
+                            React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
+                                React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                         React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                             React.createElement("img", { src: "/assets/divesoft/images/search.svg", alt: "search" }),
                             React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account" }),
@@ -112,7 +107,7 @@ var Header = /** @class */ (function (_super) {
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, topNavItems &&
-                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, { url: navItem.url && navItem.url, onClick: function () { return _this.closeMenu(); } }, navItem.name || navItem.title))); }))))));
+                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {
@@ -142,6 +137,10 @@ var Header = /** @class */ (function (_super) {
                 if (node.title && node.link) {
                     item.url = node.link;
                 }
+                item.url = {
+                    url: item.url,
+                    pageId: item.id,
+                };
                 res.push(item);
             }
         });

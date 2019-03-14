@@ -5,6 +5,7 @@ export interface MediaProps {
   type: string;
   // tslint:disable:no-any
   data: any;
+  class?: string;
 }
 
 export interface MediaState {}
@@ -29,6 +30,7 @@ class Media extends React.Component<MediaProps, MediaState> {
           recommendedSizes={recommendedSizes}
           originalData={data}
           hash={data.hash}
+          class={this.props.class}
         />
       );
     } else {
@@ -41,7 +43,7 @@ class Media extends React.Component<MediaProps, MediaState> {
 
     return (
       <div
-        className={'mediaRatio mediaRatio--video'}
+        className={`mediaRatio mediaRatio--video ${this.props.class}`}
         style={{
           paddingTop: `${(parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
             parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *

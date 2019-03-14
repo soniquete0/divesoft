@@ -14,13 +14,13 @@ const GET_CONTEXT = gql`
     pageData @client
     websiteData @client
     languagesData @client
-    navigationsData @client 
+    navigationsData @client
   }
 `;
 
 const GET_PAGES_URLS = gql`
-  query pagesUrls($language: ID!) {
-    pagesUrls(where: { language: $language }) {
+  query pagesUrls($language: ID!, $websiteId: ID!) {
+    pagesUrls(where: { language: $language, websiteId: $websiteId }) {
       id
       page
       url
@@ -32,12 +32,12 @@ const GET_PAGES_URLS = gql`
 
 const ComposedQuery = adopt({
   context: ({ render }) => <Query query={GET_CONTEXT}>{({ data }) => render(data)}</Query>,
-  getPagesUrls: ({ render, context: { languageData } }) => {
-    if (!languageData) {
+  getPagesUrls: ({ render, context: { languageData, websiteData } }) => {
+    if (!(languageData && websiteData)) {
       return render({});
     }
     return (
-      <Query query={GET_PAGES_URLS} variables={{ language: languageData.id }}>
+      <Query query={GET_PAGES_URLS} variables={{ language: languageData.id, websiteId: websiteData.id }}>
         {data => {
           return render(data);
         }}
@@ -84,13 +84,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
-          if (
-            !context.navigationsData || 
-            !context.languageData || 
-            !context.languagesData || 
-            !data || 
-            !data.pagesUrls
-          ) {
+          if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
             return <Loader />;
           }
 
@@ -132,14 +126,13 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                   </div>
                   <nav>
                     <ul>
-                      {topNavItems &&
-                        topNavItems.map((navItem, i) => (
-                          <li key={i}>
-                            <Link url={navItem.url && navItem.url}>
-                              {navItem.name || navItem.title}
-                            </Link>
-                          </li>
-                        ))}
+                    {topNavItems && topNavItems.map((navItem, i) => (
+                      <li key={i}>
+                        <Link {...navItem.url}>
+                          {navItem.name || navItem.title}
+                        </Link>
+                      </li>
+                    ))}
                     </ul>
                   </nav>
                   <div className={'header__controls d-flex justify-content-between align-items-center'}>
@@ -158,7 +151,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       topNavItems.map((navItem, i) => (
                         <li key={i}>
                           {
-                            <Link url={navItem.url && navItem.url} onClick={() => this.closeMenu()}>
+                            <Link {...navItem.url} onClick={() => this.closeMenu()}>
                               {navItem.name || navItem.title}
                             </Link>}
                         </li>
@@ -172,18 +165,24 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       </ComposedQuery>
     );
   }
+  
   private transformNavigationsIntoTree(navigation: LooseObject[], urls: LooseObject[]): LooseObject | null {
     const tree = {};
+
     if (!navigation || navigation.length < 1) {
       return null;
     }
+
     navigation.forEach((nav: LooseObject) => {
       tree[nav.name] = this.buildNavTree(nav.nodes, null, urls);
     });
+
     return tree;
   }
+
   private buildNavTree(nav: LooseObject[], parent: string | null, urls: LooseObject[]): LooseObject[] {
     const res = [] as LooseObject[];
+
     nav.forEach((node: LooseObject) => {
       if (node.parent === parent) {
         const url = urls.find((u: LooseObject) => u.page === node.page);
@@ -200,9 +199,16 @@ class Header extends React.Component<HeaderProps, HeaderState> {
         if (node.title && node.link) {
           item.url = node.link;
         }
+
+        item.url = {
+          url: item.url,
+          pageId: item.id,
+        };
+
         res.push(item);
       }
     });
+
     res.sort((a: LooseObject, b: LooseObject) => a.order - b.order);
     return res;
   }

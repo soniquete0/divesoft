@@ -22,7 +22,7 @@ var Media = /** @class */ (function (_super) {
             if (data && data.filename) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash }));
+                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, class: _this.props.class }));
             }
             else {
                 return null;
@@ -32,7 +32,7 @@ var Media = /** @class */ (function (_super) {
     }
     Media.prototype.renderAsVideoEmbed = function (data) {
         var embedUrl = data.url;
-        return (React.createElement("div", { className: 'mediaRatio mediaRatio--video', style: {
+        return (React.createElement("div", { className: "mediaRatio mediaRatio--video " + this.props.class, style: {
                 paddingTop: (parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
                     parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
                     100 + "%",

@@ -34,7 +34,7 @@ import ReactMarkdown from 'react-markdown';
 import Link from '../../partials/Link';
 import Loader from '@source/partials/Loader';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!) {\n    pagesUrls(where: { language: $language }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
     context: function (_a) {
         var render = _a.render;
@@ -44,11 +44,11 @@ var ComposedQuery = adopt({
         });
     },
     getPagesUrls: function (_a) {
-        var render = _a.render, languageData = _a.context.languageData;
-        if (!languageData) {
+        var render = _a.render, _b = _a.context, languageData = _b.languageData, websiteData = _b.websiteData;
+        if (!(languageData && websiteData)) {
             return render({});
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id } }, function (data) {
+        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
@@ -87,7 +87,7 @@ var Footer = /** @class */ (function (_super) {
             var thirdBottomNavItems = transformedNavigations && transformedNavigations[thirdBottomNav] ?
                 transformedNavigations[thirdBottomNav] :
                 [];
-            return (React.createElement("div", null,
+            return (React.createElement(React.Fragment, null,
                 React.createElement("footer", { className: 'footer' },
                     React.createElement("div", { className: 'container' },
                         React.createElement("div", { className: 'footer__newsletter' },
@@ -102,17 +102,17 @@ var Footer = /** @class */ (function (_super) {
                                 React.createElement("h6", null, "V\u0161e o n\u00E1kupu"),
                                 React.createElement("ul", null, firstBottomNavItems &&
                                     firstBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
+                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("nav", { className: 'footer__navigation__item col-12 col-md-6 col-xl' },
                                 React.createElement("h6", null, "podpora"),
                                 React.createElement("ul", null, secondBottomNavItems &&
                                     secondBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
+                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("nav", { className: 'footer__navigation__item col-12 col-md-6 col-xl' },
                                 React.createElement("h6", null, "Mapa prodejc\u016F"),
                                 React.createElement("ul", null, thirdBottomNavItems &&
                                     thirdBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, { url: navItem.url && navItem.url }, navItem.name || navItem.title))); }))),
+                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("div", { className: 'footer__navigation__contacts col-12 col-md-6 col-xl' },
                                 React.createElement("h6", null, "Kontakt"),
                                 contacts && React.createElement(ReactMarkdown, { source: contacts }))),
@@ -155,6 +155,10 @@ var Footer = /** @class */ (function (_super) {
                 if (node.title && node.link) {
                     item.url = node.link;
                 }
+                item.url = {
+                    url: item.url,
+                    pageId: item.id,
+                };
                 res.push(item);
             }
         });

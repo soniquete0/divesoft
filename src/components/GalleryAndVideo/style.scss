@@ -7,10 +7,6 @@
     margin-bottom: 30px;
   }
 
-  .row {
-    @include max-xl { margin-bottom: 15px; }
-  }
-
   .btn {
     max-width: 200px;
     margin: 0 auto;
@@ -20,14 +16,18 @@
   .mediaRatio {
     padding: 0 !important;
     height: 240px;
-    @include max-md { height: 200px; }
-    @include max-sm { height: 110px; }
+    margin-bottom: 15px;
+
+    @include max-lg { height: 160px; }
+    @include max-md { height: 140px; }
+    @include max-sm { height: 120px; }
 
     &--video {
-      padding-top: 100% !important;
-      height: 440px !important;
+      padding-top: 0 !important;
+      height: 494px !important;
       
       @include max-xl { 
+        padding-top: 100% !important;
         height: 100% !important;
         margin-bottom: 15px;
       }
@@ -37,29 +37,31 @@
   &__content {
     @include max-xl { display: block; }
 
-    .col {
-      &:nth-child(2) {
-        .row {
-          @include xl { 
-            height: 48.6%;
-            padding-top: 0;
-          }
+    &__img {
+      &--fullScreen {
+        position: fixed !important;
+        width: 90% !important;
+        height: 90% !important;
+        top: 5% !important;
+        left: 5% !important;
+        overflow: unset !important;
+        z-index: 100;
 
-          @include max-md {
-            .galleryAndVideo__content__img {
-              &:not(:last-child) {
-                margin-bottom: 15px;
-              }
-            }
-          }
+        .inner {
+          z-index: 101;
+        }
 
-          .mediaRatio {
-            @include xl { height: 100%; }
-          }
-
-          &:first-child {
-            @include xl { margin-bottom: 15px; }
-          }
+        &:after {
+          display: block;
+          position: fixed;
+          content: '';
+          background-color: black;
+          opacity: 0.5;
+          height: 100%;
+          width: 100%;
+          z-index: 99;
+          top: 0;
+          left: 0;
         }
       }
     }

@@ -4,6 +4,7 @@ export interface ImgWithFallbackProps {
   alt?: string;
   originalSrc?: string;
   baseUrl: string;
+  class?: string;
   hash: string;
   recommendedSizes: LooseObject;
   originalData: LooseObject;
@@ -120,7 +121,7 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     } else {
       return (
         <div
-          className={'mediaRatio'}
+          className={`mediaRatio ${this.props.class}`}
           style={{
             paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
               parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
