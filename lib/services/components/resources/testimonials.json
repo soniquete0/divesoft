@@ -1,0 +1,80 @@
+{
+  "name": "Testimonials",
+  "data": {
+    "title": "Testimonials",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas leo dolor, mattis et auctor vel, auctor sit amet eros.",
+    "testimonials": [
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "title": "Michal Guba",
+        "from": "Czech republic",
+        "text": "Liberty rebreathers are used for exploration and research of the Hranicka abyss for three years. We use eCCR Liberty for deep, exploration and securing dives. We are happy with the functionality and safety of the machine."
+      },
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "title": "Anne Rodelato  ",
+        "from": "France",
+        "text": "I started enjoying CCR diving in 2011 together with my dive/life companion, and we decided in the beginning of 2016 to change to the CCR Liberty. We found it more comfortable in terms of dimensions (the counterlungs are thinner, the handsets are smaller), more reliable, easier to prepare, and with a fantastic after sale service."
+      },
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "130",
+            "height": "130"
+          }
+        },
+        "title": "Pim van der Horst",
+        "from": "Netherlands",
+        "text": "The Liberty is different from other rebreathers. Technology is far above the market average. The build quality is very good: most parts are machined especially for the Liberty. It makes the Liberty independent from third party suppliers (especially for the electronics). "
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "description": {
+          "type": "text",
+          "title": "Description"
+        },
+        "testimonials": {
+          "type": "array",
+          "title": "Testimonials",
+          "items": {
+            "properties": {
+              "img": {
+                "type": "image"
+              },
+              "title": {
+                "type": "text",
+                "title": "Title"
+              },
+              "from": {
+                "type": "text",
+                "title": "Country"
+              },
+              "text": {
+                "type": "text",
+                "title": "Text"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
