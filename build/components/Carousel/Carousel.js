@@ -49,9 +49,10 @@ var Carousel = /** @class */ (function (_super) {
         return images;
     };
     Carousel.prototype.render = function () {
+        var _this = this;
         return (React.createElement(List, { data: this.state.galleryItems }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 10000, slides: data, autoplay: true, showDots: true, showArrows: true });
+            return React.createElement(Slider, { delay: 10000, slides: data, class: 'sliderAtTop', autoplay: _this.state.galleryItems.length <= 1 ? false : true, showDots: _this.state.galleryItems.length <= 1 ? false : true, showArrows: _this.state.galleryItems.length <= 1 ? false : true });
         }));
     };
     return Carousel;

@@ -24,8 +24,8 @@ var GalleryItem = /** @class */ (function (_super) {
     }
     GalleryItem.prototype.render = function () {
         var _this = this;
-        var _a = this.props, image = _a.image, key = _a.key, gridClasses = _a.gridClasses;
-        return (React.createElement("div", { key: key, className: "galleryAndVideo__content__img " + gridClasses, onClick: function () { return _this.setState({ fullScreen: !_this.state.fullScreen }); } },
+        var _a = this.props, image = _a.image, keyIndex = _a.keyIndex, gridClasses = _a.gridClasses;
+        return (React.createElement("div", { key: keyIndex, className: "galleryAndVideo__content__img " + gridClasses, onClick: function () { return _this.setState({ fullScreen: !_this.state.fullScreen }); } },
             React.createElement(Media, { data: image, type: 'image', class: this.state.fullScreen ?
                     'galleryAndVideo__content__img--fullScreen' : '' })));
     };

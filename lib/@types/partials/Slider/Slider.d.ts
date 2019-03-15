@@ -4,6 +4,7 @@ export interface SliderProps {
     autoplay?: boolean;
     showDots?: boolean;
     showArrows?: boolean;
+    class?: string;
     slides: Array<any>;
 }
 export interface SliderState {

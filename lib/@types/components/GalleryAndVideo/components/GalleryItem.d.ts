@@ -3,7 +3,7 @@ export interface GalleryItemState {
     fullScreen: boolean;
 }
 export interface GalleryItemProps {
-    key: any;
+    keyIndex: number;
     image: LooseObject;
     gridClasses: string;
 }

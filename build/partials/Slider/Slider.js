@@ -74,7 +74,7 @@ var Slider = /** @class */ (function (_super) {
             slides: [],
             interval: null,
             currentIndex: 0,
-            translateValue: 0,
+            translateValue: 0
         };
         return _this;
     }
@@ -87,7 +87,7 @@ var Slider = /** @class */ (function (_super) {
         }
     };
     Slider.prototype.render = function () {
-        return (React.createElement("div", { className: "slider" },
+        return (React.createElement("div", { className: "slider " + this.props.class },
             React.createElement("div", { className: "slider__wrapper", style: {
                     transform: "translateX(" + this.state.translateValue + "px)",
                     transition: 'transform ease-out 0.25s'

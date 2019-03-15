@@ -9,8 +9,9 @@ import ProductsMenu from './ProductsMenu';
 import NewsAndEvents from './NewsAndEvents';
 import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
+import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
-export { AlertNotFound, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, NewsAndEvents, GalleryAndVideo, ProductsPreview, AboutLeftPicture, AboutRightPicture, ProductComponents, };
+export { AlertNotFound, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, NewsAndEvents, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
 //# sourceMappingURL=index.js.map
