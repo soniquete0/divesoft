@@ -7,8 +7,7 @@ export interface GalleryItemState {
 }
 
 export interface GalleryItemProps {
-  // tslint:disable-next-line:no-any
-  key: any;
+  keyIndex: number;
   image: LooseObject;
   gridClasses: string;
 }
@@ -23,11 +22,11 @@ class GalleryItem extends React.Component<GalleryItemProps, GalleryItemState> {
   }
 
   public render() {
-    const { image, key, gridClasses } = this.props;
+    const { image, keyIndex, gridClasses } = this.props;
 
     return (
       <div 
-        key={key}
+        key={keyIndex}
         className={`galleryAndVideo__content__img ${gridClasses}`}
         onClick={() => this.setState({ fullScreen: !this.state.fullScreen })}
       >

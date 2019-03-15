@@ -1,19 +1,17 @@
-.slider {
-  max-height: 820px;
-  overflow: hidden;
+.sliderAtTop {
   padding-top: 120px;
   @include max-sm { padding-top: 70px; }
+}
+
+.slider {
+  overflow: hidden;
 
   .mediaRatio  {
     height: 700px;
     padding-top: 0!important;
 
-    @include max-md {
-      height: 500px;
-    }
-    @include max-sm {
-      height: 400px;
-    }
+    @include max-md { height: 500px; }
+    @include max-sm { height: 400px; }
   }
 }
 
@@ -22,18 +20,12 @@
     &__img {
       position: relative;
 
-      h1 {
-        @include max-md {
-          font-size: 1.8rem;
-        }
-      }
+      h1 { @include max-md { font-size: 1.8rem; } }
     
       h2 { 
         text-transform: none;
       
-        @include max-md {
-          font-size: 1.2rem;
-        }
+        @include max-md { font-size: 1.2rem; }
       }
       
       .center {
@@ -68,22 +60,15 @@
         &__btnHolder {
           max-width: 320px;
 
-          @include max-md {
-            margin: 0 auto;
-          }
-
-          .btn {
-            width: 100%;
-          }
+          @include max-md { margin: 0 auto; }
+          .btn { width: 100%; }
         }
 
         p { 
           font-size: 1.5rem;
           color: #808080;
 
-          @include max-md {
-            font-size: 1rem;
-          }
+          @include max-md { font-size: 1rem; }
         }
       }
     }

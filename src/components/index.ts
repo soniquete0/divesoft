@@ -9,6 +9,7 @@ import ProductsMenu from './ProductsMenu';
 import NewsAndEvents from './NewsAndEvents';
 import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
+import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
@@ -25,6 +26,7 @@ export {
   NewsAndEvents,
   GalleryAndVideo,
   ProductsPreview,
+  SpecialCarousel,
   AboutLeftPicture,
   AboutRightPicture,
   ProductComponents,

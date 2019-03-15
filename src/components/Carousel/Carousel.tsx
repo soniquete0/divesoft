@@ -34,7 +34,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     this.state = {
       galleryItems: this.galleryItems(),
     };
-  }  
+  }
 
    galleryItems() {  
     const { slides } = this.props.data;
@@ -81,7 +81,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     return images;
   }
 
-   public render() {
+  public render() {
 
     return (
       <List data={this.state.galleryItems}>
@@ -89,9 +89,10 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
           <Slider 
             delay={10000}
             slides={data}
-            autoplay={true} 
-            showDots={true}
-            showArrows={true} 
+            class={'sliderAtTop'}
+            autoplay={this.state.galleryItems.length <= 1 ? false : true} 
+            showDots={this.state.galleryItems.length <= 1 ? false : true}
+            showArrows={this.state.galleryItems.length <= 1 ? false : true} 
           />}
       </List>
     );

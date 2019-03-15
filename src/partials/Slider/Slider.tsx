@@ -10,6 +10,7 @@ export interface SliderProps {
   autoplay?: boolean;
   showDots?: boolean;
   showArrows?: boolean;
+  class?: string;
   // tslint:disable-next-line:no-any
   slides: Array<any>;
 }
@@ -30,7 +31,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
       slides: [],
       interval: null,
       currentIndex: 0,
-      translateValue: 0,
+      translateValue: 0
     };
   }
   
@@ -103,7 +104,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
   render() {
 
     return (
-      <div className="slider">
+      <div className={`slider ${this.props.class}`}>
         <div 
           className="slider__wrapper"
           style={{ 

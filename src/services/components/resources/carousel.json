@@ -66,7 +66,7 @@
               },
               "subTitle": {
                 "type": "text",
-                "title": "Sub Title"
+                "title": "Subtitle"
               },
               "description": {
                 "type": "text",
@@ -82,7 +82,7 @@
               },
               "isBackgroundBlack": {
                 "type": "boolean",
-                "title": "Is background dark?"
+                "title": "Make text white?"
               },
               "isCentred": {
                 "type": "boolean",

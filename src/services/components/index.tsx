@@ -14,6 +14,7 @@ import {
   NewsAndEvents,
   ProductsPreview,
   GalleryAndVideo,
+  SpecialCarousel,
   AboutLeftPicture,
   AboutRightPicture,
   ProductComponents,
@@ -44,6 +45,7 @@ class ComponentsService {
     NEWSANDEVENTS: 'NewsAndEvents',
     PRODUCTSPREVIEW: 'ProductsPreview',
     GALLERYANDVIDEO: 'GalleryAndVideo',
+    SPECIALCAROUSEL: 'SpecialCarousel',
     ABOUTLEFTPICTURE: 'AboutLeftPicture',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
     PRODUCTCOMPONENTS: 'ProductComponents',
@@ -80,6 +82,8 @@ class ComponentsService {
         return GalleryAndVideo;
       case this.Types.PRODUCTSPREVIEW:
         return ProductsPreview;
+      case this.Types.SPECIALCAROUSEL:
+        return SpecialCarousel;
       case this.Types.ABOUTLEFTPICTURE:
         return AboutLeftPicture;
       case this.Types.ABOUTRIGHTPICTURE: 

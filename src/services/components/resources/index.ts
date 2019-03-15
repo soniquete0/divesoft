@@ -9,6 +9,7 @@ import * as productsmenu from './productsmenu.json';
 import * as newsandevents from './newsandevents.json';
 import * as productspreview from './productspreview.json';
 import * as galleryandvideo from './galleryandvideo.json';
+import * as specialcarousel from './specialcarousel.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
@@ -25,6 +26,7 @@ export {
   newsandevents,
   productspreview,
   galleryandvideo,
+  specialcarousel,
   aboutleftpicture,
   aboutrightpicture,
   productcomponents,
