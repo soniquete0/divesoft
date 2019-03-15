@@ -6,6 +6,7 @@ import * as carousel from './carousel.json';
 import * as downloads from './downloads.json';
 import * as aboutushome from './aboutushome.json';
 import * as productsmenu from './productsmenu.json';
+import * as testimonials from './testimonials.json';
 import * as newsandevents from './newsandevents.json';
 import * as productspreview from './productspreview.json';
 import * as galleryandvideo from './galleryandvideo.json';
@@ -23,6 +24,7 @@ export {
   downloads,
   aboutushome,
   productsmenu,
+  testimonials,
   newsandevents,
   productspreview,
   galleryandvideo,

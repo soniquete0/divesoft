@@ -6,6 +6,7 @@ import Carousel from './Carousel';
 import Downloads from './Downloads';
 import AboutUsHome from './AboutUsHome';
 import ProductsMenu from './ProductsMenu';
+import Testimonials from './Testimonials';
 import NewsAndEvents from './NewsAndEvents';
 import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
@@ -23,6 +24,7 @@ export {
   Downloads,
   AboutUsHome,
   ProductsMenu,
+  Testimonials,
   NewsAndEvents,
   GalleryAndVideo,
   ProductsPreview,

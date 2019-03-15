@@ -1,0 +1,54 @@
+.testimonials {
+  padding: 100px 0;
+  @include max-md { padding: 40px 0; }
+
+  h2 { text-align: center; }
+  &__description {
+    font-size: 1.5rem;
+    text-align: center;
+    color: $lightGrey;
+
+    @include max-md { display: none; }
+  }
+
+  &__list {
+
+    .col-12 {
+      &:not(:last-child) { @include max-md { margin-bottom: 25px; } }
+    }
+
+    &__item {
+
+      @include max-md { text-align: center; }
+
+      h4 {
+        padding-bottom: 0;
+        padding-top: 25px;
+      }
+
+      span {
+        display: block;
+        color: #bbbdbf;
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      p {
+        line-height: 28px;
+        color: $lightGrey;
+        padding: 0;
+        margin: 0;
+      }
+
+      .mediaRatio {
+        padding: 0 !important;
+        height: 130px;
+        width: 130px;
+
+        @include max-md {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
