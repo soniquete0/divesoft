@@ -89,7 +89,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
           <Slider 
             delay={10000}
             slides={data}
-            class={'sliderAtTop'}
+            wrapperClasses={'sliderAtTop'}
             autoplay={this.state.galleryItems.length <= 1 ? false : true} 
             showDots={this.state.galleryItems.length <= 1 ? false : true}
             showArrows={this.state.galleryItems.length <= 1 ? false : true} 

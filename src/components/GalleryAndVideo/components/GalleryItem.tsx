@@ -7,9 +7,8 @@ export interface GalleryItemState {
 }
 
 export interface GalleryItemProps {
-  keyIndex: number;
   image: LooseObject;
-  gridClasses: string;
+  wrapperClasses: string;
 }
 
 class GalleryItem extends React.Component<GalleryItemProps, GalleryItemState> {
@@ -22,12 +21,11 @@ class GalleryItem extends React.Component<GalleryItemProps, GalleryItemState> {
   }
 
   public render() {
-    const { image, keyIndex, gridClasses } = this.props;
+    const { image, wrapperClasses } = this.props;
 
     return (
       <div 
-        key={keyIndex}
-        className={`galleryAndVideo__content__img ${gridClasses}`}
+        className={`galleryAndVideo__content__img ${wrapperClasses}`}
         onClick={() => this.setState({ fullScreen: !this.state.fullScreen })}
       >
         <Media 

@@ -1,4 +1,5 @@
 import AlertNotFound from './AlertNotFound';
+import News from './News';
 import Hero from './Hero';
 import Header from './Header';
 import Footer from './Footer';
@@ -17,6 +18,7 @@ import ProductComponents from './ProductComponents';
 
 export {
   AlertNotFound,
+  News,
   Hero,
   Header,
   Footer,

@@ -1,0 +1,83 @@
+.news {
+  padding: 100px 0;
+  @include max-md { padding: 40px 0; }
+  
+  &__title {
+    color: #5c5c5c;
+    line-height: 1.9rem;
+    padding-bottom: 1.9rem;
+
+    @include max-md {
+      font-size: 1.25rem;
+      line-height: 1.5rem;
+      padding-bottom: 1.25rem;
+    }
+  }
+
+  &__btnHolder {
+    position: absolute;
+    width: 130px;
+    right: 0;
+
+    @include max-md {
+      position: relative;
+      padding-bottom: 1.25rem;
+    }
+
+    &__share {
+      padding-left: 43px !important;
+      background-size: 7px 17px;
+      background-repeat: no-repeat;
+      background-position: 20px 15px;
+      background-image: url('/assets/divesoft/images/redfb.svg');
+    }
+  }
+
+  p { 
+    margin: 0;
+    color: $lightGrey;
+    line-height: 1.45rem;
+    padding-right: 100px;
+    padding-left: 100px;
+
+    &:first-child { padding-top: 45px; }
+    &:last-child { padding-bottom: 45px; }
+
+    @include max-md {
+      padding-right: 50px;
+      padding-left: 50px;
+
+      &:first-child { padding-top: 25px; }
+      &:last-child { padding-bottom: 25px; }
+    }
+
+    @include max-sm {
+      padding-right: 25px;
+      padding-left: 25px;
+
+      &:first-child { padding-top: 15px; }
+      &:last-child { padding-bottom: 15px; }
+    }
+
+    @include max-xs {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #e8e8e8;
+  }
+
+  &__btn { 
+    max-width: 240px;
+    @include max-xs { max-width: 100%; }
+  }
+
+  &__thirdImg {
+    @include max-md { display: none; }
+  }
+}

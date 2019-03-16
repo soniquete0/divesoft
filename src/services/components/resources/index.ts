@@ -1,4 +1,5 @@
 import * as def from './default.json';
+import * as news from './news.json';
 import * as hero from './hero.json';
 import * as header from './header.json';
 import * as footer from './footer.json';
@@ -17,6 +18,7 @@ import * as productcomponents from './productcomponents.json';
 
 export {
   def as default,
+  news,
   hero,
   header,
   footer,

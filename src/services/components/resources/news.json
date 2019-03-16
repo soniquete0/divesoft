@@ -1,0 +1,72 @@
+{
+  "name": "News",
+  "data": {
+    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc.",
+    "shareUrl": "",
+    "firstText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc. Sed vehicula condimentum nulla non dictum. Cras sit amet viverra nunc. Donec at est sed felis blandit venenatis. Ut dapibus turpis elit, ut convallis magna finibus vitae. Aenean vel quam ut nisi euismod ullamcorper. Proin quis tincidunt neque. Cras risus massa, faucibus sit amet justo a, faucibus vulputate tellus. Morbi eget rutrum tellus. Cras augue tellus, viverra ut mauris nec, vehicula vestibulum ex. Nulla aliquet suscipit sem sit amet finibus. In fermentum luctus velit id euismod. Donec a tellus dolor. Aliquam non sodales ipsum. Nullam lobortis rutrum tortor, ac varius turpis tincidunt quis.",
+    "firstImg": {
+      "recommendedSizes": {
+        "width": "980",
+        "height": "480"
+      }
+    },
+    "secondText": "Cras risus massa, faucibus sit amet justo a, faucibus vulputate tellus. Morbi eget rutrum tellus. Cras augue tellus, viverra ut mauris nec, vehicula vestibulum ex. Nulla aliquet suscipit sem sit amet finibus. In fermentum luctus velit id euismod. Donec a tellus dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc. Sed vehicula condimentum nulla non dictum. Cras sit amet viverra nunc. Donec at est sed felis blandit venenatis. Ut dapibus turpis elit, ut convallis magna finibus vitae. Aenean vel quam ut nisi euismod ullamcorper. Proin quis tincidunt neque. Cras risus massa, faucibus sit amet justo a, faucibus vulputate tellus. Morbi eget rutrum tellus. Cras augue tellus, viverra ut mauris nec, vehicula vestibulum ex. Nulla aliquet suscipit sem sit amet finibus. In fermentum luctus velit id euismod. Donec a tellus dolor. Aliquam non sodales ipsum. Nullam lobortis rutrum tortor, ac varius turpis tincidunt quis.",
+    "secondImg": {
+      "recommendedSizes": {
+        "width": "480",
+        "height": "290"
+      }
+    },
+    "thirdImg": {
+      "recommendedSizes": {
+        "width": "480",
+        "height": "290"
+      }
+    },
+    "thirdText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc. Sed vehicula condimentum nulla non dictum. Cras sit amet viverra nunc. Donec at est sed felis blandit venenatis. Ut dapibus turpis elit, ut convallis magna finibus vitae. Aenean vel quam ut nisi euismod ullamcorper. Proin quis tincidunt neque. Cras risus massa, faucibus sit amet justo a, faucibus vulputate tellus. Morbi eget rutrum tellus. Cras augue tellus, viverra ut mauris nec, vehicula vestibulum ex. Nulla aliquet suscipit sem sit amet finibus.",
+    "buttonUrl": ""
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "shareUrl": {
+          "type": "urlAutocomplete",
+          "title": "Share URL"
+        },
+        "firstText": {
+          "type": "markdown",
+          "title": "First text"
+        },
+        "firstImg": {
+          "type": "image",
+          "title": "First image"
+        },
+        "secondText": {
+          "type": "markdown",
+          "title": "Second text"
+        },
+        "secondImg": {
+          "type": "image",
+          "title": "Second image"
+        },
+        "thirdImg": {
+          "type": "image",
+          "title": "Third image"
+        },
+        "thirdText": {
+          "type": "markdown",
+          "title": "Third text"
+        },
+        "buttonUrl": {
+          "type": "urlAutocomplete",
+          "title": "Button URL"
+        }
+      }
+    }
+  }
+}

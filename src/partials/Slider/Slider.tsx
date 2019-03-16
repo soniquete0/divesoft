@@ -1,16 +1,16 @@
 import React from 'react';
 
+import Dots from './components/Dots';
 import Slide from './components/Slide';
 import LeftArrow from './components/LeftArrow';
 import RightArrow from './components/RightArrow';
-import Dots from './components/Dots';
 
 export interface SliderProps {
   delay?: number;
   autoplay?: boolean;
   showDots?: boolean;
   showArrows?: boolean;
-  class?: string;
+  wrapperClasses?: string;
   // tslint:disable-next-line:no-any
   slides: Array<any>;
 }
@@ -28,7 +28,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
     super(props);
 
     this.state = {
-      slides: [],
+      slides: this.props.slides,
       interval: null,
       currentIndex: 0,
       translateValue: 0
@@ -37,7 +37,6 @@ class Slider extends React.Component<SliderProps, SliderState> {
   
   componentDidMount () {
     const { autoplay, delay } = this.props;
-    this.setState({slides: this.props.slides});
 
     if (autoplay) {
       let interval = setInterval(this.goToNextSlide, delay);
@@ -45,50 +44,62 @@ class Slider extends React.Component<SliderProps, SliderState> {
     }
   }
 
+  componentWillReceiveProps = (nextProps) => this.setState({ slides: nextProps.slides });
+
   componentWillUnmount = () => clearInterval(this.state.interval);
 
   goToNextSlide = () => {
+    clearInterval(this.state.interval);
+
     if (this.state.currentIndex === this.state.slides.length - 1) {
       return this.setState({
         currentIndex: 0,
-        translateValue: 0
+        translateValue: 0,
+        interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     }
 
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex + 1,
-      translateValue: prevState.translateValue + -(this.slideWidth())
+      translateValue: prevState.translateValue + -(this.slideWidth()),
+      interval: setInterval(this.goToNextSlide, this.props.delay)
     }));
   }
 
   goToPrevSlide = () => {
+    clearInterval(this.state.interval);
+
     if (this.state.currentIndex === 0) { 
-      this.setState({
+      return this.setState({
         currentIndex: this.state.slides.length,
-        translateValue: this.state.slides.length * -(this.slideWidth())
+        translateValue: this.state.slides.length * -(this.slideWidth()),
+        interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     }
     
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex - 1,
-      translateValue: prevState.translateValue + this.slideWidth()
+      translateValue: prevState.translateValue + this.slideWidth(),
+      interval: setInterval(this.goToNextSlide, this.props.delay)
     }));
   }
 
   goTo = (index) => {
-    if (index === this.state.currentIndex) {
-      return;
-    }
+    if (index === this.state.currentIndex) { return; }
 
+    clearInterval(this.state.interval);
+    
     if (index > this.state.currentIndex) {
       this.setState({
         currentIndex: index,
-        translateValue: index * -(this.slideWidth())
+        translateValue: index * -(this.slideWidth()),
+        interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     } else {
       this.setState({
         currentIndex: index,
-        translateValue: this.state.translateValue + (this.state.currentIndex - index) * (this.slideWidth())
+        translateValue: this.state.translateValue + (this.state.currentIndex - index) * (this.slideWidth()),
+        interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     }
   }
@@ -104,7 +115,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
   render() {
 
     return (
-      <div className={`slider ${this.props.class}`}>
+      <div className={`slider ${this.props.wrapperClasses}`}>
         <div 
           className="slider__wrapper"
           style={{ 

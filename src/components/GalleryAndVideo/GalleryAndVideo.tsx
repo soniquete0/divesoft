@@ -47,18 +47,18 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                     {data.length < 4 && <div className="row">
                     {data && data.map((item, i) => (
                       <GalleryItem 
-                        keyIndex={i} 
+                        key={i}
                         image={item.image} 
-                        gridClasses={'col-6 col-md-3 col-xl-6'} 
+                        wrapperClasses={'col-6 col-md-3 col-xl-6'} 
                       />
                     ))}
                   </div>}
                   <div className="row">
                     {data && data.length >= 4 && data.slice(0, 4).map((item, i) => (
                       <GalleryItem 
-                        keyIndex={i} 
+                        key={i}
                         image={item.image} 
-                        gridClasses={'col-6 col-md-3 col-xl-6'} 
+                        wrapperClasses={'col-6 col-md-3 col-xl-6'} 
                       />
                     ))}
                   </div>
@@ -69,9 +69,9 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                 <div className="row">
                   {data.slice(4, data.length - 1).map((item, i) => (
                     <GalleryItem 
-                      keyIndex={i} 
+                      key={i}
                       image={item.image} 
-                      gridClasses={'col-6 col-md-3'} 
+                      wrapperClasses={'col-6 col-md-3'} 
                     />
                   ))}
                 </div>
