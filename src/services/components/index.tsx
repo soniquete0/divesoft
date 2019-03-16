@@ -10,6 +10,7 @@ import {
   Footer,
   Carousel,
   Downloads,
+  ContactRow,
   AboutUsHome,
   ProductsMenu,
   Testimonials,
@@ -44,6 +45,7 @@ class ComponentsService {
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
     DOWNLOADS: 'Downloads',
+    CONTACTROW: 'ContactRow',
     ABOUTUSHOME: 'AboutUsHome',
     PRODUCTSMENU: 'ProductsMenu',
     TESTIMONIALS: 'Testimonials',
@@ -80,6 +82,8 @@ class ComponentsService {
         return Carousel;
       case this.Types.DOWNLOADS:
         return Downloads;
+      case this.Types.CONTACTROW:
+        return ContactRow;
       case this.Types.ABOUTUSHOME:
         return AboutUsHome;
       case this.Types.PRODUCTSMENU:

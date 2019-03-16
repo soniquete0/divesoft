@@ -5,6 +5,7 @@ import * as header from './header.json';
 import * as footer from './footer.json';
 import * as carousel from './carousel.json';
 import * as downloads from './downloads.json';
+import * as contactrow from './contactrow.json';
 import * as aboutushome from './aboutushome.json';
 import * as productsmenu from './productsmenu.json';
 import * as testimonials from './testimonials.json';
@@ -25,6 +26,7 @@ export {
   footer,
   carousel,
   downloads,
+  contactrow,
   aboutushome,
   productsmenu,
   testimonials,

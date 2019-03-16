@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import Downloads from './Downloads';
+import ContactRow from './ContactRow';
 import AboutUsHome from './AboutUsHome';
 import ProductsMenu from './ProductsMenu';
 import Testimonials from './Testimonials';
@@ -25,6 +26,7 @@ export {
   Footer,
   Carousel,
   Downloads,
+  ContactRow,
   AboutUsHome,
   ProductsMenu,
   Testimonials,

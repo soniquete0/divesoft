@@ -1,0 +1,77 @@
+.contactRow {
+  padding: 35px 0;
+
+  h3 { @include max-md { padding: 0; } }
+  
+  &__divider {
+    &::after {
+      position: relative;
+      bottom: -35px;
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #e8e8e8;
+
+      @include max-md { display: none; }
+    }
+  }
+
+  &__showMore {
+    color: $red;
+    cursor: pointer;
+    font-size: 1rem;
+    text-decoration: underline;
+    position: absolute;
+    bottom: 0;
+
+    &:hover { text-decoration: none; }
+
+    @include max-md {
+      display: block;
+      position: relative;
+      padding: 15px 0;
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &:not(:last-child) { @include max-md { margin-bottom: 20px; } }
+    @include max-md {
+      &:after {
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: #e8e8e8;
+      }
+    }
+
+    h5 { padding-bottom: 10px; }
+
+    span {
+      display: block;
+      font-size: 14px;
+      color: #aaaaaa;
+      padding-bottom: 15px;
+    }
+
+    p {
+      padding: 5px 0;
+      margin: 0;
+      color: $lightGrey;
+
+      &:first-of-type { padding-top: 0; }
+      &:last-child { padding-bottom: 15px; }
+
+      &:not(:last-child) {
+        a {
+          color: $red !important;
+          &:hover { text-decoration: underline; }
+        }
+      }
+    }
+  }
+}
