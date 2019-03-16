@@ -5,6 +5,7 @@
 
   @include max-lg { padding: 0; }
   @include max-md { top: -35px; }
+  @include max-sm { top: 20px; }
 
   p { 
     color: $lightGrey;
@@ -35,11 +36,14 @@
       }
     }
 
-    h5 { color: $lightGrey; }
-
-    &__address {
-      width: 85%;
+    h3 { @include max-sm { font-size: 24px; } }
+    h5 { 
+      color: $lightGrey; 
+      @include max-sm { font-size: 1rem; }
     }
+    h4 { @include max-sm { font-size: 18px; } }
+
+    &__address { width: 90%; }
   }
 
   &__bottomInfo {

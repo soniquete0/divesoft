@@ -9,11 +9,12 @@ import AboutUsHome from './AboutUsHome';
 import ProductsMenu from './ProductsMenu';
 import Testimonials from './Testimonials';
 import NewsAndEvents from './NewsAndEvents';
+import ContactColumns from './ContactColumns';
 import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
 import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
-export { AlertNotFound, News, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
+export { AlertNotFound, News, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
 //# sourceMappingURL=index.js.map
