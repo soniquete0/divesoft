@@ -12,53 +12,63 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import React from 'react';
+import Dots from './components/Dots';
 import Slide from './components/Slide';
 import LeftArrow from './components/LeftArrow';
 import RightArrow from './components/RightArrow';
-import Dots from './components/Dots';
 var Slider = /** @class */ (function (_super) {
     __extends(Slider, _super);
     function Slider(props) {
         var _this = _super.call(this, props) || this;
+        _this.componentWillReceiveProps = function (nextProps) { return _this.setState({ slides: nextProps.slides }); };
         _this.componentWillUnmount = function () { return clearInterval(_this.state.interval); };
         _this.goToNextSlide = function () {
+            clearInterval(_this.state.interval);
             if (_this.state.currentIndex === _this.state.slides.length - 1) {
                 return _this.setState({
                     currentIndex: 0,
-                    translateValue: 0
+                    translateValue: 0,
+                    interval: setInterval(_this.goToNextSlide, _this.props.delay)
                 });
             }
             _this.setState(function (prevState) { return ({
                 currentIndex: prevState.currentIndex + 1,
-                translateValue: prevState.translateValue + -(_this.slideWidth())
+                translateValue: prevState.translateValue + -(_this.slideWidth()),
+                interval: setInterval(_this.goToNextSlide, _this.props.delay)
             }); });
         };
         _this.goToPrevSlide = function () {
+            clearInterval(_this.state.interval);
             if (_this.state.currentIndex === 0) {
-                _this.setState({
+                return _this.setState({
                     currentIndex: _this.state.slides.length,
-                    translateValue: _this.state.slides.length * -(_this.slideWidth())
+                    translateValue: _this.state.slides.length * -(_this.slideWidth()),
+                    interval: setInterval(_this.goToNextSlide, _this.props.delay)
                 });
             }
             _this.setState(function (prevState) { return ({
                 currentIndex: prevState.currentIndex - 1,
-                translateValue: prevState.translateValue + _this.slideWidth()
+                translateValue: prevState.translateValue + _this.slideWidth(),
+                interval: setInterval(_this.goToNextSlide, _this.props.delay)
             }); });
         };
         _this.goTo = function (index) {
             if (index === _this.state.currentIndex) {
                 return;
             }
+            clearInterval(_this.state.interval);
             if (index > _this.state.currentIndex) {
                 _this.setState({
                     currentIndex: index,
-                    translateValue: index * -(_this.slideWidth())
+                    translateValue: index * -(_this.slideWidth()),
+                    interval: setInterval(_this.goToNextSlide, _this.props.delay)
                 });
             }
             else {
                 _this.setState({
                     currentIndex: index,
-                    translateValue: _this.state.translateValue + (_this.state.currentIndex - index) * (_this.slideWidth())
+                    translateValue: _this.state.translateValue + (_this.state.currentIndex - index) * (_this.slideWidth()),
+                    interval: setInterval(_this.goToNextSlide, _this.props.delay)
                 });
             }
         };
@@ -71,7 +81,7 @@ var Slider = /** @class */ (function (_super) {
             }
         };
         _this.state = {
-            slides: [],
+            slides: _this.props.slides,
             interval: null,
             currentIndex: 0,
             translateValue: 0
@@ -80,14 +90,13 @@ var Slider = /** @class */ (function (_super) {
     }
     Slider.prototype.componentDidMount = function () {
         var _a = this.props, autoplay = _a.autoplay, delay = _a.delay;
-        this.setState({ slides: this.props.slides });
         if (autoplay) {
             var interval = setInterval(this.goToNextSlide, delay);
             this.setState({ interval: interval });
         }
     };
     Slider.prototype.render = function () {
-        return (React.createElement("div", { className: "slider " + this.props.class },
+        return (React.createElement("div", { className: "slider " + this.props.wrapperClasses },
             React.createElement("div", { className: "slider__wrapper", style: {
                     transform: "translateX(" + this.state.translateValue + "px)",
                     transition: 'transform ease-out 0.25s'

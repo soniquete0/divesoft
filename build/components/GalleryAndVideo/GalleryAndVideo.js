@@ -35,10 +35,10 @@ var GalleryAndVideo = /** @class */ (function (_super) {
                     React.createElement("div", { className: 'row galleryAndVideo__content' },
                         React.createElement("div", { className: "col" }, video && React.createElement(Media, { type: 'embeddedVideo', data: video })),
                         React.createElement("div", { className: "col" },
-                            data.length < 4 && React.createElement("div", { className: "row" }, data && data.map(function (item, i) { return (React.createElement(GalleryItem, { keyIndex: i, image: item.image, gridClasses: 'col-6 col-md-3 col-xl-6' })); })),
-                            React.createElement("div", { className: "row" }, data && data.length >= 4 && data.slice(0, 4).map(function (item, i) { return (React.createElement(GalleryItem, { keyIndex: i, image: item.image, gridClasses: 'col-6 col-md-3 col-xl-6' })); })))),
+                            data.length < 4 && React.createElement("div", { className: "row" }, data && data.map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3 col-xl-6' })); })),
+                            React.createElement("div", { className: "row" }, data && data.length >= 4 && data.slice(0, 4).map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3 col-xl-6' })); })))),
                     _this.state.showMore &&
-                        React.createElement("div", { className: "row" }, data.slice(4, data.length - 1).map(function (item, i) { return (React.createElement(GalleryItem, { keyIndex: i, image: item.image, gridClasses: 'col-6 col-md-3' })); })),
+                        React.createElement("div", { className: "row" }, data.slice(4, data.length - 1).map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3' })); })),
                     data && data.length > 4 &&
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); } }, _this.state.showMore ? 'Show less' : 'Show more'))));
         }));

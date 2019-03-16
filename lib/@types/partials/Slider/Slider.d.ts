@@ -4,7 +4,7 @@ export interface SliderProps {
     autoplay?: boolean;
     showDots?: boolean;
     showArrows?: boolean;
-    class?: string;
+    wrapperClasses?: string;
     slides: Array<any>;
 }
 export interface SliderState {
@@ -16,6 +16,7 @@ export interface SliderState {
 declare class Slider extends React.Component<SliderProps, SliderState> {
     constructor(props: SliderProps);
     componentDidMount(): void;
+    componentWillReceiveProps: (nextProps: any) => void;
     componentWillUnmount: () => void;
     goToNextSlide: () => void;
     goToPrevSlide: () => void;

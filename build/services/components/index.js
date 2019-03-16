@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
+import { AlertNotFound, News, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -27,6 +27,7 @@ import * as resources from './resources';
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
         this.Types = {
+            NEWS: 'News',
             HERO: 'Hero',
             HEADER: 'Header',
             FOOTER: 'Footer',
@@ -55,6 +56,8 @@ var ComponentsService = /** @class */ (function () {
     /***/
     ComponentsService.prototype.getComponent = function (type) {
         switch (type) {
+            case this.Types.NEWS:
+                return News;
             case this.Types.HERO:
                 return Hero;
             case this.Types.HEADER:

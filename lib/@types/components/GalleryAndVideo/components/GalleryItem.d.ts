@@ -3,9 +3,8 @@ export interface GalleryItemState {
     fullScreen: boolean;
 }
 export interface GalleryItemProps {
-    keyIndex: number;
     image: LooseObject;
-    gridClasses: string;
+    wrapperClasses: string;
 }
 declare class GalleryItem extends React.Component<GalleryItemProps, GalleryItemState> {
     constructor(props: GalleryItemProps);
