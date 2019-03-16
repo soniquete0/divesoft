@@ -14,6 +14,7 @@ import {
   ProductsMenu,
   Testimonials,
   NewsAndEvents,
+  ContactColumns,
   ProductsPreview,
   GalleryAndVideo,
   SpecialCarousel,
@@ -47,6 +48,7 @@ class ComponentsService {
     PRODUCTSMENU: 'ProductsMenu',
     TESTIMONIALS: 'Testimonials',
     NEWSANDEVENTS: 'NewsAndEvents',
+    CONTACTCOLUMNS: 'ContactColumns',
     PRODUCTSPREVIEW: 'ProductsPreview',
     GALLERYANDVIDEO: 'GalleryAndVideo',
     SPECIALCAROUSEL: 'SpecialCarousel',
@@ -86,6 +88,8 @@ class ComponentsService {
         return Testimonials;
       case this.Types.NEWSANDEVENTS:
         return NewsAndEvents;
+      case this.Types.CONTACTCOLUMNS:
+        return ContactColumns;
       case this.Types.GALLERYANDVIDEO:
         return GalleryAndVideo;
       case this.Types.PRODUCTSPREVIEW:

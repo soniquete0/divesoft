@@ -30,6 +30,13 @@
       background-repeat: no-repeat;
       background-position: 20px 15px;
       background-image: url('/assets/divesoft/images/redfb.svg');
+
+      &:hover {
+        border-color: $red;
+        color: $red !important;
+        background-color: transparent !important;
+        font-weight: 600;
+      }
     }
   }
 

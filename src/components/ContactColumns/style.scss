@@ -1,0 +1,55 @@
+.contactColumns {
+  padding: 0 100px;
+  position: relative;
+  top: -70px;
+
+  @include max-lg { padding: 0; }
+  @include max-md { top: -35px; }
+
+  p { 
+    color: $lightGrey;
+    margin: 0;
+    padding: 3px 0;
+  }
+
+  &__list {
+    @include max-md {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__col {
+    width: 380px;
+    min-width: 290px;
+    padding: 40px 30px;
+    background-color: white;
+    border-top: 3px solid $red;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+    @include max-md { width: 100%; }
+    
+    &:not(:last-child) {
+      @include max-md {
+        margin-bottom: 25px;
+      }
+    }
+
+    h5 { color: $lightGrey; }
+
+    &__address {
+      width: 85%;
+    }
+  }
+
+  &__bottomInfo {
+    padding: 25px 0 !important;
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #e8e8e8;
+  }
+}

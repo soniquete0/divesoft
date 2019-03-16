@@ -9,6 +9,7 @@ import * as aboutushome from './aboutushome.json';
 import * as productsmenu from './productsmenu.json';
 import * as testimonials from './testimonials.json';
 import * as newsandevents from './newsandevents.json';
+import * as contactcolumns from './contactcolumns.json';
 import * as productspreview from './productspreview.json';
 import * as galleryandvideo from './galleryandvideo.json';
 import * as specialcarousel from './specialcarousel.json';
@@ -28,6 +29,7 @@ export {
   productsmenu,
   testimonials,
   newsandevents,
+  contactcolumns,
   productspreview,
   galleryandvideo,
   specialcarousel,

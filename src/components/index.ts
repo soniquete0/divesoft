@@ -9,6 +9,7 @@ import AboutUsHome from './AboutUsHome';
 import ProductsMenu from './ProductsMenu';
 import Testimonials from './Testimonials';
 import NewsAndEvents from './NewsAndEvents';
+import ContactColumns from './ContactColumns';
 import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
 import SpecialCarousel from './SpecialCarousel';
@@ -28,6 +29,7 @@ export {
   ProductsMenu,
   Testimonials,
   NewsAndEvents,
+  ContactColumns,
   GalleryAndVideo,
   ProductsPreview,
   SpecialCarousel,

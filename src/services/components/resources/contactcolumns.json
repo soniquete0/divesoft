@@ -1,0 +1,57 @@
+{
+  "name": "ContactColumns",
+  "data": {
+    "firstTitle": "Czech republic",
+    "firstAddress": "Divesoft, s.r.o. Hálkova 2495 413 01 Roudnice nad Labem Czech Republic",
+    "firstEmail": "info@divesoft.cz",
+    "firstAccounts": "ID Number: 26722101 VAT Number: CZ26722101",
+    "secondTitle": "USA",
+    "secondAddress": "Divesoft LLC 2200 Tall Pines Dr. STE 109 33771 Largo, Florida USA",
+    "secondEmail": "info@divesoft.us",
+    "secondAccounts": "ID Number: 26722101 VAT Number: CZ26722101",
+    "bottomInfo": "Bank account: 43-4546410237/0100 Komerční banka"
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "firstTitle": {
+          "type": "text",
+          "title": "First column title"
+        },
+        "firstAddress": {
+          "type": "text",
+          "title": "First column address"
+        },
+        "firstEmail": {
+          "type": "text",
+          "title": "First column email"
+        },
+        "firstAccounts": {
+          "type": "markdown",
+          "title": "First column accounts"
+        },
+        "secondTitle": {
+          "type": "text",
+          "title": "Second column title"
+        },
+        "secondAddress": {
+          "type": "text",
+          "title": "Second column address"
+        },
+        "secondEmail": {
+          "type": "text",
+          "title": "Second column email"
+        },
+        "secondAccounts": {
+          "type": "markdown",
+          "title": "Second column accounts"
+        },
+        "bottomInfo": {
+          "type": "text",
+          "title": "Bottom information"
+        }
+      }
+    }
+  }
+}
