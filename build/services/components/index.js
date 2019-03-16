@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, News, Hero, Header, Footer, Carousel, Downloads, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
+import { AlertNotFound, News, Hero, Header, Footer, Carousel, Downloads, ContactRow, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -33,6 +33,7 @@ var ComponentsService = /** @class */ (function () {
             FOOTER: 'Footer',
             CAROUSEL: 'Carousel',
             DOWNLOADS: 'Downloads',
+            CONTACTROW: 'ContactRow',
             ABOUTUSHOME: 'AboutUsHome',
             PRODUCTSMENU: 'ProductsMenu',
             TESTIMONIALS: 'Testimonials',
@@ -69,6 +70,8 @@ var ComponentsService = /** @class */ (function () {
                 return Carousel;
             case this.Types.DOWNLOADS:
                 return Downloads;
+            case this.Types.CONTACTROW:
+                return ContactRow;
             case this.Types.ABOUTUSHOME:
                 return AboutUsHome;
             case this.Types.PRODUCTSMENU:
