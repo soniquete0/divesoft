@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Firmwares, Downloads, ContactRow, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
+import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Firmwares, Downloads, ContactRow, AboutUsHome, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -38,6 +38,7 @@ var ComponentsService = /** @class */ (function () {
             DOWNLOADS: 'Downloads',
             CONTACTROW: 'ContactRow',
             ABOUTUSHOME: 'AboutUsHome',
+            PHOTOGALLERY: 'PhotoGallery',
             PRODUCTSMENU: 'ProductsMenu',
             TESTIMONIALS: 'Testimonials',
             NEWSANDEVENTS: 'NewsAndEvents',
@@ -83,6 +84,8 @@ var ComponentsService = /** @class */ (function () {
                 return ContactRow;
             case this.Types.ABOUTUSHOME:
                 return AboutUsHome;
+            case this.Types.PHOTOGALLERY:
+                return PhotoGallery;
             case this.Types.PRODUCTSMENU:
                 return ProductsMenu;
             case this.Types.TESTIMONIALS:

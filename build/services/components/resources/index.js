@@ -10,6 +10,7 @@ import * as firmwares from './firmwares.json';
 import * as downloads from './downloads.json';
 import * as contactrow from './contactrow.json';
 import * as aboutushome from './aboutushome.json';
+import * as photogallery from './photogallery.json';
 import * as productsmenu from './productsmenu.json';
 import * as testimonials from './testimonials.json';
 import * as newsandevents from './newsandevents.json';
@@ -20,5 +21,5 @@ import * as specialcarousel from './specialcarousel.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
-export { def as default, faq, map, news, hero, header, footer, carousel, firmwares, downloads, contactrow, aboutushome, productsmenu, testimonials, newsandevents, contactcolumns, productspreview, galleryandvideo, specialcarousel, aboutleftpicture, aboutrightpicture, productcomponents, };
+export { def as default, faq, map, news, hero, header, footer, carousel, firmwares, downloads, contactrow, aboutushome, photogallery, productsmenu, testimonials, newsandevents, contactcolumns, productspreview, galleryandvideo, specialcarousel, aboutleftpicture, aboutrightpicture, productcomponents, };
 //# sourceMappingURL=index.js.map

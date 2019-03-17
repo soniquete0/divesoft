@@ -1,0 +1,72 @@
+{
+  "name": "PhotoGallery",
+  "data": {
+    "title": "Photogallery 1",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc.",
+    "divider": false,
+    "images": [
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "1600",
+            "height": "900"
+          }
+        }
+      },
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "1600",
+            "height": "900"
+          }
+        }
+      },
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "1600",
+            "height": "900"
+          }
+        }
+      },
+      {
+        "img": {
+          "recommendedSizes": {
+            "width": "1600",
+            "height": "900"
+          }
+        }
+      }
+    ]
+  },
+  "form": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "description": {
+          "type": "text",
+          "title": "Description"
+        },
+        "divider": {
+          "type": "boolean",
+          "title": "Add divider at the bottom?"
+        },
+        "images": {
+          "type": "array",
+          "title": "Images",
+          "items": {
+            "properties": {
+              "img": {
+                "type": "image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ import * as firmwares from './firmwares.json';
 import * as downloads from './downloads.json';
 import * as contactrow from './contactrow.json';
 import * as aboutushome from './aboutushome.json';
+import * as photogallery from './photogallery.json';
 import * as productsmenu from './productsmenu.json';
 import * as testimonials from './testimonials.json';
 import * as newsandevents from './newsandevents.json';
@@ -34,6 +35,7 @@ export {
   downloads,
   contactrow,
   aboutushome,
+  photogallery,
   productsmenu,
   testimonials,
   newsandevents,

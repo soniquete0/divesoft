@@ -67,7 +67,7 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
 
               {this.state.showMore && 
                 <div className="row">
-                  {data.slice(4, data.length - 1).map((item, i) => (
+                  {data.slice(4, data.length).map((item, i) => (
                     <GalleryItem 
                       key={i}
                       image={item.image} 
