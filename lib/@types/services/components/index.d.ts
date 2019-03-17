@@ -9,9 +9,9 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): ((props: import("../../components/Map/Map").MapProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof ContactRow | typeof AboutUsHome | typeof NewsAndEvents | typeof GalleryAndVideo | typeof SpecialCarousel;
+    getComponent(type: string): ((props: import("../../components/Faq/Faq").FaqProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof ContactRow | typeof AboutUsHome | typeof NewsAndEvents | typeof GalleryAndVideo | typeof SpecialCarousel;
     /***/
-    getComponentResource(type: string): typeof resources.map;
+    getComponentResource(type: string): typeof resources.faq;
     getForm(type: string): () => JSX.Element;
 }
 export default ComponentsService;

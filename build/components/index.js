@@ -1,4 +1,5 @@
 import AlertNotFound from './AlertNotFound';
+import Faq from './Faq';
 import Map from './Map';
 import News from './News';
 import Hero from './Hero';
@@ -18,5 +19,5 @@ import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
-export { AlertNotFound, Map, News, Hero, Header, Footer, Carousel, Downloads, ContactRow, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
+export { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Downloads, ContactRow, AboutUsHome, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
 //# sourceMappingURL=index.js.map
