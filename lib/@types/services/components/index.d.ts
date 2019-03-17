@@ -9,9 +9,9 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): ((props: import("../../components/News/News").NewsProps) => JSX.Element) | ((props: import("../../components/Hero/Hero").HeroProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | ((props: import("../../components/Downloads/Downloads").DownloadsProps) => JSX.Element) | typeof ContactRow | typeof AboutUsHome | ((props: import("../../components/ProductsMenu/ProductsMenu").ProductsMenuProps) => JSX.Element) | ((props: import("../../components/Testimonials/Testimonials").TestimonialsProps) => JSX.Element) | typeof NewsAndEvents | ((props: import("../../components/ContactColumns/ContactColumns").ContactColumnsProps) => JSX.Element) | typeof GalleryAndVideo | ((props: import("../../components/ProductsPreview/ProductsPreview").ProductsPreviewProps) => JSX.Element) | typeof SpecialCarousel | ((props: import("../../components/AboutLeftPicture/AboutLeftPicture").AboutLeftPictureProps) => JSX.Element) | ((props: import("../../components/ProductComponents/ProductComponents").ProductComponentsProps) => JSX.Element);
+    getComponent(type: string): ((props: import("../../components/Map/Map").MapProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof ContactRow | typeof AboutUsHome | typeof NewsAndEvents | typeof GalleryAndVideo | typeof SpecialCarousel;
     /***/
-    getComponentResource(type: string): typeof resources.news;
+    getComponentResource(type: string): typeof resources.map;
     getForm(type: string): () => JSX.Element;
 }
 export default ComponentsService;

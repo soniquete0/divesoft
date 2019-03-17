@@ -1,4 +1,5 @@
 import * as def from './default.json';
+import * as map from './map.json';
 import * as news from './news.json';
 import * as hero from './hero.json';
 import * as header from './header.json';
@@ -17,4 +18,4 @@ import * as specialcarousel from './specialcarousel.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
-export { def as default, news, hero, header, footer, carousel, downloads, contactrow, aboutushome, productsmenu, testimonials, newsandevents, contactcolumns, productspreview, galleryandvideo, specialcarousel, aboutleftpicture, aboutrightpicture, productcomponents, };
+export { def as default, map, news, hero, header, footer, carousel, downloads, contactrow, aboutushome, productsmenu, testimonials, newsandevents, contactcolumns, productspreview, galleryandvideo, specialcarousel, aboutleftpicture, aboutrightpicture, productcomponents, };
