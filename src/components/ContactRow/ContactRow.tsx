@@ -52,7 +52,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                     </span>
                   }
                 </div>
-                {console.log(data)}
+                
                 <div className="col-12 col-md-9">
                   <div className={'row'}>
                     {data && data.slice(0, 3).map((item, i) => (
@@ -61,7 +61,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                         <span>{item.position}</span>
                         <p>W: <Link url={item.url && item.url.url}>
                         {item.urlTitle}</Link></p>
-                        <p>M: <a href={`mailto:${item.phone}`}>{item.phone}</a></p>
+                        <p>M: <a href={`mailto:${item.email}`}>{item.email}</a></p>
                         <p>P: <a href={`tel:${item.phone}`}>{item.phone}</a></p>
                       </div>
                     ))}
@@ -72,7 +72,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                         <span>{item.position}</span>
                         <p>W: <Link url={item.url && item.url.url}>
                         {item.urlTitle}</Link></p>
-                        <p>M: <a href={`mailto:${item.phone}`}>{item.phone}</a></p>
+                        <p>M: <a href={`mailto:${item.email}`}>{item.email}</a></p>
                         <p>P: <a href={`tel:${item.phone}`}>{item.phone}</a></p>
                       </div>
                     ))}
