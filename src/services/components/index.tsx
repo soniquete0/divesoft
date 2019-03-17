@@ -11,6 +11,7 @@ import {
   Header,
   Footer,
   Carousel,
+  Firmwares,
   Downloads,
   ContactRow,
   AboutUsHome,
@@ -48,6 +49,7 @@ class ComponentsService {
     HEADER: 'Header',
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
+    FIRMWARES: 'Firmwares',
     DOWNLOADS: 'Downloads',
     CONTACTROW: 'ContactRow',
     ABOUTUSHOME: 'AboutUsHome',
@@ -88,6 +90,8 @@ class ComponentsService {
         return Footer;
       case this.Types.CAROUSEL:
         return Carousel;
+      case this.Types.FIRMWARES:
+        return Firmwares;
       case this.Types.DOWNLOADS:
         return Downloads;
       case this.Types.CONTACTROW:
