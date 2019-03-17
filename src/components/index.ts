@@ -10,6 +10,7 @@ import Firmwares from './Firmwares';
 import Downloads from './Downloads';
 import ContactRow from './ContactRow';
 import AboutUsHome from './AboutUsHome';
+import VideoGallery from './VideoGallery';
 import PhotoGallery from './PhotoGallery';
 import ProductsMenu from './ProductsMenu';
 import Testimonials from './Testimonials';
@@ -35,6 +36,7 @@ export {
   Downloads,
   ContactRow,
   AboutUsHome,
+  VideoGallery,
   PhotoGallery,
   ProductsMenu,
   Testimonials,

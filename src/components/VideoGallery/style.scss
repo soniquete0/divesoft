@@ -1,0 +1,83 @@
+.videoGallery {
+  padding: 60px 0 50px 0;
+  @include max-md { padding: 30px 0 20px 0; }
+
+  .col-12, .col-md-4 {
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-bottom: 25px;
+  }
+
+  &__divider {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 1px;
+    bottom: -50px;
+    background-color: #e8e8e8;
+    @include max-md { bottom: -20px; }
+  }
+
+  h2 {
+    text-align: center;
+    padding-bottom: 25px;
+    @include max-md { font-size: 24px; }
+  }
+
+  &__item {
+
+    h4 {
+      padding: 30px 0 15px 0;
+      @include max-md { 
+        padding: 15px 0;
+        font-size: 20px;
+      }
+    }
+    
+    p { 
+      color: $lightGrey;
+      line-height: 28px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  &__description {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 70%;
+    color: $lightGrey;
+    padding-bottom: 40px;
+
+    @include max-md { 
+      max-width: 100%;
+      font-size: 18px;
+      padding-bottom: 25px;
+    }
+  }
+
+  .btn {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .mediaRatio {
+    padding: 0 !important;
+    height: 264px;
+    width: 100%;
+    @include max-md { min-height: 220px; }
+  }
+
+  &__more {
+    margin-bottom: 15px;
+
+    .mediaRatio {
+      padding: 0 !important;
+      height: 240px;
+
+      @include max-md { height: 200px; }
+      @include max-sm { height: 110px; }
+    }
+  }
+}
