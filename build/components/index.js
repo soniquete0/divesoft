@@ -6,6 +6,7 @@ import Hero from './Hero';
 import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
+import Calendar from './Calendar';
 import Firmwares from './Firmwares';
 import Downloads from './Downloads';
 import ContactRow from './ContactRow';
@@ -22,5 +23,5 @@ import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
-export { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Firmwares, Downloads, ContactRow, AboutUsHome, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
+export { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, ContactRow, AboutUsHome, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, GalleryAndVideo, ProductsPreview, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, };
 //# sourceMappingURL=index.js.map

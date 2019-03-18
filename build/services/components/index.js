@@ -12,7 +12,7 @@ var __assign = (this && this.__assign) || function () {
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
 // import WebFont from 'webfontloader';
-import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Firmwares, Downloads, ContactRow, AboutUsHome, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
+import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, ContactRow, AboutUsHome, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 // WEB FONTS
 // WebFont.load({
@@ -34,6 +34,7 @@ var ComponentsService = /** @class */ (function () {
             HEADER: 'Header',
             FOOTER: 'Footer',
             CAROUSEL: 'Carousel',
+            CALENDAR: 'Calendar',
             FIRMWARES: 'Firmwares',
             DOWNLOADS: 'Downloads',
             CONTACTROW: 'ContactRow',
@@ -77,6 +78,8 @@ var ComponentsService = /** @class */ (function () {
                 return Footer;
             case this.Types.CAROUSEL:
                 return Carousel;
+            case this.Types.CALENDAR:
+                return Calendar;
             case this.Types.FIRMWARES:
                 return Firmwares;
             case this.Types.DOWNLOADS:

@@ -1,7 +1,8 @@
 {
   "name": "Map",
   "data": {
-    "title": "Where to find us",    
+    "title": "Where to find us",
+    "controls": true, 
     "items": [
       {
         "country": "Czech republic",
@@ -39,6 +40,14 @@
     "schema": {
       "type": "object",
       "properties": {
+        "title": {
+          "type": "text",
+          "title": "Title"
+        },
+        "controls": {
+          "type": "boolean",
+          "title": "Enable controls?"
+        },
         "items": {
           "type": "array",
           "title": "Items",

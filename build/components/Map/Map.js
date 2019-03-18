@@ -4,7 +4,7 @@ import MapComponent from './components/MapComponent';
 var Map = function (props) {
     return (React.createElement(List, { data: props.data.items }, function (_a) {
         var data = _a.data;
-        return React.createElement(MapComponent, { title: props.data.title, items: data });
+        return (React.createElement(MapComponent, { controls: props.data.controls, title: props.data.title, items: data }));
     }));
 };
 export default Map;
