@@ -160,13 +160,13 @@ const AllPagesComposedQuery = adopt({
   getFrontend: ({ render, windowOrigin, locationPath }) => (
     <ApolloConsumer>
       {(client: LooseObject) => {
-        const { cache: { data } } = client;
+        const { cache: { data } } = client;
         let origin = windowOrigin;
         let url = locationPath;
 
         if (data && data.data['$ROOT_QUERY.origin']
-          && data.data['$ROOT_QUERY.origin'].url
-          && data.data['$ROOT_QUERY.origin'].origin ) {
+          && data.data['$ROOT_QUERY.origin'].url
+          && data.data['$ROOT_QUERY.origin'].origin ) {
             origin = data.data['$ROOT_QUERY.origin'].origin;
             url = data.data['$ROOT_QUERY.origin'].url;
           }
@@ -196,11 +196,11 @@ const AllPagesComposedQuery = adopt({
       websiteData,
     },
   }) => {
-    const languageId = (languageData && languageData.id) || 
-      (frontend && frontend.language && frontend.language.id);
+    const languageId = (languageData && languageData.id) || 
+      (frontend && frontend.language && frontend.language.id);
 
-    const websiteId = (websiteData && websiteData.id) ||
-      (frontend && frontend.website && frontend.website.id);
+    const websiteId = (websiteData && websiteData.id) ||
+      (frontend && frontend.website && frontend.website.id);
 
     if (!languageId || !websiteId) {
       return render({ loading: true });
@@ -299,7 +299,7 @@ class List extends React.Component<Properties, {}> {
               getFrontend: { frontend },
               getContext: { pageData }
             }) => {
-              const pageId = (pageData && pageData.id) ||
+              const pageId = (pageData && pageData.id) ||
                 (frontend && frontend.page && frontend.page.id);
               
               console.log(pageId);

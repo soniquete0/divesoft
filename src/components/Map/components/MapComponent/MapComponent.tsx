@@ -11,7 +11,8 @@ interface MapComponentState {}
 
 interface MapComponentProps {
   items: LooseObject;
-  title: string;
+  title?: string;
+  controls?: boolean;
 }
 
 class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, MapComponentState> {
@@ -46,11 +47,13 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
 
     return (
       <div style={{ width: '100%', position: 'relative' }}>
-        <h2 style={{ padding: '30px 0', textAlign: 'center' }}>
-          {this.props.title}
-        </h2>
+        {this.props.title ? 
+          <h2 style={{ padding: '30px 0', textAlign: 'center' }}>
+            {this.props.title}
+          </h2> : ''}
 
-        <Controls items={this.props.items} />
+        {this.props.controls ?
+          <Controls items={this.props.items} /> : ''}
         
         <section className={'map'}>
           {this.props.items && (

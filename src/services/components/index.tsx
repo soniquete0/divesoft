@@ -11,6 +11,7 @@ import {
   Header,
   Footer,
   Carousel,
+  Calendar,
   Firmwares,
   Downloads,
   ContactRow,
@@ -51,6 +52,7 @@ class ComponentsService {
     HEADER: 'Header',
     FOOTER: 'Footer',
     CAROUSEL: 'Carousel',
+    CALENDAR: 'Calendar',
     FIRMWARES: 'Firmwares',
     DOWNLOADS: 'Downloads',
     CONTACTROW: 'ContactRow',
@@ -94,6 +96,8 @@ class ComponentsService {
         return Footer;
       case this.Types.CAROUSEL:
         return Carousel;
+      case this.Types.CALENDAR:
+        return Calendar;
       case this.Types.FIRMWARES:
         return Firmwares;
       case this.Types.DOWNLOADS:

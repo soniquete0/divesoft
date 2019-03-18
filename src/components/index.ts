@@ -6,6 +6,7 @@ import Hero from './Hero';
 import Header from './Header';
 import Footer from './Footer';
 import Carousel from './Carousel';
+import Calendar from './Calendar';
 import Firmwares from './Firmwares';
 import Downloads from './Downloads';
 import ContactRow from './ContactRow';
@@ -32,6 +33,7 @@ export {
   Header,
   Footer,
   Carousel,
+  Calendar,
   Firmwares,
   Downloads,
   ContactRow,

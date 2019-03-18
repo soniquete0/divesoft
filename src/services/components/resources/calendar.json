@@ -1,10 +1,11 @@
 {
-  "name": "Map",
+  "name": "Calendar",
   "data": {
-    "title": "Where to find us",
-    "controls": true, 
-    "items": [
+    "dates": [
       {
+        "date": "28.2.2019",
+        "text": "Tekdive USA 2019, Orlando, Florida",
+        "url": "",
         "country": "Czech republic",
         "city": "Prague",
         "association":"association",
@@ -12,22 +13,29 @@
         "lng": "14.451078"
       },
       {
+        "date": "8.3.2019",
+        "text": "Tekdive USA 2019, Orlando, Florida",
+        "url": "",
         "country": "Czech republic",
         "city": "Prague",
         "association":"association",
         "lat": "50.108288",
         "lng": "14.494519"
       },
-
       {
+        "date": "20.3.2019",
+        "text": "Tekdive USA 2019, Orlando, Florida",
+        "url": "",
         "country": "Czech republic1",
         "city": "Prague1",
         "association":"association1",
         "lat": "50.041",
         "lng": "14.429081"
       },
-
       {
+        "date": "25.3.2019",
+        "text": "Tekdive USA 2019, Orlando, Florida",
+        "url": "",
         "country": "Czech republic1",
         "city": "Prague1",
         "association":"association1",
@@ -40,19 +48,23 @@
     "schema": {
       "type": "object",
       "properties": {
-        "title": {
-          "type": "text",
-          "title": "Title"
-        },
-        "controls": {
-          "type": "boolean",
-          "title": "Enable controls?"
-        },
-        "items": {
+        "dates": {
           "type": "array",
-          "title": "Items",
+          "title": "Dates",
           "items": {
             "properties": {
+              "date": {
+                "type": "text",
+                "title": "Date (for example: 8.3.2019) - ONLY this format"
+              },
+              "text": {
+                "type": "text",
+                "title": "Text"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
+              },
               "country": {
                 "type": "text",
                 "title": "Country"

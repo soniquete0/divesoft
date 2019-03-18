@@ -1,0 +1,316 @@
+.calendar {
+  width: 100%;
+  display: block;
+  position: relative;
+
+  &__controls {
+    width: 100%;
+    min-height: 165px;
+    background-color: #f1f1f2;
+    padding-top: 50px;
+    position: relative;
+    
+    @include max-md {
+      padding: 30px 0 26px 0;
+    }
+
+    &__switch {
+      display: block;
+      width: 330px;
+      height: 45px;
+      margin: 0 auto;
+      position: relative;
+      bottom: -26px;
+
+      @include max-sm {
+        width: 260px;
+      }
+
+      &__btn {
+        height: 100%;
+        width: 50%;
+        float: left;
+        display: block;
+        font-size: 16px;
+        color: $darkGrey;
+        line-height: 45px;
+        text-align: center;
+        border: none;
+        outline: none;
+        background-color: #d8d8d8;
+
+        &--active {
+          color: $red;
+          background-color: white;
+        }
+      }
+    }
+
+    .btn {
+      padding: 12px 0;
+      cursor: pointer;
+      min-width: 98.5%;
+      margin: 0 auto;
+
+      @include max-md { margin-top: 15px; }
+    }
+
+    /* Reset Select */
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: #fff;
+      background-image: none;
+    }
+
+    /* Custom Select */
+    .select {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      background: #fff;
+      overflow: hidden;
+      border: 3px solid #e7e7e7 !important;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 15px;
+        height: 8px;
+        width: 8px;
+        border: 1px solid $lightGrey;
+        border-width: 1px 1px 0 0;
+        transform: rotate(135deg);
+      }
+    }
+
+    select {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 0 0 15px;
+      color: $darkGrey;
+      cursor: pointer;
+    }
+    
+    select::-ms-expand {
+      display: none;
+    }
+
+    /* Transition */
+    // .select:hover::after { color: $red; }
+    .select::after {
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+    }
+  }
+
+  &__header {
+    height: 120px;
+    position: relative;
+    @include max-md { height: 60px; }
+    
+    h3 { 
+      line-height: 120px;
+      padding: 0;
+
+      @include max-md { 
+        font-size: 20px;
+        line-height: 60px;
+      }
+    }
+
+    .col { 
+      height: 100%;
+      
+      @include max-md {
+        &-start { max-width: 15% !important; }
+        &-end { max-width: 15% !important; }
+      }
+
+      @include max-sm {
+        &-start { max-width: 5% !important; }
+        &-end { max-width: 5% !important; }
+      }
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      width: 15px;
+      height: 15px;
+      background: transparent;
+      border-top: 3px solid $red;
+      border-right: 3px solid $red;
+
+      @include max-md {
+        width: 12px;
+        height: 12px;
+        border-top: 2px solid $red;
+        border-right: 2px solid $red;
+      }
+
+      &--right {
+        left: 0;
+        transform: translate3d(0,-50%,0) rotate(45deg);
+      }
+  
+      &--left {
+        right: 0;
+        transform: translate3d(0,-50%,0) rotate(-135deg);
+      }
+    }
+  }
+
+  &__days {
+    color: $darkGrey;
+    font-size: 1rem;
+    padding: 20px 0 !important;
+    background-color: #f1f1f2;
+  }
+
+  &__body {
+    border: 1px solid #eaeaea;
+
+    .cell {
+      height: 160px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;      
+      background: transparent;
+      transition: 0.25s ease-out;
+      border-right: 1px solid #eaeaea;
+      @include max-lg { padding: 0; }
+
+      &__content {
+        padding-top: 50px;
+        @include max-xl { padding-top: 40px; }
+
+        p {
+          color: $lightGrey;
+          text-align: center;
+          margin: 0;
+          font-size: 14px;
+          padding: 0 0 10px 0;
+        }
+
+        .btn {
+          color: $red;
+          font-size: 14px;
+          border: 2px solid $red;
+          background-color: transparent;
+          padding: 8px 10px;
+          margin: 0 auto;
+          @include max-xl { padding: 8px 4px; }
+          @include max-lg {
+            padding: 8px 2px;
+            border: none;
+          }
+        }
+      }
+
+      &:hover {
+        background: #fafafa;
+        transition: 0.5s ease-out;
+
+        .bg, .calendar .body .selected .bg  {
+          opacity: 0.05;
+          transition: .5s ease-in;
+        }
+      }
+
+      &:last-child { border-right: none; }
+
+      .number {
+        position: absolute;
+        font-size: 82.5%;
+        line-height: 1;
+        top: .75em;
+        right: .75em;
+        font-weight: 700;
+      }
+
+      .bg {
+        font-weight: 700;
+        line-height: 1;
+        color: $lightGrey;
+        opacity: 0;
+        font-size: 8em;
+        position: absolute;
+        top: -.2em;
+        right: -.05em;
+        transition: .25s ease-out;
+        letter-spacing: -.07em;
+      }
+    }
+
+    .selected {
+      border-left: 8px solid transparent;
+      border-image: linear-gradient(45deg, $red 0%,#ff8585 40%);
+      border-image-slice: 1;
+    }
+
+    .row {
+      border-bottom: 1px solid #eaeaea;
+
+      &:last-child { border-bottom: none; }
+    }
+
+    .disabled {
+      color: #eaeaea;
+      pointer-events: none;
+    }
+
+    .col {
+      flex-grow: 0;
+      flex-basis: calc(100% / 7) !important;
+      width: calc(100% / 7);
+    }
+  }
+
+
+  /* GRID */
+  .row {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .row-middle {
+    align-items: center;
+  }
+
+  .col {
+    flex-grow: 1;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .col-start {
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .col-center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .col-end {
+    justify-content: flex-end;
+    text-align: right;
+  }
+}

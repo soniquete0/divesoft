@@ -10,7 +10,13 @@ export interface MapProps {
 const Map = (props: MapProps) => {
   return (
     <List data={props.data.items}>{({ data }) => {
-      return <MapComponent title={props.data.title} items={data} />;
+      return (
+        <MapComponent 
+          controls={props.data.controls} 
+          title={props.data.title}
+          items={data} 
+        />
+      );
     }}</List>);
 };
 
