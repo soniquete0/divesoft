@@ -120,7 +120,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 > 
                   <div className={'header__logo d-flex justify-content-between align-items-center'}>
                     <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
-                    <Link url={`/${context.websiteData.title.toLowerCase()}/${context.languageData.code}`}>
+                    <Link 
+                      url={`${context.websiteData.urlMask === '/' ? 
+                              '' : context.websiteData.urlMask}/${context.languageData.code}`}
+                    >
                       <img src="/assets/divesoft/images/logo.svg" alt="logo" />
                     </Link>
                   </div>

@@ -43,7 +43,7 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
 
   public render() {
     const defaultCenter = { lat: 50.08804, lng: 14.42076 };
-    const defaultZoom = 3;
+    const defaultZoom = 1;
 
     return (
       <div style={{ width: '100%', position: 'relative' }}>
@@ -60,7 +60,6 @@ class MapComponent extends React.Component<MapComponentProps & GeolocatedProps, 
             <GoogleMapReact
               bootstrapURLKeys={{ key: GoogleMapsApiKey }}
               defaultCenter={defaultCenter}
-              center={defaultCenter}
               defaultZoom={defaultZoom}
               options={{ 
                 scrollwheel: false,

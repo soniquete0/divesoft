@@ -1,7 +1,12 @@
 {
   "name": "NewsAndEvents",
   "data": {
-    "backgroundImage": {},
+    "backgroundImage": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "600"
+      }
+    },
     "titleColor": "#ffffff",
     "newsAndEvents": [
       {
@@ -27,7 +32,7 @@
         "day": "10",
         "mounthAndYear": "January 2019",
         "title": "Tekdive USA 2019",
-        "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc. ",
+        "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc.",
         "url": ""
       },
       {
@@ -40,7 +45,7 @@
         "day": "04",
         "mounthAndYear": "January 2019",
         "title": "New oxygen sensors",
-        "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc. ",
+        "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc.",
         "url": ""
       }
     ]

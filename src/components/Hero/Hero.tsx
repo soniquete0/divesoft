@@ -10,7 +10,8 @@ export interface HeroProps {
     btnTitle?: string;
     url?: LooseObject;
     image?: LooseObject;
-    paddingTop: boolean;
+    paddingTop?: boolean;
+    smallFontSize?: boolean;
   };
 }
 
@@ -21,7 +22,8 @@ const Hero = (props: HeroProps) => {
     image,
     title,
     btnTitle,
-    paddingTop
+    paddingTop,
+    smallFontSize
   } = props.data;
   
   return (
@@ -29,7 +31,8 @@ const Hero = (props: HeroProps) => {
       <div className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}>
         <div className="container">
           <div className={'hero__content'}>
-            {title && <h1>{title}</h1>}
+            {title && !smallFontSize && <h1>{title}</h1>}
+            {title && smallFontSize && <h2>{title}</h2>}
             {text && <p>{text}</p>}
             {btnTitle && url && <Button url={url}>{btnTitle}</Button>}
           </div>

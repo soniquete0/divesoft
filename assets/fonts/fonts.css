@@ -13,3 +13,72 @@
   font-family: 'Corridor';
   src: url("./Corridor-Demi-Bold.otf") format("opentype");
 }
+
+/* 
+  ADD FONTS
+*/
+
+/* @font-face{
+  font-family:corridor;
+  font-style:normal;
+  font-weight:400;
+  src:url(Corridor.eot);
+  src:local("Corridor"), 
+      url(../fonts/2018-10/Corridor.eot?#iefix) format("embedded-opentype"),
+      url(../fonts/2018-10/Corridor.woff2) format("woff2"),
+      url(../fonts/2018-10/Corridor.woff) format("woff"),
+      url(../fonts/2018-10/Corridor.ttf) format("truetype"),
+      url(../fonts/2018-10/Corridor.svg#Corridor) format("svg")
+}
+
+@font-face{
+  font-family:corridor;
+  font-style:italic;
+  font-weight:400;
+  src:url(CorridorItalic.eot);
+  src:local("Corridor Italic"),local("CorridorItalic"),
+      url(../fonts/2018-10/CorridorItalic.eot?#iefix) format("embedded-opentype"),
+      url(../fonts/2018-10/CorridorItalic.woff2) format("woff2"),
+      url(../fonts/2018-10/CorridorItalic.woff) format("woff"),
+      url(../fonts/2018-10/CorridorItalic.ttf) format("truetype"),
+      url(../fonts/2018-10/CorridorItalic.svg#CorridorItalic) format("svg")
+}
+
+@font-face{
+  font-family:corridor;
+  font-style:normal;
+  font-weight:500;
+  src:url(CorridorMedium.eot);
+  src:local("Corridor Medium"),local("CorridorMedium"),
+      url(../fonts/2018-10/CorridorMedium.eot?#iefix) format("embedded-opentype"),
+      url(../fonts/2018-10/CorridorMedium.woff2) format("woff2"),
+      url(../fonts/2018-10/CorridorMedium.woff) format("woff"),
+      url(../fonts/2018-10/CorridorMedium.ttf) format("truetype"),
+      url(../fonts/2018-10/CorridorMedium.svg#CorridorMedium) format("svg")
+}
+
+@font-face{
+  font-family:corridor;
+  font-style:normal;
+  font-weight:700;
+  src:url(CorridorDemiBold.eot);
+  src:local("Corridor DemiBold"),local("CorridorDemiBold"),
+      url(../fonts/2018-10/CorridorDemiBold.eot?#iefix) format("embedded-opentype"),
+      url(../fonts/2018-10/CorridorDemiBold.woff2) format("woff2"),
+      url(../fonts/2018-10/CorridorDemiBold.woff) format("woff"),
+      url(../fonts/2018-10/CorridorDemiBold.ttf) format("truetype"),
+      url(../fonts/2018-10/CorridorDemiBold.svg#CorridorDemiBold) format("svg")
+}
+
+@font-face{
+  font-family:corridor;
+  font-style:italic;
+  font-weight:700;
+  src:url(CorridorDemiBoldItalic.eot);
+  src:local("Corridor DemiBold Italic"),local("CorridorDemiBoldItalic"),
+      url(../fonts/2018-10/CorridorDemiBoldItalic.eot?#iefix) format("embedded-opentype"),
+      url(../fonts/2018-10/CorridorDemiBoldItalic.woff2) format("woff2"),
+      url(../fonts/2018-10/CorridorDemiBoldItalic.woff) format("woff"),
+      url(../fonts/2018-10/CorridorDemiBoldItalic.ttf) format("truetype"),
+      url(../fonts/2018-10/CorridorDemiBoldItalic.svg#CorridorDemiBoldItalic) format("svg") 
+} */

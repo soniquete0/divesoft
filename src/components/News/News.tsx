@@ -54,7 +54,7 @@ const News = (props: NewsProps) => {
         <div className={'news__divider'} />
 
         {firstText && <div className="row">
-            <div className="col-12">
+            <div className="col-12 news__text">
               {firstText && <ReactMarkdown source={firstText} />}
           </div></div>}
 
@@ -64,7 +64,7 @@ const News = (props: NewsProps) => {
           </div></div>}
 
         {secondText && <div className="row">
-          <div className="col-12">
+          <div className="col-12 news__text">
             <ReactMarkdown source={secondText} />
           </div></div>}
 
@@ -78,7 +78,7 @@ const News = (props: NewsProps) => {
         </div>
 
         {thirdText && <div className="row">
-          <div className="col-12">
+          <div className="col-12 news__text">
             <ReactMarkdown source={thirdText} />
           </div>
         </div>}
