@@ -43,13 +43,13 @@ var MapComponent = /** @class */ (function (_super) {
     MapComponent.prototype.render = function () {
         var _this = this;
         var defaultCenter = { lat: 50.08804, lng: 14.42076 };
-        var defaultZoom = 3;
+        var defaultZoom = 1;
         return (React.createElement("div", { style: { width: '100%', position: 'relative' } },
             this.props.title ?
                 React.createElement("h2", { style: { padding: '30px 0', textAlign: 'center' } }, this.props.title) : '',
             this.props.controls ?
                 React.createElement(Controls, { items: this.props.items }) : '',
-            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, center: defaultCenter, defaultZoom: defaultZoom, options: {
+            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: defaultZoom, options: {
                     scrollwheel: false,
                     styles: MapStyles
                 }, yesIWantToUseGoogleMapApiInternals: true, onGoogleApiLoaded: function (_a) {

@@ -20,22 +20,13 @@ var NewsAndEvents = /** @class */ (function (_super) {
     __extends(NewsAndEvents, _super);
     function NewsAndEvents(props) {
         var _this = _super.call(this, props) || this;
+        _this.componentDidMount = function () { return _this.setState({ items: _this.props.data.newsAndEvents }); };
         _this.state = {
             items: [],
-            itemsToShow: 9,
             expanded: false
         };
-        _this.showMore = _this.showMore.bind(_this);
         return _this;
     }
-    NewsAndEvents.prototype.componentDidMount = function () {
-        this.setState({ items: this.props.data.newsAndEvents });
-    };
-    NewsAndEvents.prototype.showMore = function () {
-        this.state.itemsToShow >= 3 ?
-            this.setState({ itemsToShow: this.state.items.length, expanded: true }) :
-            this.setState({ itemsToShow: 9, expanded: false });
-    };
     NewsAndEvents.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, titleColor = _a.titleColor, backgroundImage = _a.backgroundImage;
@@ -46,19 +37,44 @@ var NewsAndEvents = /** @class */ (function (_super) {
                 } },
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h3", { style: { color: "" + titleColor } }, title),
-                    React.createElement("div", { className: 'newsAndEvents__list row d-flex justify-content-between align-items-center' }, data.slice(0, _this.state.itemsToShow).map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col' },
-                        React.createElement("div", { className: "row" }, item.img && React.createElement(Media, { type: 'image', data: item.img })),
-                        React.createElement("div", { className: "row" },
-                            React.createElement("div", { className: 'newsAndEvents__list__item__content' },
-                                React.createElement("p", { className: 'newsAndEvents__list__item__content--date' },
-                                    React.createElement("span", null, item.day),
-                                    " / ",
-                                    item.mounthAndYear),
-                                React.createElement("h4", null, item.title),
-                                React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
-                                React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); })),
-                    _this.state.items.length >= 9 ?
-                        React.createElement("button", { className: 'btn', onClick: _this.showMore },
+                    React.createElement("div", { className: 'newsAndEvents__list row d-flex justify-content-between align-items-center' },
+                        data && _this.state.items.length <= 9 &&
+                            data.slice(0, _this.state.items.length).map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col-12 col-md-4' },
+                                React.createElement("div", { className: "row" }, item.img && React.createElement(Media, { type: 'image', data: item.img })),
+                                React.createElement("div", { className: "row" },
+                                    React.createElement("div", { className: 'newsAndEvents__list__item__content' },
+                                        React.createElement("p", { className: 'newsAndEvents__list__item__content--date' },
+                                            React.createElement("span", null, item.day),
+                                            " / ",
+                                            item.mounthAndYear),
+                                        React.createElement("h4", null, item.title),
+                                        React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
+                                        React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); }),
+                        data && _this.state.items.length >= 9 &&
+                            data.slice(0, 9).map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col-12 col-md-4' },
+                                React.createElement("div", { className: "row" }, item.img && React.createElement(Media, { type: 'image', data: item.img })),
+                                React.createElement("div", { className: "row" },
+                                    React.createElement("div", { className: 'newsAndEvents__list__item__content' },
+                                        React.createElement("p", { className: 'newsAndEvents__list__item__content--date' },
+                                            React.createElement("span", null, item.day),
+                                            " / ",
+                                            item.mounthAndYear),
+                                        React.createElement("h4", null, item.title),
+                                        React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
+                                        React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); }),
+                        _this.state.expanded && data.slice(9, _this.state.items.length).map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col-12 col-md-4' },
+                            React.createElement("div", { className: "row" }, item.img && React.createElement(Media, { type: 'image', data: item.img })),
+                            React.createElement("div", { className: "row" },
+                                React.createElement("div", { className: 'newsAndEvents__list__item__content' },
+                                    React.createElement("p", { className: 'newsAndEvents__list__item__content--date' },
+                                        React.createElement("span", null, item.day),
+                                        " / ",
+                                        item.mounthAndYear),
+                                    React.createElement("h4", null, item.title),
+                                    React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
+                                    React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); })),
+                    _this.state.items.length > 9 ?
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ expanded: !_this.state.expanded }); } },
                             "Show ",
                             _this.state.expanded ? 'less' : 'more') : '')));
         }));

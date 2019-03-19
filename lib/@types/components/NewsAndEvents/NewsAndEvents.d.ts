@@ -17,13 +17,11 @@ export interface NewsAndEventsProps {
 }
 export interface NewsAndEventsState {
     items: Array<any>;
-    itemsToShow: number;
     expanded: boolean;
 }
 declare class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsState> {
     constructor(props: NewsAndEventsProps);
-    componentDidMount(): void;
-    showMore(): void;
+    componentDidMount: () => void;
     render(): JSX.Element;
 }
 export default NewsAndEvents;

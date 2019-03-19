@@ -11,7 +11,8 @@
         "height": "560"
       }
     },
-    "paddingTop": false
+    "paddingTop": false,
+    "smallFontSize": false
   },
   "form": {
     "schema": {
@@ -39,6 +40,10 @@
         "paddingTop": {
           "type": "boolean",
           "title": "Is this component under the top menu?"
+        },
+        "smallFontSize": {
+          "type": "boolean",
+          "title": "Make title smaller?"
         }
       }
     }

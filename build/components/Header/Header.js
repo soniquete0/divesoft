@@ -94,7 +94,8 @@ var Header = /** @class */ (function (_super) {
                     React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', ref: _this.headerWrapper },
                         React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
                             React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
-                            React.createElement(Link, { url: "/" + context.websiteData.title.toLowerCase() + "/" + context.languageData.code },
+                            React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
+                                    '' : context.websiteData.urlMask) + "/" + context.languageData.code },
                                 React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                         React.createElement("nav", null,
                             React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },

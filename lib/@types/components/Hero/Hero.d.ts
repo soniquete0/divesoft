@@ -6,7 +6,8 @@ export interface HeroProps {
         btnTitle?: string;
         url?: LooseObject;
         image?: LooseObject;
-        paddingTop: boolean;
+        paddingTop?: boolean;
+        smallFontSize?: boolean;
     };
 }
 declare const Hero: (props: HeroProps) => JSX.Element;
