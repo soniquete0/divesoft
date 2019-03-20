@@ -74,6 +74,12 @@ var Slider = /** @class */ (function (_super) {
         };
         _this.slideWidth = function () {
             if (document.querySelector('.slider__slide')) {
+                if (_this.props.isFullWidth === false) {
+                    var container = document.querySelector('.container');
+                    var style = getComputedStyle(container);
+                    // container width - padding-right/left
+                    return parseInt(style.maxWidth, 10) - 30;
+                }
                 return document.querySelector('.slider__slide').clientWidth;
             }
             else {

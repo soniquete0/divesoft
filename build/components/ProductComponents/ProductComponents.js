@@ -43,7 +43,7 @@ var ProductComponents = function (props) {
                                 item.description && React.createElement("p", null, item.description),
                                 React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); }))),
                 React.createElement(Mobile, null,
-                    React.createElement(Slider, { slides: mobileViews, showArrows: true })))));
+                    React.createElement(Slider, { isFullWidth: false, delay: 7000, slides: mobileViews, showArrows: true })))));
     }));
 };
 export default ProductComponents;

@@ -1,10 +1,11 @@
 import React from 'react';
 export interface SliderProps {
-    delay?: number;
+    delay: number;
     autoplay?: boolean;
     showDots?: boolean;
     showArrows?: boolean;
     wrapperClasses?: string;
+    isFullWidth?: boolean;
     slides: Array<any>;
 }
 export interface SliderState {

@@ -6,11 +6,12 @@ import LeftArrow from './components/LeftArrow';
 import RightArrow from './components/RightArrow';
 
 export interface SliderProps {
-  delay?: number;
+  delay: number;
   autoplay?: boolean;
   showDots?: boolean;
   showArrows?: boolean;
   wrapperClasses?: string;
+  isFullWidth?: boolean;
   // tslint:disable-next-line:no-any
   slides: Array<any>;
 }
@@ -106,6 +107,14 @@ class Slider extends React.Component<SliderProps, SliderState> {
 
   slideWidth = () => {
     if (document.querySelector('.slider__slide')) {
+      if (this.props.isFullWidth === false) {
+        const container = document.querySelector('.container');
+        const style = getComputedStyle(container);
+
+        // container width - padding-right/left
+        return parseInt(style.maxWidth, 10) - 30;
+      }
+      
       return document.querySelector('.slider__slide').clientWidth;
     } else {
       return 0; // fix for backoffice

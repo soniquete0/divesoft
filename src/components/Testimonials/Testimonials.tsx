@@ -63,9 +63,10 @@ const Testimonials = (props: TestimonialsProps) => {
                     </div>
                   </div>
                 ))}
-                delay={10000}
+                delay={7000}
                 showArrows={data.length > 1 ? true : false}
                 autoplay={data.length > 1 ? true : false} 
+                isFullWidth={false}
               />
             </Mobile>
           </div>

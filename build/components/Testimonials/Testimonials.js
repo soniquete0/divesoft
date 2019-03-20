@@ -38,7 +38,7 @@ var Testimonials = function (props) {
                                 item.img && React.createElement(Media, { type: 'image', data: item.img }),
                                 item.title && React.createElement("h4", null, item.title),
                                 item.from && React.createElement("span", null, item.from),
-                                item.text && React.createElement("p", null, item.text)))); }), delay: 10000, showArrows: data.length > 1 ? true : false, autoplay: data.length > 1 ? true : false })))));
+                                item.text && React.createElement("p", null, item.text)))); }), delay: 7000, showArrows: data.length > 1 ? true : false, autoplay: data.length > 1 ? true : false, isFullWidth: false })))));
     }));
 };
 export default Testimonials;

@@ -67,7 +67,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
                 </div>
               </Default>
               <Mobile>
-                <Slider slides={mobileViews} showArrows={true} />
+                <Slider isFullWidth={false} delay={7000} slides={mobileViews} showArrows={true} />
               </Mobile>
             </div>
           </div>

@@ -1,7 +1,12 @@
 {
   "name": "NewsAndEvents",
   "data": {
-    "backgroundImage": {},
+    "backgroundImage": {
+      "recommendedSizes": {
+        "width": "1600",
+        "height": "600"
+      }
+    },
     "titleColor": "#ffffff",
     "newsAndEvents": [
       {
