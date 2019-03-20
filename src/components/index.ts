@@ -11,6 +11,7 @@ import Firmwares from './Firmwares';
 import Downloads from './Downloads';
 import ContactRow from './ContactRow';
 import AboutUsHome from './AboutUsHome';
+import ListOfLinks from './ListOfLinks';
 import VideoGallery from './VideoGallery';
 import PhotoGallery from './PhotoGallery';
 import ProductsMenu from './ProductsMenu';
@@ -38,6 +39,7 @@ export {
   Downloads,
   ContactRow,
   AboutUsHome,
+  ListOfLinks,
   VideoGallery,
   PhotoGallery,
   ProductsMenu,

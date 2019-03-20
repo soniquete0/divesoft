@@ -11,6 +11,7 @@ import * as firmwares from './firmwares.json';
 import * as downloads from './downloads.json';
 import * as contactrow from './contactrow.json';
 import * as aboutushome from './aboutushome.json';
+import * as listoflinks from './listoflinks.json';
 import * as videogallery from './videogallery.json';
 import * as photogallery from './photogallery.json';
 import * as productsmenu from './productsmenu.json';
@@ -38,6 +39,7 @@ export {
   downloads,
   contactrow,
   aboutushome,
+  listoflinks,
   videogallery,
   photogallery,
   productsmenu,

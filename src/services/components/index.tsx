@@ -16,6 +16,7 @@ import {
   Downloads,
   ContactRow,
   AboutUsHome,
+  ListOfLinks,
   VideoGallery,
   PhotoGallery,
   ProductsMenu,
@@ -57,6 +58,7 @@ class ComponentsService {
     DOWNLOADS: 'Downloads',
     CONTACTROW: 'ContactRow',
     ABOUTUSHOME: 'AboutUsHome',
+    LISTOFLINKS: 'ListOfLinks',
     VIDEOGALLERY: 'VideoGallery',
     PHOTOGALLERY: 'PhotoGallery',
     PRODUCTSMENU: 'ProductsMenu',
@@ -106,6 +108,8 @@ class ComponentsService {
         return ContactRow;
       case this.Types.ABOUTUSHOME:
         return AboutUsHome;
+      case this.Types.LISTOFLINKS:
+        return ListOfLinks;
       case this.Types.VIDEOGALLERY:
         return VideoGallery;
       case this.Types.PHOTOGALLERY:
