@@ -21,41 +21,19 @@ import Controls from './Controls';
 var MapComponent = /** @class */ (function (_super) {
     __extends(MapComponent, _super);
     function MapComponent(props) {
-        var _this = _super.call(this, props) || this;
-        _this.getMapBounds = function (map, maps, locations) {
-            var bounds = new maps.LatLngBounds();
-            locations.forEach(function (location) {
-                bounds.extend(new maps.LatLng(location.lat, location.lng));
-            });
-            if (_this.props.coords) {
-                bounds.extend(new maps.LatLng(_this.props.coords.latitude, _this.props.coords.longitude));
-            }
-            return bounds;
-        };
-        _this.apiIsLoaded = function (map, maps, locations) {
-            if (map && locations && locations.length > 0) {
-                var bounds = _this.getMapBounds(map, maps, locations);
-                map.fitBounds(bounds);
-            }
-        };
-        return _this;
+        return _super.call(this, props) || this;
     }
     MapComponent.prototype.render = function () {
-        var _this = this;
         var defaultCenter = { lat: 50.08804, lng: 14.42076 };
-        var defaultZoom = 1;
         return (React.createElement("div", { style: { width: '100%', position: 'relative' } },
             this.props.title ?
-                React.createElement("h2", { style: { padding: '30px 0', textAlign: 'center' } }, this.props.title) : '',
+                React.createElement("h2", { style: { paddingBottom: '30px', textAlign: 'center' } }, this.props.title) : '',
             this.props.controls ?
                 React.createElement(Controls, { items: this.props.items }) : '',
-            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: defaultZoom, options: {
+            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: defaultCenter, defaultZoom: 3, options: {
                     scrollwheel: false,
                     styles: MapStyles
-                }, yesIWantToUseGoogleMapApiInternals: true, onGoogleApiLoaded: function (_a) {
-                    var map = _a.map, maps = _a.maps;
-                    return _this.apiIsLoaded(map, maps, _this.props.items);
-                } }, this.props.items &&
+                }, yesIWantToUseGoogleMapApiInternals: true }, this.props.items &&
                 this.props.items.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))));
     };
     return MapComponent;

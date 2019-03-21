@@ -14,7 +14,6 @@ import {
   Calendar,
   Firmwares,
   Downloads,
-  ContactRow,
   AboutUsHome,
   ListOfLinks,
   VideoGallery,
@@ -29,6 +28,7 @@ import {
   AboutLeftPicture,
   AboutRightPicture,
   ProductComponents,
+  ContactsMap,
 } from '../../components';
 
 import * as resources from './resources';
@@ -56,7 +56,6 @@ class ComponentsService {
     CALENDAR: 'Calendar',
     FIRMWARES: 'Firmwares',
     DOWNLOADS: 'Downloads',
-    CONTACTROW: 'ContactRow',
     ABOUTUSHOME: 'AboutUsHome',
     LISTOFLINKS: 'ListOfLinks',
     VIDEOGALLERY: 'VideoGallery',
@@ -71,6 +70,7 @@ class ComponentsService {
     ABOUTLEFTPICTURE: 'AboutLeftPicture',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
     PRODUCTCOMPONENTS: 'ProductComponents',
+    CONTACTSMAP: 'ContactsMap',
   };
 
   /***/
@@ -104,8 +104,6 @@ class ComponentsService {
         return Firmwares;
       case this.Types.DOWNLOADS:
         return Downloads;
-      case this.Types.CONTACTROW:
-        return ContactRow;
       case this.Types.ABOUTUSHOME:
         return AboutUsHome;
       case this.Types.LISTOFLINKS:
@@ -134,6 +132,8 @@ class ComponentsService {
         return AboutRightPicture;
       case this.Types.PRODUCTCOMPONENTS:
         return ProductComponents;
+      case this.Types.CONTACTSMAP:
+        return ContactsMap;
       
       default:
         return () => <AlertNotFound type="component" />;

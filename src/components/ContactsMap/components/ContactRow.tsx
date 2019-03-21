@@ -1,6 +1,6 @@
 import React from 'react';
 
-import List from '../List';
+import List from '../../List';
 import Link from '@source/partials/Link';
 
 export interface ContactRowState {
@@ -10,17 +10,14 @@ export interface ContactRowState {
 interface Contact {
   name: string;
   position: string;
-  url: LooseObject;
-  urlTitle: string;
   email: string;
   phone: string;
+  web: LooseObject;
 }
 
-export interface ContactRowProps {
-  data: {
-    title: string;
-    contacts: Contact[];
-  };
+interface ContactRowProps {
+  title: string;
+  rows: Contact[];
 }
 
 class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
@@ -33,10 +30,10 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
   }
 
   public render() {
-    const { title, contacts } = this.props.data;
+    const { title, rows } = this.props;
 
     return (
-      <List data={contacts}>
+      <List data={rows}>
         {({ data }) => (
           <div className={'contactRow'}>
             <div className={'container'}>
@@ -44,7 +41,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
 
                 <div className="col-12 col-md-3">
                   <h3>{title}</h3>
-                  {contacts.length > 3 && 
+                  {rows.length > 3 && 
                     <span 
                       className={'contactRow__showMore'}
                       onClick={() => this.setState({ showMore: !this.state.showMore })}
@@ -70,7 +67,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                       <div key={4 + i} className={'contactRow__item col-12 col-md-4'}>
                         <h5>{item.name}</h5>
                         <span>{item.position}</span>
-                        <p>W: <Link url={item.url && item.url.url}>
+                        <p>W: <Link url={item.web && item.web.url}>
                         {item.urlTitle}</Link></p>
                         <p>M: <a href={`mailto:${item.email}`}>{item.email}</a></p>
                         <p>P: <a href={`tel:${item.phone}`}>{item.phone}</a></p>

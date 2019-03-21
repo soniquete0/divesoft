@@ -5,16 +5,13 @@ export interface ContactRowState {
 interface Contact {
     name: string;
     position: string;
-    url: LooseObject;
-    urlTitle: string;
     email: string;
     phone: string;
+    web: LooseObject;
 }
-export interface ContactRowProps {
-    data: {
-        title: string;
-        contacts: Contact[];
-    };
+interface ContactRowProps {
+    title: string;
+    rows: Contact[];
 }
 declare class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
     constructor(props: ContactRowProps);
