@@ -33,7 +33,7 @@ import { adopt } from 'react-adopt';
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
 import Hamburger from './components/Hamburger';
-import Country from './components/Country/Country';
+// import Country from './components/Country/Country';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = adopt({
@@ -68,7 +68,6 @@ var Header = /** @class */ (function (_super) {
                 menuActive: !_this.state.menuActive,
             });
         };
-        _this.headerWrapper = React.createRef();
         _this.state = { menuActive: false };
         return _this;
     }
@@ -91,7 +90,7 @@ var Header = /** @class */ (function (_super) {
                     { overflow: 'inherit' } :
                     { overflow: 'hidden' } },
                 React.createElement("div", { className: "container" },
-                    React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', ref: _this.headerWrapper },
+                    React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
                         React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
                             React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
                             React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
@@ -103,8 +102,7 @@ var Header = /** @class */ (function (_super) {
                         React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                             React.createElement("img", { src: "/assets/divesoft/images/search.svg", alt: "search" }),
                             React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account" }),
-                            React.createElement("button", null, "e-shop")),
-                        React.createElement(Country, null))),
+                            React.createElement("button", null, "e-shop")))),
                 React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                     React.createElement("div", { className: 'hiddenMenu__wrapper' },
                         React.createElement("ul", null, topNavItems &&

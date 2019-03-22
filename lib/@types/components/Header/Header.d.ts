@@ -8,7 +8,6 @@ export interface HeaderState {
     menuActive: boolean;
 }
 declare class Header extends React.Component<HeaderProps, HeaderState> {
-    headerWrapper: any;
     constructor(props: HeaderProps);
     closeMenu: () => void;
     toggleMenu: () => void;

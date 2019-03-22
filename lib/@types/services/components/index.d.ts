@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Header, Footer, Carousel, Calendar, AboutUsHome, VideoGallery, PhotoGallery, NewsAndEvents, GalleryAndVideo, SpecialCarousel } from '../../components';
 import * as resources from './resources';
-/**
- *
- */
 declare class ComponentsService {
     Types: LooseObject<string>;
     /***/

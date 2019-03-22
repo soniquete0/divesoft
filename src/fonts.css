@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Corridor';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Corridor.eot');
+  src: local('Corridor'),
+    url(../assets/fonts/Corridor.eot?#iefix) format("embedded-opentype"),
+    url(../assets/fonts/Corridor.woff2) format("woff2"),
+    url(../assets/fonts/Corridor.woff) format("woff"),
+    url(../assets/fonts/Corridor.ttf) format("truetype")
+    url(../assets/fonts/CorridorMedium.svg#CorridorMedium) format("svg")
+}
+@font-face { 
+  font-family: 'Corridor';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../assets/fonts/CorridorItalic.eot');
+  src: local('Corridor Italic'),
+    local("CorridorItalic"),
+    url(../assets/fonts/CorridorItalic.eot?#iefix) format("embedded-opentype"),
+    url(../assets/fonts/CorridorItalic.woff2) format("woff2"),
+    url(../assets/fonts/CorridorItalic.woff) format("woff"),
+    url(../assets/fonts/CorridorItalic.ttf) format("truetype"),
+    url(../assets/fonts/CorridorItalic.svg#CorridorItalic) format("svg")
+}
+@font-face { 
+  font-family: 'Corridor';
+  font-style: normal;
+  font-weight: 500;
+  src: url('../assets/fonts/CorridorMedium.eot');
+  src: local("Corridor Medium"),
+    local("CorridorMedium"),
+    url(../assets/fonts/CorridorMedium.eot?#iefix) format("embedded-opentype"),
+    url(../assets/fonts/CorridorMedium.woff2) format("woff2"),
+    url(../assets/fonts/CorridorMedium.woff) format("woff"),
+    url(../assets/fonts/CorridorMedium.ttf) format("truetype"),
+    url(../assets/fonts/CorridorMedium.svg#CorridorMedium) format("svg")
+}
+@font-face {
+  font-family: 'Corridor';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/CorridorDemiBold.eot');
+  src: local("Corridor DemiBold"),
+    local("CorridorDemiBold"),
+    url(../assets/fonts/CorridorDemiBold.eot?#iefix) format("embedded-opentype"),
+    url(../assets/fonts/CorridorDemiBold.woff2) format("woff2"),
+    url(../assets/fonts/CorridorDemiBold.woff) format("woff"),
+    url(../assets/fonts/CorridorDemiBold.ttf) format("truetype"),
+    url(../assets/fonts/CorridorDemiBold.svg#CorridorDemiBold) format("svg")
+}
+@font-face {
+  font-family: 'Corridor';
+  font-style: italic;
+  font-weight: 700;
+  src: url('../assets/fonts/CorridorDemiBoldItalic.eot');
+  src: local("Corridor DemiBold Italic"),
+    local("CorridorDemiBoldItalic"),
+    url(../assets/fonts/CorridorDemiBoldItalic.eot?#iefix) format("embedded-opentype"),
+    url(../assets/fonts/CorridorDemiBoldItalic.woff2) format("woff2"),
+    url(../assets/fonts/CorridorDemiBoldItalic.woff) format("woff"),
+    url(../assets/fonts/CorridorDemiBoldItalic.ttf) format("truetype"),
+    url(../assets/fonts/CorridorDemiBoldItalic.svg#CorridorDemiBoldItalic) format("svg")
+}

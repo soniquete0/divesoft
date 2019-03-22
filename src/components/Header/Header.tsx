@@ -6,7 +6,7 @@ import { adopt } from 'react-adopt';
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
 import Hamburger from './components/Hamburger';
-import Country from './components/Country/Country';
+// import Country from './components/Country/Country';
 
 const GET_CONTEXT = gql`
   {
@@ -57,12 +57,8 @@ export interface HeaderState {
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
-  // tslint:disable-next-line:no-any
-  public headerWrapper: any;
-
   constructor(props: HeaderProps) {
     super(props);
-    this.headerWrapper = React.createRef();
     this.state = { menuActive: false };
   }
 
@@ -116,7 +112,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               <div className="container">
                 <div 
                   className={'header__wrapper d-flex justify-content-between align-items-center'} 
-                  ref={this.headerWrapper}
                 > 
                   <div className={'header__logo d-flex justify-content-between align-items-center'}>
                     <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
@@ -143,7 +138,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                     <img src="/assets/divesoft/images/user.svg" alt="account"/>
                     <button>e-shop</button>
                   </div>
-                  <Country />
+                  {/* <Country /> */}
                 </div>
               </div>
 

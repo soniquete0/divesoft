@@ -56,7 +56,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
                     <h1 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
                       {slide.title}
                     </h1>}
-                  {slide.description && <p>{slide.description}</p>}
+                  <p>{slide.description}</p>
                   {slide.buttonTitle && 
                     <div 
                       className={'carousel__images__img__content__btnHolder'} 

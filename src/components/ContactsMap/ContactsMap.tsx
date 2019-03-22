@@ -134,7 +134,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
     }
 
   }
-  
+
   onSelectChange(event: React.FormEvent<HTMLSelectElement>, type?: string) {
     var safeSearchTypeValue: string = event.currentTarget.value;
 

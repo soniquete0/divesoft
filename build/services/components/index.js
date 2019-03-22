@@ -11,19 +11,8 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-// import WebFont from 'webfontloader';
 import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, ContactsMap, } from '../../components';
 import * as resources from './resources';
-// WEB FONTS
-// WebFont.load({
-//   custom: {
-//     families: ['Corridor'],
-//     urls: ['/styles/fonts.css']
-//   }
-// });
-/**
- *
- */
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
         this.Types = {

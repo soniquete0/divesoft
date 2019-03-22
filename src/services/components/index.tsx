@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-// import WebFont from 'webfontloader';
 
 import {
   AlertNotFound,
@@ -33,17 +32,6 @@ import {
 
 import * as resources from './resources';
 
-// WEB FONTS
-// WebFont.load({
-//   custom: {
-//     families: ['Corridor'],
-//     urls: ['/styles/fonts.css']
-//   }
-// });
-
-/**
- *
- */
 class ComponentsService {
   Types: LooseObject<string> = {
     FAQ: 'Faq',
