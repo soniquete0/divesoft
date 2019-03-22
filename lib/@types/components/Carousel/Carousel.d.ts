@@ -15,11 +15,12 @@ export interface CarouselProps {
     };
 }
 export interface CarouselState {
-    galleryItems: any;
+    slides: any;
 }
 declare class Carousel extends React.Component<CarouselProps, CarouselState> {
     constructor(props: CarouselProps);
-    galleryItems(): any[];
+    componentWillReceiveProps: (nextProps: any) => void;
+    renderSlides(data: any): any[];
     render(): JSX.Element;
 }
 export default Carousel;

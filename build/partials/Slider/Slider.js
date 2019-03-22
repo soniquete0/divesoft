@@ -20,7 +20,11 @@ var Slider = /** @class */ (function (_super) {
     __extends(Slider, _super);
     function Slider(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentWillReceiveProps = function (nextProps) { return _this.setState({ slides: nextProps.slides }); };
+        _this.componentWillReceiveProps = function (nextProps) {
+            if (_this.state.slides !== nextProps.slides) {
+                _this.setState({ slides: nextProps.slides });
+            }
+        };
         _this.componentWillUnmount = function () { return clearInterval(_this.state.interval); };
         _this.goToNextSlide = function () {
             clearInterval(_this.state.interval);
@@ -41,8 +45,8 @@ var Slider = /** @class */ (function (_super) {
             clearInterval(_this.state.interval);
             if (_this.state.currentIndex === 0) {
                 return _this.setState({
-                    currentIndex: _this.state.slides.length,
-                    translateValue: _this.state.slides.length * -(_this.slideWidth()),
+                    currentIndex: _this.state.slides.length - 1,
+                    translateValue: (_this.state.slides.length - 1) * -(_this.slideWidth()),
                     interval: setInterval(_this.goToNextSlide, _this.props.delay)
                 });
             }
@@ -83,7 +87,7 @@ var Slider = /** @class */ (function (_super) {
                 return document.querySelector('.slider__slide').clientWidth;
             }
             else {
-                return 0; // fix for backoffice
+                return document.querySelector('iframe').clientWidth;
             }
         };
         _this.state = {

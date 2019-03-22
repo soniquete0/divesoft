@@ -45,7 +45,11 @@ class Slider extends React.Component<SliderProps, SliderState> {
     }
   }
 
-  componentWillReceiveProps = (nextProps) => this.setState({ slides: nextProps.slides });
+  componentWillReceiveProps = (nextProps) => {
+    if (this.state.slides !== nextProps.slides) {
+      this.setState({ slides: nextProps.slides });
+    }
+  }
 
   componentWillUnmount = () => clearInterval(this.state.interval);
 
@@ -70,10 +74,10 @@ class Slider extends React.Component<SliderProps, SliderState> {
   goToPrevSlide = () => {
     clearInterval(this.state.interval);
 
-    if (this.state.currentIndex === 0) { 
+    if (this.state.currentIndex === 0) {
       return this.setState({
-        currentIndex: this.state.slides.length,
-        translateValue: this.state.slides.length * -(this.slideWidth()),
+        currentIndex: this.state.slides.length - 1,
+        translateValue: (this.state.slides.length - 1) * -(this.slideWidth()),
         interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     }
@@ -114,10 +118,10 @@ class Slider extends React.Component<SliderProps, SliderState> {
         // container width - padding-right/left
         return parseInt(style.maxWidth, 10) - 30;
       }
-      
+
       return document.querySelector('.slider__slide').clientWidth;
     } else {
-      return 0; // fix for backoffice
+      return document.querySelector('iframe').clientWidth;
     }
   }
 

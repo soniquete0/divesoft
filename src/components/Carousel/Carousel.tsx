@@ -1,9 +1,9 @@
 import * as React from 'react';
 
+import List from '../List';
 import Button from '@source/partials/Button';
 import Slider from '@source/partials/Slider';
 import Media from '@source/partials/Media';
-import List from '../List';
 
 interface Slide {
   image: LooseObject;
@@ -24,7 +24,7 @@ export interface CarouselProps {
 
 export interface CarouselState {
   // tslint:disable-next-line:no-any
-  galleryItems: any;
+  slides: any;
 }
 
 class Carousel extends React.Component<CarouselProps, CarouselState> {
@@ -32,67 +32,68 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
     super(props);
 
     this.state = {
-      galleryItems: this.galleryItems(),
+      slides: this.props.data.slides,
     };
   }
 
-   galleryItems() {  
-    const { slides } = this.props.data;
-    let images = [];
-
-    if (slides) {
-      slides.map((slide, i) => {
-        if (slide.image) {
-          images.push
-          (
-            <div className={'carousel__images__img'}>
-              <div className={'container'}>
-                <div className={`carousel__images__img__content ${slide.isCentred ? 'center' : ''}`}>
-                  {slide.subTitle && 
-                    <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                      {slide.subTitle}
-                    </h2>}
-                  {slide.title && 
-                    <h1 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                      {slide.title}
-                    </h1>}
-                  <p>{slide.description}</p>
-                  {slide.buttonTitle && 
-                    <div 
-                      className={'carousel__images__img__content__btnHolder'} 
-                      style={slide.isCentred ? {margin: '0 auto'} : {}}
-                    >
-                      <Button 
-                        classes={`${slide.isBackgroundBlack ? '' : 'btn--bordered'} 
-                                  ${slide.isCentred ? 'btn--center' : ''}`} 
-                        url={slide.url}
-                      >
-                        {slide.buttonTitle}
-                      </Button>
-                    </div>}
-                </div>
-              </div>
-              <Media key={i} type={'image'} data={slide.image}/>
-            </div>
-          );
-        }
-      });
+  componentWillReceiveProps = (nextProps) => {
+    if (this.state.slides !== nextProps.data.slides) {
+      this.setState({ slides: nextProps.data.slides });
     }
-    return images;
+  }
+
+  renderSlides(data: any) {
+    if (data.length < 1) { return; }
+    let result = [];
+
+    data.map((slide, i) => {
+      result.push(
+        <div className={'carousel__images__img'}>
+          <div className={'container'}>
+            <div className={`carousel__images__img__content ${slide.isCentred ? 'center' : ''}`}>
+              {slide.subTitle && 
+                <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
+                  {slide.subTitle}
+                </h2>}
+              {slide.title && 
+                <h1 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
+                  {slide.title}
+                </h1>}
+              <p>{slide.description}</p>
+              {slide.buttonTitle && 
+                <div 
+                  className={'carousel__images__img__content__btnHolder'} 
+                  style={slide.isCentred ? {margin: '0 auto'} : {}}
+                >
+                  <Button 
+                    classes={`${slide.isBackgroundBlack ? '' : 'btn--bordered'} 
+                              ${slide.isCentred ? 'btn--center' : ''}`} 
+                    url={slide.url}
+                  >
+                    {slide.buttonTitle}
+                  </Button>
+                </div>}
+            </div>
+          </div>
+          {slide.image && <Media type={'image'} data={slide.image}/>}
+        </div>);
+    });
+  
+    return result;
   }
 
   public render() {
 
     return (
-      <List data={this.state.galleryItems}>
+      <List data={this.state.slides}>
         {({ data }) => 
           <Slider 
-            delay={10000}
-            slides={data}
+            delay={3000}
+            slides={this.renderSlides(data)}
             wrapperClasses={'sliderAtTop'}
-            autoplay={this.state.galleryItems.length <= 1 ? false : true} 
-            showDots={this.state.galleryItems.length <= 1 ? false : true}
-            showArrows={this.state.galleryItems.length <= 1 ? false : true} 
+            autoplay={this.state.slides.length <= 1 ? false : true} 
+            showDots={this.state.slides.length <= 1 ? false : true}
+            showArrows={this.state.slides.length <= 1 ? false : true} 
           />}
       </List>
     );
