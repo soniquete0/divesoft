@@ -32,7 +32,7 @@ const Testimonials = (props: TestimonialsProps) => {
         <div className={'testimonials'}>
           <div className="container">
             {title && <h2>{title}</h2>}
-            {description && <p className={'testimonials__description'}>{description}</p>}
+            {description && <p className={'testimonials__description textDescription'}>{description}</p>}
     
             <Default>
               <div className={'testimonials__list'}>

@@ -64,6 +64,9 @@ const ComposerLink = props => {
         if (pagesUrls) {
           pageUrlObj = pagesUrls.find(u => u.page === pageId || u.url === url);
         }
+
+        if (!pageUrlObj && !isExternalLink(url)) { return ''; }
+
         if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
           return (
             <a

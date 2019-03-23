@@ -1,23 +1,8 @@
 .downloads {
   padding: 100px 0;
-  
-  &__title {
-    text-align: center;
-  }
+  @include max-xl { padding: 40px 0; }
 
-  &__description {
-    text-align: center;
-    font-size: 1.5rem;
-    color: $lightGrey;
-
-    @include max-xl {
-      font-size: 1.125rem;
-    }
-  }
-
-  @include max-xl {
-    padding: 40px 0;
-  }
+  &__title { text-align: center; }
 
   .mediaRatio {
     position: absolute;
@@ -27,9 +12,7 @@
     top: 0;
     left: 0;
 
-    @include max-md {
-      left: 15px;
-    }
+    @include max-md { left: 15px; }
   }
 
   &__list {
@@ -39,18 +22,12 @@
 
       @include max-md {
         padding-left: 25px;
-
-        &:not(:last-child) {
-          margin-bottom: 35px;
-        }
+        &:not(:last-child) { margin-bottom: 35px; }
       }
 
-      h4 {
+      h4 { 
         padding-left: 50px;
-
-        @include max-xl {
-          font-size: 1.25rem;
-        }
+        padding-bottom: 1.5rem;
       }
 
       a {

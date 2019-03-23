@@ -23,7 +23,7 @@ var Testimonials = function (props) {
         return (React.createElement("div", { className: 'testimonials' },
             React.createElement("div", { className: "container" },
                 title && React.createElement("h2", null, title),
-                description && React.createElement("p", { className: 'testimonials__description' }, description),
+                description && React.createElement("p", { className: 'testimonials__description textDescription' }, description),
                 React.createElement(Default, null,
                     React.createElement("div", { className: 'testimonials__list' },
                         React.createElement("div", { className: "row" }, data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-md-4' },

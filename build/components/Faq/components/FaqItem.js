@@ -27,11 +27,9 @@ var FaqItem = /** @class */ (function (_super) {
         var _a = this.props, title = _a.title, text = _a.text;
         return (React.createElement("div", { className: "row" },
             React.createElement("div", { className: "col-12" },
-                React.createElement("div", { onClick: function () { return _this.setState({
-                        show: !_this.state.show
-                    }); }, className: "faq__list__show " + (this.state.show ? 'faq__list__show--minus' : '') }),
+                React.createElement("div", { onClick: function () { return _this.setState({ show: !_this.state.show }); }, className: "faq__list__show " + (this.state.show ? 'faq__list__show--minus' : '') }),
                 React.createElement("div", { className: 'faq__list__item' },
-                    React.createElement("h5", null, title),
+                    React.createElement("h5", { onClick: function () { return _this.setState({ show: !_this.state.show }); } }, title),
                     this.state.show && text && React.createElement(ReactMarkdown, { source: text })),
                 React.createElement("div", { className: 'faq__list__divider' }))));
     };

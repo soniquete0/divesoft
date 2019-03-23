@@ -4,12 +4,7 @@
   @include max-md { padding: 40px 0; }
 
   h2 { text-align: center; }
-  &__title {
-    text-align: center;
-    color: $lightGrey;
-    font-size: 1.5rem;
-    @include max-md { font-size: 1.225rem }
-  }
+  h5 { padding-bottom: 1.6rem; }
 
   .mediaRatio {
     padding: 0 !important;
@@ -30,7 +25,9 @@
       width: 100%;
       min-width: 350px;
       position: relative;
+      margin-bottom: 30px;
       @include clearfix;
+      @include max-md { margin-bottom: 0; }
 
       &__content {
         width: 60%;
@@ -41,7 +38,8 @@
   
         p {
           margin: 0;
-          color: $lightGrey;
+          font-weight: 400;
+          color: #5c5c5c;
         }
         a {
           color: $red;

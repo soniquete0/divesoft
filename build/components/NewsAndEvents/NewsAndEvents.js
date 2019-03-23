@@ -11,18 +11,22 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import getImageUrl from '@source/helpers/getImageUrl';
-import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
+import React from 'react';
 import List from '../List';
+import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
+import getImageUrl from '@source/helpers/getImageUrl';
 var NewsAndEvents = /** @class */ (function (_super) {
     __extends(NewsAndEvents, _super);
     function NewsAndEvents(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentDidMount = function () { return _this.setState({ items: _this.props.data.newsAndEvents }); };
+        _this.componentWillReceiveProps = function (nextProps) {
+            if (_this.state.items !== nextProps.data.newsAndEvents) {
+                _this.setState({ items: nextProps.data.newsAndEvents });
+            }
+        };
         _this.state = {
-            items: [],
+            items: _this.props.data.newsAndEvents,
             expanded: false
         };
         return _this;

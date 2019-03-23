@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 
-import getImageUrl from '@source/helpers/getImageUrl';
-import Media from '@source/partials/Media';
-import Link from '@source/partials/Link';
 import List from '../List';
+import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 interface NewsOrEvent {
   img: LooseObject;
@@ -25,7 +25,7 @@ export interface NewsAndEventsProps {
 
 export interface NewsAndEventsState {
   // tslint:disable-next-line:no-any
-  items: Array<any>;
+  items: any;
   expanded: boolean;
 }
 
@@ -34,12 +34,16 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
     super(props);
 
     this.state = {
-      items: [],
+      items: this.props.data.newsAndEvents,
       expanded: false
     };
   }
 
-  componentDidMount = () => this.setState({ items: this.props.data.newsAndEvents });
+  componentWillReceiveProps = (nextProps) => {
+    if (this.state.items !== nextProps.data.newsAndEvents) {
+      this.setState({ items: nextProps.data.newsAndEvents });
+    }
+  }
 
   public render() {
     const { title, titleColor, backgroundImage } = this.props.data;

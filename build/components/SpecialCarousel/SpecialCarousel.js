@@ -21,52 +21,55 @@ var SpecialCarousel = /** @class */ (function (_super) {
     __extends(SpecialCarousel, _super);
     function SpecialCarousel(props) {
         var _this = _super.call(this, props) || this;
+        _this.componentWillReceiveProps = function (nextProps) {
+            if (_this.state.slides !== nextProps.data.slides) {
+                _this.setState({ slides: nextProps.data.slides });
+            }
+        };
         _this.state = {
-            galleryItems: _this.galleryItems(),
+            slides: _this.props.data.slides,
         };
         return _this;
     }
-    SpecialCarousel.prototype.galleryItems = function () {
-        var slides = this.props.data.slides;
-        var images = [];
-        if (slides) {
-            slides.map(function (slide, i) {
-                if (slide.image) {
-                    images.push(React.createElement("div", { key: i, className: 'specialCarousel' },
-                        React.createElement("div", { className: "specialCarousel__content" },
-                            React.createElement("div", { className: "container" },
-                                slide.title &&
-                                    React.createElement("h2", { style: slide.isBackgroundBlack ? { color: 'white' } : {} }, slide.title),
-                                React.createElement("div", { className: "row" },
-                                    React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6" },
-                                        slide.subTitle &&
-                                            React.createElement("h3", { style: slide.isBackgroundBlack ? { color: 'white' } : {} },
-                                                React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
-                                                slide.subTitle),
-                                        slide.description &&
-                                            React.createElement("p", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),
-                                        React.createElement("div", { className: 'specialCarousel__content__downloads' },
-                                            React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                                React.createElement(Link, { url: slide.firstUrl && slide.firstUrl.url },
-                                                    React.createElement(Media, { type: 'image', data: slide.firstDocImg })),
-                                                slide.firstDocText && React.createElement("p", null, slide.firstDocText)),
-                                            React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                                React.createElement(Link, { url: slide.secondUrl && slide.secondUrl.url },
-                                                    React.createElement(Media, { type: 'image', data: slide.secondDocImg })),
-                                                slide.secondDocText && React.createElement("p", null, slide.secondDocText)))),
-                                    React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-4 col-lg-4 col-xl-6" },
-                                        React.createElement(Media, { type: 'image', data: slide.productImg }))))),
-                        React.createElement(Media, { key: i, type: 'image', data: slide.image })));
-                }
-            });
+    SpecialCarousel.prototype.renderSlides = function (data) {
+        if (data.length < 1) {
+            return;
         }
-        return images;
+        var result = [];
+        data.map(function (slide, i) {
+            result.push(React.createElement("div", { key: i, className: 'specialCarousel' },
+                React.createElement("div", { className: "specialCarousel__content" },
+                    React.createElement("div", { className: "container" },
+                        slide.title &&
+                            React.createElement("h2", { style: slide.isBackgroundBlack ? { color: 'white' } : {} }, slide.title),
+                        React.createElement("div", { className: "row" },
+                            React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6" },
+                                slide.subTitle &&
+                                    React.createElement("h3", { style: slide.isBackgroundBlack ? { color: 'white' } : {} },
+                                        React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
+                                        slide.subTitle),
+                                slide.description &&
+                                    React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),
+                                React.createElement("div", { className: 'specialCarousel__content__downloads' },
+                                    React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
+                                        React.createElement(Link, { url: slide.firstUrl && slide.firstUrl.url },
+                                            React.createElement(Media, { type: 'image', data: slide.firstDocImg })),
+                                        slide.firstUrl && React.createElement("p", null, slide.firstDocText)),
+                                    React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
+                                        React.createElement(Link, { url: slide.secondUrl && slide.secondUrl.url },
+                                            React.createElement(Media, { type: 'image', data: slide.secondDocImg })),
+                                        slide.secondUrl && React.createElement("p", null, slide.secondDocText)))),
+                            React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-4 col-lg-4 col-xl-6" },
+                                React.createElement(Media, { type: 'image', data: slide.productImg }))))),
+                React.createElement(Media, { key: i, type: 'image', data: slide.image })));
+        });
+        return result;
     };
     SpecialCarousel.prototype.render = function () {
         var _this = this;
-        return (React.createElement(List, { data: this.state.galleryItems }, function (_a) {
+        return (React.createElement(List, { data: this.state.slides }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 10000, slides: data, autoplay: _this.state.galleryItems.length <= 1 ? false : true, showDots: _this.state.galleryItems.length <= 1 ? false : true, showArrows: _this.state.galleryItems.length <= 1 ? false : true });
+            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), autoplay: _this.state.slides.length <= 1 ? false : true, showDots: _this.state.slides.length <= 1 ? false : true, showArrows: _this.state.slides.length <= 1 ? false : true });
         }));
     };
     return SpecialCarousel;

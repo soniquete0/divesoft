@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Corridor';
+  font-family: $corridor;
   font-style: normal;
   font-weight: 200;
   src: url('/assets/divesoft/fonts/Corridor.eot');
@@ -11,7 +11,7 @@
 }
 
 @font-face { 
-  font-family: 'Corridor';
+  font-family: $corridor;
   font-style: italic; 
   font-weight: 200;
   src: url('/assets/divesoft/fonts/CorridorItalic.eot');
@@ -24,7 +24,7 @@
     url(/assets/divesoft/fonts/CorridorItalic.svg#CorridorItalic) format("svg")
 }
 @font-face { 
-  font-family: 'Corridor';
+  font-family: $corridor;
   font-style: bold;
   font-weight: 500;
   src: url('/assets/divesoft/fonts/CorridorMedium.eot');
@@ -37,7 +37,7 @@
     url(/assets/divesoft/fonts/CorridorMedium.svg#CorridorMedium) format("svg")
 }
 @font-face {
-  font-family: 'Corridor';
+  font-family: $corridor;
   font-style: bold;
   font-weight: 700;
   src: url('/assets/divesoft/fonts/CorridorDemiBold.eot');
@@ -50,7 +50,7 @@
     url(/assets/divesoft/fonts/CorridorDemiBold.svg#CorridorDemiBold) format("svg")
 }
 @font-face {
-  font-family: 'Corridor';
+  font-family: $corridor;
   font-style: italic;
   font-weight: 700;
   src: url('/assets/divesoft/fonts/CorridorDemiBoldItalic.eot');
@@ -64,71 +64,80 @@
 }
 
 h1, h2, h3, h4, h5, h6, p, a, li {
-  font-family: 'Corridor';
+  font-family: $corridor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding-bottom: 3rem;
+  @include max-md { padding-bottom: 1.5rem; }
+}
+
+p, a, li {
   font-weight: 200;
 }
 
 h1 {
-  margin: 0;
   font-weight: 500;
-  font-size: 3.75rem; // 60px
-  padding-bottom: 1rem;
+  font-size: 6rem;
   text-transform: uppercase;
-  @include max-md { font-size: 2.25rem; }
+  @include max-md { font-size: 3rem; }
 }
 
 h2 {
-  margin: 0;
   font-weight: 500;
-  font-size: 2.25rem; // 36px
-  padding-bottom: 1rem;
+  font-size: 3.6rem;
   text-transform: uppercase;
-  @include max-md { font-size: 1.9rem; }
+  @include max-md { font-size: 2.4rem; }
 }
 
 h3 {
-  margin: 0;
   font-weight: 500;
-  font-size: 1.9rem; // 30px
-  padding-bottom: 1rem;
+  font-size: 3rem;
   text-transform: uppercase;
-  @include max-md { font-size: 1.5rem; }
+  @include max-md { font-size: 2rem; }
 }
 
 h4 {
-  margin: 0;
   font-weight: 500;
-  font-size: 1.5rem; // 24px
-  font-weight: 400;
-  padding-bottom: 1rem;
-  @include max-md { font-size: 1.25rem; }
+  font-size: 2.4rem;
+  @include max-md { font-size: 1.8rem; }
 }
 
 h5 {
-  margin: 0;
   font-weight: 500;
-  font-size: 1.25rem; // 20px
-  padding-bottom: 1rem;
-  @include max-md { font-size: 1.225rem; }
+  font-size: 2rem;
+  @include max-md { font-size: 1.6rem; }
 }
 
 h6 {
-  margin: 0;
   font-weight: 500;
-  font-size: 1.125rem; // 18px
-  padding-bottom: 1rem;
-  @include max-md { font-size: 1rem; }
+  font-size: 1.8rem;
 }
 
-p {
-  padding-bottom: 1rem
-}
+p { padding-bottom: 1.6rem;}
 
 a {
-  color: $lightGrey;
+  color: #5c5c5c;
+  font-weight: 400;
 
   &:hover {
     color: $red;
     text-decoration: none;
+  }
+}
+
+.textDescription {
+  text-align: center;
+  font-size: 2.4rem;
+  line-height: 3.3rem;
+  color: #5c5c5c;
+  padding-bottom: 4rem;
+  font-weight: 400;
+
+  @include max-md {
+    padding-bottom: 2rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
   }
 }

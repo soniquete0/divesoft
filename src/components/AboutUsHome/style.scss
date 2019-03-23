@@ -1,14 +1,14 @@
 .aboutUsHome {
   padding: 75px 0 100px 0;
 
-  @include max-md {
-    padding: 55px 0;
-  }
-  @include max-sm {
-    padding: 35px 0;
-  }
+  @include max-md { padding: 55px 0; }
+  @include max-sm { padding: 35px 0; }
 
   .col { padding: 0; }
+
+  h3, h4 {
+    padding-bottom: 1.6rem;
+  }
 
   &__block {
     width: 100%;
@@ -34,12 +34,11 @@
     &:hover {
       p { color: $lightGrey; }
       h3 { color: $darkGrey; }
-
       p { width: 100%; }
     }
 
     p {
-      line-height: 28px;
+      line-height: 2.8rem;
       color: white;
     }
 
@@ -51,7 +50,7 @@
     position: absolute;
     bottom: 40px;
 
-    @include max-sm {
+    @include max-md {
       position: relative;
       bottom: 0;
     }

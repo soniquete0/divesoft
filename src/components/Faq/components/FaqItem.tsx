@@ -26,13 +26,11 @@ class FaqItem extends React.Component<FaqItemProps, FaqItemState> {
       <div className="row">
         <div className="col-12">
           <div 
-            onClick={() => this.setState({
-              show: !this.state.show
-            })}
+            onClick={() => this.setState({ show: !this.state.show })}
             className={`faq__list__show ${this.state.show ? 'faq__list__show--minus' : ''}`} 
           />
           <div className={'faq__list__item'}>
-            <h5>{title}</h5>
+            <h5 onClick={() => this.setState({ show: !this.state.show })}>{title}</h5>
             {this.state.show && text && <ReactMarkdown source={text} />}
           </div>
           <div className={'faq__list__divider'} />

@@ -1,19 +1,21 @@
 .news {
-  padding: 100px 0;
+  padding: 85px 0;
   @include max-md { padding: 40px 0; }
+
+  a {
+    color: $red;
+    &:hover { text-decoration: underline; }
+  }
   
   &__title {
     color: #5c5c5c;
-    line-height: 1.9rem;
-    padding-bottom: 1.9rem;
     padding-left: 85px;
+    line-height: 3.3rem;
 
     @include max-lg { padding-left: 25px; }
-    @include max-md {
-      font-size: 1.25rem;
-      line-height: 1.5rem;
-      padding-bottom: 1.25rem;
+    @include max-sm {
       padding-left: 0;
+      line-height: 2.4rem;
     }
   }
 
@@ -32,8 +34,10 @@
 
     @include max-md {
       position: relative;
-      padding-bottom: 1.25rem;
+      left: 25px;
+      margin-bottom: 25px;
     }
+    @include max-sm { left: 0; }
 
     &__share {
       padding-left: 43px !important;
@@ -53,8 +57,9 @@
 
   p { 
     margin: 0;
-    color: $lightGrey;
-    line-height: 1.45rem;
+    line-height: 2.8rem;
+    color: #5c5c5c;
+    font-weight: 400;
   }
 
   &__divider {
@@ -66,6 +71,8 @@
 
   &__btn { 
     max-width: 240px;
+    color: white !important;
+    &:hover { text-decoration: none !important; }
     @include max-xs { max-width: 100%; }
   }
 

@@ -11,6 +11,7 @@
     color: $lightGrey;
     margin: 0;
     padding: 3px 0;
+    line-height: 2.4rem;
   }
 
   &__list {
@@ -27,28 +28,15 @@
     background-color: white;
     border-top: 3px solid $red;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-
     @include max-md { width: 100%; }
     
-    &:not(:last-child) {
-      @include max-md {
-        margin-bottom: 25px;
-      }
-    }
+    &:not(:last-child) { @include max-md { margin-bottom: 25px; } }
 
-    h3 { @include max-sm { font-size: 24px; } }
-    h5 { 
-      color: $lightGrey; 
-      @include max-sm { font-size: 1rem; }
-    }
-    h4 { @include max-sm { font-size: 18px; } }
-
+    h5 { color: $lightGrey; }
     &__address { width: 90%; }
   }
 
-  &__bottomInfo {
-    padding: 25px 0 !important;
-  }
+  &__bottomInfo { padding: 25px 0 !important; }
 
   &__divider {
     display: block;

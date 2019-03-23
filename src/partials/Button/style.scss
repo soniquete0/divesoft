@@ -3,13 +3,13 @@
   outline: none;
   color: white;
   display: block;
-  font-size: 1rem;
+  font-size: 1.6rem;
   cursor: pointer;
   font-weight: 400;
   text-align: center;
   padding: 16px 35px;
   box-sizing: border-box;
-  font-family: 'Corridor';
+  font-family: $corridor;
   transition: $customEase;
   text-transform: uppercase;
   background-color: $red;

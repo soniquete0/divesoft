@@ -33,8 +33,8 @@ const Hero = (props: HeroProps) => {
           <div className={'hero__content'}>
             {title && !smallFontSize && <h1>{title}</h1>}
             {title && smallFontSize && <h2>{title}</h2>}
-            {text && <p>{text}</p>}
-            {btnTitle && url && <Button url={url}>{btnTitle}</Button>}
+            <p className={'textDescription'}>{text}</p>
+            {btnTitle && <Button url={url}>{btnTitle}</Button>}
           </div>
         </div>
       </div>

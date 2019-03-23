@@ -47,8 +47,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
           <div className={'productComponents'}>
             <div className="container">
               {title && <h2>{title}</h2>}
-              {description && 
-                <p className={'productComponents__title'}>{description}</p>}
+              {description && <p className={'textDescription'}>{description}</p>}
       
               <Default>
                 <div className={'productComponents__list row'}>
@@ -57,8 +56,8 @@ const ProductComponents = (props: ProductComponentsProps) => {
                       <div className={'productComponents__list__item'}>
                         <Media type={'image'} data={item.image} />
                         <div className={'productComponents__list__item__content'}>
-                          {item.title && <h5>{item.title}</h5>}
-                          {item.description && <p>{item.description}</p>}
+                          <h5>{item.title}</h5>
+                          <p>{item.description}</p>
                           <Link url={item.url && item.url.url}>More information</Link>
                         </div>
                       </div>

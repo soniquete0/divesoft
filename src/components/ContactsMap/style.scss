@@ -1,5 +1,13 @@
 @import './components/style.scss';
 
+.contactsMapWrapper {
+  position: relative;
+  width: 100%;
+  top: -30px;
+  @include max-md { top: 0; }
+  @include max-sm { top: 50px; }
+}
+
 .marker {
   border-style: solid;
 	border-left-width: 14px;
@@ -18,7 +26,6 @@
   width: 100%;
   display: block;
   position: relative;
-
   @include md { height: 510px; }
 
   &__rows {
@@ -26,6 +33,7 @@
       position: relative;
       bottom: -200px;
     }
+    @include max-sm { bottom: -240px; }
   }
 
   &__controls {

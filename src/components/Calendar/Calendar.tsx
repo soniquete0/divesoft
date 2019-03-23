@@ -142,6 +142,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         <div className="container">
           <div className="row">
             <div className="col-12 col-md-3">
+              <span className={'calendar__controls__selectLabel'}>
+                Select date:
+              </span>
               <div className={'select'}>
                 <select>
                   <option>Date</option>
@@ -149,6 +152,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               </div>
             </div>
             <div className="col-12 col-md-3">
+              <span className={'calendar__controls__selectLabel'}>
+                Search keyword:
+              </span>
               <div className={'select'}>
                 <select>
                   <option>Keywords</option>
@@ -156,6 +162,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               </div>
             </div>
             <div className="col-12 col-md-3">
+              <span className={'calendar__controls__selectLabel'}>
+                Select country:
+              </span>
               <div className={'select'}>
                 <select>
                   <option>Country</option>

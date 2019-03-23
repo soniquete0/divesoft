@@ -36,7 +36,7 @@ var Carousel = /** @class */ (function (_super) {
         }
         var result = [];
         data.map(function (slide, i) {
-            result.push(React.createElement("div", { className: 'carousel__images__img' },
+            result.push(React.createElement("div", { key: i, className: 'carousel__images__img' },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: "carousel__images__img__content " + (slide.isCentred ? 'center' : '') },
                         slide.subTitle &&
@@ -55,7 +55,7 @@ var Carousel = /** @class */ (function (_super) {
         var _this = this;
         return (React.createElement(List, { data: this.state.slides }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 3000, slides: _this.renderSlides(data), wrapperClasses: 'sliderAtTop', autoplay: _this.state.slides.length <= 1 ? false : true, showDots: _this.state.slides.length <= 1 ? false : true, showArrows: _this.state.slides.length <= 1 ? false : true });
+            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), wrapperClasses: 'sliderAtTop', autoplay: _this.state.slides.length <= 1 ? false : true, showDots: _this.state.slides.length <= 1 ? false : true, showArrows: _this.state.slides.length <= 1 ? false : true });
         }));
     };
     return Carousel;

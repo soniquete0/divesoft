@@ -3,11 +3,11 @@
 
     p { @include max-lg { margin-bottom: 5px; } } 
     .mediaRatio { 
-      height: 800px;
+      height: 730px;
+      opacity: 1;
       @include max-lg { height: 700px; }
       @include max-md { height: 950px; }
-      @include max-sm { height: 1050px; }
-      @media (max-width: 375px) { height: 1125px; }
+      @media (max-width: 375px) { height: 1050px; }
     }
 
     .center {
@@ -25,7 +25,10 @@
       padding: 100px 0;
       @include max-md { padding: 40px 0; }
 
-      h2 { text-align: center; }
+      h2 {
+        text-align: center;
+        padding-bottom: 0;
+      }
 
       &__info {
         padding: 65px 0 0 0;
@@ -41,7 +44,8 @@
 
         &__description {
           color: #949494;
-          line-height: 23px;
+          line-height: 2.3rem;
+          padding-bottom: 3.4rem;
         }
 
         &:nth-child(2) {

@@ -48,7 +48,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
 
     data.map((slide, i) => {
       result.push(
-        <div className={'carousel__images__img'}>
+        <div key={i} className={'carousel__images__img'}>
           <div className={'container'}>
             <div className={`carousel__images__img__content ${slide.isCentred ? 'center' : ''}`}>
               {slide.subTitle && 
@@ -88,7 +88,7 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
       <List data={this.state.slides}>
         {({ data }) => 
           <Slider 
-            delay={3000}
+            delay={10000}
             slides={this.renderSlides(data)}
             wrapperClasses={'sliderAtTop'}
             autoplay={this.state.slides.length <= 1 ? false : true} 

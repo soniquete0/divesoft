@@ -1,17 +1,10 @@
 body {
-  font-size: 16px;
+  font-size: 1.6rem; // 16px after reset.scss
   background-color: white;
-  font-family: 'Corridor';
-  font-weight: 400;
+  font-family: $corridor;
+  font-weight: 200;
   color: $darkGrey;
   line-height: 1.15;
-  padding: 0;
-  margin: 0;
-}
-
-ul, ol {
-  padding-left: 2em;
-  line-height: 1.4;
 }
 
 .topWrapper {

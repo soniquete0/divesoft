@@ -7,7 +7,7 @@ var Downloads = function (props) {
     return (React.createElement("div", { className: 'downloads' },
         React.createElement("div", { className: "container" },
             title && React.createElement("h2", { className: 'downloads__title' }, title),
-            description && React.createElement("p", { className: 'downloads__description' }, description),
+            description && React.createElement("p", { className: 'textDescription' }, description),
             React.createElement("div", { className: "downloads__list row" },
                 React.createElement(List, { data: files }, function (_a) {
                     var data = _a.data;

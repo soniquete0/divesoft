@@ -1,31 +1,24 @@
 .product-previews {
   padding: 90px 0 100px 0;
-
-  @include max-md {
-    padding: 35px 0 45px 0;
-  }
-
-  .btn { width: 180px; }
+  @include max-md { padding: 35px 0 45px 0; }
 
   &__top {
     text-align: center;
     padding-bottom: 40px;
+    @include max-md { padding-bottom: 0; }
     
+    h3 {
+      padding-bottom: 2.5rem;
+      @include max-md { font-size: 2.4rem; }
+    }
     p {
-      font-size: 1.5rem;
-      color: $lightGrey;
-      margin: 0;
       padding: 0;
-
-      @include max-md {
-        font-size: 1rem;
-      }
+      @include max-md { display: none; }
     }
   }
 
-  .col {
-    padding: 0;
-  }
+  .btn { width: 180px; }
+  .col { padding: 0; }
 
   @include max-lg {
     .row {
@@ -45,14 +38,9 @@
     height: 500px;
     position: relative;
     background-size: cover;
-
-    @include max-lg {
-      height: 300px;
-    }
-
-    @include max-md {
-      height: 250px;
-    }
+    @include max-lg { height: 300px; }
+    @include max-md { height: 250px; }
+    &:hover { color: $darkGrey; }
 
     &__content {
       width: 65%;
@@ -61,40 +49,22 @@
       left: 30px;
     }
 
-    &__description {
-      font-size: 1.1rem;
-      color: #242424;
+    h2 { text-transform: unset; }
+    &__description { 
+      font-weight: 400;
+      font-size: 1.8rem;
       padding: 0;
-      margin: 0;
+      color: #242424;
+      text-transform: uppercase;
+      @include max-md { font-size: 1.6rem; }
     }
-
     &__title {
       color: #242424;
-
-      @include max-lg {
-        font-size: 1.5rem;
-      }
-
       @include max-md {
-        font-size: 1.25rem;
+        font-size: 2rem;
       }
     }
-
-    &:hover {
-      color: $darkGrey;
-    }
-
-    &--small {
-      height: 250px;
-
-      &__title {
-        font-size: 1.5rem;
-
-        @include max-md {
-          font-size: 1.25rem;
-        }
-      }
-    }
+    &--small { height: 250px; }
 
     &__divider {
       width: 50px;

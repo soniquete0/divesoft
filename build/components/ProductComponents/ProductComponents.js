@@ -32,15 +32,14 @@ var ProductComponents = function (props) {
         return (React.createElement("div", { className: 'productComponents' },
             React.createElement("div", { className: "container" },
                 title && React.createElement("h2", null, title),
-                description &&
-                    React.createElement("p", { className: 'productComponents__title' }, description),
+                description && React.createElement("p", { className: 'textDescription' }, description),
                 React.createElement(Default, null,
                     React.createElement("div", { className: 'productComponents__list row' }, data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-6 col-lg-4" },
                         React.createElement("div", { className: 'productComponents__list__item' },
                             React.createElement(Media, { type: 'image', data: item.image }),
                             React.createElement("div", { className: 'productComponents__list__item__content' },
-                                item.title && React.createElement("h5", null, item.title),
-                                item.description && React.createElement("p", null, item.description),
+                                React.createElement("h5", null, item.title),
+                                React.createElement("p", null, item.description),
                                 React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); }))),
                 React.createElement(Mobile, null,
                     React.createElement(Slider, { isFullWidth: false, delay: 7000, slides: mobileViews, showArrows: true })))));

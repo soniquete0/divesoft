@@ -1,6 +1,5 @@
 .aboutLeftPicture {
   padding: 80px 0;
-
   @include max-md { padding: 40px 0; }
 
   .col-12 {
@@ -22,7 +21,6 @@
 
     h2 {
       position: relative;
-      @include max-sm { font-size: 1.9rem; }
 
       &:before {
         content: ' ';
@@ -44,14 +42,15 @@
       }
     }
 
-    h4 {
-      color: $lightGrey;
-      @include max-sm { font-size: 1.125rem; }
-    }
+    h4 { color: $lightGrey; }
 
     p {
       color: $lightGrey;
-      line-height: 30px;
+      line-height: 3rem;
+      @include max-md { 
+        line-height: 2.7rem;
+        padding-bottom: 3rem;
+      }
     }
   }
 
@@ -63,6 +62,9 @@
     min-width: 450px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 
+    @include max-md {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
     @include max-sm {
       min-width: 280px;
       min-height: 280px;

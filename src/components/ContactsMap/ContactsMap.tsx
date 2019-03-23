@@ -252,7 +252,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
       <List data={mapItems}>
         {({ data }) => (
           <>
-            <div style={{ width: '100%', position: 'relative' }}>
+            <div className={'contactsMapWrapper'}>
               {title ? <h2 style={{ paddingBottom: '30px', textAlign: 'center' }}>{title}</h2> : ''}
               
               <section className={'map'}>

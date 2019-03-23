@@ -4,33 +4,10 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  @include max-md { padding: 60px 0; }
+  @include max-sm { padding: 40px 0; }
 
-  @include max-md {
-    padding: 60px 0;
-    h1 { font-size: 2.25rem; }
-  }
-
-  @include max-sm {
-    padding: 40px 0;
-    h1 { font-size: 1.9rem; }
-  }
-
-  &__content {
-    text-align: center;
-
-    p {
-      font-size: 1.5rem;
-      color: $lightGrey;
-
-      @include max-md {
-        font-size: 1.25rem;
-      }
-
-      @include max-sm {
-        font-size: 1rem;
-      }
-    }
-  }
+  &__content { text-align: center; }
 
   .btn {
     max-width: 300px;

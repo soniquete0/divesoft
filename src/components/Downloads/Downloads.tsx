@@ -26,7 +26,7 @@ const Downloads = (props: DownloadsProps) => {
     <div className={'downloads'}>
       <div className="container">
         {title && <h2 className={'downloads__title'}>{title}</h2>}
-        {description && <p className={'downloads__description'}>{description}</p>}
+        {description && <p className={'textDescription'}>{description}</p>}
         <div className="downloads__list row">
           <List data={files}>
             {({ data }) => data.map((item, i) => (

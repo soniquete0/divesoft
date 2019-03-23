@@ -69,13 +69,8 @@
       background-color: white;
       cursor: pointer;
 
-      &--active {
-        background-color: $red;
-      }
-    
-      &:not(:last-child()) {
-        margin-right: 15px;
-      }
+      &--active { background-color: $red; }
+      &:not(:last-child()) { margin-right: 15px; }
     }
   }
 }

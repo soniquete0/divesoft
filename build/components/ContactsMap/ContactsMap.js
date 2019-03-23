@@ -173,7 +173,7 @@ var ContactsMap = /** @class */ (function (_super) {
         return (React.createElement(List, { data: mapItems }, function (_a) {
             var data = _a.data;
             return (React.createElement(React.Fragment, null,
-                React.createElement("div", { style: { width: '100%', position: 'relative' } },
+                React.createElement("div", { className: 'contactsMapWrapper' },
                     title ? React.createElement("h2", { style: { paddingBottom: '30px', textAlign: 'center' } }, title) : '',
                     React.createElement("section", { className: 'map' },
                         _this.renderControls(),

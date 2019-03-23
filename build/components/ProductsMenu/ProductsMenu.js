@@ -7,7 +7,7 @@ var ProductsMenu = function (props) {
         React.createElement("div", { className: "container" },
             React.createElement("div", { className: 'product-previews__top' },
                 title && React.createElement("h3", null, title),
-                subTitle && React.createElement("p", null, subTitle)),
+                subTitle && React.createElement("p", { className: 'textDescription' }, subTitle)),
             React.createElement("div", { className: 'product-preview__list row' },
                 React.createElement("div", { className: "col" }, products.length >= 1 && products[0] &&
                     React.createElement("div", { key: '1', className: 'product-previews__item', style: products[0].image ?

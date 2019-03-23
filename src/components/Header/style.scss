@@ -12,10 +12,7 @@
   &__wrapper {
     padding: 15px 0;
     position: relative;
-
-    @include sm {
-      padding: 35px 0;
-    }
+    @include sm { padding: 35px 0; }
   }
 
   &__select {
@@ -28,17 +25,12 @@
       border: none;
       background: transparent;
       color: $lightGrey;
-      font-size: 15px;
+      font-size: 1.5rem;
       width: 75px;
     }
 
-    @media (min-width: 1350px) {
-      right: -10%;
-    }
-
-    @include max-sm {
-      top: 0;
-    }
+    @media (min-width: 1350px) { right: -10%; }
+    @include max-sm { top: 0; }
   }
 
   &__logo {
@@ -46,13 +38,13 @@
 
     img {
       height: 40px;
-
       @include sm { height: 50px; }
     }
   }
 
   nav {
     height: 20px;
+    @include max-xl { display: none; }
 
     ul {
       li {
@@ -62,6 +54,7 @@
 
         a {
           color: $darkGrey;
+          font-weight: 400;
           transition: $customEase;
 
           &:hover {
@@ -71,29 +64,20 @@
         }
       }
     }
-
-    @include max-xl {
-      display: none;
-    }
   }
 
   &__controls {
     height: 40px;
     width: 200px;
     
-    @include max-sm {
-      width: 50px;
-    }
+    @include max-sm { width: 50px; }
 
     img {
       height: 20px;
       
       @include max-sm {
         margin-right: 0;
-
-        &:last-of-type {
-          display: none;
-        }
+        &:last-of-type { display: none; }
       }
     }
 
@@ -103,6 +87,7 @@
       width: 120px;
       border: none;
       outline: none;
+      font-weight: 400;
       padding-left: 20px;
       text-transform: uppercase;
       line-height: 40px;
@@ -138,13 +123,9 @@
     transform: translate3d(calc(100% + 100px), 0, 0);
     box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
   
-    @include md {
-      width: 100%;
-    }
+    @include md { width: 100%; }
   
-    &--active {
-      transform: translate3d(0, 0, 0);
-    }
+    &--active { transform: translate3d(0, 0, 0); }
   
     &__wrapper {
       padding: 100px 30px 50px 30px;
@@ -152,10 +133,7 @@
       max-height: 100%;
       display: grid;
       height: 100%;
-  
-      @include md {
-        padding: 150px 50px 50px 50px;
-      }
+      @include md { padding: 150px 50px 50px 50px; }
   
       &::-webkit-scrollbar {
         width: 8px;
@@ -167,9 +145,7 @@
         border-radius: 10px;
       }
   
-      &::-webkit-scrollbar-track {
-        background: #f8f8f8;
-      }
+      &::-webkit-scrollbar-track { background: #f8f8f8; }
   
       ul {
         @include reset-list;
@@ -180,10 +156,10 @@
           padding-bottom: 15px;
   
           a {
+            font-size: 2.6rem;
             color: $darkGrey;
-            font-size: 1.2rem;
+            font-weight: 400;
             text-transform: uppercase;
-
             &:hover { color: $red; }
           }
         }

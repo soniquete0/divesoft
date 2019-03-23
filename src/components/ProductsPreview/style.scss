@@ -21,8 +21,8 @@
 
       .mediaRatio {
         padding: 0 !important;
-        width: 250px;
-        height: 250px;
+        width: 235px;
+        height: 235px;
         margin: 0 auto;
       }
 
@@ -32,10 +32,16 @@
         margin: 0 auto;
       }
 
-      h5 { padding-top: 20px; }
+      h5 {
+        padding: 2rem 0 1rem 0;
+        @include max-md {
+          font-size: 2rem;
+        }
+      }
       p {
-        margin: 0;
-        color: $lightGrey;
+        font-weight: 400;
+        color: #5c5c5c;
+        padding-bottom: 2rem;
       }
     }
   }

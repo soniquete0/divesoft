@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 interface NewsOrEvent {
     img: LooseObject;
     day: string;
@@ -16,12 +16,12 @@ export interface NewsAndEventsProps {
     };
 }
 export interface NewsAndEventsState {
-    items: Array<any>;
+    items: any;
     expanded: boolean;
 }
 declare class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsState> {
     constructor(props: NewsAndEventsProps);
-    componentDidMount: () => void;
+    componentWillReceiveProps: (nextProps: any) => void;
     render(): JSX.Element;
 }
 export default NewsAndEvents;

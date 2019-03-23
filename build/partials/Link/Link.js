@@ -67,6 +67,9 @@ var ComposerLink = function (props) {
         if (pagesUrls) {
             pageUrlObj = pagesUrls.find(function (u) { return u.page === pageId || u.url === url; });
         }
+        if (!pageUrlObj && !isExternalLink(url)) {
+            return '';
+        }
         if (isExternalLink(url) || args.forceHtml || urlNewWindow) {
             return (React.createElement("a", __assign({ href: (isExternalLink(url) && url) || (pageUrlObj && pageUrlObj.url) || '/404' }, args, { target: urlNewWindow ? '_blank' : '' }), children));
         }
