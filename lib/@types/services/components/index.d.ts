@@ -6,7 +6,7 @@ declare class ComponentsService {
     /***/
     getAllowedTypes(): string[];
     /***/
-    getComponent(type: string): ((props: import("../../components/Faq/Faq").FaqProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof Calendar | typeof AboutUsHome | typeof VideoGallery | typeof PhotoGallery | typeof NewsAndEvents | typeof GalleryAndVideo | typeof SpecialCarousel | React.ComponentClass<import("../../components/ContactsMap/ContactsMap").ContactsMapProps & import("react-geolocated").ExternalProps, any>;
+    getComponent(type: string): ((props: import("../../components/Faq/Faq").FaqProps) => JSX.Element) | typeof Header | typeof Footer | typeof Carousel | typeof Calendar | React.ComponentClass<import("../../components/ContactsMap/ContactsMap").ContactsMapProps & import("react-geolocated").ExternalProps, any> | typeof AboutUsHome | typeof VideoGallery | typeof PhotoGallery | typeof NewsAndEvents | typeof GalleryAndVideo | typeof SpecialCarousel | React.ComponentClass<import("../../components/ServicePointsMap/ServicePointsMap").ServicePointsMapProps & import("react-geolocated").ExternalProps, any>;
     /***/
     getComponentResource(type: string): typeof resources.faq;
     getForm(type: string): () => JSX.Element;

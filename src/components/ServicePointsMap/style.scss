@@ -1,0 +1,117 @@
+@import './components/style.scss';
+
+.servicePointsMapWrapper {
+  position: relative;
+  width: 100%;
+  
+  &__title {
+    color: $darkGrey;
+    padding: 6rem 0;
+    @include max-md { padding: 3rem 0; }
+  }
+}
+
+.marker {
+  border-style: solid;
+	border-left-width: 14px;
+  border-bottom-width: 14px;
+	border-color:   
+    $red
+    transparent
+    transparent
+		$red;
+	transform: rotate(45deg);
+  z-index: 200;
+}
+
+.map {
+  height: 400px;
+  width: 100%;
+  display: block;
+  position: relative;
+  @include md { height: 510px; }
+
+  &__rows {
+    @include max-md {
+      position: relative;
+      bottom: -200px;
+    }
+    @include max-sm { bottom: -240px; }
+  }
+
+  &__controls {
+    position: absolute;
+    z-index: 200;
+    width: 100%;
+    top: 40px;
+
+    @include max-md {
+      position: relative;
+      top: 0;
+
+      .select {
+        margin-bottom: 10px;
+        &:last-child { margin-bottom: 20px; }
+      }
+    }
+
+    /* Reset Select */
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      appearance: none;
+      outline: 0;
+      box-shadow: none;
+      border: 0 !important;
+      background: #fff;
+      background-image: none;
+    }
+
+    /* Custom Select */
+    .select {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      background: #fff;
+      overflow: hidden;
+      border: 3px solid #e7e7e7 !important;
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 15px;
+        height: 8px;
+        width: 8px;
+        border: 1px solid $lightGrey;
+        border-width: 1px 1px 0 0;
+        transform: rotate(135deg);
+      }
+    }
+
+    select {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 0 0 15px;
+      color: $darkGrey;
+      cursor: pointer;
+    }
+    
+    select::-ms-expand {
+      display: none;
+    }
+
+    /* Transition */
+    // .select:hover::after { color: $red; }
+    .select::after {
+      -webkit-transition: .25s all ease;
+      -o-transition: .25s all ease;
+      transition: .25s all ease;
+    }
+  }
+}

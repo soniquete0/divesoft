@@ -15,6 +15,7 @@ import {
   Downloads,
   AboutUsHome,
   ListOfLinks,
+  ContactsMap,
   VideoGallery,
   PhotoGallery,
   ProductsMenu,
@@ -25,9 +26,9 @@ import {
   GalleryAndVideo,
   SpecialCarousel,
   AboutLeftPicture,
+  ServicePointsMap,
   AboutRightPicture,
   ProductComponents,
-  ContactsMap,
 } from '../../components';
 
 import * as resources from './resources';
@@ -46,6 +47,7 @@ class ComponentsService {
     DOWNLOADS: 'Downloads',
     ABOUTUSHOME: 'AboutUsHome',
     LISTOFLINKS: 'ListOfLinks',
+    CONTACTSMAP: 'ContactsMap',
     VIDEOGALLERY: 'VideoGallery',
     PHOTOGALLERY: 'PhotoGallery',
     PRODUCTSMENU: 'ProductsMenu',
@@ -55,10 +57,10 @@ class ComponentsService {
     PRODUCTSPREVIEW: 'ProductsPreview',
     GALLERYANDVIDEO: 'GalleryAndVideo',
     SPECIALCAROUSEL: 'SpecialCarousel',
+    SERVIEPOINTSMAP: 'ServicePointsMap',
     ABOUTLEFTPICTURE: 'AboutLeftPicture',
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
     PRODUCTCOMPONENTS: 'ProductComponents',
-    CONTACTSMAP: 'ContactsMap',
   };
 
   /***/
@@ -114,6 +116,8 @@ class ComponentsService {
         return ProductsPreview;
       case this.Types.SPECIALCAROUSEL:
         return SpecialCarousel;
+      case this.Types.SERVIEPOINTSMAP:
+        return ServicePointsMap;
       case this.Types.ABOUTLEFTPICTURE:
         return AboutLeftPicture;
       case this.Types.ABOUTRIGHTPICTURE: 

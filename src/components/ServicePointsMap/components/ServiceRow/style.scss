@@ -1,0 +1,108 @@
+.serviceRow {
+
+  &__text {
+    padding: 6rem 0;
+    color: #5c5c5c;
+    line-height: 3.2rem;
+    
+    @include max-md { 
+      padding: 3rem 0;
+      line-height: 2rem;
+    }
+  }
+
+  &__list {
+    position: relative;
+    padding: 5rem 0 3rem 0;
+    
+    &__title { @include max-md { font-size: 2.4rem; } }
+
+    h5 {
+      padding-bottom: 1.6rem;
+      @include max-md { font-size: 2rem; }
+    }
+    
+    &__contacts {
+      color: #5c5c5c;
+      p { padding-bottom: 1rem; }
+      a {
+        font-weight: 200;
+        color: $red;
+        &:hover { text-decoration: underline; }
+      }
+    }
+    
+    &::before {
+      background-color: #e8e8e8;
+      position: absolute;
+      display: block;
+      content: '';
+      height: 1px;
+      width: 100%;
+      top: 0;
+    }
+
+    &__divider {
+      background-color: #e8e8e8;
+      position: relative;
+      display: block;
+      margin: 25px 0;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+    }
+
+    &__show {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      right: 15px;
+      top: 0;
+
+      &::after {
+        background-color: $red;
+        width: 16px;
+        height: 2px;
+        position: absolute;
+        top: 11px;
+        left: 0;
+        content: "";
+      }
+      
+      &::before {
+        background-color: $red;
+        width: 2px;
+        height: 16px;
+        position: absolute;
+        top: 4px;
+        left: 7px;
+        content: "";
+      }
+
+      &--minus { &::before { display: none; } }
+
+      .col-12 {
+        &:last-of-type {
+          .row {
+            &:last-of-type {
+              .col-12 {
+                .faq__list__divider {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &__item {
+      width: 85%;
+
+      p { 
+        color: #5c5c5c;
+
+      }
+    }
+  }
+}

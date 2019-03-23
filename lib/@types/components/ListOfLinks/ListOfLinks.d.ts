@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
 interface Link {
     title: string;
     url: LooseObject;

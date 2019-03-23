@@ -7,6 +7,7 @@ import List from '../List';
 import Marker from './components/Marker';
 import MapStyles from './components/MapStyles';
 import ContactRow from './components/ContactRow';
+
 interface MapItem {
   city: string;
   association: string;

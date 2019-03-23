@@ -9,6 +9,7 @@ import * as carousel from './carousel.json';
 import * as calendar from './calendar.json';
 import * as firmwares from './firmwares.json';
 import * as downloads from './downloads.json';
+import * as contactsmap from './contactsmap.json';
 import * as aboutushome from './aboutushome.json';
 import * as listoflinks from './listoflinks.json';
 import * as videogallery from './videogallery.json';
@@ -20,10 +21,10 @@ import * as contactcolumns from './contactcolumns.json';
 import * as productspreview from './productspreview.json';
 import * as galleryandvideo from './galleryandvideo.json';
 import * as specialcarousel from './specialcarousel.json';
+import * as servicepointsmap from './servicepointsmap.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
-import * as contactsmap from './contactsmap.json';
 
 export {
   def as default,
@@ -37,6 +38,7 @@ export {
   calendar,
   firmwares,
   downloads,
+  contactsmap,
   aboutushome,
   listoflinks,
   videogallery,
@@ -48,8 +50,8 @@ export {
   productspreview,
   galleryandvideo,
   specialcarousel,
+  servicepointsmap,
   aboutleftpicture,
   aboutrightpicture,
   productcomponents,
-  contactsmap,
 };

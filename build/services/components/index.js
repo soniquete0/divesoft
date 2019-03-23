@@ -11,7 +11,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, AboutRightPicture, ProductComponents, ContactsMap, } from '../../components';
+import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, ContactsMap, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, ServicePointsMap, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
@@ -28,6 +28,7 @@ var ComponentsService = /** @class */ (function () {
             DOWNLOADS: 'Downloads',
             ABOUTUSHOME: 'AboutUsHome',
             LISTOFLINKS: 'ListOfLinks',
+            CONTACTSMAP: 'ContactsMap',
             VIDEOGALLERY: 'VideoGallery',
             PHOTOGALLERY: 'PhotoGallery',
             PRODUCTSMENU: 'ProductsMenu',
@@ -37,10 +38,10 @@ var ComponentsService = /** @class */ (function () {
             PRODUCTSPREVIEW: 'ProductsPreview',
             GALLERYANDVIDEO: 'GalleryAndVideo',
             SPECIALCAROUSEL: 'SpecialCarousel',
+            SERVIEPOINTSMAP: 'ServicePointsMap',
             ABOUTLEFTPICTURE: 'AboutLeftPicture',
             ABOUTRIGHTPICTURE: 'AboutRightPicture',
             PRODUCTCOMPONENTS: 'ProductComponents',
-            CONTACTSMAP: 'ContactsMap',
         };
     }
     /***/
@@ -96,6 +97,8 @@ var ComponentsService = /** @class */ (function () {
                 return ProductsPreview;
             case this.Types.SPECIALCAROUSEL:
                 return SpecialCarousel;
+            case this.Types.SERVIEPOINTSMAP:
+                return ServicePointsMap;
             case this.Types.ABOUTLEFTPICTURE:
                 return AboutLeftPicture;
             case this.Types.ABOUTRIGHTPICTURE:

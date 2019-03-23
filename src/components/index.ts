@@ -9,6 +9,7 @@ import Carousel from './Carousel';
 import Calendar from './Calendar';
 import Firmwares from './Firmwares';
 import Downloads from './Downloads';
+import ContactsMap from './ContactsMap';
 import AboutUsHome from './AboutUsHome';
 import ListOfLinks from './ListOfLinks';
 import VideoGallery from './VideoGallery';
@@ -21,9 +22,9 @@ import GalleryAndVideo from './GalleryAndVideo';
 import ProductsPreview from './ProductsPreview';
 import SpecialCarousel from './SpecialCarousel';
 import AboutLeftPicture from './AboutLeftPicture';
+import ServicePointsMap from './ServicePointsMap';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
-import ContactsMap from './ContactsMap';
 
 export {
   AlertNotFound,
@@ -39,6 +40,7 @@ export {
   Downloads,
   AboutUsHome,
   ListOfLinks,
+  ContactsMap,
   VideoGallery,
   PhotoGallery,
   ProductsMenu,
@@ -49,7 +51,7 @@ export {
   ProductsPreview,
   SpecialCarousel,
   AboutLeftPicture,
+  ServicePointsMap,
   AboutRightPicture,
   ProductComponents,
-  ContactsMap,
 };
