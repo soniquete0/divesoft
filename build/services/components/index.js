@@ -11,13 +11,12 @@ var __assign = (this && this.__assign) || function () {
 };
 import * as React from 'react';
 import { isObjectLike } from 'lodash';
-import { AlertNotFound, Faq, Map, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, ContactsMap, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, ServicePointsMap, AboutRightPicture, ProductComponents, } from '../../components';
+import { AlertNotFound, Faq, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, ContactsMap, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, ServicePointsMap, AboutRightPicture, ProductComponents, } from '../../components';
 import * as resources from './resources';
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
         this.Types = {
             FAQ: 'Faq',
-            MAP: 'Map',
             NEWS: 'News',
             HERO: 'Hero',
             HEADER: 'Header',
@@ -57,8 +56,6 @@ var ComponentsService = /** @class */ (function () {
         switch (type) {
             case this.Types.FAQ:
                 return Faq;
-            case this.Types.MAP:
-                return Map;
             case this.Types.NEWS:
                 return News;
             case this.Types.HERO:

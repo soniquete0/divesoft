@@ -1,9 +1,15 @@
+@import './Map/style.scss';
+
 .calendar {
   width: 100%;
   display: block;
   position: relative;
   padding-bottom: 100px;
   @include max-md { padding-bottom: 50px; }
+
+  &__container {
+    @include max-md { max-width: 100%; }
+  }
 
   &__controls {
     width: 100%;
@@ -27,6 +33,7 @@
       margin: 0 auto;
       position: relative;
       bottom: -23px;
+      font-weight: 400;
 
       @include max-md { bottom: -26px; }
       @include max-sm { width: 260px; }
@@ -177,11 +184,14 @@
 
   &__days {
     color: $darkGrey;
-    font-size: 1rem;
-    padding: 20px 0 !important;
+    font-weight: 400;
+    padding: 2rem 0 !important;
     background-color: #f1f1f2;
   }
 
+
+  
+  /* DESKTOP CELLS */
   &__body {
     border: 1px solid #eaeaea;
 
@@ -280,6 +290,120 @@
       width: calc(100% / 7);
     }
   }
+
+  /* MOBILE ROWS */
+  &__mobileBody {
+    border: 1px solid #eaeaea;
+
+    &__week {
+      border-bottom: 1px solid #eaeaea;
+
+      .col-10 { padding-left: 0; }
+      .col-2 {
+        background-color: #f1f1f2;
+        padding: 0 .5rem;
+
+        p {
+          font-weight: 400;
+          color: $darkGrey;
+          line-height: 5rem;
+          text-align: center;
+          padding: 0;
+        }
+      }
+    }
+
+    &:hover {
+      background: #fafafa;
+      transition: 0.5s ease-out;
+
+      .bg, .calendar .body .selected .bg  {
+        opacity: 0.05;
+        transition: .5s ease-in;
+      }
+    }
+
+    .mobileCell {
+      height: 5rem;
+      cursor: pointer;
+      position: relative;      
+      background: transparent;
+      transition: 0.25s ease-out;
+      @include max-lg { padding: 0; }
+
+      &__number {
+        text-align: left;
+        font-size: 2rem;
+        line-height: 5rem;
+        font-weight: 400;
+        padding-left: 2rem;
+        color: #808080;
+      }
+
+      &__bg {
+        font-weight: 400;
+        line-height: 1;
+        color: $lightGrey;
+        opacity: 0;
+        position: absolute;
+        top: -.2em;
+        right: -.05em;
+        transition: .25s ease-out;
+        letter-spacing: -.07em;
+      }
+      
+      &__content {
+        display: inline-flex;
+        height: 5rem;
+        position: absolute;
+        padding: 0.5rem 0;
+        width: 100%;
+
+        p {
+          display: inline;
+          color: $darkGrey;
+          padding-top: .5rem;
+          text-align: left;
+          font-size: 1.5rem;
+          padding-left: 5.2rem;
+          max-width: 85%;
+        }
+
+        .btn {
+          display: inline;
+          color: $red;
+          font-size: 14px;
+          border: 2px solid $red;
+          background-color: transparent;
+          padding: 8px 10px;
+          margin: 0 auto;
+          max-height: 4rem;
+          max-width: 4rem;
+          position: absolute;
+          right: 0;
+          font-weight: 700;
+        }
+      }
+    }
+
+    .selected {
+      border-left: 8px solid transparent;
+      border-image: linear-gradient(45deg, $red 0%,#ff8585 40%);
+      border-image-slice: 1;
+    }
+
+    .row {
+      border-bottom: 1px solid #eaeaea;
+      &:last-child { border-bottom: none; }
+    }
+
+    .col {
+      flex-grow: 0;
+      flex-basis: calc(100% / 7) !important;
+      width: calc(100% / 7);
+    }
+  }
+
 
 
   /* GRID */

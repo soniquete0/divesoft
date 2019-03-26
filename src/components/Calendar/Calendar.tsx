@@ -1,25 +1,34 @@
 import React from 'react';
 import dateFns from 'date-fns';
-
-import Button from '@source/partials/Button';
-import MapComponent from '../Map/components/MapComponent';
+import Responsive from 'react-responsive';
+import MapComponent from './Map/components/MapComponent';
 
 export interface CalendarState {
   currentMonth: Date;
   selectedDate: Date;
   dates: Array<MyFormatOfDate>;
   switch: boolean;
+  mapCenter: {
+    lat: number;
+    lng: number;
+  };
+  countrySelectedValue: string;
+  keywordSelectedValue: string;
+  dateSelectedValue: string;
+  keywords: any;
+  countries: any;
+  uniqDates: any;
+  currentDate: string;
 }
 
-interface MyFormatOfDate {
+export interface MyFormatOfDate {
   date: string;
   text: string;
   url: LooseObject;
   country: string;
-  city: string;
-  association: string;
-  lat: number;
-  lng: number;
+  keyword: string;
+  lat: string;
+  lng: string;
 }
 
 export interface CalendarProps {
@@ -36,10 +45,100 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       switch: true,
       currentMonth: new Date(),
       selectedDate: new Date(),
-      dates: this.props.data.dates || []
+      dates: this.props.data.dates || [],
+      mapCenter: { 
+        lat: 50,
+        lng: 14 
+      },
+
+      countrySelectedValue: 'all',
+      keywordSelectedValue: 'all',
+      dateSelectedValue: 'all',
+      keywords: [],
+      countries: [],
+      uniqDates: [],
+      currentDate: 'all'
     };
   }
 
+  componentDidMount = () => this.getUniqControlProps();
+
+  getUniqControlProps() {
+    let uniqKeywords = [];
+    let uniqCountries = [];
+    let uniqFilterDates = [];
+
+    const { dates } = this.props.data;
+
+    const propsToArray = () => {
+      for (let i = 0; i < dates.length; i++) {
+        uniqCountries.push(dates[i].country);
+      }
+      for (let i = 0; i < dates.length; i++) {
+        uniqKeywords.push(dates[i].keyword);
+      }
+      for (let i = 0; i < dates.length; i++) {
+        uniqFilterDates.push(dates[i].date);
+      }
+    };
+
+    const uniqueArray = arr => Array.from(new Set(arr));
+    
+    propsToArray();
+    uniqKeywords = uniqueArray(uniqKeywords);
+    uniqCountries = uniqueArray(uniqCountries);
+    uniqFilterDates = uniqueArray(uniqFilterDates);
+    
+    return this.setState({
+      keywords: uniqKeywords,
+      countries: uniqCountries,
+      uniqDates: uniqFilterDates
+    });
+  }
+
+  defineLocation(loc: string, type: string) {
+    const { dates } = this.props.data;
+
+    for (let i = 0; i < dates.length; i++) {
+      if (dates[i][type] === loc) {
+        switch (type) {
+          case 'country':
+            this.setState({
+              keywordSelectedValue: dates[i].keyword,
+              dateSelectedValue: dates[i].date,
+              currentDate: dates[i].date
+            });
+            break;
+          case 'keyword':
+            this.setState({
+              countrySelectedValue: dates[i].country,
+              dateSelectedValue: dates[i].date,
+              currentDate: dates[i].date
+            });
+            break;
+          case 'filterDate':
+            this.setState({
+              countrySelectedValue: dates[i].country,
+              keywordSelectedValue: dates[i].keyword,
+              currentDate: dates[i].date
+            });
+            break;
+          
+          default: break;
+        }
+        
+        // this.renderRows();
+
+        return {
+          lat: parseFloat(dates[i].lat),
+          lng: parseFloat(dates[i].lng)
+        };
+      }
+    }
+
+  }
+
+  /* SELECT MOUNTH */
   renderHeader() {
     const dateFormat = 'MMMM YYYY';
 
@@ -58,10 +157,14 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     );
   }
   
+  /* DAYS OF THE WEEK */
   renderDays() {
     const dateFormat = 'dddd';
     const days = [];
     let startDate = dateFns.startOfWeek(this.state.currentMonth);
+
+    // const Mobile = props => <Responsive {...props} maxWidth={767} />;
+    // const Default = props => <Responsive {...props} minWidth={768} />;
 
     for (let i = 0; i < 7; i++) {
       days.push(
@@ -71,9 +174,16 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       );
     }
 
-    return <div className="calendar__days row">{days}</div>;
+    return (
+      <div className="calendar__days">
+        <div className="row">
+          {days}
+        </div>
+      </div>
+    );
   }
 
+  /* DESKTOP CELLS */
   renderCells() {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
@@ -112,7 +222,17 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 return (
                   <div className={'cell__content'} key={j}>
                     <p>{item.text}</p>
-                    <Button url={item.url}>See details</Button>
+                    <button 
+                      onClick={() => this.setState({
+                        mapCenter: {
+                          lat: parseFloat(item.lat),
+                          lng: parseFloat(item.lng),
+                        },
+                        switch: !this.state.switch
+                      })}
+                      className={'btn'}
+                    >See details
+                    </button>
                   </div>
                 ); }
             })}
@@ -133,10 +253,56 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       days = [];
     }
 
-    return <div className="calendar__body">{rows}</div>;
+    return  <div className="calendar__body">{rows}</div>;
   }
 
+  onSelectChange(event: React.FormEvent<HTMLSelectElement>, type?: string) {
+    var safeSearchTypeValue: string = event.currentTarget.value;
+
+    switch (type) {
+      case 'country':
+        this.setState({ countrySelectedValue: safeSearchTypeValue });
+        break;
+      case 'keyword':
+        this.setState({ keywordSelectedValue: safeSearchTypeValue });
+        break;
+      case 'date':
+        this.setState({ dateSelectedValue: safeSearchTypeValue });
+        break;
+
+      default: return;
+    }
+  }
+  
+  search = () => {
+    const { 
+      countrySelectedValue,
+      keywordSelectedValue,
+      dateSelectedValue,
+      dates
+    } = this.state;
+
+    dates.map((item, i) => {
+      if (
+        item.country === countrySelectedValue && countrySelectedValue !== 'all' ||
+        item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all' ||
+        item.date === dateSelectedValue && dateSelectedValue !== 'all'
+      ) {
+        return this.setState({ 
+          mapCenter: {
+            lat: parseFloat(item.lat),
+            lng: parseFloat(item.lng)
+          },
+          switch: false
+        });
+      }
+    });
+  }
+
+  /* FILTERS */
   renderControls () {
+    const { keywords, countries, uniqDates } = this.state;
+
     return (
       <div className={'calendar__controls'}>
         <div className="container">
@@ -146,8 +312,14 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 Select date:
               </span>
               <div className={'select'}>
-                <select>
-                  <option>Date</option>
+                <select
+                  onChange={e => this.onSelectChange(e, 'date')} 
+                  value={this.state.dateSelectedValue}
+                >
+                  <option value={'all'} key="all">Select date</option>
+                  {uniqDates && uniqDates.map((item, i) => (
+                    <option key={i} value={item}>{item}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -156,8 +328,14 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 Search keyword:
               </span>
               <div className={'select'}>
-                <select>
-                  <option>Keywords</option>
+                <select
+                  onChange={e => this.onSelectChange(e, 'keyword')} 
+                  value={this.state.keywordSelectedValue}
+                >
+                  <option value={'all'} key="all">Select keyword</option>
+                  {keywords && keywords.map((item, i) => (
+                    <option key={i} value={item}>{item}</option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -166,13 +344,24 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 Select country:
               </span>
               <div className={'select'}>
-                <select>
-                  <option>Country</option>
+                <select
+                  onChange={e => this.onSelectChange(e, 'country')} 
+                  value={this.state.countrySelectedValue}
+                >
+                  <option value={'all'} key="all">Select country</option>
+                  {countries && countries.map((item, i) => (
+                    <option key={i} value={item}>{item}</option>
+                  ))}
                 </select>
               </div>
             </div>
             <div className="col-12 col-md-3">
-            <Button>Search events</Button>
+            <button
+              className={'btn'}
+              onClick={() => this.search()}
+            >
+              Search events
+            </button>
             </div>
           </div>
           <div className={'calendar__controls__switch'}>
@@ -204,6 +393,99 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     );
   }
 
+  /* SELECT MOUNTH */
+  renderMobileView() {
+    const { currentMonth, selectedDate } = this.state;
+    const monthStart = dateFns.startOfMonth(currentMonth);
+    const monthEnd = dateFns.endOfMonth(monthStart);
+    const startDate = dateFns.startOfWeek(monthStart);
+    const endDate = dateFns.endOfWeek(monthEnd);
+
+    const dateFormat = 'D';
+    const resultView = [];
+
+    let rKey = 0;
+    let days = [];
+    let day = startDate;
+    let formattedDate = '';
+
+    const daysOfTheWeek = [
+      'Sun',
+      'Mon',
+      'Tue',
+      'Wed',
+      'Thu',
+      'Fri',
+      'Sat',
+    ];
+
+    const getDayofTheWeek = (key: number) => <p>{daysOfTheWeek[key]}</p>;
+    
+    while (day <= endDate) {
+
+      for (let i = 0; i < 7; i++) {
+        const cloneDay = day;
+        let myFormatOfDate = `${day.getDate()}.${day.getMonth() + 1}.${day.getFullYear()}`;
+        
+        formattedDate = dateFns.format(day, dateFormat);
+
+        if (dateFns.isSameMonth(day, monthStart)) {
+          days.push(
+            <div className={'row'}>
+              <div className="col-2">
+                {getDayofTheWeek(i)}
+              </div>
+              <div className="col-10">
+                <div
+                  className={`row mobileCell ${
+                    !dateFns.isSameMonth(day, monthStart)
+                      ? 'disabled'
+                      : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''
+                  }`}
+                  key={i}
+                  onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
+                >
+                  <span className="mobileCell__number">{formattedDate}</span>
+                  <span className="mobileCell__bg">{formattedDate}</span>
+                  {this.state.dates && this.state.dates.map((item, j) => {
+                    if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
+                      return (
+                        <div className={'mobileCell__content'} key={j}>
+                          <p>{item.text}</p>
+                          <button 
+                            onClick={() => this.setState({
+                              mapCenter: {
+                                lat: parseFloat(item.lat),
+                                lng: parseFloat(item.lng),
+                              },
+                              switch: !this.state.switch
+                            })}
+                            className={'btn'}
+                          >>
+                          </button>
+                        </div>
+                      ); }
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        day = dateFns.addDays(day, 1);
+      }
+      
+      resultView.push(
+        <div key={'col' + (++rKey).toString()} className={'calendar__mobileBody__week'}>
+          {days}
+        </div>
+      );
+      days = [];
+    }
+
+    return  <div className="calendar__mobileBody">{resultView}</div>;
+  }
+
   onDateClick = day => {
     this.setState({
       selectedDate: day
@@ -223,17 +505,30 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
   }
 
   public render () {
-    
+
+    const Mobile = props => <Responsive {...props} maxWidth={767} />;
+    const Default = props => <Responsive {...props} minWidth={768} />;
+
     return (
       <div className={'calendar'}>
         {this.renderControls()}
         {this.state.switch ? 
-          <div className="container">
+          <div className="container calendar__container">
             {this.renderHeader()}
-            {this.renderDays()}
-            {this.renderCells()}
+            <Default>
+              {this.renderDays()}
+              {this.renderCells()}
+            </Default>
+            <Mobile>
+              {this.renderMobileView()}
+              {this.renderHeader()}
+            </Mobile>
           </div> : 
-          <MapComponent controls={false} items={this.state.dates} />}
+          <MapComponent
+            controls={false}
+            items={this.state.dates} 
+            mapCenter={this.state.mapCenter}
+          />}
       </div>
     );
   }

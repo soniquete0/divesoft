@@ -1,6 +1,5 @@
 import * as def from './default.json';
 import * as faq from './faq.json';
-import * as map from './map.json';
 import * as news from './news.json';
 import * as hero from './hero.json';
 import * as header from './header.json';
@@ -29,7 +28,6 @@ import * as productcomponents from './productcomponents.json';
 export {
   def as default,
   faq,
-  map,
   news,
   hero,
   header,

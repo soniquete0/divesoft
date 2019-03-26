@@ -31,7 +31,9 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 import Loader from '@source/partials/Loader';
+import Button from '@source/partials/Button';
 import Hamburger from './components/Hamburger';
 // import Country from './components/Country/Country';
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
@@ -68,7 +70,11 @@ var Header = /** @class */ (function (_super) {
                 menuActive: !_this.state.menuActive,
             });
         };
-        _this.state = { menuActive: false };
+        _this.toggleDropdown = function () { return _this.setState({ showDropdown: !_this.state.showDropdown }); };
+        _this.state = {
+            menuActive: false,
+            showDropdown: false
+        };
         return _this;
     }
     Header.prototype.render = function () {
@@ -76,7 +82,11 @@ var Header = /** @class */ (function (_super) {
         this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
-            if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
+            if (!context.navigationsData ||
+                !context.languageData ||
+                !context.languagesData ||
+                !data ||
+                !data.pagesUrls) {
                 return React.createElement(Loader, null);
             }
             if (error) {
@@ -86,27 +96,43 @@ var Header = /** @class */ (function (_super) {
             var transformedNavigations = _this.transformNavigationsIntoTree(navigations, data.pagesUrls);
             var topNav = 'top';
             var topNavItems = transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
-            return (React.createElement("header", { className: "header", style: _this.state.menuActive ?
-                    { overflow: 'inherit' } :
-                    { overflow: 'hidden' } },
-                React.createElement("div", { className: "container" },
-                    React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
-                        React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
-                            React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
-                            React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
-                                    '' : context.websiteData.urlMask) + "/" + context.languageData.code },
-                                React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
-                        React.createElement("nav", null,
-                            React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
-                        React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
-                            React.createElement("img", { src: "/assets/divesoft/images/search.svg", alt: "search" }),
-                            React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account" }),
-                            React.createElement("button", null, "e-shop")))),
-                React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
-                    React.createElement("div", { className: 'hiddenMenu__wrapper' },
-                        React.createElement("ul", null, topNavItems &&
-                            topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))));
+            var products = _this.props.data.products;
+            return (React.createElement(React.Fragment, null,
+                React.createElement("header", { className: "header", style: _this.state.menuActive ?
+                        { overflow: 'inherit' } :
+                        { overflow: 'hidden' } },
+                    React.createElement("div", { className: "container" },
+                        React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
+                            React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
+                                React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
+                                React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
+                                        '' : context.websiteData.urlMask) + "/" + context.languageData.code },
+                                    React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
+                            React.createElement("nav", null,
+                                React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
+                                    return (React.createElement("li", { key: i, style: { position: 'relative' } },
+                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title),
+                                        navItem.name === 'products' ?
+                                            React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdownProducts__arrow' }) : '',
+                                        context.pageData.name === navItem.name ?
+                                            React.createElement("span", { className: 'header__activePage' }) : ''));
+                                }))),
+                            React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
+                                React.createElement("img", { src: "/assets/divesoft/images/search.png", alt: "search" }),
+                                React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
+                                React.createElement("button", null, "e-shop")))),
+                    React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
+                        React.createElement("div", { className: 'hiddenMenu__wrapper' },
+                            React.createElement("ul", null, topNavItems &&
+                                topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))),
+                _this.state.showDropdown ?
+                    React.createElement("div", { className: 'dropdownProducts' }, products && React.createElement("div", { className: "container" },
+                        React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },
+                            React.createElement("div", { className: 'productsPreview__list__item' },
+                                React.createElement(Media, { type: 'image', data: item.img }),
+                                item.title && React.createElement("h5", null, item.title),
+                                item.description && React.createElement("p", null, item.description),
+                                React.createElement(Button, { url: item.url }, "shop now")))); })))) : ''));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

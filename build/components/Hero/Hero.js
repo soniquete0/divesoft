@@ -9,7 +9,7 @@ var Hero = function (props) {
                 React.createElement("div", { className: 'hero__content' },
                     title && !smallFontSize && React.createElement("h1", null, title),
                     title && smallFontSize && React.createElement("h2", null, title),
-                    React.createElement("p", { className: 'textDescription' }, text),
+                    text && React.createElement("p", { className: 'textDescription' }, text),
                     btnTitle && React.createElement(Button, { url: url }, btnTitle))))));
 };
 export default Hero;

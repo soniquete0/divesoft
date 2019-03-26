@@ -5,42 +5,42 @@
       {
         "date": "28.2.2019",
         "text": "Tekdive USA 2019, Orlando, Florida",
-        "url": "",
         "country": "Czech republic",
-        "city": "Prague",
-        "association":"association",
+        "keyword": "Prague",
         "lat": "50.042957",
         "lng": "14.451078"
       },
       {
         "date": "8.3.2019",
         "text": "Tekdive USA 2019, Orlando, Florida",
-        "url": "",
         "country": "Czech republic",
-        "city": "Prague",
-        "association":"association",
+        "keyword": "Prague",
         "lat": "50.108288",
         "lng": "14.494519"
       },
       {
         "date": "20.3.2019",
         "text": "Tekdive USA 2019, Orlando, Florida",
-        "url": "",
         "country": "Czech republic1",
-        "city": "Prague1",
-        "association":"association1",
+        "keyword": "Prague1",
         "lat": "50.041",
         "lng": "14.429081"
       },
       {
         "date": "25.3.2019",
         "text": "Tekdive USA 2019, Orlando, Florida",
-        "url": "",
         "country": "Czech republic1",
-        "city": "Prague1",
-        "association":"association1",
+        "keyword": "Prague1",
         "lat": "50.107612",
         "lng": "14.443059"
+      },
+      {
+        "date": "28.3.2019",
+        "text": "National Building Museum",
+        "country": "USA",
+        "keyword": "Museum",
+        "lat": "38.898568",
+        "lng": "-77.017403"
       }
     ]
   },
@@ -61,21 +61,13 @@
                 "type": "text",
                 "title": "Text"
               },
-              "url": {
-                "type": "urlAutocomplete",
-                "title": "URL"
-              },
               "country": {
                 "type": "text",
                 "title": "Country"
               },
-              "city": {
+              "keyword": {
                 "type": "text",
-                "title": "City"
-              },
-              "association": {
-                "type": "text",
-                "title": "Association"
+                "title": "Keyword"
               },
               "lat": {
                 "type": "text",

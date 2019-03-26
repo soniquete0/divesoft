@@ -20,10 +20,16 @@
     &__img {
       position: relative;
 
-      h1 { line-height: 6rem; }
+      h1 {
+        line-height: 6rem;
+        @include max-md { line-height: 4rem; }
+      }
       h2 { 
         text-transform: none;
-        @include max-md {padding-bottom: 0;}
+        @include max-md {
+          padding-bottom: 0;
+          line-height: 3rem;
+        }
       }
       
       .center {

@@ -1,6 +1,5 @@
 import AlertNotFound from './AlertNotFound';
 import Faq from './Faq';
-import Map from './Map';
 import News from './News';
 import Hero from './Hero';
 import Header from './Header';
@@ -29,7 +28,6 @@ import ProductComponents from './ProductComponents';
 export {
   AlertNotFound,
   Faq,
-  Map,
   News,
   Hero,
   Header,

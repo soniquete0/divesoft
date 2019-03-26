@@ -1,14 +1,52 @@
 @import './components/Hamburger/style.scss';
 
-.header {
+.dropdownProducts {
+  top: 120px;
   width: 100%;
   z-index: 400;
+  position: fixed;
+  padding: 3rem 0;
+  background-color: white;
+  -webkit-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
+  @include max-xl { display: none; }
+
+  &__arrow {
+    position: absolute;
+    right: -15px;
+    top: 3px;
+    content: " ";
+    padding: 3px;
+    cursor: pointer;
+    border: solid $red;
+    display: inline-block;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    @include max-xl { display: none; }
+  }
+}
+
+.header {
+  width: 100%;
+  z-index: 401;
   position: fixed;
   background-color: #fff;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
 
+  &__activePage {
+    background-color: $red;
+    position: absolute;
+    height: 3px;
+    width: 100px;
+    bottom: -53px;
+    left: 0;
+    @include max-xl { display: none; }
+  }
+  
   &__wrapper {
     padding: 15px 0;
     position: relative;
@@ -73,11 +111,10 @@
     @include max-sm { width: 50px; }
 
     img {
-      height: 20px;
       
       @include max-sm {
         margin-right: 0;
-        &:last-of-type { display: none; }
+        &:first-of-type{ display: none; }
       }
     }
 
@@ -92,19 +129,17 @@
       text-transform: uppercase;
       line-height: 40px;
       background-color: $red;
-      background-size: 18px 18px;
       background-repeat: no-repeat;
       background-position: 15px center;
-      background-image: url('/assets/divesoft/images/bag.svg');
+      background-image: url('/assets/divesoft/images/bag.png');
 
       @include max-sm {
+        width: 20px;
         font-size: 1px;
         color: transparent;
-        width: 20px;
         background-color: transparent;
-        background-size: 18px 18px;
         background-position: center center;
-        background-image: url('/assets/divesoft/images/black-bag.svg');
+        background-image: url('/assets/divesoft/images/black-bag.png');
       }
     }
   }

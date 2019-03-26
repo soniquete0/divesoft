@@ -4,7 +4,6 @@ import { isObjectLike } from 'lodash';
 import {
   AlertNotFound,
   Faq,
-  Map,
   News,
   Hero,
   Header,
@@ -36,7 +35,6 @@ import * as resources from './resources';
 class ComponentsService {
   Types: LooseObject<string> = {
     FAQ: 'Faq',
-    MAP: 'Map',
     NEWS: 'News',
     HERO: 'Hero',
     HEADER: 'Header',
@@ -76,8 +74,6 @@ class ComponentsService {
     switch (type) {
       case this.Types.FAQ:
         return Faq;
-      case this.Types.MAP:
-        return Map;
       case this.Types.NEWS:
         return News;
       case this.Types.HERO:

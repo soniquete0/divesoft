@@ -4,7 +4,9 @@ import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 
 import Link from '@source/partials/Link';
+import Media from '@source/partials/Media';
 import Loader from '@source/partials/Loader';
+import Button from '@source/partials/Button';
 import Hamburger from './components/Hamburger';
 // import Country from './components/Country/Country';
 
@@ -46,7 +48,17 @@ const ComposedQuery = adopt({
   },
 });
 
+interface Product {
+  title: string;
+  description: string;
+  img: LooseObject;
+  url: LooseObject;
+}
+
 export interface HeaderProps {
+  data: {
+    products: Product[];
+  };
   navigations?: LooseObject;
   languages?: LooseObject;
   languageCode?: string;
@@ -54,12 +66,16 @@ export interface HeaderProps {
 
 export interface HeaderState {
   menuActive: boolean;
+  showDropdown: boolean;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
   constructor(props: HeaderProps) {
     super(props);
-    this.state = { menuActive: false };
+    this.state = {
+      menuActive: false,
+      showDropdown: false
+    };
   }
 
   closeMenu = () => {
@@ -74,19 +90,22 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     });
   }
 
+  toggleDropdown = () => this.setState({ showDropdown: !this.state.showDropdown });
+  
   public render() {
     this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
 
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
-          if (!context.navigationsData || !context.languageData || !context.languagesData || !data || !data.pagesUrls) {
-            return <Loader />;
-          }
+          if (!context.navigationsData || 
+              !context.languageData || 
+              !context.languagesData || 
+              !data || 
+              !data.pagesUrls) {
+            return <Loader />; }
 
-          if (error) {
-            return `Error...${error}`;
-          }
+          if (error) { return `Error...${error}`; }
 
           const {
             navigationsData: navigations,
@@ -100,64 +119,96 @@ class Header extends React.Component<HeaderProps, HeaderState> {
           const topNavItems =
             transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
           
-          return (
-            <header 
-              className={`header`}
-              style={
-                this.state.menuActive ? 
-                {overflow: 'inherit'} : 
-                {overflow: 'hidden'}
-              }
-            >
-              <div className="container">
-                <div 
-                  className={'header__wrapper d-flex justify-content-between align-items-center'} 
-                > 
-                  <div className={'header__logo d-flex justify-content-between align-items-center'}>
-                    <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
-                    <Link 
-                      url={`${context.websiteData.urlMask === '/' ? 
-                              '' : context.websiteData.urlMask}/${context.languageData.code}`}
-                    >
-                      <img src="/assets/divesoft/images/logo.svg" alt="logo" />
-                    </Link>
-                  </div>
-                  <nav>
-                    <ul>
-                    {topNavItems && topNavItems.map((navItem, i) => (
-                      <li key={i}>
-                        <Link {...navItem.url}>
-                          {navItem.name || navItem.title}
-                        </Link>
-                      </li>
-                    ))}
-                    </ul>
-                  </nav>
-                  <div className={'header__controls d-flex justify-content-between align-items-center'}>
-                    <img src="/assets/divesoft/images/search.svg" alt="search"/>
-                    <img src="/assets/divesoft/images/user.svg" alt="account"/>
-                    <button>e-shop</button>
-                  </div>
-                  {/* <Country /> */}
-                </div>
-              </div>
+          const { products } = this.props.data ;
 
-              <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
-                <div className={'hiddenMenu__wrapper'}>
-                  <ul>
-                    {topNavItems &&
-                      topNavItems.map((navItem, i) => (
-                        <li key={i}>
-                          {
-                            <Link {...navItem.url} onClick={() => this.closeMenu()}>
+          return (
+            <>
+              <header 
+                className={`header`}
+                style={
+                  this.state.menuActive ? 
+                  {overflow: 'inherit'} : 
+                  {overflow: 'hidden'}
+                }
+              >
+                <div className="container">
+                  <div 
+                    className={'header__wrapper d-flex justify-content-between align-items-center'} 
+                  > 
+                    <div className={'header__logo d-flex justify-content-between align-items-center'}>
+                      <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
+                      <Link 
+                        url={`${context.websiteData.urlMask === '/' ? 
+                                '' : context.websiteData.urlMask}/${context.languageData.code}`}
+                      >
+                        <img src="/assets/divesoft/images/logo.svg" alt="logo" />
+                      </Link>
+                    </div>
+                    <nav>
+                      <ul>
+                      {topNavItems && topNavItems.map((navItem, i) => {
+                        return (
+                          <li key={i} style={{ position: 'relative' }}>
+                            <Link {...navItem.url}>
                               {navItem.name || navItem.title}
-                            </Link>}
-                        </li>
-                      ))}
-                  </ul>
+                            </Link> 
+                            {navItem.name === 'products' ? 
+                              <span 
+                                onClick={() => this.toggleDropdown()}
+                                className={'dropdownProducts__arrow'} 
+                              /> : ''}
+                            {context.pageData.name === navItem.name ?
+                              <span className={'header__activePage'} /> : ''}
+                          </li>
+                        );
+                        })}
+                      </ul>
+                    </nav>
+                    <div className={'header__controls d-flex justify-content-between align-items-center'}>
+                      <img src="/assets/divesoft/images/search.png" alt="search"/>
+                      <img src="/assets/divesoft/images/user.png" alt="account"/>
+                      <button>e-shop</button>
+                    </div>
+                    {/* <Country /> */}
+                  </div>
                 </div>
-              </div>
-            </header>
+                
+                <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
+                  <div className={'hiddenMenu__wrapper'}>
+                    <ul>
+                      {topNavItems &&
+                        topNavItems.map((navItem, i) => (
+                          <li key={i}>
+                            {
+                              <Link {...navItem.url} onClick={() => this.closeMenu()}>
+                                {navItem.name || navItem.title}
+                              </Link>}
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                </div>
+              </header>
+
+              {this.state.showDropdown ? 
+                <div className={'dropdownProducts'}>
+                  {products && <div className="container">
+                    <div className="row productsPreview__list">
+                      {products.map((item, i) => (
+                        <div key={i} className={'col-12 col-lg-6 col-xl-3'}>
+                          <div className={'productsPreview__list__item'}>
+                            <Media type={'image'} data={item.img} />
+                            {item.title && <h5>{item.title}</h5>}
+                            {item.description && <p>{item.description}</p>}
+                            <Button url={item.url}>shop now</Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div> }
+                </div> : ''  
+              }
+            </>
           );
         }}
       </ComposedQuery>
