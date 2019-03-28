@@ -8,7 +8,8 @@
         "country": "Czech republic",
         "keyword": "Prague",
         "lat": "50.042957",
-        "lng": "14.451078"
+        "lng": "14.451078",
+        "url": ""
       },
       {
         "date": "8.3.2019",
@@ -16,7 +17,8 @@
         "country": "Czech republic",
         "keyword": "Prague",
         "lat": "50.108288",
-        "lng": "14.494519"
+        "lng": "14.494519",
+        "url": ""
       },
       {
         "date": "20.3.2019",
@@ -24,7 +26,8 @@
         "country": "Czech republic1",
         "keyword": "Prague1",
         "lat": "50.041",
-        "lng": "14.429081"
+        "lng": "14.429081",
+        "url": ""
       },
       {
         "date": "25.3.2019",
@@ -32,7 +35,8 @@
         "country": "Czech republic1",
         "keyword": "Prague1",
         "lat": "50.107612",
-        "lng": "14.443059"
+        "lng": "14.443059",
+        "url": ""
       },
       {
         "date": "28.3.2019",
@@ -40,7 +44,8 @@
         "country": "USA",
         "keyword": "Museum",
         "lat": "38.898568",
-        "lng": "-77.017403"
+        "lng": "-77.017403",
+        "url": ""
       }
     ]
   },
@@ -76,6 +81,10 @@
               "lng": {
                 "type": "text",
                 "title": "lng"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
               }
             }
           }

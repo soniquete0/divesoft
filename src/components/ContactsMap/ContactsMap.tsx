@@ -47,9 +47,9 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
     super(props);
 
     this.state = {
-      countrySelectedValue: '',
-      citySelectedValue: '',
-      associationSelectedValue: '',
+      countrySelectedValue: 'all',
+      citySelectedValue: 'all',
+      associationSelectedValue: 'all',
       mapCenter: { 
         lat: 50,
         lng: 14 
@@ -57,8 +57,17 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
       cities: [],
       countries: [],
       associations: [],
-      currentAssociation: 'all'
+      currentAssociation: 'all',
     };
+  }
+
+  resetFilters = () => {
+    this.setState({
+      countrySelectedValue: 'all',
+      citySelectedValue: 'all',
+      associationSelectedValue: 'all',
+      currentAssociation: 'all',
+    });
   }
 
   componentDidMount = () => this.getUniqControlProps();
@@ -170,41 +179,47 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
       <div className={'map__controls'}>
         <div className={'container'}>
           <div className="row">
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'country')} 
                   value={this.state.countrySelectedValue}
                 >
+                  <option value={'all'} key="all">Select country</option>
                   {countries && countries.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'city')} 
                   value={this.state.citySelectedValue}
                 >
+                  <option value={'all'} key="all">Select city</option>
                   {cities && cities.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'association')} 
                   value={this.state.associationSelectedValue}
                 >
+                   <option value={'all'} key="all">Select assoc.</option>
                   {associations && associations.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
+            </div>
+            <div className="col-12 col-md-3">
+              <button className={'btn'} onClick={() => this.resetFilters()}>reset filters</button>
             </div>
           </div>
         </div>
@@ -255,10 +270,8 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
           <>
             <div className={'contactsMapWrapper'}>
               {title ? <h2 style={{ paddingBottom: '30px', textAlign: 'center' }}>{title}</h2> : ''}
-              
+              {this.renderControls()}
               <section className={'map'}>
-                {this.renderControls()}
-
                 {mapItems && (
                   <GoogleMapReact
                     yesIWantToUseGoogleMapApiInternals={true}  

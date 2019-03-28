@@ -67,6 +67,7 @@ export interface HeaderProps {
 export interface HeaderState {
   menuActive: boolean;
   showDropdown: boolean;
+  showSearch: boolean;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -74,7 +75,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     super(props);
     this.state = {
       menuActive: false,
-      showDropdown: false
+      showDropdown: false,
+      showSearch: false
     };
   }
 
@@ -157,15 +159,28 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                                 onClick={() => this.toggleDropdown()}
                                 className={'dropdownProducts__arrow'} 
                               /> : ''}
-                            {context.pageData.name === navItem.name ?
-                              <span className={'header__activePage'} /> : ''}
+                            {/* {context.pageData.name === navItem.name ?
+                              <span className={'header__activePage'} /> : ''} */}
                           </li>
                         );
                         })}
                       </ul>
                     </nav>
                     <div className={'header__controls d-flex justify-content-between align-items-center'}>
-                      <img src="/assets/divesoft/images/search.png" alt="search"/>
+                      <img 
+                        onClick={() => this.setState({ showSearch: !this.state.showSearch })} 
+                        src="/assets/divesoft/images/search.png" 
+                        alt="search"
+                        style={{ cursor: 'pointer' }}
+                      />
+
+                      {this.state.showSearch ? 
+                        <div className={'header__controls__search'}>
+                          <div className="container">
+                            <input type="email" placeholder={'search'} />
+                          </div>
+                        </div> : ''}
+
                       <img src="/assets/divesoft/images/user.png" alt="account"/>
                       <button>e-shop</button>
                     </div>

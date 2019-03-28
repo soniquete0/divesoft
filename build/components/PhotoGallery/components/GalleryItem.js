@@ -18,7 +18,8 @@ var GalleryItem = /** @class */ (function (_super) {
     function GalleryItem(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            fullScreen: false
+            fullScreen: false,
+            lightboxIsOpen: false
         };
         return _this;
     }

@@ -7,6 +7,8 @@
   @include max-md { padding: 60px 0; }
   @include max-sm { padding: 40px 0; }
 
+  h1, h2 { padding-bottom: 0; }
+
   &__content { text-align: center; }
 
   .btn {

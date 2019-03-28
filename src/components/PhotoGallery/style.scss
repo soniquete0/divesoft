@@ -62,11 +62,14 @@
       top: 5% !important;
       left: 5% !important;
       overflow: unset !important;
-      z-index: 400;
+      z-index: 4000;
 
-      .inner {
-        z-index: 101;
+      @include max-md { 
+        height: 65% !important;
+        top: 20% !important;
       }
+
+      .inner { z-index: 101; }
 
       &:after {
         display: block;

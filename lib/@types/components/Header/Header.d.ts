@@ -16,6 +16,7 @@ export interface HeaderProps {
 export interface HeaderState {
     menuActive: boolean;
     showDropdown: boolean;
+    showSearch: boolean;
 }
 declare class Header extends React.Component<HeaderProps, HeaderState> {
     constructor(props: HeaderProps);

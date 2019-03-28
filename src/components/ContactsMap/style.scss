@@ -3,9 +3,7 @@
 .contactsMapWrapper {
   position: relative;
   width: 100%;
-  top: -30px;
-  @include max-md { top: 0; }
-  @include max-sm { top: 50px; }
+  @include max-sm { padding-top: 50px; }
 }
 
 .marker {
@@ -29,23 +27,25 @@
   @include md { height: 510px; }
 
   &__rows {
-    @include max-md {
-      position: relative;
-      bottom: -200px;
-    }
-    @include max-sm { bottom: -240px; }
+    padding-bottom: 30px;
+    bottom: 0 !important;
   }
 
   &__controls {
-    position: absolute;
     z-index: 200;
     width: 100%;
-    top: 40px;
+    position: relative !important;
+    margin-bottom: 30px !important;
+    top: 0 !important;
+
+    .btn {
+      width: 100%;
+      height: 44px;
+      line-height: 0;
+      @include max-lg { padding: 0; }
+    }
 
     @include max-md {
-      position: relative;
-      top: 0;
-
       .select {
         margin-bottom: 10px;
         &:last-child { margin-bottom: 20px; }
@@ -71,7 +71,7 @@
       display: block;
       width: 100%;
       height: 44px;
-      line-height: 44px;
+      line-height: 4rem !important;
       background: #fff;
       overflow: hidden;
       border: 3px solid #e7e7e7 !important;

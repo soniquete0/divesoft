@@ -2,6 +2,7 @@ import React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
 import MapComponent from './Map/components/MapComponent';
+import Button from '@source/partials/Button';
 
 export interface CalendarState {
   currentMonth: Date;
@@ -46,7 +47,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       currentMonth: new Date(),
       selectedDate: new Date(),
       dates: this.props.data.dates || [],
-      mapCenter: { 
+      mapCenter: {
         lat: 50,
         lng: 14 
       },
@@ -126,8 +127,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
           
           default: break;
         }
-        
-        // this.renderRows();
 
         return {
           lat: parseFloat(dates[i].lat),
@@ -162,9 +161,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     const dateFormat = 'dddd';
     const days = [];
     let startDate = dateFns.startOfWeek(this.state.currentMonth);
-
-    // const Mobile = props => <Responsive {...props} maxWidth={767} />;
-    // const Default = props => <Responsive {...props} minWidth={768} />;
 
     for (let i = 0; i < 7; i++) {
       days.push(
@@ -222,17 +218,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 return (
                   <div className={'cell__content'} key={j}>
                     <p>{item.text}</p>
-                    <button 
-                      onClick={() => this.setState({
-                        mapCenter: {
-                          lat: parseFloat(item.lat),
-                          lng: parseFloat(item.lng),
-                        },
-                        switch: !this.state.switch
-                      })}
-                      className={'btn'}
-                    >See details
-                    </button>
+                    <Button url={item.url}>See details</Button>
                   </div>
                 ); }
             })}
@@ -278,15 +264,13 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     const { 
       countrySelectedValue,
       keywordSelectedValue,
-      dateSelectedValue,
       dates
     } = this.state;
 
     dates.map((item, i) => {
       if (
         item.country === countrySelectedValue && countrySelectedValue !== 'all' ||
-        item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all' ||
-        item.date === dateSelectedValue && dateSelectedValue !== 'all'
+        item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all'
       ) {
         return this.setState({ 
           mapCenter: {
@@ -307,7 +291,8 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       <div className={'calendar__controls'}>
         <div className="container">
           <div className="row">
-            <div className="col-12 col-md-3">
+            
+            {/* <div className="col-12 col-md-3">
               <span className={'calendar__controls__selectLabel'}>
                 Select date:
               </span>
@@ -322,8 +307,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                   ))}
                 </select>
               </div>
-            </div>
-            <div className="col-12 col-md-3">
+            </div> */}
+
+            <div className="col-12 col-md-4">
               <span className={'calendar__controls__selectLabel'}>
                 Search keyword:
               </span>
@@ -339,7 +325,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-3">
+            <div className="col-12 col-md-4">
               <span className={'calendar__controls__selectLabel'}>
                 Select country:
               </span>
@@ -355,7 +341,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-3">
+            <div className="col-12 col-md-4">
             <button
               className={'btn'}
               onClick={() => this.search()}
@@ -452,17 +438,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                       return (
                         <div className={'mobileCell__content'} key={j}>
                           <p>{item.text}</p>
-                          <button 
-                            onClick={() => this.setState({
-                              mapCenter: {
-                                lat: parseFloat(item.lat),
-                                lng: parseFloat(item.lng),
-                              },
-                              switch: !this.state.switch
-                            })}
-                            className={'btn'}
-                          >>
-                          </button>
+                          <Button url={item.url}>></Button>
                         </div>
                       ); }
                   })}
@@ -505,12 +481,11 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
   }
 
   public render () {
-
     const Mobile = props => <Responsive {...props} maxWidth={767} />;
     const Default = props => <Responsive {...props} minWidth={768} />;
 
     return (
-      <div className={'calendar'}>
+      <div className={'calendar'} style={!this.state.switch ? { paddingBottom: 0 } : {}}>
         {this.renderControls()}
         {this.state.switch ? 
           <div className="container calendar__container">

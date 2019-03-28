@@ -49,9 +49,9 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     super(props);
 
     this.state = {
-      countrySelectedValue: '',
-      citySelectedValue: '',
-      serviceSelectedValue: '',
+      countrySelectedValue: 'all',
+      citySelectedValue: 'all',
+      serviceSelectedValue: 'all',
       mapCenter: { 
         lat: 50,
         lng: 14 
@@ -165,6 +165,15 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     }
   }
 
+  resetFilters = () => {
+    this.setState({
+      countrySelectedValue: 'all',
+      citySelectedValue: 'all',
+      serviceSelectedValue: 'all',
+      currentCountry: 'all',
+    });
+  }
+
   renderControls() {
     const { cities, countries, services } = this.state;
 
@@ -172,41 +181,47 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
       <div className={'map__controls'}>
         <div className={'container'}>
           <div className="row">
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'country')} 
                   value={this.state.countrySelectedValue}
                 >
+                  <option value={'all'} key="all">Select country</option>
                   {countries && countries.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'city')} 
                   value={this.state.citySelectedValue}
                 >
+                  <option value={'all'} key="all">Select city</option>
                   {cities && cities.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-4">
+            <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select 
                   onChange={e => this.onSelectChange(e, 'service')} 
                   value={this.state.serviceSelectedValue}
                 >
+                  <option value={'all'} key="all">Select service</option>
                   {services && services.map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
+            </div>
+            <div className="col-12 col-md-3">
+              <button className={'btn'} onClick={() => this.resetFilters()}>reset filters</button>
             </div>
           </div>
         </div>
@@ -265,10 +280,9 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
                 <div className="container">
                   <p className={'textDescription servicePointsMapWrapper__title'}>{title}</p>
                 </div> : ''}
-              
-              <section className={'map'}>
-                {this.renderControls()}
+              {this.renderControls()}
 
+              <section className={'map'}>
                 {mapItems && (
                   <GoogleMapReact
                     yesIWantToUseGoogleMapApiInternals={true}  

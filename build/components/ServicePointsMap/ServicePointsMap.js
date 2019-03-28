@@ -24,10 +24,18 @@ var ServicePointsMap = /** @class */ (function (_super) {
     function ServicePointsMap(props) {
         var _this = _super.call(this, props) || this;
         _this.componentDidMount = function () { return _this.getUniqControlProps(); };
+        _this.resetFilters = function () {
+            _this.setState({
+                countrySelectedValue: 'all',
+                citySelectedValue: 'all',
+                serviceSelectedValue: 'all',
+                currentCountry: 'all',
+            });
+        };
         _this.state = {
-            countrySelectedValue: '',
-            citySelectedValue: '',
-            serviceSelectedValue: '',
+            countrySelectedValue: 'all',
+            citySelectedValue: 'all',
+            serviceSelectedValue: 'all',
             mapCenter: {
                 lat: 50,
                 lng: 14
@@ -132,15 +140,23 @@ var ServicePointsMap = /** @class */ (function (_super) {
         return (React.createElement("div", { className: 'map__controls' },
             React.createElement("div", { className: 'container' },
                 React.createElement("div", { className: "row" },
-                    React.createElement("div", { className: "col-12 col-md-4" },
+                    React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'country'); }, value: this.state.countrySelectedValue }, countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
-                    React.createElement("div", { className: "col-12 col-md-4" },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'country'); }, value: this.state.countrySelectedValue },
+                                React.createElement("option", { value: 'all', key: "all" }, "Select country"),
+                                countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
+                    React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'city'); }, value: this.state.citySelectedValue }, cities && cities.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
-                    React.createElement("div", { className: "col-12 col-md-4" },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'city'); }, value: this.state.citySelectedValue },
+                                React.createElement("option", { value: 'all', key: "all" }, "Select city"),
+                                cities && cities.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
+                    React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'service'); }, value: this.state.serviceSelectedValue }, services && services.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); }))))))));
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'service'); }, value: this.state.serviceSelectedValue },
+                                React.createElement("option", { value: 'all', key: "all" }, "Select service"),
+                                services && services.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
+                    React.createElement("div", { className: "col-12 col-md-3" },
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
     };
     ServicePointsMap.prototype.renderRows = function () {
         var mapItems = this.props.data.mapItems;
@@ -182,12 +198,11 @@ var ServicePointsMap = /** @class */ (function (_super) {
                     title ?
                         React.createElement("div", { className: "container" },
                             React.createElement("p", { className: 'textDescription servicePointsMapWrapper__title' }, title)) : '',
-                    React.createElement("section", { className: 'map' },
-                        _this.renderControls(),
-                        mapItems && (React.createElement(GoogleMapReact, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
-                                scrollwheel: false,
-                                styles: MapStyles
-                            } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
+                    _this.renderControls(),
+                    React.createElement("section", { className: 'map' }, mapItems && (React.createElement(GoogleMapReact, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
+                            scrollwheel: false,
+                            styles: MapStyles
+                        } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
                 React.createElement("div", { className: 'map__rows' }, _this.renderRows())));
         }));
     };

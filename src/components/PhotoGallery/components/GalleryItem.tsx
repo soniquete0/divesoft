@@ -4,6 +4,7 @@ import Media from '@source/partials/Media';
 
 export interface GalleryItemState {
   fullScreen: boolean;
+  lightboxIsOpen: boolean;
 }
 
 export interface GalleryItemProps {
@@ -16,7 +17,8 @@ class GalleryItem extends React.Component<GalleryItemProps, GalleryItemState> {
     super(props);
 
     this.state = {
-      fullScreen: false
+      fullScreen: false,
+      lightboxIsOpen: false
     };
   }
 

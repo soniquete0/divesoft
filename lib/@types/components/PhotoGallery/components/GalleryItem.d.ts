@@ -1,6 +1,7 @@
 import React from 'react';
 export interface GalleryItemState {
     fullScreen: boolean;
+    lightboxIsOpen: boolean;
 }
 export interface GalleryItemProps {
     image: LooseObject;

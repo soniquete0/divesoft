@@ -73,7 +73,8 @@ var Header = /** @class */ (function (_super) {
         _this.toggleDropdown = function () { return _this.setState({ showDropdown: !_this.state.showDropdown }); };
         _this.state = {
             menuActive: false,
-            showDropdown: false
+            showDropdown: false,
+            showSearch: false
         };
         return _this;
     }
@@ -113,12 +114,14 @@ var Header = /** @class */ (function (_super) {
                                     return (React.createElement("li", { key: i, style: { position: 'relative' } },
                                         React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title),
                                         navItem.name === 'products' ?
-                                            React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdownProducts__arrow' }) : '',
-                                        context.pageData.name === navItem.name ?
-                                            React.createElement("span", { className: 'header__activePage' }) : ''));
+                                            React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdownProducts__arrow' }) : ''));
                                 }))),
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
-                                React.createElement("img", { src: "/assets/divesoft/images/search.png", alt: "search" }),
+                                React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.png", alt: "search", style: { cursor: 'pointer' } }),
+                                _this.state.showSearch ?
+                                    React.createElement("div", { className: 'header__controls__search' },
+                                        React.createElement("div", { className: "container" },
+                                            React.createElement("input", { type: "email", placeholder: 'search' }))) : '',
                                 React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
                                 React.createElement("button", null, "e-shop")))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
