@@ -2,7 +2,6 @@ import React from 'react';
 export interface CalendarState {
     currentMonth: Date;
     selectedDate: Date;
-    dates: Array<MyFormatOfDate>;
     switch: boolean;
     mapCenter: {
         lat: number;
@@ -10,10 +9,8 @@ export interface CalendarState {
     };
     countrySelectedValue: string;
     keywordSelectedValue: string;
-    dateSelectedValue: string;
     keywords: any;
     countries: any;
-    uniqDates: any;
     currentDate: string;
 }
 export interface MyFormatOfDate {
@@ -32,19 +29,19 @@ export interface CalendarProps {
 }
 declare class Calendar extends React.Component<CalendarProps, CalendarState> {
     constructor(props: CalendarProps);
-    componentDidMount: () => void;
     getUniqControlProps(): void;
+    componentDidMount: () => void;
     defineLocation(loc: string, type: string): {
         lat: number;
         lng: number;
     };
     renderHeader(): JSX.Element;
     renderDays(): JSX.Element;
-    renderCells(): JSX.Element;
+    renderCells(data: any): JSX.Element;
     onSelectChange(event: React.FormEvent<HTMLSelectElement>, type?: string): void;
-    search: () => void;
-    renderControls(): JSX.Element;
-    renderMobileView(): JSX.Element;
+    search: (data: any) => void;
+    renderControls(data: any): JSX.Element;
+    renderMobileView(data: any): JSX.Element;
     onDateClick: (day: any) => void;
     nextMonth: () => void;
     prevMonth: () => void;

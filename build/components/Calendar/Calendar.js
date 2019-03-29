@@ -25,6 +25,7 @@ var __assign = (this && this.__assign) || function () {
 import React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
+import List from '../List';
 import Button from '@source/partials/Button';
 import MapComponent from './Map/components/MapComponent';
 var Calendar = /** @class */ (function (_super) {
@@ -32,9 +33,9 @@ var Calendar = /** @class */ (function (_super) {
     function Calendar(props) {
         var _this = _super.call(this, props) || this;
         _this.componentDidMount = function () { return _this.getUniqControlProps(); };
-        _this.search = function () {
-            var _a = _this.state, countrySelectedValue = _a.countrySelectedValue, keywordSelectedValue = _a.keywordSelectedValue, dates = _a.dates;
-            dates.map(function (item, i) {
+        _this.search = function (data) {
+            var _a = _this.state, countrySelectedValue = _a.countrySelectedValue, keywordSelectedValue = _a.keywordSelectedValue;
+            data.map(function (item, i) {
                 if (item.country === countrySelectedValue && countrySelectedValue !== 'all' ||
                     item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all') {
                     return _this.setState({
@@ -66,26 +67,22 @@ var Calendar = /** @class */ (function (_super) {
             switch: true,
             currentMonth: new Date(),
             selectedDate: new Date(),
-            dates: _this.props.data.dates || [],
             mapCenter: {
                 lat: 50,
                 lng: 14
             },
             countrySelectedValue: 'all',
             keywordSelectedValue: 'all',
-            dateSelectedValue: 'all',
             keywords: [],
             countries: [],
-            uniqDates: [],
             currentDate: 'all'
         };
         return _this;
     }
     Calendar.prototype.getUniqControlProps = function () {
+        var dates = this.props.data.dates;
         var uniqKeywords = [];
         var uniqCountries = [];
-        var uniqFilterDates = [];
-        var dates = this.props.data.dates;
         var propsToArray = function () {
             for (var i = 0; i < dates.length; i++) {
                 uniqCountries.push(dates[i].country);
@@ -93,19 +90,14 @@ var Calendar = /** @class */ (function (_super) {
             for (var i = 0; i < dates.length; i++) {
                 uniqKeywords.push(dates[i].keyword);
             }
-            for (var i = 0; i < dates.length; i++) {
-                uniqFilterDates.push(dates[i].date);
-            }
         };
         var uniqueArray = function (arr) { return Array.from(new Set(arr)); };
         propsToArray();
         uniqKeywords = uniqueArray(uniqKeywords);
         uniqCountries = uniqueArray(uniqCountries);
-        uniqFilterDates = uniqueArray(uniqFilterDates);
         return this.setState({
             keywords: uniqKeywords,
-            countries: uniqCountries,
-            uniqDates: uniqFilterDates
+            countries: uniqCountries
         });
     };
     Calendar.prototype.defineLocation = function (loc, type) {
@@ -116,14 +108,12 @@ var Calendar = /** @class */ (function (_super) {
                     case 'country':
                         this.setState({
                             keywordSelectedValue: dates[i].keyword,
-                            dateSelectedValue: dates[i].date,
                             currentDate: dates[i].date
                         });
                         break;
                     case 'keyword':
                         this.setState({
                             countrySelectedValue: dates[i].country,
-                            dateSelectedValue: dates[i].date,
                             currentDate: dates[i].date
                         });
                         break;
@@ -166,7 +156,7 @@ var Calendar = /** @class */ (function (_super) {
             React.createElement("div", { className: "row" }, days)));
     };
     /* DESKTOP CELLS */
-    Calendar.prototype.renderCells = function () {
+    Calendar.prototype.renderCells = function (data) {
         var _this = this;
         var _a = this.state, currentMonth = _a.currentMonth, selectedDate = _a.selectedDate;
         var monthStart = dateFns.startOfMonth(currentMonth);
@@ -189,7 +179,7 @@ var Calendar = /** @class */ (function (_super) {
                         : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(dateFns.parse(cloneDay)); } },
                     React.createElement("span", { className: "number" }, formattedDate),
                     React.createElement("span", { className: "bg" }, formattedDate),
-                    this_1.state.dates && this_1.state.dates.map(function (item, j) {
+                    data && data.map(function (item, j) {
                         if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                             return (React.createElement("div", { className: 'cell__content', key: j },
                                 React.createElement("p", null, item.text),
@@ -198,7 +188,6 @@ var Calendar = /** @class */ (function (_super) {
                     })));
                 day = dateFns.addDays(day, 1);
             };
-            var this_1 = this;
             for (var i = 0; i < 7; i++) {
                 _loop_1(i);
             }
@@ -216,16 +205,13 @@ var Calendar = /** @class */ (function (_super) {
             case 'keyword':
                 this.setState({ keywordSelectedValue: safeSearchTypeValue });
                 break;
-            case 'date':
-                this.setState({ dateSelectedValue: safeSearchTypeValue });
-                break;
             default: return;
         }
     };
     /* FILTERS */
-    Calendar.prototype.renderControls = function () {
+    Calendar.prototype.renderControls = function (data) {
         var _this = this;
-        var _a = this.state, keywords = _a.keywords, countries = _a.countries, uniqDates = _a.uniqDates;
+        var _a = this.state, keywords = _a.keywords, countries = _a.countries;
         return (React.createElement("div", { className: 'calendar__controls' },
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "row" },
@@ -242,7 +228,7 @@ var Calendar = /** @class */ (function (_super) {
                                 React.createElement("option", { value: 'all', key: "all" }, "Select country"),
                                 countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-4" },
-                        React.createElement("button", { className: 'btn', onClick: function () { return _this.search(); } }, "Search events"))),
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.search(data); } }, "Search events"))),
                 React.createElement("div", { className: 'calendar__controls__switch' },
                     React.createElement("button", { className: "\n                calendar__controls__switch__btn \n                " + (this.state.switch ?
                             'calendar__controls__switch__btn--active' : ''), onClick: function () { return _this.setState({
@@ -254,7 +240,7 @@ var Calendar = /** @class */ (function (_super) {
                         }); } }, "Map")))));
     };
     /* SELECT MOUNTH */
-    Calendar.prototype.renderMobileView = function () {
+    Calendar.prototype.renderMobileView = function (data) {
         var _this = this;
         var _a = this.state, currentMonth = _a.currentMonth, selectedDate = _a.selectedDate;
         var monthStart = dateFns.startOfMonth(currentMonth);
@@ -291,7 +277,7 @@ var Calendar = /** @class */ (function (_super) {
                                     : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(dateFns.parse(cloneDay)); } },
                                 React.createElement("span", { className: "mobileCell__number" }, formattedDate),
                                 React.createElement("span", { className: "mobileCell__bg" }, formattedDate),
-                                this_2.state.dates && this_2.state.dates.map(function (item, j) {
+                                data && data.map(function (item, j) {
                                     if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                                         return (React.createElement("div", { className: 'mobileCell__content', key: j },
                                             React.createElement("p", null, item.text),
@@ -301,7 +287,6 @@ var Calendar = /** @class */ (function (_super) {
                 }
                 day = dateFns.addDays(day, 1);
             };
-            var this_2 = this;
             for (var i = 0; i < 7; i++) {
                 _loop_2(i);
             }
@@ -311,20 +296,24 @@ var Calendar = /** @class */ (function (_super) {
         return React.createElement("div", { className: "calendar__mobileBody" }, resultView);
     };
     Calendar.prototype.render = function () {
+        var _this = this;
         var Mobile = function (props) { return React.createElement(Responsive, __assign({}, props, { maxWidth: 767 })); };
         var Default = function (props) { return React.createElement(Responsive, __assign({}, props, { minWidth: 768 })); };
-        return (React.createElement("div", { className: 'calendar', style: !this.state.switch ? { paddingBottom: 0 } : {} },
-            this.renderControls(),
-            this.state.switch ?
-                React.createElement("div", { className: "container calendar__container" },
-                    this.renderHeader(),
-                    React.createElement(Default, null,
-                        this.renderDays(),
-                        this.renderCells()),
-                    React.createElement(Mobile, null,
-                        this.renderMobileView(),
-                        this.renderHeader())) :
-                React.createElement(MapComponent, { controls: false, items: this.state.dates, mapCenter: this.state.mapCenter })));
+        return (React.createElement(List, { data: this.props.data.dates }, function (_a) {
+            var data = _a.data;
+            return (React.createElement("div", { className: 'calendar', style: !_this.state.switch ? { paddingBottom: 0 } : {} },
+                _this.renderControls(data),
+                _this.state.switch ?
+                    React.createElement("div", { className: "container calendar__container" },
+                        _this.renderHeader(),
+                        React.createElement(Default, null,
+                            _this.renderDays(),
+                            _this.renderCells(data)),
+                        React.createElement(Mobile, null,
+                            _this.renderMobileView(data),
+                            _this.renderHeader())) :
+                    React.createElement(MapComponent, { items: data, controls: false, mapCenter: _this.state.mapCenter })));
+        }));
     };
     return Calendar;
 }(React.Component));
