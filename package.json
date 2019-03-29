@@ -66,6 +66,7 @@
     "react-apollo": "@latest",
     "react-geocode": "^0.1.2",
     "react-geolocated": "^2.4.0",
+    "react-images": "^0.5.19",
     "react-lines-ellipsis": "^0.13.2",
     "react-markdown": "^4.0.4",
     "react-masonry-css": "^1.0.11",

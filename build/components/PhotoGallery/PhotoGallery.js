@@ -12,14 +12,65 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import React from 'react';
+import Lightbox from 'react-images';
 import List from '../List';
-import GalleryItem from './components/GalleryItem';
+import Media from '@source/partials/Media';
+import getImageUrl from '@source/helpers/getImageUrl';
 var PhotoGallery = /** @class */ (function (_super) {
     __extends(PhotoGallery, _super);
     function PhotoGallery(props) {
         var _this = _super.call(this, props) || this;
+        _this.renderGallery = function (data) {
+            if (!data) {
+                return;
+            }
+            var gallery = data.map(function (item, i) {
+                return (React.createElement("div", { key: i, className: "photoGallery__img col-6 col-md-3", onClick: function (e) { return _this.openLightbox(i, e); } },
+                    React.createElement(Media, { data: item.img, type: 'image' })));
+            });
+            return React.createElement("div", { className: "row" }, gallery);
+        };
+        _this.getImageUrls = function () {
+            var images = _this.props.data.images;
+            if (!images) {
+                return;
+            }
+            var result = [];
+            images.map(function (item, i) {
+                result[i] = {
+                    src: getImageUrl(item.img)
+                };
+            });
+            return result;
+        };
+        _this.openLightbox = function (index, event) {
+            event.preventDefault();
+            _this.setState({
+                currentImage: index,
+                lightboxIsOpen: true
+            });
+        };
+        _this.closeLightbox = function () {
+            _this.setState({
+                currentImage: 0,
+                lightboxIsOpen: false
+            });
+        };
+        _this.gotoPrevious = function () { return _this.setState({ currentImage: _this.state.currentImage - 1 }); };
+        _this.gotoNext = function () { return _this.setState({ currentImage: _this.state.currentImage + 1 }); };
+        _this.gotoImage = function (index) { return _this.setState({ currentImage: index }); };
+        _this.handleClickImage = function () {
+            if (_this.state.currentImage === _this.state.imageUrls.length - 1) {
+                return;
+            }
+            _this.gotoNext();
+        };
         _this.state = {
-            showMore: false
+            currentImage: 0,
+            numberOfPage: 1,
+            showMore: false,
+            lightboxIsOpen: false,
+            imageUrls: _this.getImageUrls()
         };
         return _this;
     }
@@ -27,18 +78,16 @@ var PhotoGallery = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props.data, title = _a.title, description = _a.description, divider = _a.divider, images = _a.images;
         return (React.createElement(List, { data: images }, function (_a) {
-            var data = _a.data;
+            var getPage = _a.getPage;
+            var _b = getPage(_this.state.numberOfPage, 'infinite', 8), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: "photoGallery" },
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h2", null, title),
                     description && React.createElement("h4", null, description),
-                    React.createElement("div", { className: "row" },
-                        data && data.length < 8 && data.map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.img, wrapperClasses: 'col-6 col-md-3' })); }),
-                        data && data.length >= 8 && data.slice(0, 8).map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.img, wrapperClasses: 'col-6 col-md-3' })); }),
-                        _this.state.showMore &&
-                            data.slice(8, data.length).map(function (item, i) { return (React.createElement(GalleryItem, { key: data.length + i, image: item.img, wrapperClasses: 'col-6 col-md-3' })); })),
-                    data && data.length > 8 &&
-                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); } }, _this.state.showMore ? 'Show less' : 'Show more'),
+                    React.createElement(Lightbox, { images: _this.state.imageUrls, isOpen: _this.state.lightboxIsOpen, currentImage: _this.state.currentImage, onClickPrev: _this.gotoPrevious, onClickNext: _this.gotoNext, onClose: _this.closeLightbox }),
+                    _this.renderGallery(items),
+                    _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "Show more"),
                     divider && React.createElement("div", { className: 'photoGallery__divider' }))));
         }));
     };
