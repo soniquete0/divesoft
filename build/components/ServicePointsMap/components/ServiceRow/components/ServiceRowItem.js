@@ -11,6 +11,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Link from '@source/partials/Link';
@@ -42,7 +53,7 @@ var ServiceRowItem = /** @class */ (function (_super) {
                             React.createElement("a", { href: "mailto:" + email }, email)),
                         web && React.createElement("p", null,
                             "Web: ",
-                            React.createElement(Link, { urlNewWindow: true, url: web.url }, web.url.toString()))) : ''),
+                            React.createElement(Link, __assign({}, web), (web.url && web.url.toString()) || title))) : ''),
             React.createElement("div", { className: "col-12 col-md-8" },
                 React.createElement("div", { onClick: function () { return _this.setState({ show: !_this.state.show }); }, className: "serviceRow__list__show " + (this.state.show ? 'serviceRow__list__show--minus' : '') }),
                 React.createElement("div", { className: 'serviceRow__list__item' },

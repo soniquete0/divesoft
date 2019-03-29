@@ -23,7 +23,6 @@ var ServicePointsMap = /** @class */ (function (_super) {
     __extends(ServicePointsMap, _super);
     function ServicePointsMap(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentDidMount = function () { return _this.getUniqControlProps(); };
         _this.resetFilters = function () {
             _this.setState({
                 countrySelectedValue: 'all',
@@ -47,11 +46,10 @@ var ServicePointsMap = /** @class */ (function (_super) {
         };
         return _this;
     }
-    ServicePointsMap.prototype.getUniqControlProps = function () {
+    ServicePointsMap.prototype.getUniqControlProps = function (mapItems) {
         var uniqCities = [];
         var uniqCountries = [];
         var uniqServices = [];
-        var mapItems = this.props.data.mapItems;
         var propsToArray = function () {
             for (var i = 0; i < mapItems.length; i++) {
                 uniqCountries.push(mapItems[i].country);
@@ -68,11 +66,11 @@ var ServicePointsMap = /** @class */ (function (_super) {
         uniqCities = uniqueArray(uniqCities);
         uniqCountries = uniqueArray(uniqCountries);
         uniqServices = uniqueArray(uniqServices);
-        return this.setState({
+        return {
             cities: uniqCities,
             countries: uniqCountries,
             services: uniqServices
-        });
+        };
     };
     ServicePointsMap.prototype.defineLocation = function (loc, type) {
         var mapItems = this.props.data.mapItems;
@@ -102,7 +100,6 @@ var ServicePointsMap = /** @class */ (function (_super) {
                         break;
                     default: break;
                 }
-                this.renderRows();
                 return {
                     lat: parseFloat(mapItems[i].lat),
                     lng: parseFloat(mapItems[i].lng)
@@ -134,9 +131,9 @@ var ServicePointsMap = /** @class */ (function (_super) {
             default: return;
         }
     };
-    ServicePointsMap.prototype.renderControls = function () {
+    ServicePointsMap.prototype.renderControls = function (mapItems) {
         var _this = this;
-        var _a = this.state, cities = _a.cities, countries = _a.countries, services = _a.services;
+        var _a = this.getUniqControlProps(mapItems), cities = _a.cities, countries = _a.countries, services = _a.services;
         return (React.createElement("div", { className: 'map__controls' },
             React.createElement("div", { className: 'container' },
                 React.createElement("div", { className: "row" },
@@ -158,9 +155,8 @@ var ServicePointsMap = /** @class */ (function (_super) {
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
     };
-    ServicePointsMap.prototype.renderRows = function () {
-        var mapItems = this.props.data.mapItems;
-        var countries = this.state.countries;
+    ServicePointsMap.prototype.renderRows = function (mapItems) {
+        var countries = this.getUniqControlProps(mapItems).countries;
         var resultRows = [];
         for (var i = 0; i < countries.length; i++) {
             var composedRows = [];
@@ -198,12 +194,12 @@ var ServicePointsMap = /** @class */ (function (_super) {
                     title ?
                         React.createElement("div", { className: "container" },
                             React.createElement("p", { className: 'textDescription servicePointsMapWrapper__title' }, title)) : '',
-                    _this.renderControls(),
+                    _this.renderControls(data),
                     React.createElement("section", { className: 'map' }, mapItems && (React.createElement(GoogleMapReact, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
                             scrollwheel: false,
                             styles: MapStyles
                         } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
-                React.createElement("div", { className: 'map__rows' }, _this.renderRows())));
+                React.createElement("div", { className: 'map__rows' }, _this.renderRows(data))));
         }));
     };
     return ServicePointsMap;
