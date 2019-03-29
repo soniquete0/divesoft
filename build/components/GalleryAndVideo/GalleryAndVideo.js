@@ -11,36 +11,99 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import React from 'react';
+import Lightbox from 'react-images';
+import Responsive from 'react-responsive';
 import List from '../List';
 import Media from '@source/partials/Media';
-import GalleryItem from './components/GalleryItem';
+import getImageUrl from '@source/helpers/getImageUrl';
 var GalleryAndVideo = /** @class */ (function (_super) {
     __extends(GalleryAndVideo, _super);
     function GalleryAndVideo(props) {
         var _this = _super.call(this, props) || this;
+        _this.renderGallery = function (data) {
+            if (!data) {
+                return;
+            }
+            var gallery = data.map(function (item, i) {
+                return (React.createElement("div", { key: i, className: "galleryAndVideo__content__image col-6", onClick: function (e) { return _this.openLightbox(i, e); } },
+                    React.createElement(Media, { data: item.image, type: 'image' })));
+            });
+            return React.createElement("div", { className: "row" }, gallery);
+        };
+        _this.getImageUrls = function () {
+            var images = _this.props.data.images;
+            if (!images) {
+                return;
+            }
+            var result = [];
+            images.map(function (item, i) {
+                result[i] = {
+                    src: getImageUrl(item.image)
+                };
+            });
+            return result;
+        };
+        _this.openLightbox = function (index, event) {
+            event.preventDefault();
+            _this.setState({
+                currentImage: index,
+                lightboxIsOpen: true
+            });
+        };
+        _this.closeLightbox = function () {
+            _this.setState({
+                currentImage: 0,
+                lightboxIsOpen: false
+            });
+        };
+        _this.gotoPrevious = function () { return _this.setState({ currentImage: _this.state.currentImage - 1 }); };
+        _this.gotoNext = function () { return _this.setState({ currentImage: _this.state.currentImage + 1 }); };
+        _this.gotoImage = function (index) { return _this.setState({ currentImage: index }); };
+        _this.handleClickImage = function () {
+            if (_this.state.currentImage === _this.state.imageUrls.length - 1) {
+                return;
+            }
+            _this.gotoNext();
+        };
         _this.state = {
-            showMore: false
+            currentImage: 0,
+            numberOfPage: 1,
+            showMore: false,
+            lightboxIsOpen: false,
+            imageUrls: _this.getImageUrls()
         };
         return _this;
     }
     GalleryAndVideo.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, video = _a.video, images = _a.images;
+        var Mobile = function (props) { return React.createElement(Responsive, __assign({}, props, { maxWidth: 1199 })); };
         return (React.createElement(List, { data: images }, function (_a) {
-            var data = _a.data;
+            var getPage = _a.getPage;
+            var _b = getPage(_this.state.numberOfPage, 'infinite', 4), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'galleryAndVideo' },
                 React.createElement("div", { className: "container" },
                     title && React.createElement("h2", null, title),
+                    React.createElement(Lightbox, { images: _this.state.imageUrls, isOpen: _this.state.lightboxIsOpen, currentImage: _this.state.currentImage, onClickPrev: _this.gotoPrevious, onClickNext: _this.gotoNext, onClose: _this.closeLightbox }),
                     React.createElement("div", { className: 'row galleryAndVideo__content' },
                         React.createElement("div", { className: "col" }, video && React.createElement(Media, { type: 'embeddedVideo', data: video })),
-                        React.createElement("div", { className: "col" },
-                            data.length < 4 && React.createElement("div", { className: "row" }, data && data.map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3 col-xl-6' })); })),
-                            React.createElement("div", { className: "row" }, data && data.length >= 4 && data.slice(0, 4).map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3 col-xl-6' })); })))),
-                    _this.state.showMore &&
-                        React.createElement("div", { className: "row" }, data.slice(4, data.length).map(function (item, i) { return (React.createElement(GalleryItem, { key: i, image: item.image, wrapperClasses: 'col-6 col-md-3' })); })),
-                    data && data.length > 4 &&
-                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); } }, _this.state.showMore ? 'Show less' : 'Show more'))));
+                        React.createElement("div", { className: "col" }, _this.renderGallery(items))),
+                    React.createElement(Mobile, null, _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({
+                                numberOfPage: _this.state.numberOfPage + 1
+                            }); } }, "Show more")))));
         }));
     };
     return GalleryAndVideo;

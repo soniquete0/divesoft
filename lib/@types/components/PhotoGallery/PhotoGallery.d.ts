@@ -1,6 +1,5 @@
 import React from 'react';
 export interface PhotoGalleryState {
-    showMore: boolean;
     currentImage: number;
     numberOfPage: number;
     lightboxIsOpen: boolean;

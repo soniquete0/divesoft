@@ -6,7 +6,6 @@ import Media from '@source/partials/Media';
 import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface PhotoGalleryState {
-  showMore: boolean;
   currentImage: number;
   numberOfPage: number;
   lightboxIsOpen: boolean;
@@ -33,8 +32,7 @@ class PhotoGallery extends React.Component<PhotoGalleryProps, PhotoGalleryState>
     this.state = {
       currentImage: 0,
       numberOfPage: 1,
-      showMore: false,
-      lightboxIsOpen: false,      
+      lightboxIsOpen: false,
       imageUrls: this.getImageUrls()
     };
   }

@@ -1,8 +1,9 @@
 import React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
-import MapComponent from './Map/components/MapComponent';
+
 import Button from '@source/partials/Button';
+import MapComponent from './Map/components/MapComponent';
 
 export interface CalendarState {
   currentMonth: Date;

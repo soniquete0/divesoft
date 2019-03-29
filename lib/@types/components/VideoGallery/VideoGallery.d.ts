@@ -1,6 +1,6 @@
 import React from 'react';
 export interface VideoGalleryState {
-    showMore: boolean;
+    numberOfPage: number;
 }
 interface Video {
     video: LooseObject;

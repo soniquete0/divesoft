@@ -39,7 +39,6 @@ var NewsAndEvents = /** @class */ (function (_super) {
             return (React.createElement("div", { className: 'newsAndEvents', style: {
                     backgroundImage: backgroundImage && "url(" + getImageUrl(backgroundImage) + ")"
                 } },
-                console.log(data),
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h3", { style: { color: "" + titleColor } }, title),
                     React.createElement("div", { className: 'newsAndEvents__list row d-flex justify-content-between align-items-center' }, data &&
@@ -53,7 +52,6 @@ var NewsAndEvents = /** @class */ (function (_super) {
                                         item.mounthAndYear),
                                     React.createElement("h4", null, item.title),
                                     React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
-                                    console.log(item.url),
                                     React.createElement(Link, { pageId: item.url && item.url.pageId }, "More information"))))); })),
                     _this.state.items.length > 9 ?
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ expanded: !_this.state.expanded }); } },

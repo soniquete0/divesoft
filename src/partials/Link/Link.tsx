@@ -47,6 +47,7 @@ const GET_PAGES_URLS = gql`
 
 const ComposerLink = props => {
   const { children, urlNewWindow, url, pageId, dynamic, ...args } = props;
+
   return (
     <ComposedQuery>
       {({ getPagesUrls: { loading, error, data } }) => {

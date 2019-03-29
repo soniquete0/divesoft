@@ -1,11 +1,8 @@
 .galleryAndVideo {
-  padding: 100px 0;
-  @include max-md { padding: 40px 0; }
+  padding: 10rem 0;
+  @include max-md { padding: 4rem 0; }
 
-  h2 { 
-    text-align: center;
-    margin-bottom: 30px;
-  }
+  h2 { text-align: center; }
 
   .btn {
     max-width: 200px;
@@ -37,33 +34,9 @@
   &__content {
     @include max-xl { display: block; }
 
-    &__img {
-      &--fullScreen {
-        position: fixed !important;
-        width: 90% !important;
-        height: 90% !important;
-        top: 5% !important;
-        left: 5% !important;
-        overflow: unset !important;
-        z-index: 400;
-
-        .inner {
-          z-index: 101;
-        }
-
-        &:after {
-          display: block;
-          position: fixed;
-          content: '';
-          background-color: black;
-          opacity: 0.5;
-          height: 100%;
-          width: 100%;
-          z-index: 99;
-          top: 0;
-          left: 0;
-        }
-      }
+    &__image {
+      padding: 0 5px;
+      @include max-xl { padding: 0 1.5rem; }
     }
   }
 

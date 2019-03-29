@@ -68,7 +68,6 @@ var PhotoGallery = /** @class */ (function (_super) {
         _this.state = {
             currentImage: 0,
             numberOfPage: 1,
-            showMore: false,
             lightboxIsOpen: false,
             imageUrls: _this.getImageUrls()
         };

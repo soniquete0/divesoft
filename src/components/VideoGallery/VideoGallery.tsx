@@ -4,7 +4,7 @@ import List from '../List';
 import Media from '@source/partials/Media';
 
 export interface VideoGalleryState {
-  showMore: boolean;
+  numberOfPage: number;
 }
 
 interface Video {
@@ -27,7 +27,7 @@ class VideoGallery extends React.Component<VideoGalleryProps, VideoGalleryState>
     super(props);
 
     this.state = {
-      showMore: false
+      numberOfPage: 1
     };
   }
 
@@ -36,36 +36,18 @@ class VideoGallery extends React.Component<VideoGalleryProps, VideoGalleryState>
 
     return (
       <List data={videos}>
-        {({ data }) =>  (
-          <div className="videoGallery">
-            <div className={'container'}>
-              {title && <h2>{title}</h2>}
-              {description && 
-                <h4 className={'videoGallery__description'}>{description}</h4>}
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 3);
 
-              <div className="row">
-                {data && data.length < 3 && data.map((item, i) => (
-                  <div key={i} className="col-12 col-md-4"> 
-                    <div className={'videoGallery__item'}>
-                      {item.video && <Media type={'embeddedVideo'} data={item.video} />}
-                      <h4>{item.title}</h4>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-
-                {data && data.length >= 3 && data.slice(0, 3).map((item, i) => (
-                  <div key={i} className="col-12 col-md-4"> 
-                    <div className={'videoGallery__item'}>
-                      {item.video && <Media type={'embeddedVideo'} data={item.video} />}
-                      <h4>{item.title}</h4>
-                      <p>{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-      
-                {this.state.showMore &&  
-                  data.slice(3, data.length).map((item, i) => (
+          return (
+            <div className="videoGallery">
+              <div className={'container'}>
+                {title && <h2>{title}</h2>}
+                {description && 
+                  <h4 className={'videoGallery__description'}>{description}</h4>}
+  
+                <div className="row">
+                  {items && items.map((item, i) => (
                     <div key={i} className="col-12 col-md-4"> 
                       <div className={'videoGallery__item'}>
                         {item.video && <Media type={'embeddedVideo'} data={item.video} />}
@@ -73,20 +55,21 @@ class VideoGallery extends React.Component<VideoGalleryProps, VideoGalleryState>
                         <p>{item.text}</p>
                       </div>
                     </div>
-                ))}
+                  ))}
+                </div>
+
+                {this.state.numberOfPage < lastPage &&
+                  <button 
+                    className={'btn'} 
+                    onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
+                  >Show more
+                  </button>}
+  
+                {divider && <div className={'videoGallery__divider'} />}
               </div>
-
-              {data && data.length > 3 && 
-                <button 
-                  className={'btn'} 
-                  onClick={() => this.setState({ showMore: !this.state.showMore })}
-                >{this.state.showMore ? 'Show less' : 'Show more'}
-                </button>}
-
-              {divider && <div className={'videoGallery__divider'} />}
             </div>
-          </div>
-        )}
+          );
+        }}
       </List>
     );
   }

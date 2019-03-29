@@ -25,8 +25,8 @@ var __assign = (this && this.__assign) || function () {
 import React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
-import MapComponent from './Map/components/MapComponent';
 import Button from '@source/partials/Button';
+import MapComponent from './Map/components/MapComponent';
 var Calendar = /** @class */ (function (_super) {
     __extends(Calendar, _super);
     function Calendar(props) {

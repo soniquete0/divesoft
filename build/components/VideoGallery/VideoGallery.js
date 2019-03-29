@@ -19,7 +19,7 @@ var VideoGallery = /** @class */ (function (_super) {
     function VideoGallery(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            showMore: false
+            numberOfPage: 1
         };
         return _this;
     }
@@ -27,31 +27,20 @@ var VideoGallery = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props.data, title = _a.title, description = _a.description, divider = _a.divider, videos = _a.videos;
         return (React.createElement(List, { data: videos }, function (_a) {
-            var data = _a.data;
+            var getPage = _a.getPage;
+            var _b = getPage(_this.state.numberOfPage, 'infinite', 3), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: "videoGallery" },
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h2", null, title),
                     description &&
                         React.createElement("h4", { className: 'videoGallery__description' }, description),
-                    React.createElement("div", { className: "row" },
-                        data && data.length < 3 && data.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-4" },
-                            React.createElement("div", { className: 'videoGallery__item' },
-                                item.video && React.createElement(Media, { type: 'embeddedVideo', data: item.video }),
-                                React.createElement("h4", null, item.title),
-                                React.createElement("p", null, item.text)))); }),
-                        data && data.length >= 3 && data.slice(0, 3).map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-4" },
-                            React.createElement("div", { className: 'videoGallery__item' },
-                                item.video && React.createElement(Media, { type: 'embeddedVideo', data: item.video }),
-                                React.createElement("h4", null, item.title),
-                                React.createElement("p", null, item.text)))); }),
-                        _this.state.showMore &&
-                            data.slice(3, data.length).map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-4" },
-                                React.createElement("div", { className: 'videoGallery__item' },
-                                    item.video && React.createElement(Media, { type: 'embeddedVideo', data: item.video }),
-                                    React.createElement("h4", null, item.title),
-                                    React.createElement("p", null, item.text)))); })),
-                    data && data.length > 3 &&
-                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); } }, _this.state.showMore ? 'Show less' : 'Show more'),
+                    React.createElement("div", { className: "row" }, items && items.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-4" },
+                        React.createElement("div", { className: 'videoGallery__item' },
+                            item.video && React.createElement(Media, { type: 'embeddedVideo', data: item.video }),
+                            React.createElement("h4", null, item.title),
+                            React.createElement("p", null, item.text)))); })),
+                    _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "Show more"),
                     divider && React.createElement("div", { className: 'videoGallery__divider' }))));
         }));
     };
