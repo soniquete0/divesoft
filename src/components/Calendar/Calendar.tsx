@@ -2,13 +2,13 @@ import React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
 
+import List from '../List';
 import Button from '@source/partials/Button';
 import MapComponent from './Map/components/MapComponent';
 
 export interface CalendarState {
   currentMonth: Date;
   selectedDate: Date;
-  dates: Array<MyFormatOfDate>;
   switch: boolean;
   mapCenter: {
     lat: number;
@@ -16,10 +16,8 @@ export interface CalendarState {
   };
   countrySelectedValue: string;
   keywordSelectedValue: string;
-  dateSelectedValue: string;
   keywords: any;
   countries: any;
-  uniqDates: any;
   currentDate: string;
 }
 
@@ -47,7 +45,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       switch: true,
       currentMonth: new Date(),
       selectedDate: new Date(),
-      dates: this.props.data.dates || [],
       mapCenter: {
         lat: 50,
         lng: 14 
@@ -55,22 +52,17 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
       countrySelectedValue: 'all',
       keywordSelectedValue: 'all',
-      dateSelectedValue: 'all',
       keywords: [],
       countries: [],
-      uniqDates: [],
       currentDate: 'all'
     };
   }
 
-  componentDidMount = () => this.getUniqControlProps();
-
   getUniqControlProps() {
+    const { dates } = this.props.data;
+
     let uniqKeywords = [];
     let uniqCountries = [];
-    let uniqFilterDates = [];
-
-    const { dates } = this.props.data;
 
     const propsToArray = () => {
       for (let i = 0; i < dates.length; i++) {
@@ -79,9 +71,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       for (let i = 0; i < dates.length; i++) {
         uniqKeywords.push(dates[i].keyword);
       }
-      for (let i = 0; i < dates.length; i++) {
-        uniqFilterDates.push(dates[i].date);
-      }
     };
 
     const uniqueArray = arr => Array.from(new Set(arr));
@@ -89,14 +78,14 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     propsToArray();
     uniqKeywords = uniqueArray(uniqKeywords);
     uniqCountries = uniqueArray(uniqCountries);
-    uniqFilterDates = uniqueArray(uniqFilterDates);
     
     return this.setState({
       keywords: uniqKeywords,
-      countries: uniqCountries,
-      uniqDates: uniqFilterDates
+      countries: uniqCountries
     });
   }
+
+  componentDidMount = () => this.getUniqControlProps();
 
   defineLocation(loc: string, type: string) {
     const { dates } = this.props.data;
@@ -107,14 +96,12 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
           case 'country':
             this.setState({
               keywordSelectedValue: dates[i].keyword,
-              dateSelectedValue: dates[i].date,
               currentDate: dates[i].date
             });
             break;
           case 'keyword':
             this.setState({
               countrySelectedValue: dates[i].country,
-              dateSelectedValue: dates[i].date,
               currentDate: dates[i].date
             });
             break;
@@ -181,7 +168,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
   }
 
   /* DESKTOP CELLS */
-  renderCells() {
+  renderCells(data: any) {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
@@ -214,7 +201,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
-            {this.state.dates && this.state.dates.map((item, j) => {
+            {data && data.map((item, j) => {
               if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                 return (
                   <div className={'cell__content'} key={j}>
@@ -253,22 +240,18 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       case 'keyword':
         this.setState({ keywordSelectedValue: safeSearchTypeValue });
         break;
-      case 'date':
-        this.setState({ dateSelectedValue: safeSearchTypeValue });
-        break;
 
       default: return;
     }
   }
   
-  search = () => {
+  search = (data: any) => {
     const { 
       countrySelectedValue,
       keywordSelectedValue,
-      dates
     } = this.state;
 
-    dates.map((item, i) => {
+    data.map((item, i) => {
       if (
         item.country === countrySelectedValue && countrySelectedValue !== 'all' ||
         item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all'
@@ -285,30 +268,13 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
   }
 
   /* FILTERS */
-  renderControls () {
-    const { keywords, countries, uniqDates } = this.state;
+  renderControls (data: any) {
+    const { keywords, countries } = this.state;
 
     return (
       <div className={'calendar__controls'}>
         <div className="container">
           <div className="row">
-            
-            {/* <div className="col-12 col-md-3">
-              <span className={'calendar__controls__selectLabel'}>
-                Select date:
-              </span>
-              <div className={'select'}>
-                <select
-                  onChange={e => this.onSelectChange(e, 'date')} 
-                  value={this.state.dateSelectedValue}
-                >
-                  <option value={'all'} key="all">Select date</option>
-                  {uniqDates && uniqDates.map((item, i) => (
-                    <option key={i} value={item}>{item}</option>
-                  ))}
-                </select>
-              </div>
-            </div> */}
 
             <div className="col-12 col-md-4">
               <span className={'calendar__controls__selectLabel'}>
@@ -345,7 +311,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             <div className="col-12 col-md-4">
             <button
               className={'btn'}
-              onClick={() => this.search()}
+              onClick={() => this.search(data)}
             >
               Search events
             </button>
@@ -381,7 +347,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
   }
 
   /* SELECT MOUNTH */
-  renderMobileView() {
+  renderMobileView(data: any) {
     const { currentMonth, selectedDate } = this.state;
     const monthStart = dateFns.startOfMonth(currentMonth);
     const monthEnd = dateFns.endOfMonth(monthStart);
@@ -434,7 +400,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                 >
                   <span className="mobileCell__number">{formattedDate}</span>
                   <span className="mobileCell__bg">{formattedDate}</span>
-                  {this.state.dates && this.state.dates.map((item, j) => {
+                  {data && data.map((item, j) => {
                     if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                       return (
                         <div className={'mobileCell__content'} key={j}>
@@ -486,26 +452,30 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     const Default = props => <Responsive {...props} minWidth={768} />;
 
     return (
-      <div className={'calendar'} style={!this.state.switch ? { paddingBottom: 0 } : {}}>
-        {this.renderControls()}
-        {this.state.switch ? 
-          <div className="container calendar__container">
-            {this.renderHeader()}
-            <Default>
-              {this.renderDays()}
-              {this.renderCells()}
-            </Default>
-            <Mobile>
-              {this.renderMobileView()}
-              {this.renderHeader()}
-            </Mobile>
-          </div> : 
-          <MapComponent
-            controls={false}
-            items={this.state.dates} 
-            mapCenter={this.state.mapCenter}
-          />}
-      </div>
+      <List data={this.props.data.dates}>
+        {({ data }) => (
+          <div className={'calendar'} style={!this.state.switch ? { paddingBottom: 0 } : {}}>
+            {this.renderControls(data)}
+            {this.state.switch ? 
+              <div className="container calendar__container">
+                {this.renderHeader()}
+                <Default>
+                  {this.renderDays()}
+                  {this.renderCells(data)}
+                </Default>
+                <Mobile>
+                  {this.renderMobileView(data)}
+                  {this.renderHeader()}
+                </Mobile>
+              </div> : 
+              <MapComponent
+                items={data} 
+                controls={false}
+                mapCenter={this.state.mapCenter}
+              />}
+          </div>
+        )}
+      </List>
     );
   }
 }
