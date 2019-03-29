@@ -49,7 +49,7 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
     const { title, titleColor, backgroundImage } = this.props.data;
 
     return (
-      <List data={this.state.items}>
+      <List data={this.props.data.newsAndEvents}>
         {({ data }) => (
           <div 
             className={'newsAndEvents'} 
@@ -61,8 +61,8 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
               {title && <h3 style={{ color: `${titleColor}` }}>{title}</h3>}
               <div className={'newsAndEvents__list row d-flex justify-content-between align-items-center'}>
                 
-                {data && this.state.items.length <= 9 && 
-                  data.slice(0, this.state.items.length).map((item, i) => (
+                {data &&
+                  data.map((item, i) => (
                     <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
                       <div className="row">
                         {item.img && <Media type={'image'} data={item.img} />}
@@ -74,53 +74,12 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
                           </p>
                           <h4>{item.title}</h4>
                           <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
-                          <Link url={item.url && item.url.url}>
+                          <Link pageId={item.url && item.url.pageId}>
                             More information
                           </Link>
                         </div>
                       </div>
                     </div>
-                ))}
-
-                {data && this.state.items.length >= 9 && 
-                  data.slice(0, 9).map((item, i) => (
-                    <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
-                      <div className="row">
-                        {item.img && <Media type={'image'} data={item.img} />}
-                      </div>
-                      <div className="row">
-                        <div className={'newsAndEvents__list__item__content'}>
-                          <p className={'newsAndEvents__list__item__content--date'}>
-                            <span>{item.day}</span> / {item.mounthAndYear}
-                          </p>
-                          <h4>{item.title}</h4>
-                          <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
-                          <Link url={item.url && item.url.url}>
-                            More information
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                ))}
-
-                {this.state.expanded && data.slice(9, this.state.items.length).map((item, i) => (
-                  <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
-                    <div className="row">
-                      {item.img && <Media type={'image'} data={item.img} />}
-                    </div>
-                    <div className="row">
-                      <div className={'newsAndEvents__list__item__content'}>
-                        <p className={'newsAndEvents__list__item__content--date'}>
-                          <span>{item.day}</span> / {item.mounthAndYear}
-                        </p>
-                        <h4>{item.title}</h4>
-                        <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
-                        <Link url={item.url && item.url.url}>
-                          More information
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
                 ))}
               </div>
 

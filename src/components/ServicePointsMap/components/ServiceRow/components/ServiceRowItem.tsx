@@ -45,7 +45,7 @@ class ServiceRowItem extends React.Component<ServiceRowItemProps, ServiceRowItem
               {storeChief && <p>Store chief: {storeChief}</p>}
               {phone && <p>Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
               {email && <p>Email: <a href={`mailto:${email}`}>{email}</a></p>}
-              {web && <p>Web: <Link urlNewWindow={true} url={web.url}>{web.url.toString()}</Link></p>}
+              {web && <p>Web: <Link {...web}>{(web.url && web.url.toString()) || title}</Link></p>}
               
             </div> : ''}
         </div>

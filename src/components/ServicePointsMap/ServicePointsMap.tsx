@@ -63,14 +63,10 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     };
   }
 
-  componentDidMount = () => this.getUniqControlProps();
-
-  getUniqControlProps() {
+  getUniqControlProps(mapItems: LooseObject[] ) {
     let uniqCities = [];
     let uniqCountries = [];
     let uniqServices = [];
-
-    const { mapItems } = this.props.data;
 
     const propsToArray = () => {
       for (let i = 0; i < mapItems.length; i++) {
@@ -91,11 +87,11 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     uniqCountries = uniqueArray(uniqCountries);
     uniqServices = uniqueArray(uniqServices);
     
-    return this.setState({
+    return {
       cities: uniqCities,
       countries: uniqCountries,
       services: uniqServices
-    });
+    };
   }
 
   defineLocation(loc: string, type: string) {
@@ -128,7 +124,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
           
           default: break;
         }
-        this.renderRows();
+
         return {
           lat: parseFloat(mapItems[i].lat),
           lng: parseFloat(mapItems[i].lng)
@@ -174,8 +170,8 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     });
   }
 
-  renderControls() {
-    const { cities, countries, services } = this.state;
+  renderControls(mapItems: LooseObject[]) {
+    const { cities, countries, services } = this.getUniqControlProps(mapItems);
 
     return (
       <div className={'map__controls'}>
@@ -229,9 +225,8 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     );
   }
 
-  renderRows () {
-    const { mapItems } = this.props.data;
-    const { countries } = this.state;
+  renderRows (mapItems: LooseObject[] ) {
+    const { countries } = this.getUniqControlProps(mapItems);
     let resultRows = [];
 
     for (let i = 0; i < countries.length; i++) {
@@ -280,7 +275,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
                 <div className="container">
                   <p className={'textDescription servicePointsMapWrapper__title'}>{title}</p>
                 </div> : ''}
-              {this.renderControls()}
+              {this.renderControls(data)}
 
               <section className={'map'}>
                 {mapItems && (
@@ -308,7 +303,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             </div>
             
             <div className={'map__rows'}>
-              {this.renderRows()}
+              {this.renderRows(data)}
             </div>
           </>
         )}
