@@ -70,7 +70,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
     });
   }
 
-  componentDidMount = () => this.getUniqControlProps();
+  componentWillReceiveProps = () => this.getUniqControlProps();
 
   getUniqControlProps() {
     let uniqCities = [];
@@ -135,7 +135,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
           
           default: break;
         }
-        this.renderRows();
+        // this.renderRows();
         return {
           lat: parseFloat(mapItems[i].lat),
           lng: parseFloat(mapItems[i].lng)
@@ -227,24 +227,24 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
     );
   }
 
-  renderRows () {
-    const { mapItems } = this.props.data;
+  // tslint:disable-next-line:no-any
+  renderRows (data: any) {
     const { associations } = this.state;
     let resultRows = [];
 
     for (let i = 0; i < associations.length; i++) {
       let composedRows = [];
 
-      for (let j = 0; j < mapItems.length; j++) {
-        if (mapItems[j].association === associations[i]) {
-          if (mapItems[j].association === this.state.currentAssociation || this.state.currentAssociation === 'all') {
+      for (let j = 0; j < data.length; j++) {
+        if (data[j].association === associations[i]) {
+          if (data[j].association === this.state.currentAssociation || this.state.currentAssociation === 'all') {
             composedRows.push(
               {
-                name: mapItems[j].name,
-                position: mapItems[j].position,
-                email: mapItems[j].email,
-                phone: mapItems[j].phone,
-                web: mapItems[j].web
+                name: data[j].name,
+                position: data[j].position,
+                email: data[j].email,
+                phone: data[j].phone,
+                web: data[j].web
               }
             );
           }   
@@ -258,7 +258,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
       }
     }
 
-    return resultRows;
+    return <div className={'map__rows'}>{resultRows}</div>;
   }
 
   public render() {
@@ -296,9 +296,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
               </section>
             </div>
             
-            <div className={'map__rows'}>
-              {this.renderRows()}
-            </div>
+            {this.renderRows(data)}
           </>
         )}
       </List>

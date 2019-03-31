@@ -13,21 +13,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 import * as React from 'react';
 import List from '../List';
+import Media from '@source/partials/Media';
 import Button from '@source/partials/Button';
 import Slider from '@source/partials/Slider';
-import Media from '@source/partials/Media';
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
     function Carousel(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentWillReceiveProps = function (nextProps) {
-            if (_this.state.slides !== nextProps.data.slides) {
-                _this.setState({ slides: nextProps.data.slides });
-            }
-        };
-        _this.state = {
-            slides: _this.props.data.slides,
-        };
+        _this.state = {};
         return _this;
     }
     Carousel.prototype.renderSlides = function (data) {
@@ -53,9 +46,10 @@ var Carousel = /** @class */ (function (_super) {
     };
     Carousel.prototype.render = function () {
         var _this = this;
-        return (React.createElement(List, { data: this.state.slides }, function (_a) {
+        var slides = this.props.data.slides;
+        return (React.createElement(List, { data: slides }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), wrapperClasses: 'sliderAtTop', autoplay: _this.state.slides.length <= 1 ? false : true, showDots: _this.state.slides.length <= 1 ? false : true, showArrows: _this.state.slides.length <= 1 ? false : true });
+            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), wrapperClasses: 'sliderAtTop', autoplay: data.length <= 1 ? false : true, showDots: data.length <= 1 ? false : true, showArrows: data.length <= 1 ? false : true });
         }));
     };
     return Carousel;

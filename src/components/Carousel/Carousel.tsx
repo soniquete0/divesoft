@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import List from '../List';
+import Media from '@source/partials/Media';
 import Button from '@source/partials/Button';
 import Slider from '@source/partials/Slider';
-import Media from '@source/partials/Media';
 
 interface Slide {
   image: LooseObject;
@@ -22,24 +22,13 @@ export interface CarouselProps {
   };
 }
 
-export interface CarouselState {
-  // tslint:disable-next-line:no-any
-  slides: any;
-}
+export interface CarouselState {}
 
 class Carousel extends React.Component<CarouselProps, CarouselState> {
   constructor(props: CarouselProps) {
     super(props);
 
-    this.state = {
-      slides: this.props.data.slides,
-    };
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (this.state.slides !== nextProps.data.slides) {
-      this.setState({ slides: nextProps.data.slides });
-    }
+    this.state = {};
   }
 
   renderSlides(data: any) {
@@ -83,17 +72,18 @@ class Carousel extends React.Component<CarouselProps, CarouselState> {
   }
 
   public render() {
+    const { slides } = this.props.data;
 
     return (
-      <List data={this.state.slides}>
+      <List data={slides}>
         {({ data }) => 
           <Slider 
             delay={10000}
             slides={this.renderSlides(data)}
             wrapperClasses={'sliderAtTop'}
-            autoplay={this.state.slides.length <= 1 ? false : true} 
-            showDots={this.state.slides.length <= 1 ? false : true}
-            showArrows={this.state.slides.length <= 1 ? false : true} 
+            autoplay={data.length <= 1 ? false : true} 
+            showDots={data.length <= 1 ? false : true}
+            showArrows={data.length <= 1 ? false : true} 
           />}
       </List>
     );

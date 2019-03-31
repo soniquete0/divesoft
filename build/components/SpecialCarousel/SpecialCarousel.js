@@ -21,14 +21,7 @@ var SpecialCarousel = /** @class */ (function (_super) {
     __extends(SpecialCarousel, _super);
     function SpecialCarousel(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentWillReceiveProps = function (nextProps) {
-            if (_this.state.slides !== nextProps.data.slides) {
-                _this.setState({ slides: nextProps.data.slides });
-            }
-        };
-        _this.state = {
-            slides: _this.props.data.slides,
-        };
+        _this.state = {};
         return _this;
     }
     SpecialCarousel.prototype.renderSlides = function (data) {
@@ -67,9 +60,9 @@ var SpecialCarousel = /** @class */ (function (_super) {
     };
     SpecialCarousel.prototype.render = function () {
         var _this = this;
-        return (React.createElement(List, { data: this.state.slides }, function (_a) {
+        return (React.createElement(List, { data: this.props.data.slides }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), autoplay: _this.state.slides.length <= 1 ? false : true, showDots: _this.state.slides.length <= 1 ? false : true, showArrows: _this.state.slides.length <= 1 ? false : true });
+            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), autoplay: _this.props.data.slides.length <= 1 ? false : true, showDots: _this.props.data.slides.length <= 1 ? false : true, showArrows: _this.props.data.slides.length <= 1 ? false : true });
         }));
     };
     return SpecialCarousel;

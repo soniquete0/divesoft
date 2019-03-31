@@ -20,29 +20,24 @@ var NewsAndEvents = /** @class */ (function (_super) {
     __extends(NewsAndEvents, _super);
     function NewsAndEvents(props) {
         var _this = _super.call(this, props) || this;
-        _this.componentWillReceiveProps = function (nextProps) {
-            if (_this.state.items !== nextProps.data.newsAndEvents) {
-                _this.setState({ items: nextProps.data.newsAndEvents });
-            }
-        };
         _this.state = {
-            items: _this.props.data.newsAndEvents,
-            expanded: false
+            numberOfPage: 1
         };
         return _this;
     }
     NewsAndEvents.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, title = _a.title, titleColor = _a.titleColor, backgroundImage = _a.backgroundImage;
-        return (React.createElement(List, { data: this.props.data.newsAndEvents }, function (_a) {
-            var data = _a.data;
+        var _a = this.props.data, title = _a.title, titleColor = _a.titleColor, backgroundImage = _a.backgroundImage, newsAndEvents = _a.newsAndEvents;
+        return (React.createElement(List, { data: newsAndEvents }, function (_a) {
+            var getPage = _a.getPage;
+            var _b = getPage(_this.state.numberOfPage, 'infinite', 9), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'newsAndEvents', style: {
                     backgroundImage: backgroundImage && "url(" + getImageUrl(backgroundImage) + ")"
                 } },
                 React.createElement("div", { className: 'container' },
                     title && React.createElement("h3", { style: { color: "" + titleColor } }, title),
-                    React.createElement("div", { className: 'newsAndEvents__list row d-flex justify-content-between align-items-center' }, data &&
-                        data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col-12 col-md-4' },
+                    React.createElement("div", { className: 'newsAndEvents__list row d-flex justify-content-between align-items-center' }, items &&
+                        items.map(function (item, i) { return (React.createElement("div", { key: i, className: 'newsAndEvents__list__item col-12 col-md-4' },
                             React.createElement("div", { className: "row" }, item.img && React.createElement(Media, { type: 'image', data: item.img })),
                             React.createElement("div", { className: "row" },
                                 React.createElement("div", { className: 'newsAndEvents__list__item__content' },
@@ -53,10 +48,10 @@ var NewsAndEvents = /** @class */ (function (_super) {
                                     React.createElement("h4", null, item.title),
                                     React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
                                     React.createElement(Link, { pageId: item.url && item.url.pageId }, "More information"))))); })),
-                    _this.state.items.length > 9 ?
-                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({ expanded: !_this.state.expanded }); } },
-                            "Show ",
-                            _this.state.expanded ? 'less' : 'more') : '')));
+                    _this.state.numberOfPage < lastPage &&
+                        React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({
+                                numberOfPage: _this.state.numberOfPage + 1
+                            }); } }, "Show more"))));
         }));
     };
     return NewsAndEvents;

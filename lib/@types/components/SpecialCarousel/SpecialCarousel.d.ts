@@ -1,6 +1,5 @@
 import React from 'react';
 export interface SpecialCarouselState {
-    slides: any;
 }
 interface Slide {
     image: LooseObject;
@@ -23,7 +22,6 @@ export interface SpecialCarouselProps {
 }
 declare class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarouselState> {
     constructor(props: SpecialCarouselProps);
-    componentWillReceiveProps: (nextProps: any) => void;
     renderSlides(data: any): any[];
     render(): JSX.Element;
 }

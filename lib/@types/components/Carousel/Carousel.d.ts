@@ -15,11 +15,9 @@ export interface CarouselProps {
     };
 }
 export interface CarouselState {
-    slides: any;
 }
 declare class Carousel extends React.Component<CarouselProps, CarouselState> {
     constructor(props: CarouselProps);
-    componentWillReceiveProps: (nextProps: any) => void;
     renderSlides(data: any): any[];
     render(): JSX.Element;
 }

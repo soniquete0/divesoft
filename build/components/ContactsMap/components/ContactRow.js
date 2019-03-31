@@ -19,7 +19,7 @@ var ContactRow = /** @class */ (function (_super) {
     function ContactRow(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
-            showMore: false
+            numberOfPage: 1
         };
         return _this;
     }
@@ -27,42 +27,28 @@ var ContactRow = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props, title = _a.title, rows = _a.rows;
         return (React.createElement(List, { data: rows }, function (_a) {
-            var data = _a.data;
+            var getPage = _a.getPage;
+            var _b = getPage(_this.state.numberOfPage, 'infinite', 3), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'contactRow' },
                 React.createElement("div", { className: 'container' },
                     React.createElement("div", { className: "row contactRow__divider" },
                         React.createElement("div", { className: "col-12 col-md-3" },
                             React.createElement("h3", null, title),
-                            rows.length > 3 &&
-                                React.createElement("span", { className: 'contactRow__showMore', onClick: function () { return _this.setState({ showMore: !_this.state.showMore }); } },
-                                    "Show ",
-                                    _this.state.showMore ? 'less' : 'more')),
+                            _this.state.numberOfPage < lastPage &&
+                                React.createElement("button", { className: 'contactRow__showMore', onClick: function () { return _this.setState({ numberOfPage: _this.state.numberOfPage + 1 }); } }, "Show more")),
                         React.createElement("div", { className: "col-12 col-md-9" },
-                            React.createElement("div", { className: 'row' },
-                                data && data.slice(0, 3).map(function (item, i) { return (React.createElement("div", { key: i, className: 'contactRow__item col-12 col-md-4' },
-                                    React.createElement("h5", null, item.name),
-                                    React.createElement("span", null, item.position),
-                                    React.createElement("p", null,
-                                        "W: ",
-                                        React.createElement(Link, { url: item.url && item.url.url }, item.urlTitle)),
-                                    React.createElement("p", null,
-                                        "M: ",
-                                        React.createElement("a", { href: "mailto:" + item.email }, item.email)),
-                                    React.createElement("p", null,
-                                        "P: ",
-                                        React.createElement("a", { href: "tel:" + item.phone }, item.phone)))); }),
-                                _this.state.showMore && data.slice(3, data.length).map(function (item, i) { return (React.createElement("div", { key: 4 + i, className: 'contactRow__item col-12 col-md-4' },
-                                    React.createElement("h5", null, item.name),
-                                    React.createElement("span", null, item.position),
-                                    React.createElement("p", null,
-                                        "W: ",
-                                        React.createElement(Link, { url: item.web && item.web.url }, item.urlTitle)),
-                                    React.createElement("p", null,
-                                        "M: ",
-                                        React.createElement("a", { href: "mailto:" + item.email }, item.email)),
-                                    React.createElement("p", null,
-                                        "P: ",
-                                        React.createElement("a", { href: "tel:" + item.phone }, item.phone)))); })))))));
+                            React.createElement("div", { className: 'row' }, items && items.map(function (item, i) { return (React.createElement("div", { key: i, className: 'contactRow__item col-12 col-md-4' },
+                                React.createElement("h5", null, item.name),
+                                React.createElement("span", null, item.position),
+                                React.createElement("p", null,
+                                    "W: ",
+                                    React.createElement(Link, { url: item.url && item.url.url }, item.urlTitle)),
+                                React.createElement("p", null,
+                                    "M: ",
+                                    React.createElement("a", { href: "mailto:" + item.email }, item.email)),
+                                React.createElement("p", null,
+                                    "P: ",
+                                    React.createElement("a", { href: "tel:" + item.phone }, item.phone)))); })))))));
         }));
     };
     return ContactRow;

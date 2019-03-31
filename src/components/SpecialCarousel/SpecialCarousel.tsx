@@ -6,10 +6,7 @@ import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
 import Slider from '@source/partials/Slider';
 
-export interface SpecialCarouselState {
-  // tslint:disable-next-line:no-any
-  slides: any;
-}
+export interface SpecialCarouselState {}
 
 interface Slide {
   image: LooseObject;
@@ -38,15 +35,7 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
   constructor(props: SpecialCarouselProps) {
     super(props);
 
-    this.state = {
-      slides: this.props.data.slides,
-    };
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (this.state.slides !== nextProps.data.slides) {
-      this.setState({ slides: nextProps.data.slides });
-    }
+    this.state = {};
   }
 
   renderSlides(data: any) {  
@@ -107,14 +96,14 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
   public render() {
 
     return (
-      <List data={this.state.slides}>
+      <List data={this.props.data.slides}>
         {({ data }) => 
           <Slider 
             delay={10000}
             slides={this.renderSlides(data)}
-            autoplay={this.state.slides.length <= 1 ? false : true} 
-            showDots={this.state.slides.length <= 1 ? false : true}
-            showArrows={this.state.slides.length <= 1 ? false : true} 
+            autoplay={this.props.data.slides.length <= 1 ? false : true} 
+            showDots={this.props.data.slides.length <= 1 ? false : true}
+            showArrows={this.props.data.slides.length <= 1 ? false : true} 
           />}
       </List>
     );

@@ -24,9 +24,7 @@ export interface NewsAndEventsProps {
 }
 
 export interface NewsAndEventsState {
-  // tslint:disable-next-line:no-any
-  items: any;
-  expanded: boolean;
+  numberOfPage: number;
 }
 
 class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsState> {
@@ -34,63 +32,65 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
     super(props);
 
     this.state = {
-      items: this.props.data.newsAndEvents,
-      expanded: false
+      numberOfPage: 1
     };
   }
 
-  componentWillReceiveProps = (nextProps) => {
-    if (this.state.items !== nextProps.data.newsAndEvents) {
-      this.setState({ items: nextProps.data.newsAndEvents });
-    }
-  }
-
   public render() {
-    const { title, titleColor, backgroundImage } = this.props.data;
+    const { title, titleColor, backgroundImage, newsAndEvents } = this.props.data;
 
     return (
-      <List data={this.props.data.newsAndEvents}>
-        {({ data }) => (
-          <div 
-            className={'newsAndEvents'} 
-            style={{ 
-              backgroundImage: backgroundImage && `url(${getImageUrl(backgroundImage)})` 
-            }}
-          >
-            <div className={'container'}>
-              {title && <h3 style={{ color: `${titleColor}` }}>{title}</h3>}
-              <div className={'newsAndEvents__list row d-flex justify-content-between align-items-center'}>
-                
-                {data &&
-                  data.map((item, i) => (
-                    <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
-                      <div className="row">
-                        {item.img && <Media type={'image'} data={item.img} />}
-                      </div>
-                      <div className="row">
-                        <div className={'newsAndEvents__list__item__content'}>
-                          <p className={'newsAndEvents__list__item__content--date'}>
-                            <span>{item.day}</span> / {item.mounthAndYear}
-                          </p>
-                          <h4>{item.title}</h4>
-                          <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
-                          <Link pageId={item.url && item.url.pageId}>
-                            More information
-                          </Link>
+      <List data={newsAndEvents}>
+        {({ getPage }) => {
+          const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 9);
+          
+          return (
+            <div 
+              className={'newsAndEvents'} 
+              style={{ 
+                backgroundImage: backgroundImage && `url(${getImageUrl(backgroundImage)})` 
+              }}
+            >
+              <div className={'container'}>
+                {title && <h3 style={{ color: `${titleColor}` }}>{title}</h3>}
+                <div className={'newsAndEvents__list row d-flex justify-content-between align-items-center'}>
+                  
+                  {items &&
+                    items.map((item, i) => (
+                      <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
+                        <div className="row">
+                          {item.img && <Media type={'image'} data={item.img} />}
+                        </div>
+                        <div className="row">
+                          <div className={'newsAndEvents__list__item__content'}>
+                            <p className={'newsAndEvents__list__item__content--date'}>
+                              <span>{item.day}</span> / {item.mounthAndYear}
+                            </p>
+                            <h4>{item.title}</h4>
+                            <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
+                            <Link pageId={item.url && item.url.pageId}>
+                              More information
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              {this.state.items.length > 9 ? 
-                <button className={'btn'} onClick={() => this.setState({ expanded: !this.state.expanded })}>
-                  Show {this.state.expanded ? 'less' : 'more'}
-                </button> : ''}
-              
+                {this.state.numberOfPage < lastPage && 
+                  <button 
+                    className={'btn'} 
+                    onClick={() => this.setState({ 
+                      numberOfPage: this.state.numberOfPage + 1 
+                    })}
+                  >
+                    Show more
+                  </button>}
+                
+              </div>
             </div>
-          </div>
-        )}
+          );
+        }}
       </List>
     );
   }

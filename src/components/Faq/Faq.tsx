@@ -22,24 +22,24 @@ const Faq = (props: FaqProps) => {
 
   return (
     <List data={questions}>
-        {({ data }) => (
-          <div className={'faq'}>
-            <div className="container">
-              {text && <h4 style={paddingTop ? {paddingTop: 0} : {}} className={'faq__text'}>{text}</h4>}
-              <div className="row faq__list">
+      {({ data }) => (
+        <div className={'faq'}>
+          <div className="container">
+            {text && <h4 style={paddingTop ? {paddingTop: 0} : {}} className={'faq__text'}>{text}</h4>}
+            <div className="row faq__list">
 
-                <div className="col-12 col-md-3">
-                  <h3>{title}</h3>
-                </div>
-                <div className="col-12 col-md-9">
-                  {data && data.map((item, i) => (
-                    <FaqItem key={i} title={item.title} text={item.text} />
-                  ))}
-                </div>
-
+              <div className="col-12 col-md-3">
+                <h3>{title}</h3>
               </div>
+              <div className="col-12 col-md-9">
+                {data && data.map((item, i) => (
+                  <FaqItem key={i} title={item.title} text={item.text} />
+                ))}
+              </div>
+
             </div>
           </div>
+        </div>
       )}
     </List>
   );

@@ -31,7 +31,7 @@ var ContactsMap = /** @class */ (function (_super) {
                 currentAssociation: 'all',
             });
         };
-        _this.componentDidMount = function () { return _this.getUniqControlProps(); };
+        _this.componentWillReceiveProps = function () { return _this.getUniqControlProps(); };
         _this.state = {
             countrySelectedValue: 'all',
             citySelectedValue: 'all',
@@ -102,7 +102,7 @@ var ContactsMap = /** @class */ (function (_super) {
                         break;
                     default: break;
                 }
-                this.renderRows();
+                // this.renderRows();
                 return {
                     lat: parseFloat(mapItems[i].lat),
                     lng: parseFloat(mapItems[i].lng)
@@ -158,21 +158,21 @@ var ContactsMap = /** @class */ (function (_super) {
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
     };
-    ContactsMap.prototype.renderRows = function () {
-        var mapItems = this.props.data.mapItems;
+    // tslint:disable-next-line:no-any
+    ContactsMap.prototype.renderRows = function (data) {
         var associations = this.state.associations;
         var resultRows = [];
         for (var i = 0; i < associations.length; i++) {
             var composedRows = [];
-            for (var j = 0; j < mapItems.length; j++) {
-                if (mapItems[j].association === associations[i]) {
-                    if (mapItems[j].association === this.state.currentAssociation || this.state.currentAssociation === 'all') {
+            for (var j = 0; j < data.length; j++) {
+                if (data[j].association === associations[i]) {
+                    if (data[j].association === this.state.currentAssociation || this.state.currentAssociation === 'all') {
                         composedRows.push({
-                            name: mapItems[j].name,
-                            position: mapItems[j].position,
-                            email: mapItems[j].email,
-                            phone: mapItems[j].phone,
-                            web: mapItems[j].web
+                            name: data[j].name,
+                            position: data[j].position,
+                            email: data[j].email,
+                            phone: data[j].phone,
+                            web: data[j].web
                         });
                     }
                 }
@@ -181,7 +181,7 @@ var ContactsMap = /** @class */ (function (_super) {
                 resultRows.push(React.createElement(ContactRow, { key: i, title: associations[i], rows: composedRows }));
             }
         }
-        return resultRows;
+        return React.createElement("div", { className: 'map__rows' }, resultRows);
     };
     ContactsMap.prototype.render = function () {
         var _this = this;
@@ -196,7 +196,7 @@ var ContactsMap = /** @class */ (function (_super) {
                             scrollwheel: false,
                             styles: MapStyles
                         } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
-                React.createElement("div", { className: 'map__rows' }, _this.renderRows())));
+                _this.renderRows(data)));
         }));
     };
     return ContactsMap;

@@ -1,6 +1,6 @@
 import React from 'react';
 export interface ContactRowState {
-    showMore: boolean;
+    numberOfPage: number;
 }
 interface Contact {
     name: string;
