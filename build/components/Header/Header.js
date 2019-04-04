@@ -30,6 +30,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
+import Search from '../Search';
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
 import Loader from '@source/partials/Loader';
@@ -74,7 +75,8 @@ var Header = /** @class */ (function (_super) {
         _this.state = {
             menuActive: false,
             showDropdown: false,
-            showSearch: false
+            showSearch: false,
+            searchQuery: ''
         };
         return _this;
     }
@@ -119,9 +121,7 @@ var Header = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                                 React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.png", alt: "search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
-                                    React.createElement("div", { className: 'header__controls__search' },
-                                        React.createElement("div", { className: "container" },
-                                            React.createElement("input", { type: "email", placeholder: 'search' }))) : '',
+                                    React.createElement(Search, { language: context.languageData.code }) : '',
                                 React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
                                 React.createElement("button", null, "e-shop")))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },

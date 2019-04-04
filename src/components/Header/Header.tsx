@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 
+import Search from '../Search';
 import Link from '@source/partials/Link';
 import Media from '@source/partials/Media';
 import Loader from '@source/partials/Loader';
@@ -68,6 +69,7 @@ export interface HeaderState {
   menuActive: boolean;
   showDropdown: boolean;
   showSearch: boolean;
+  searchQuery: string;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -76,7 +78,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.state = {
       menuActive: false,
       showDropdown: false,
-      showSearch: false
+      showSearch: false,
+      searchQuery: ''
     };
   }
 
@@ -175,11 +178,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       />
 
                       {this.state.showSearch ? 
-                        <div className={'header__controls__search'}>
-                          <div className="container">
-                            <input type="email" placeholder={'search'} />
-                          </div>
-                        </div> : ''}
+                        <Search language={context.languageData.code} /> : ''}
 
                       <img src="/assets/divesoft/images/user.png" alt="account"/>
                       <button>e-shop</button>
