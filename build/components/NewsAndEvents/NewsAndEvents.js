@@ -11,6 +11,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import React from 'react';
 import List from '../List';
 import Link from '@source/partials/Link';
@@ -47,7 +58,7 @@ var NewsAndEvents = /** @class */ (function (_super) {
                                         item.mounthAndYear),
                                     React.createElement("h4", null, item.title),
                                     React.createElement("p", { className: 'newsAndEvents__list__item__content--text' }, item.text),
-                                    React.createElement(Link, { pageId: item.url && item.url.pageId }, "More information"))))); })),
+                                    React.createElement(Link, __assign({}, item.url), "More information"))))); })),
                     _this.state.numberOfPage < lastPage &&
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({
                                 numberOfPage: _this.state.numberOfPage + 1

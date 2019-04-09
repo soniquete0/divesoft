@@ -171,15 +171,9 @@ class Footer extends React.Component<FooterProps, FooterState> {
                   <div className={'footer__bottom row'}>
                     <div className={'col'}>
                       <div className={'footer__bottom__social d-flex justify-content-center'}>
-                        <Link url={facebookUrl && facebookUrl.url}>
-                          <div />
-                        </Link>
-                        <Link url={youtubeUrl && youtubeUrl.url}>
-                          <div />
-                        </Link>
-                        <Link url={instagramUrl && instagramUrl.url}>
-                          <div />
-                        </Link>
+                        <Link {...facebookUrl}><div /></Link>
+                        <Link {...youtubeUrl}><div /></Link>
+                        <Link {...instagramUrl}><div /></Link>
                       </div>
                       {copyrights && <p>{copyrights}</p>}
                     </div>

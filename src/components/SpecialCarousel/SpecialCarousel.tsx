@@ -66,13 +66,13 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
 
                     <div className={'specialCarousel__content__downloads'}>
                       <div className={'specialCarousel__content__downloads__item'}>
-                        <Link url={slide.firstUrl && slide.firstUrl.url}>
+                        <Link {...slide.firstUrl}>
                           <Media type={'image'} data={slide.firstDocImg} />
                         </Link>
                         {slide.firstUrl && <p>{slide.firstDocText}</p>}
                       </div>
                       <div className={'specialCarousel__content__downloads__item'}>
-                        <Link url={slide.secondUrl && slide.secondUrl.url}>
+                        <Link {...slide.secondUrl}>
                           <Media type={'image'} data={slide.secondDocImg} />
                         </Link>
                         {slide.secondUrl && <p>{slide.secondDocText}</p>}

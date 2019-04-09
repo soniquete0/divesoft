@@ -7,7 +7,7 @@ interface Contact {
     position: string;
     email: string;
     phone: string;
-    web: LooseObject;
+    web?: LooseObject;
 }
 interface ContactRowProps {
     title: string;

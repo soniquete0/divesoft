@@ -25,7 +25,7 @@ var ProductComponents = function (props) {
             React.createElement(Media, { type: 'image', data: components[i].image }),
             components[i].title && React.createElement("h5", null, components[i].title),
             components[i].description && React.createElement("p", null, components[i].description),
-            React.createElement(Link, { url: components[i].url && components[i].url.url }, "More information")));
+            React.createElement(Link, __assign({}, components[i].url), "More information")));
     }
     return (React.createElement(List, { data: components }, function (_a) {
         var data = _a.data;
@@ -40,7 +40,7 @@ var ProductComponents = function (props) {
                             React.createElement("div", { className: 'productComponents__list__item__content' },
                                 React.createElement("h5", null, item.title),
                                 React.createElement("p", null, item.description),
-                                React.createElement(Link, { url: item.url && item.url.url }, "More information"))))); }))),
+                                React.createElement(Link, __assign({}, item.url), "More information"))))); }))),
                 React.createElement(Mobile, null,
                     React.createElement(Slider, { isFullWidth: false, delay: 7000, slides: mobileViews, showArrows: true })))));
     }));

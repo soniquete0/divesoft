@@ -119,11 +119,11 @@ var Footer = /** @class */ (function (_super) {
                         React.createElement("div", { className: 'footer__bottom row' },
                             React.createElement("div", { className: 'col' },
                                 React.createElement("div", { className: 'footer__bottom__social d-flex justify-content-center' },
-                                    React.createElement(Link, { url: facebookUrl && facebookUrl.url },
+                                    React.createElement(Link, __assign({}, facebookUrl),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, { url: youtubeUrl && youtubeUrl.url },
+                                    React.createElement(Link, __assign({}, youtubeUrl),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, { url: instagramUrl && instagramUrl.url },
+                                    React.createElement(Link, __assign({}, instagramUrl),
                                         React.createElement("div", null))),
                                 copyrights && React.createElement("p", null, copyrights)))))));
         }));

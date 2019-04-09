@@ -11,6 +11,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import List from '../List';
@@ -45,11 +56,11 @@ var SpecialCarousel = /** @class */ (function (_super) {
                                     React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),
                                 React.createElement("div", { className: 'specialCarousel__content__downloads' },
                                     React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                        React.createElement(Link, { url: slide.firstUrl && slide.firstUrl.url },
+                                        React.createElement(Link, __assign({}, slide.firstUrl),
                                             React.createElement(Media, { type: 'image', data: slide.firstDocImg })),
                                         slide.firstUrl && React.createElement("p", null, slide.firstDocText)),
                                     React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                        React.createElement(Link, { url: slide.secondUrl && slide.secondUrl.url },
+                                        React.createElement(Link, __assign({}, slide.secondUrl),
                                             React.createElement(Media, { type: 'image', data: slide.secondDocImg })),
                                         slide.secondUrl && React.createElement("p", null, slide.secondDocText)))),
                             React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-4 col-lg-4 col-xl-6" },

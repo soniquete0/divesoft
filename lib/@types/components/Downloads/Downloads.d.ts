@@ -1,8 +1,8 @@
 /// <reference types="react" />
 interface File {
     title: string;
-    img: LooseObject;
-    url: LooseObject;
+    img?: LooseObject;
+    url?: LooseObject;
     urlText: string;
 }
 export interface DownloadsProps {

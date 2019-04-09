@@ -6,8 +6,8 @@ import Media from '@source/partials/Media';
 
 interface File {
   title: string;
-  img: LooseObject;
-  url: LooseObject;
+  img?: LooseObject;
+  url?: LooseObject;
   urlText: string;
 }
 
@@ -33,8 +33,7 @@ const Downloads = (props: DownloadsProps) => {
               <div key={i} className={'col-12 col-md-4 downloads__list__item'}>
                 <Media type={'image'} data={item.img} />
                 {item.title && <h4>{item.title}</h4>}
-                {item.url && item.urlText && 
-                  <Link url={item.url && item.url.url}>{item.urlText}</Link>}
+                {item.url && item.urlText && <Link {...item.url}>{item.urlText}</Link>}
               </div>)
             )}
           </List>

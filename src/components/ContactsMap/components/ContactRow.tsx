@@ -12,7 +12,7 @@ interface Contact {
   position: string;
   email: string;
   phone: string;
-  web: LooseObject;
+  web?: LooseObject;
 }
 
 interface ContactRowProps {
@@ -62,8 +62,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                         <div key={i} className={'contactRow__item col-12 col-md-4'}>
                           <h5>{item.name}</h5>
                           <span>{item.position}</span>
-                          <p>W: <Link url={item.url && item.url.url}>
-                          {item.urlTitle}</Link></p>
+                          <p>W: <Link {...item.url}>{item.urlTitle}</Link></p>
                           <p>M: <a href={`mailto:${item.email}`}>{item.email}</a></p>
                           <p>P: <a href={`tel:${item.phone}`}>{item.phone}</a></p>
                         </div>

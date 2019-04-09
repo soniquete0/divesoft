@@ -19,9 +19,7 @@ const ListOfLinks = (props: ListOfLinksProps) => (
     {({ data }) =>  (
       <div className={'listOfLinks'}>
         <div className="container">
-          {data && data.map((item, i) => (
-            <Link key={i} url={item.url && item.url.url}>{item.title}</Link>
-          ))}
+          {data && data.map((item, i) => <Link key={i} {...item.url}>{item.title}</Link> )}
         </div>
       </div>
     )}

@@ -68,9 +68,7 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
                             </p>
                             <h4>{item.title}</h4>
                             <p className={'newsAndEvents__list__item__content--text'}>{item.text}</p>
-                            <Link pageId={item.url && item.url.pageId}>
-                              More information
-                            </Link>
+                            <Link {...item.url}>More information</Link>
                           </div>
                         </div>
                       </div>
