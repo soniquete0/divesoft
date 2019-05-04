@@ -4,8 +4,9 @@ import { adopt } from 'react-adopt';
 import { Query } from 'react-apollo';
 import ReactMarkdown from 'react-markdown';
 
-import Link from '../../partials/Link';
+import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
+import CookiePopup from './components/CookiePopup';
 
 const GET_CONTEXT = gql`
   {
@@ -113,6 +114,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
           return (
             <>              
               <footer className={'footer'}>
+                <CookiePopup />
                 <div className={'container'}>
                   <div className={'footer__newsletter'}>
                     <h3>Divesoft newsletter</h3>

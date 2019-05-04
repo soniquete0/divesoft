@@ -64,6 +64,7 @@
     "obj-traverse": "^1.0.0",
     "react-adopt": "^0.6.0",
     "react-apollo": "@latest",
+    "react-cookie-consent": "^2.3.1",
     "react-geocode": "^0.1.2",
     "react-geolocated": "^2.4.0",
     "react-images": "^0.5.19",

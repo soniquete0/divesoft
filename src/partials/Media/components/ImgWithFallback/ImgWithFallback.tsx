@@ -1,4 +1,5 @@
 import * as React from 'react';
+import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface ImgWithFallbackProps {
   alt?: string;
@@ -128,7 +129,11 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
               100}%`,
           }}
         >
-          <img className={'mediaImage inner'} alt={alt} src={this.state.src} />
+          <img 
+            alt={alt}
+            className={'mediaImage inner'}
+            src={this.state.src ? this.state.src : getImageUrl(this.props.originalData)}
+          />
         </div>
       );
     }

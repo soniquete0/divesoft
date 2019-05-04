@@ -1,0 +1,16 @@
+.cookiePopup {
+  p {
+    display: inline;
+    padding-left: 10px;
+  }
+  img {
+    display: inline;
+    max-height: 19px;
+    max-width: 19px;
+  }
+  a {
+    color: #e50000 !important;
+    text-decoration: underline;
+    &:hover { text-decoration: none; }
+  }
+}

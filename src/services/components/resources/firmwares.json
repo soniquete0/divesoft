@@ -37,6 +37,10 @@
               "text": {
                 "type": "markdown",
                 "title": "Text"
+              },
+              "url": {
+                "type": "urlAutocomplete",
+                "title": "URL"
               }
             }
           }

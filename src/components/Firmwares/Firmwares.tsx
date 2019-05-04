@@ -2,10 +2,12 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 import List from '../List';
+import Link from '@source/partials/Link';
 
 interface Article {
   title?: string;
   text: string;
+  url?: LooseObject;
 }
 
 export interface FirmwaresProps {
@@ -30,6 +32,7 @@ const Firmwares = (props: FirmwaresProps) => {
               <div key={i} className={'firmwares__item'}>
                 {item.title && <h4>{item.title}</h4>}
                 <ReactMarkdown source={item.text} />
+                {item.url && <Link {...item.url}>Download</Link>}
               </div>
             ))}
 

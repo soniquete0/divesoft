@@ -12,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import * as React from 'react';
+import getImageUrl from '@source/helpers/getImageUrl';
 var ImgWithFallback = /** @class */ (function (_super) {
     __extends(ImgWithFallback, _super);
     function ImgWithFallback(props) {
@@ -109,7 +110,7 @@ var ImgWithFallback = /** @class */ (function (_super) {
                         parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
                         100 + "%",
                 } },
-                React.createElement("img", { className: 'mediaImage inner', alt: alt, src: this.state.src })));
+                React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl(this.props.originalData) })));
         }
     };
     return ImgWithFallback;

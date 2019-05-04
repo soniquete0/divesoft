@@ -2,6 +2,7 @@
 interface Article {
     title?: string;
     text: string;
+    url?: LooseObject;
 }
 export interface FirmwaresProps {
     data: {
