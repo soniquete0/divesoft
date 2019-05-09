@@ -68,6 +68,7 @@ export interface HeaderProps {
 export interface HeaderState {
   menuActive: boolean;
   showDropdown: boolean;
+  visibleProductsSubMenu: boolean;
   showSearch: boolean;
   searchQuery: string;
 }
@@ -78,6 +79,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     this.state = {
       menuActive: false,
       showDropdown: false,
+      visibleProductsSubMenu: false,
       showSearch: false,
       searchQuery: ''
     };
@@ -96,17 +98,30 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   toggleDropdown = () => this.setState({ showDropdown: !this.state.showDropdown });
-  
+
+  showProductsSubMenu = (linkName) => {
+    if (linkName === 'products') {
+      this.setState({ visibleProductsSubMenu: true });
+    } else {
+      this.setState({ visibleProductsSubMenu: false });
+    }
+  }
+  hideProductsSubMenu = () => this.setState({ visibleProductsSubMenu: false });
+
+  categorySubmenu = (cat) => cat.map(c => {
+      return c.children;
+  })
+
   public render() {
     this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
 
     return (
       <ComposedQuery>
         {({ getPagesUrls: { loading, error, data }, context }) => {
-          if (!context.navigationsData || 
-              !context.languageData || 
-              !context.languagesData || 
-              !data || 
+          if (!context.navigationsData ||
+              !context.languageData ||
+              !context.languagesData ||
+              !data ||
               !data.pagesUrls) {
             return <Loader />; }
 
@@ -123,27 +138,25 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
           const topNavItems =
             transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
-          
+
           const { products } = this.props.data ;
 
           return (
             <>
-              <header 
+              <header
                 className={`header`}
                 style={
-                  this.state.menuActive ? 
-                  {overflow: 'inherit'} : 
+                  this.state.menuActive ?
+                  {overflow: 'inherit'} :
                   {overflow: 'hidden'}
                 }
               >
                 <div className="container">
-                  <div 
-                    className={'header__wrapper d-flex justify-content-between align-items-center'} 
-                  > 
+                  <div className={'header__wrapper d-flex justify-content-between align-items-center'} >
                     <div className={'header__logo d-flex justify-content-between align-items-center'}>
                       <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
-                      <Link 
-                        url={`${context.websiteData.urlMask === '/' ? 
+                      <Link
+                        url={`${context.websiteData.urlMask === '/' ?
                                 '' : context.websiteData.urlMask}/${context.languageData.code}`}
                       >
                         <img src="/assets/divesoft/images/logo.svg" alt="logo" />
@@ -154,14 +167,15 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       {topNavItems && topNavItems.map((navItem, i) => {
                         return (
                           <li key={i} style={{ position: 'relative' }}>
-                            <Link {...navItem.url}>
+                            {/* tslint:disable-next-line: max-line-length */}
+                            <Link {...navItem.url} onMouseEnter={() => this.showProductsSubMenu(navItem.name)}>
                               {navItem.name || navItem.title}
-                            </Link> 
-                            {navItem.name === 'products' ? 
-                              <span 
+                              {navItem.name === 'products' ?
+                              <span
                                 onClick={() => this.toggleDropdown()}
-                                className={'dropdownProducts__arrow'} 
+                                className={'dropdownProducts__arrow'}
                               /> : ''}
+                            </Link>
                             {/* {context.pageData.name === navItem.name ?
                               <span className={'header__activePage'} /> : ''} */}
                           </li>
@@ -170,14 +184,14 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       </ul>
                     </nav>
                     <div className={'header__controls d-flex justify-content-between align-items-center'}>
-                      <img 
-                        onClick={() => this.setState({ showSearch: !this.state.showSearch })} 
-                        src="/assets/divesoft/images/search.png" 
+                      <img
+                        onClick={() => this.setState({ showSearch: !this.state.showSearch })}
+                        src="/assets/divesoft/images/search.png"
                         alt="search"
                         style={{ cursor: 'pointer' }}
                       />
 
-                      {this.state.showSearch ? 
+                      {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
 
                       <img src="/assets/divesoft/images/user.png" alt="account"/>
@@ -186,7 +200,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                     {/* <Country /> */}
                   </div>
                 </div>
-                
+
                 <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
                   <div className={'hiddenMenu__wrapper'}>
                     <ul>
@@ -204,8 +218,30 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 </div>
               </header>
 
-              {this.state.showDropdown ? 
-                <div className={'dropdownProducts'}>
+
+              {(this.categorySubmenu(topNavItems)).map((item, a) => {
+                  if (item) {
+                    return <div className="categoriesSubmenu_wrapper">
+                    <nav className="categoriesSubmenu">
+                      <ul className="categoriesSubmenu_list" key={a}>
+                        {
+                          item.map(cat => {
+                            return <li key={cat.name}>
+                                <Link {...cat.url} className="categoriesSubmenu_link">
+                                  {cat.name}
+                                </Link>
+                              </li>;
+                          })
+                        }
+                      </ul>
+                    </nav>
+                  </div>;
+                  }
+                })
+              }
+
+              {this.state.visibleProductsSubMenu ?
+                <div className={'dropdownProducts'} onMouseLeave={this.hideProductsSubMenu}>
                   {products && <div className="container">
                     <div className="row productsPreview__list">
                       {products.map((item, i) => (
@@ -220,7 +256,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       ))}
                     </div>
                   </div> }
-                </div> : ''  
+                </div> : ''
               }
             </>
           );
@@ -228,7 +264,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       </ComposedQuery>
     );
   }
-  
+
   private transformNavigationsIntoTree(navigation: LooseObject[], urls: LooseObject[]): LooseObject | null {
     const tree = {};
 

@@ -33,6 +33,7 @@
   z-index: 401;
   position: fixed;
   min-height: 120px;
+  align-items: center;
   background-color: #fff;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
@@ -48,7 +49,7 @@
     left: 0;
     @include max-xl { display: none; }
   }
-  
+
   &__wrapper {
     padding: 15px 0;
     position: relative;
@@ -59,7 +60,7 @@
     position: absolute;
     right: 0;
     top: 10px;
-    
+
     select {
       outline: none;
       border: none;
@@ -109,11 +110,11 @@
   &__controls {
     height: 40px;
     width: 200px;
-    
+
     @include max-sm { width: 50px; }
 
     img {
-      
+
       @include max-sm {
         margin-right: 0;
         &:first-of-type{ display: none; }
@@ -159,11 +160,11 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(calc(100% + 100px), 0, 0);
     box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
-  
+
     @include md { width: 100%; }
-  
+
     &--active { transform: translate3d(0, 0, 0); }
-  
+
     &__wrapper {
       padding: 100px 30px 50px 30px;
       overflow-y: scroll;
@@ -171,27 +172,27 @@
       display: grid;
       height: 100%;
       @include md { padding: 150px 50px 50px 50px; }
-  
+
       &::-webkit-scrollbar {
         width: 8px;
         height: 100%;
       }
-  
+
       &::-webkit-scrollbar-thumb {
         background: $darkGrey;
         border-radius: 10px;
       }
-  
+
       &::-webkit-scrollbar-track { background: #f8f8f8; }
-  
+
       ul {
         @include reset-list;
         align-self: center;
-  
+
         li {
           text-align: center;
           padding-bottom: 15px;
-  
+
           a {
             font-size: 2.6rem;
             color: $darkGrey;
@@ -202,5 +203,91 @@
         }
       }
     }
+  }
+}
+
+// TODO: najít breakpoint tabletu
+@media (min-width: 1200px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    .container {
+      display: flex;
+      flex: 1;
+
+      .header__wrapper {
+        width: 100%;
+        padding: 0;
+        justify-content: stretch!important;
+        align-items: stretch!important;
+
+        nav {
+          height: auto;
+          display: flex;
+          flex-grow: 1;
+          justify-content: stretch;
+
+          ul {
+            display: flex;
+            flex-grow: 1;
+
+            li {
+              display: flex;
+            }
+
+            li a {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+
+              .dropdownProducts__arrow {
+                top: 45%;
+              }
+            }
+          }
+        }
+
+        .header__controls {
+          margin: auto;
+
+          button:hover {
+            background-color: lighten(#e50000, 5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+.categoriesSubmenu {
+  &_wrapper {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f2;
+    z-index: 999;
+  }
+
+  display: flex;
+  justify-content: center;
+
+  &_list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_item {
+    display: inline-block;
+  }
+
+  &_link {
+    display: block;
+    text-transform: uppercase;
+    color: #343434;
+    padding: 1.5rem;
+    font-size: 16px;
   }
 }
