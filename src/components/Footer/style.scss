@@ -6,8 +6,8 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url('/assets/divesoft/images/footer-bg.jpg');
-  
-  h6 {
+
+  h6.headline {
     padding-bottom: 1.8rem;
     text-transform: uppercase;
   }
@@ -73,7 +73,7 @@
         &:before {
           position: absolute;
           left: 0;
-          top: 6px;
+          top: 4px;
           content: " ";
           padding: 3px;
           border: solid $red;
@@ -81,6 +81,13 @@
           border-width: 0 3px 3px 0;
           transform: rotate(-45deg);
           -webkit-transform: rotate(-45deg);
+        }
+
+        a {
+          display: block;
+          &:first-letter {
+            text-transform: uppercase;
+          }
         }
       }
     }
@@ -99,33 +106,24 @@
       }
     }
 
-    &__item {
+    &__item, &__contacts {
       @include max-md {
-        h6 {  text-align: center;}
+        h6.headline {
+          text-align: center;
+          padding-bottom: .5em;
+        }
 
         ul {
           text-align: center;
-
-          a {
-            position: relative;
-
-            &:before {
-              position: absolute;
-              left: -20px;
-              top: 3px;
-              content: " ";
-              padding: 3px;
-              border: solid $red;
-              display: inline-block;
-              border-width: 0 3px 3px 0;
-              transform: rotate(-45deg);
-              -webkit-transform: rotate(-45deg);
-            }
-          }
+          padding-bottom: 3.5em;
 
           li {
-            padding: 0;
+            padding: .3rem 0;
             &:before { display: none; }
+
+            a {
+              padding: .3em;
+            }
           }
         }
       }
@@ -149,7 +147,7 @@
     &__social {
       width: 100%;
       padding-bottom: 40px;
-      
+
       a {
         div {
           width: 50px;
@@ -187,4 +185,6 @@
       }
     }
   }
+
+
 }

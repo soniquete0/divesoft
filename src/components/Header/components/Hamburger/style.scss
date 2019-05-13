@@ -11,16 +11,14 @@
   }
 
   .hamburger {
-    width: 34px;
-    height: 34px;
+    width: 25px;
+    height: 25px;
     z-index: 100;
-    border-radius: 3px;
-    background-color: #343434;
 
     & > div {
-      background-color: white;
+      background-color: #3c3c3b;
       height: 2px;
-      width: 70%;
+      width: 100%;
       left: 15%;
       display: block;
       position: relative;
@@ -31,7 +29,7 @@
       &:after,
       &:before {
         @include pseudo();
-        background-color: white;
+        background-color: #3c3c3b;
         height: 2px;
         width: 100%;
         display: block;
