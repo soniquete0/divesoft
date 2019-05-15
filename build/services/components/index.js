@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,10 +10,11 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import { isObjectLike } from 'lodash';
-import { AlertNotFound, Faq, News, Hero, Header, Footer, Carousel, Calendar, Firmwares, Downloads, AboutUsHome, ListOfLinks, ContactsMap, VideoGallery, PhotoGallery, ProductsMenu, Testimonials, NewsAndEvents, ContactColumns, ProductsPreview, GalleryAndVideo, SpecialCarousel, AboutLeftPicture, ServicePointsMap, AboutRightPicture, ProductComponents, } from '../../components';
-import * as resources from './resources';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var lodash_1 = require("lodash");
+var components_1 = require("../../components");
+var resources = require("./resources");
 var ComponentsService = /** @class */ (function () {
     function ComponentsService() {
         this.Types = {
@@ -55,64 +57,64 @@ var ComponentsService = /** @class */ (function () {
     ComponentsService.prototype.getComponent = function (type) {
         switch (type) {
             case this.Types.FAQ:
-                return Faq;
+                return components_1.Faq;
             case this.Types.NEWS:
-                return News;
+                return components_1.News;
             case this.Types.HERO:
-                return Hero;
+                return components_1.Hero;
             case this.Types.HEADER:
-                return Header;
+                return components_1.Header;
             case this.Types.FOOTER:
-                return Footer;
+                return components_1.Footer;
             case this.Types.CAROUSEL:
-                return Carousel;
+                return components_1.Carousel;
             case this.Types.CALENDAR:
-                return Calendar;
+                return components_1.Calendar;
             case this.Types.FIRMWARES:
-                return Firmwares;
+                return components_1.Firmwares;
             case this.Types.DOWNLOADS:
-                return Downloads;
+                return components_1.Downloads;
             case this.Types.ABOUTUSHOME:
-                return AboutUsHome;
+                return components_1.AboutUsHome;
             case this.Types.LISTOFLINKS:
-                return ListOfLinks;
+                return components_1.ListOfLinks;
             case this.Types.VIDEOGALLERY:
-                return VideoGallery;
+                return components_1.VideoGallery;
             case this.Types.PHOTOGALLERY:
-                return PhotoGallery;
+                return components_1.PhotoGallery;
             case this.Types.PRODUCTSMENU:
-                return ProductsMenu;
+                return components_1.ProductsMenu;
             case this.Types.TESTIMONIALS:
-                return Testimonials;
+                return components_1.Testimonials;
             case this.Types.NEWSANDEVENTS:
-                return NewsAndEvents;
+                return components_1.NewsAndEvents;
             case this.Types.CONTACTCOLUMNS:
-                return ContactColumns;
+                return components_1.ContactColumns;
             case this.Types.GALLERYANDVIDEO:
-                return GalleryAndVideo;
+                return components_1.GalleryAndVideo;
             case this.Types.PRODUCTSPREVIEW:
-                return ProductsPreview;
+                return components_1.ProductsPreview;
             case this.Types.SPECIALCAROUSEL:
-                return SpecialCarousel;
+                return components_1.SpecialCarousel;
             case this.Types.SERVIEPOINTSMAP:
-                return ServicePointsMap;
+                return components_1.ServicePointsMap;
             case this.Types.ABOUTLEFTPICTURE:
-                return AboutLeftPicture;
+                return components_1.AboutLeftPicture;
             case this.Types.ABOUTRIGHTPICTURE:
-                return AboutRightPicture;
+                return components_1.AboutRightPicture;
             case this.Types.PRODUCTCOMPONENTS:
-                return ProductComponents;
+                return components_1.ProductComponents;
             case this.Types.CONTACTSMAP:
-                return ContactsMap;
+                return components_1.ContactsMap;
             default:
-                return function () { return React.createElement(AlertNotFound, { type: "component" }); };
+                return function () { return React.createElement(components_1.AlertNotFound, { type: "component" }); };
         }
     };
     /***/
     ComponentsService.prototype.getComponentResource = function (type) {
         var res = resources.default;
         var typedRes = resources[type.toLowerCase()];
-        if (isObjectLike(typedRes)) {
+        if (lodash_1.isObjectLike(typedRes)) {
             res = __assign({}, res, typedRes);
         }
         return res;
@@ -120,10 +122,10 @@ var ComponentsService = /** @class */ (function () {
     ComponentsService.prototype.getForm = function (type) {
         switch (type) {
             default:
-                return function () { return React.createElement(AlertNotFound, { type: "form" }); };
+                return function () { return React.createElement(components_1.AlertNotFound, { type: "form" }); };
         }
     };
     return ComponentsService;
 }());
-export default ComponentsService;
+exports.default = ComponentsService;
 //# sourceMappingURL=index.js.map

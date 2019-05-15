@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,9 +23,10 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import List from '../../List';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var List_1 = require("../../List");
+var Link_1 = require("@source/partials/Link");
 var ContactRow = /** @class */ (function (_super) {
     __extends(ContactRow, _super);
     function ContactRow(props) {
@@ -37,7 +39,7 @@ var ContactRow = /** @class */ (function (_super) {
     ContactRow.prototype.render = function () {
         var _this = this;
         var _a = this.props, title = _a.title, rows = _a.rows;
-        return (React.createElement(List, { data: rows }, function (_a) {
+        return (React.createElement(List_1.default, { data: rows }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 3), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'contactRow' },
@@ -53,7 +55,7 @@ var ContactRow = /** @class */ (function (_super) {
                                 React.createElement("span", null, item.position),
                                 React.createElement("p", null,
                                     "W: ",
-                                    React.createElement(Link, __assign({}, item.url), item.urlTitle)),
+                                    React.createElement(Link_1.default, __assign({}, item.url), item.urlTitle)),
                                 React.createElement("p", null,
                                     "M: ",
                                     React.createElement("a", { href: "mailto:" + item.email }, item.email)),
@@ -64,5 +66,5 @@ var ContactRow = /** @class */ (function (_super) {
     };
     return ContactRow;
 }(React.Component));
-export default ContactRow;
+exports.default = ContactRow;
 //# sourceMappingURL=ContactRow.js.map

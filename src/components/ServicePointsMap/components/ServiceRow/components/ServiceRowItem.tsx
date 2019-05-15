@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 import Link from '@source/partials/Link';
 
 interface ServiceRowItemState {
@@ -35,7 +35,7 @@ class ServiceRowItem extends React.Component<ServiceRowItemProps, ServiceRowItem
       email,
       web
     } = this.props;
-    
+
     return (
       <div className="row">
         <div className="col-12 col-md-4">
@@ -46,13 +46,13 @@ class ServiceRowItem extends React.Component<ServiceRowItemProps, ServiceRowItem
               {phone && <p>Phone: <a href={`tel:${phone}`}>{phone}</a></p>}
               {email && <p>Email: <a href={`mailto:${email}`}>{email}</a></p>}
               {web && <p>Web: <Link {...web}>{(web.url && web.url.toString()) || title}</Link></p>}
-              
+
             </div> : ''}
         </div>
         <div className="col-12 col-md-8">
-          <div 
+          <div
             onClick={() => this.setState({ show: !this.state.show })}
-            className={`serviceRow__list__show ${this.state.show ? 'serviceRow__list__show--minus' : ''}`} 
+            className={`serviceRow__list__show ${this.state.show ? 'serviceRow__list__show--minus' : ''}`}
           />
           <div className={'serviceRow__list__item'}>
             <p onClick={() => this.setState({ show: !this.state.show })}>{address}</p>
@@ -61,7 +61,7 @@ class ServiceRowItem extends React.Component<ServiceRowItemProps, ServiceRowItem
         </div>
         <div className={'serviceRow__list__divider'} />
       </div>
-    ); 
+    );
   }
 }
 

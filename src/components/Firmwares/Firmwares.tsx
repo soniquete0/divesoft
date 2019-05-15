@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 import Link from '@source/partials/Link';
@@ -26,7 +26,7 @@ const Firmwares = (props: FirmwaresProps) => {
       {({ data }) => (
         <div className={'firmwares'}>
           <div className={'container'}>
-            
+
             <h2>{title}</h2>
             {data && data.map((item, i) => (
               <div key={i} className={'firmwares__item'}>

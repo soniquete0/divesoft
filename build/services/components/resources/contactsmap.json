@@ -1,0 +1,151 @@
+{
+    "name": "ContactsMap",
+    "data": {
+        "title": "Where to find us",
+        "mapItems": [
+            {
+                "city": "Prague",
+                "association": "ANDI",
+                "lat": "50.042957",
+                "lng": "14.451078",
+                "name": "Jakub Řeháček, US",
+                "country": "Czech republic",
+                "position": "Instructor Trainer",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "association": "DC",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "name": "Jack",
+                "country": "USA",
+                "position": "Instructor",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "association": "DC",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "name": "Jack",
+                "country": "USA",
+                "position": "Instructor",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "association": "DC",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "name": "Jack",
+                "country": "USA",
+                "position": "Instructor",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "association": "DC",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "name": "Jack",
+                "country": "USA",
+                "position": "Instructor",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Rome",
+                "association": "RIM",
+                "lat": "41.895289",
+                "lng": "12.482166",
+                "name": "Jakub Řeháček, US",
+                "country": "Italy",
+                "position": "Trainer",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            },
+            {
+                "city": "Barcelona",
+                "association": "SP",
+                "lat": "41.382190",
+                "lng": "2.184369",
+                "name": "Jakub Řeháček, US",
+                "country": "Spain",
+                "position": "Instructor Trainer",
+                "email": "lof@golemgear.com",
+                "phone": "+18133639774",
+                "web": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "mapItems": {
+                    "type": "Array",
+                    "title": "Map items",
+                    "items": {
+                        "properties": {
+                            "city": {
+                                "type": "text",
+                                "title": "City"
+                            },
+                            "association": {
+                                "type": "text",
+                                "title": "Association"
+                            },
+                            "lat": {
+                                "type": "text",
+                                "title": "lat"
+                            },
+                            "lng": {
+                                "type": "text",
+                                "title": "lng"
+                            },
+                            "name": {
+                                "type": "text",
+                                "title": "Name"
+                            },
+                            "country": {
+                                "type": "text",
+                                "title": "Country"
+                            },
+                            "position": {
+                                "type": "text",
+                                "title": "Position"
+                            },
+                            "email": {
+                                "type": "text",
+                                "title": "Email"
+                            },
+                            "phone": {
+                                "type": "text",
+                                "title": "Phone number (without spaces)"
+                            },
+                            "web": {
+                                "type": "urlAutocomplete",
+                                "title": "Web URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

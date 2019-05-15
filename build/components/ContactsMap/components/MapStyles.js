@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var MapStlyes = [
     {
         'elementType': 'geometry',
@@ -312,5 +314,5 @@ var MapStlyes = [
         ]
     }
 ];
-export default MapStlyes;
+exports.default = MapStlyes;
 //# sourceMappingURL=MapStyles.js.map

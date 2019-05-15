@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import List from '../../List';
 import Link from '@source/partials/Link';
@@ -33,7 +33,7 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
     const { title, rows } = this.props;
 
     return (
-      
+
       <List data={rows}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 3);
@@ -47,15 +47,15 @@ class ContactRow extends React.Component<ContactRowProps, ContactRowState> {
                     <h3>{title}</h3>
 
                   {this.state.numberOfPage < lastPage &&
-                    <button 
-                      className={'contactRow__showMore'} 
+                    <button
+                      className={'contactRow__showMore'}
                       onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
                     >Show more
                     </button>
                   }
 
                   </div>
-                  
+
                   <div className="col-12 col-md-9">
                     <div className={'row'}>
                       {items && items.map((item, i) => (

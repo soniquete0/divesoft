@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import ImgWithFallback from './components/ImgWithFallback';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ImgWithFallback_1 = require("./components/ImgWithFallback");
 var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
     function Media(props) {
@@ -34,7 +36,7 @@ var Media = /** @class */ (function (_super) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
                 recommendedSizes = _this.setDimensions();
-                return (React.createElement(ImgWithFallback, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, class: _this.props.class }));
+                return (React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, class: _this.props.class }));
             }
             else {
                 return null;
@@ -66,5 +68,5 @@ var Media = /** @class */ (function (_super) {
     };
     return Media;
 }(React.Component));
-export default Media;
+exports.default = Media;
 //# sourceMappingURL=Media.js.map

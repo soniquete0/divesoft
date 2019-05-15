@@ -1,4 +1,4 @@
-import React from 'react';
+ import * as React from 'react';
 
 import Dots from './components/Dots';
 import Slide from './components/Slide';
@@ -35,7 +35,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
       translateValue: 0
     };
   }
-  
+
   componentDidMount () {
     const { autoplay, delay } = this.props;
 
@@ -81,7 +81,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
         interval: setInterval(this.goToNextSlide, this.props.delay)
       });
     }
-    
+
     this.setState(prevState => ({
       currentIndex: prevState.currentIndex - 1,
       translateValue: prevState.translateValue + this.slideWidth(),
@@ -93,7 +93,7 @@ class Slider extends React.Component<SliderProps, SliderState> {
     if (index === this.state.currentIndex) { return; }
 
     clearInterval(this.state.interval);
-    
+
     if (index > this.state.currentIndex) {
       this.setState({
         currentIndex: index,
@@ -129,17 +129,17 @@ class Slider extends React.Component<SliderProps, SliderState> {
 
     return (
       <div className={`slider ${this.props.wrapperClasses}`}>
-        <div 
+        <div
           className="slider__wrapper"
-          style={{ 
-            transform: `translateX(${this.state.translateValue}px)`, 
+          style={{
+            transform: `translateX(${this.state.translateValue}px)`,
             transition: 'transform ease-out 0.25s'}}
-        >  
+        >
             {
               this.state.slides.map((slide, i) => (
                 <Slide key={i} slide={slide} />
               ))
-            } 
+            }
         </div>
 
         {this.props.showArrows ? (
@@ -148,15 +148,15 @@ class Slider extends React.Component<SliderProps, SliderState> {
             <RightArrow goToNextSlide={this.goToNextSlide}/>
           </>
         ) : ''}
-        
-        {this.props.showDots ? 
-          <Dots 
-            goTo={this.goTo} 
-            len={this.props.slides.length} 
+
+        {this.props.showDots ?
+          <Dots
+            goTo={this.goTo}
+            len={this.props.slides.length}
             currentIndex={this.state.currentIndex}
           /> : ''
         }
-        
+
       </div>
     );
   }

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,12 +23,13 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import Slider from '@source/partials/Slider';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_markdown_1 = require("react-markdown");
+var List_1 = require("../List");
+var Link_1 = require("@source/partials/Link");
+var Media_1 = require("@source/partials/Media");
+var Slider_1 = require("@source/partials/Slider");
 var SpecialCarousel = /** @class */ (function (_super) {
     __extends(SpecialCarousel, _super);
     function SpecialCarousel(props) {
@@ -53,30 +55,30 @@ var SpecialCarousel = /** @class */ (function (_super) {
                                         React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
                                         slide.subTitle),
                                 slide.description &&
-                                    React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),
+                                    React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(react_markdown_1.default, { source: slide.description })),
                                 React.createElement("div", { className: 'specialCarousel__content__downloads' },
                                     React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                        React.createElement(Link, __assign({}, slide.firstUrl),
-                                            React.createElement(Media, { type: 'image', data: slide.firstDocImg })),
+                                        React.createElement(Link_1.default, __assign({}, slide.firstUrl),
+                                            React.createElement(Media_1.default, { type: 'image', data: slide.firstDocImg })),
                                         slide.firstUrl && React.createElement("p", null, slide.firstDocText)),
                                     React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
-                                        React.createElement(Link, __assign({}, slide.secondUrl),
-                                            React.createElement(Media, { type: 'image', data: slide.secondDocImg })),
+                                        React.createElement(Link_1.default, __assign({}, slide.secondUrl),
+                                            React.createElement(Media_1.default, { type: 'image', data: slide.secondDocImg })),
                                         slide.secondUrl && React.createElement("p", null, slide.secondDocText)))),
                             React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-4 col-lg-4 col-xl-6" },
-                                React.createElement(Media, { type: 'image', data: slide.productImg }))))),
-                React.createElement(Media, { key: i, type: 'image', data: slide.image })));
+                                React.createElement(Media_1.default, { type: 'image', data: slide.productImg }))))),
+                React.createElement(Media_1.default, { key: i, type: 'image', data: slide.image })));
         });
         return result;
     };
     SpecialCarousel.prototype.render = function () {
         var _this = this;
-        return (React.createElement(List, { data: this.props.data.slides }, function (_a) {
+        return (React.createElement(List_1.default, { data: this.props.data.slides }, function (_a) {
             var data = _a.data;
-            return React.createElement(Slider, { delay: 10000, slides: _this.renderSlides(data), autoplay: _this.props.data.slides.length <= 1 ? false : true, showDots: _this.props.data.slides.length <= 1 ? false : true, showArrows: _this.props.data.slides.length <= 1 ? false : true });
+            return React.createElement(Slider_1.default, { delay: 10000, slides: _this.renderSlides(data), autoplay: _this.props.data.slides.length <= 1 ? false : true, showDots: _this.props.data.slides.length <= 1 ? false : true, showArrows: _this.props.data.slides.length <= 1 ? false : true });
         }));
     };
     return SpecialCarousel;
 }(React.Component));
-export default SpecialCarousel;
+exports.default = SpecialCarousel;
 //# sourceMappingURL=SpecialCarousel.js.map

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import SearchResults from '../SearchResults';
 
 export interface SearchState {
@@ -52,9 +52,9 @@ class Search extends React.Component<SearchProps, SearchState> {
       <>
         <div className={'search'}>
           <div className="container">
-            <input 
-              type="text" 
-              placeholder={'search'} 
+            <input
+              type="text"
+              placeholder={'search'}
               ref={this.searchInput}
               onFocus={() => this.focusSearch()}
               onBlur={() => this.unFocusSearch()}
@@ -63,7 +63,7 @@ class Search extends React.Component<SearchProps, SearchState> {
             />
           </div>
         </div>
-        
+
         {searchFocus && searchQuery && searchQuery.length > 0 && <SearchResults
           searchQuery={searchQuery}
           active={searchQuery && searchQuery.length > 1}

@@ -1,5 +1,7 @@
-import * as React from 'react';
-export function Loader(props) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+function Loader(props) {
     return (React.createElement("div", { className: 'loader' },
         React.createElement("span", null),
         React.createElement("span", null),
@@ -8,5 +10,6 @@ export function Loader(props) {
         React.createElement("span", null),
         React.createElement("span", null)));
 }
-export default Loader;
+exports.Loader = Loader;
+exports.default = Loader;
 //# sourceMappingURL=Loader.js.map

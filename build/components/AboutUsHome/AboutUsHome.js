@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,9 +12,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import Button from '@source/partials/Button';
-import getImageUrl from '@source/helpers/getImageUrl';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Button_1 = require("@source/partials/Button");
+var getImageUrl_1 = require("@source/helpers/getImageUrl");
 var AboutUsHome = /** @class */ (function (_super) {
     __extends(AboutUsHome, _super);
     function AboutUsHome(props) {
@@ -31,7 +33,7 @@ var AboutUsHome = /** @class */ (function (_super) {
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-12 col-xl-6" },
                         React.createElement("div", { className: 'aboutUsHome__block', style: this.state.hover ?
-                                { backgroundImage: leftImg && "url(" + getImageUrl(leftImg) + ")" } :
+                                { backgroundImage: leftImg && "url(" + getImageUrl_1.default(leftImg) + ")" } :
                                 { background: 'white !important' } },
                             leftTitle &&
                                 React.createElement("h3", { style: this.state.hover ?
@@ -43,18 +45,18 @@ var AboutUsHome = /** @class */ (function (_super) {
                                         { color: '#ffffff' } :
                                         { color: '#6c6c6c' } }, leftText),
                             leftUrl && leftBtnTitle &&
-                                React.createElement(Button, { url: leftUrl }, leftBtnTitle))),
+                                React.createElement(Button_1.default, { url: leftUrl }, leftBtnTitle))),
                     React.createElement("div", { className: "col-12 col-xl-6" },
                         React.createElement("div", { className: 'aboutUsHome__block aboutUsHome__block--right', onMouseEnter: this.toggleHover, onMouseLeave: this.toggleHover, style: !this.state.hover ?
-                                { backgroundImage: rightImg && "url(" + getImageUrl(rightImg) + ")" } :
+                                { backgroundImage: rightImg && "url(" + getImageUrl_1.default(rightImg) + ")" } :
                                 { background: 'white !important' } },
                             rightTitle && React.createElement("h3", null, rightTitle),
                             rightSubtitle && React.createElement("h4", null, rightSubtitle),
                             rightText && React.createElement("p", null, rightText),
                             rightUrl && rightBtnTitle &&
-                                React.createElement(Button, { url: rightUrl }, rightBtnTitle)))))));
+                                React.createElement(Button_1.default, { url: rightUrl }, rightBtnTitle)))))));
     };
     return AboutUsHome;
 }(React.Component));
-export default AboutUsHome;
+exports.default = AboutUsHome;
 //# sourceMappingURL=AboutUsHome.js.map

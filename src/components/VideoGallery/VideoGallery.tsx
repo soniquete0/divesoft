@@ -1,4 +1,4 @@
-import React from 'react';
+ import * as React from 'react';
 
 import List from '../List';
 import Media from '@source/partials/Media';
@@ -43,12 +43,12 @@ class VideoGallery extends React.Component<VideoGalleryProps, VideoGalleryState>
             <div className="videoGallery">
               <div className={'container'}>
                 {title && <h2>{title}</h2>}
-                {description && 
+                {description &&
                   <h4 className={'videoGallery__description'}>{description}</h4>}
-  
+
                 <div className="row">
                   {items && items.map((item, i) => (
-                    <div key={i} className="col-12 col-md-4"> 
+                    <div key={i} className="col-12 col-md-4">
                       <div className={'videoGallery__item'}>
                         {item.video && <Media type={'embeddedVideo'} data={item.video} />}
                         <h4>{item.title}</h4>
@@ -59,12 +59,12 @@ class VideoGallery extends React.Component<VideoGalleryProps, VideoGalleryState>
                 </div>
 
                 {this.state.numberOfPage < lastPage &&
-                  <button 
-                    className={'btn'} 
+                  <button
+                    className={'btn'}
                     onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
                   >Show more
                   </button>}
-  
+
                 {divider && <div className={'videoGallery__divider'} />}
               </div>
             </div>

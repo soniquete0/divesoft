@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,11 +12,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import Dots from './components/Dots';
-import Slide from './components/Slide';
-import LeftArrow from './components/LeftArrow';
-import RightArrow from './components/RightArrow';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Dots_1 = require("./components/Dots");
+var Slide_1 = require("./components/Slide");
+var LeftArrow_1 = require("./components/LeftArrow");
+var RightArrow_1 = require("./components/RightArrow");
 var Slider = /** @class */ (function (_super) {
     __extends(Slider, _super);
     function Slider(props) {
@@ -110,14 +112,14 @@ var Slider = /** @class */ (function (_super) {
             React.createElement("div", { className: "slider__wrapper", style: {
                     transform: "translateX(" + this.state.translateValue + "px)",
                     transition: 'transform ease-out 0.25s'
-                } }, this.state.slides.map(function (slide, i) { return (React.createElement(Slide, { key: i, slide: slide })); })),
+                } }, this.state.slides.map(function (slide, i) { return (React.createElement(Slide_1.default, { key: i, slide: slide })); })),
             this.props.showArrows ? (React.createElement(React.Fragment, null,
-                React.createElement(LeftArrow, { goToPrevSlide: this.goToPrevSlide }),
-                React.createElement(RightArrow, { goToNextSlide: this.goToNextSlide }))) : '',
+                React.createElement(LeftArrow_1.default, { goToPrevSlide: this.goToPrevSlide }),
+                React.createElement(RightArrow_1.default, { goToNextSlide: this.goToNextSlide }))) : '',
             this.props.showDots ?
-                React.createElement(Dots, { goTo: this.goTo, len: this.props.slides.length, currentIndex: this.state.currentIndex }) : ''));
+                React.createElement(Dots_1.default, { goTo: this.goTo, len: this.props.slides.length, currentIndex: this.state.currentIndex }) : ''));
     };
     return Slider;
 }(React.Component));
-export default Slider;
+exports.default = Slider;
 //# sourceMappingURL=Slider.js.map

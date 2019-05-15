@@ -1,0 +1,37 @@
+{
+    "name": "Footer",
+    "data": {
+        "copyrights": "Copyright © 2019 Divesoft LLC All rights reserved.",
+        "facebookUrl": "",
+        "youtubeUrl": "",
+        "instagramUrl": "",
+        "contacts": "**Divesoft, s.r.o.** Hálkova 2495 413 01 Roudnice nad Labem Česká republika Tel.: +420 416 857 057 E-mail: info@divesoft.cz"
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "copyrights": {
+                    "type": "text",
+                    "title": "Copyrights"
+                },
+                "facebookUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "facebook URL"
+                },
+                "youtubeUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "youtube URL"
+                },
+                "instagramUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "instagram URL"
+                },
+                "contacts": {
+                    "type": "markdown",
+                    "title": "Contacts"
+                }
+            }
+        }
+    }
+}

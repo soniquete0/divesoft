@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
 export interface ContactColumnsProps {
   data: {
@@ -16,7 +16,7 @@ export interface ContactColumnsProps {
 }
 
 const ContactColumns = (props: ContactColumnsProps) => {
-  const { 
+  const {
     firstTitle,
     firstAddress,
     firstEmail,
@@ -35,14 +35,14 @@ const ContactColumns = (props: ContactColumnsProps) => {
           <div className={'contactColumns__col'}>
             {firstTitle && <h3>{firstTitle}</h3>}
             {firstAddress && <h4 className={'contactColumns__col__address'}>{firstAddress}</h4>}
-            {firstEmail && 
+            {firstEmail &&
               <h5>E-mail: <a style={{ color: '#e50000' }} href={`mailto:${firstEmail}`}>{firstEmail}</a></h5>}
             {firstAccounts && <ReactMarkdown source={firstAccounts} />}
           </div>
           <div className={'contactColumns__col'}>
             {secondTitle && <h3>{secondTitle}</h3>}
             {secondAddress && <h4 className={'contactColumns__col__address'}>{secondAddress}</h4>}
-            {secondEmail && 
+            {secondEmail &&
               <h5>E-mail: <a style={{ color: '#e50000' }} href={`mailto:${secondEmail}`}>{secondEmail}</a></h5>}
             {secondAccounts && <ReactMarkdown source={secondAccounts} />}
           </div>

@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import SearchResults from '../SearchResults';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var SearchResults_1 = require("../SearchResults");
 var Search = /** @class */ (function (_super) {
     __extends(Search, _super);
     function Search(props) {
@@ -48,9 +50,9 @@ var Search = /** @class */ (function (_super) {
             React.createElement("div", { className: 'search' },
                 React.createElement("div", { className: "container" },
                     React.createElement("input", { type: "text", placeholder: 'search', ref: this.searchInput, onFocus: function () { return _this.focusSearch(); }, onBlur: function () { return _this.unFocusSearch(); }, onChange: function (e) { return _this.handleChange(e.target.value); }, defaultValue: '' }))),
-            searchFocus && searchQuery && searchQuery.length > 0 && React.createElement(SearchResults, { searchQuery: searchQuery, active: searchQuery && searchQuery.length > 1, handleSearch: this.handleChange, languageCode: this.props.language })));
+            searchFocus && searchQuery && searchQuery.length > 0 && React.createElement(SearchResults_1.default, { searchQuery: searchQuery, active: searchQuery && searchQuery.length > 1, handleSearch: this.handleChange, languageCode: this.props.language })));
     };
     return Search;
 }(React.Component));
-export default Search;
+exports.default = Search;
 //# sourceMappingURL=Search.js.map

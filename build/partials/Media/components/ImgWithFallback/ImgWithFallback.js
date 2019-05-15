@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import getImageUrl from '@source/helpers/getImageUrl';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var getImageUrl_1 = require("@source/helpers/getImageUrl");
 var ImgWithFallback = /** @class */ (function (_super) {
     __extends(ImgWithFallback, _super);
     function ImgWithFallback(props) {
@@ -110,10 +112,10 @@ var ImgWithFallback = /** @class */ (function (_super) {
                         parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
                         100 + "%",
                 } },
-                React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl(this.props.originalData) })));
+                React.createElement("img", { alt: alt, className: 'mediaImage inner', src: this.state.src ? this.state.src : getImageUrl_1.default(this.props.originalData) })));
         }
     };
     return ImgWithFallback;
 }(React.Component));
-export default ImgWithFallback;
+exports.default = ImgWithFallback;
 //# sourceMappingURL=ImgWithFallback.js.map

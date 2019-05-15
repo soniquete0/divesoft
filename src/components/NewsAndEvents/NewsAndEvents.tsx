@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import List from '../List';
 import Link from '@source/partials/Link';
@@ -43,18 +43,18 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
       <List data={newsAndEvents}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 9);
-          
+
           return (
-            <div 
-              className={'newsAndEvents'} 
-              style={{ 
-                backgroundImage: backgroundImage && `url(${getImageUrl(backgroundImage)})` 
+            <div
+              className={'newsAndEvents'}
+              style={{
+                backgroundImage: backgroundImage && `url(${getImageUrl(backgroundImage)})`
               }}
             >
               <div className={'container'}>
                 {title && <h3 style={{ color: `${titleColor}` }}>{title}</h3>}
                 <div className={'newsAndEvents__list row d-flex justify-content-between align-items-center'}>
-                  
+
                   {items &&
                     items.map((item, i) => (
                       <div key={i} className={'newsAndEvents__list__item col-12 col-md-4'}>
@@ -75,16 +75,16 @@ class NewsAndEvents extends React.Component<NewsAndEventsProps, NewsAndEventsSta
                   ))}
                 </div>
 
-                {this.state.numberOfPage < lastPage && 
-                  <button 
-                    className={'btn'} 
-                    onClick={() => this.setState({ 
-                      numberOfPage: this.state.numberOfPage + 1 
+                {this.state.numberOfPage < lastPage &&
+                  <button
+                    className={'btn'}
+                    onClick={() => this.setState({
+                      numberOfPage: this.state.numberOfPage + 1
                     })}
                   >
                     Show more
                   </button>}
-                
+
               </div>
             </div>
           );

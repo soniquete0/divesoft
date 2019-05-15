@@ -1,4 +1,4 @@
-import React from 'react';
+ import * as React from 'react';
 
 export interface DotsProps {
   // tslint:disable-next-line:no-any
@@ -13,9 +13,9 @@ const DotsProps = (props: DotsProps) => {
   let dots = [];
   for (let i = 0; i < props.len; i++) {
     dots.push(
-      <i 
-        key={i} 
-        className={`slider__dots__dot ${props.currentIndex === i ? `slider__dots__dot--active` : '' }`} 
+      <i
+        key={i}
+        className={`slider__dots__dot ${props.currentIndex === i ? `slider__dots__dot--active` : '' }`}
         onClick={() => props.goTo(i)}
       />);
   }

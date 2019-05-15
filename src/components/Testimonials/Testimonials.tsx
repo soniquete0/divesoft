@@ -1,4 +1,4 @@
-import React from 'react';
+ import * as React from 'react';
 import Responsive from 'react-responsive';
 
 import List from '../List';
@@ -25,7 +25,7 @@ const Default = props => <Responsive {...props} minWidth={768} />;
 
 const Testimonials = (props: TestimonialsProps) => {
   const { title, description, testimonials } = props.data;
-  
+
   return (
     <List data={testimonials}>
       {({ data }) => (
@@ -33,7 +33,7 @@ const Testimonials = (props: TestimonialsProps) => {
           <div className="container">
             {title && <h2>{title}</h2>}
             {description && <p className={'testimonials__description textDescription'}>{description}</p>}
-    
+
             <Default>
               <div className={'testimonials__list'}>
                 <div className="row">
@@ -52,7 +52,7 @@ const Testimonials = (props: TestimonialsProps) => {
             </Default>
 
             <Mobile>
-              <Slider 
+              <Slider
                 slides={data && data.map((item, i) => (
                   <div key={i} className={'col-12'}>
                     <div className={'testimonials__list__item'}>
@@ -65,7 +65,7 @@ const Testimonials = (props: TestimonialsProps) => {
                 ))}
                 delay={7000}
                 showArrows={data.length > 1 ? true : false}
-                autoplay={data.length > 1 ? true : false} 
+                autoplay={data.length > 1 ? true : false}
                 isFullWidth={false}
               />
             </Mobile>

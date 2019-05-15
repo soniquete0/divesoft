@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Responsive from 'react-responsive';
 
 import List from '../List';
@@ -46,7 +46,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
             <div className="container">
               {title && <h2>{title}</h2>}
               {description && <p className={'textDescription'}>{description}</p>}
-      
+
               <Default>
                 <div className={'productComponents__list row'}>
                   {data && data.map((item, i) => (

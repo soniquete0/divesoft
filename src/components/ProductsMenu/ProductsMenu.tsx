@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import Button from '@source/partials/Button';
 import getImageUrl from '@source/helpers/getImageUrl';
@@ -31,23 +31,23 @@ const ProductsMenu = (props: ProductsMenuProps) => {
         </div>
         <div className={'product-preview__list row'}>
           <div className="col">
-            {products.length >= 1 && products[0] && 
-              <div 
+            {products.length >= 1 && products[0] &&
+              <div
                 key={'1'}
                 className={'product-previews__item'}
-                style={products[0].image ? 
+                style={products[0].image ?
                       { backgroundImage: `url(${getImageUrl(products[0].image)})`} : {}}
               >
                 <div className={'product-previews__item__content'}>
-                  {products[0].description && <p 
-                    className={'product-previews__item__description'} 
+                  {products[0].description && <p
+                    className={'product-previews__item__description'}
                     style={products[0].isBkgDark ? {color: 'white'} : {}}
                   >
                     {products[0].description}
                   </p>}
                   <div className={'product-previews__item__divider'} />
-                  {products[0].title && 
-                    <h2 
+                  {products[0].title &&
+                    <h2
                       className={'product-previews__item__title'}
                       style={products[0].isBkgDark ? {color: 'white'} : {}}
                     >
@@ -61,25 +61,25 @@ const ProductsMenu = (props: ProductsMenuProps) => {
           <div className="col">
             <div className="row">
               <div className="col">
-                {products.length >= 2 && products[1] && 
-                  <div 
+                {products.length >= 2 && products[1] &&
+                  <div
                     key={'2'}
                     className={'product-previews__item product-previews__item--small'}
-                    style={products[1].image ? 
+                    style={products[1].image ?
                           { backgroundImage: `url(${getImageUrl(products[1].image)})`} : {}}
                   >
                     <div className={'product-previews__item__content'}>
-                      {products[1].description && 
-                        <p 
-                          className={'product-previews__item__description'} 
+                      {products[1].description &&
+                        <p
+                          className={'product-previews__item__description'}
                           style={products[1].isBkgDark ? {color: 'white'} : {}}
                         >
                           {products[1].description}
                         </p>}
                       <div className={'product-previews__item__divider'} />
-                      {products[1].title && 
-                        <h4 
-                          className={'product-previews__item__title'} 
+                      {products[1].title &&
+                        <h4
+                          className={'product-previews__item__title'}
                           style={products[1].isBkgDark ? {color: 'white'} : {}}
                         >
                           {products[1].title}
@@ -90,23 +90,23 @@ const ProductsMenu = (props: ProductsMenuProps) => {
                 }
               </div>
               <div className="col">
-                {products.length >= 3 && products[2] && 
-                  <div 
+                {products.length >= 3 && products[2] &&
+                  <div
                     key={'3'}
                     className={'product-previews__item product-previews__item--small'}
-                    style={products[2].image ? 
+                    style={products[2].image ?
                           { backgroundImage: `url(${getImageUrl(products[2].image)})`} : {}}
                   >
                     <div className={'product-previews__item__content'}>
-                      {products[2].description && <p 
-                        className={'product-previews__item__description'} 
+                      {products[2].description && <p
+                        className={'product-previews__item__description'}
                         style={products[2].isBkgDark ? {color: 'white'} : {}}
                       >
                         {products[2].description}
                       </p>}
                       <div className={'product-previews__item__divider'} />
-                      {products[2].title && 
-                        <h4 
+                      {products[2].title &&
+                        <h4
                           className={'product-previews__item__title'}
                           style={products[2].isBkgDark ? {color: 'white'} : {}}
                         >
@@ -119,23 +119,23 @@ const ProductsMenu = (props: ProductsMenuProps) => {
               </div>
             </div>
             <div className="row">
-              {products.length >= 4 && products[3] && 
-                <div 
+              {products.length >= 4 && products[3] &&
+                <div
                   key={'4'}
                   className={'product-previews__item product-previews__item--small'}
-                  style={products[3].image ? 
+                  style={products[3].image ?
                         { backgroundImage: `url(${getImageUrl(products[3].image)})`} : {}}
                 >
                   <div className={'product-previews__item__content'}>
-                    {products[1].description && <p 
-                      className={'product-previews__item__description'} 
+                    {products[1].description && <p
+                      className={'product-previews__item__description'}
                       style={products[3].isBkgDark ? {color: 'white'} : {}}
                     >
                       {products[3].description}
                     </p>}
                     <div className={'product-previews__item__divider'} />
-                    {products[3].title && 
-                      <h4 
+                    {products[3].title &&
+                      <h4
                         className={'product-previews__item__title'}
                         style={products[3].isBkgDark ? {color: 'white'} : {}}
                       >

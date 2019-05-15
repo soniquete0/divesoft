@@ -1,4 +1,6 @@
-import React from 'react';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var DotsProps = function (props) {
     if (props.len <= 0) {
         return;
@@ -12,5 +14,5 @@ var DotsProps = function (props) {
     }
     return (React.createElement("div", { className: "slider__dots" }, dots));
 };
-export default DotsProps;
+exports.default = DotsProps;
 //# sourceMappingURL=Dots.js.map

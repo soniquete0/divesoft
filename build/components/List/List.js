@@ -1,3 +1,4 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -26,13 +27,14 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import gql from 'graphql-tag';
-import { Query, ApolloConsumer } from 'react-apollo';
-import * as R from 'ramda';
-import { adopt } from 'react-adopt';
-import { withRouter } from 'react-router';
-import Loader from '@source/partials/Loader';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var R = require("ramda");
+var react_adopt_1 = require("react-adopt");
+var react_router_1 = require("react-router");
+var Loader_1 = require("@source/partials/Loader");
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str
@@ -45,21 +47,21 @@ var escape = function (str) {
         .replace(/[\r]/g, '\\r')
         .replace(/[\t]/g, '\\t');
 };
-var FRONTEND = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"], ["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"])));
-var DATASOURCE = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
-var GET_CONTEXT = gql(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"])));
-var GET_ALL_PAGES = gql(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
-var AllPagesComposedQuery = adopt({
+var FRONTEND = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"], ["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"])));
+var DATASOURCE = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
+var GET_CONTEXT = graphql_tag_1.default(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"])));
+var GET_ALL_PAGES = graphql_tag_1.default(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
+var AllPagesComposedQuery = react_adopt_1.adopt({
     getContext: function (_a) {
         var render = _a.render;
-        return React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+        return React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return render(data);
         });
     },
     getFrontend: function (_a) {
         var render = _a.render, windowOrigin = _a.windowOrigin, locationPath = _a.locationPath;
-        return (React.createElement(ApolloConsumer, null, function (client) {
+        return (React.createElement(react_apollo_1.ApolloConsumer, null, function (client) {
             var data = client.cache.data;
             var origin = windowOrigin;
             var url = locationPath;
@@ -72,7 +74,7 @@ var AllPagesComposedQuery = adopt({
             if (!windowOrigin || !locationPath) {
                 return render({ frontend: null });
             }
-            return (React.createElement(Query, { query: FRONTEND, variables: { origin: origin, url: url } }, function (_a) {
+            return (React.createElement(react_apollo_1.Query, { query: FRONTEND, variables: { origin: origin, url: url } }, function (_a) {
                 var frontend = _a.data;
                 return render(frontend);
             }));
@@ -88,7 +90,7 @@ var AllPagesComposedQuery = adopt({
             return render({ loading: true });
         }
         return (React.createElement(React.Fragment, null,
-            React.createElement(Query, { query: GET_ALL_PAGES, variables: {
+            React.createElement(react_apollo_1.Query, { query: GET_ALL_PAGES, variables: {
                     languageId: languageId,
                     websiteId: websiteId,
                 } }, function (data) {
@@ -118,7 +120,7 @@ var List = /** @class */ (function (_super) {
             return getPage;
         };
         _this.datasourcesList = function (data, searchedFragments) {
-            return (React.createElement(Query, { query: DATASOURCE, variables: {
+            return (React.createElement(react_apollo_1.Query, { query: DATASOURCE, variables: {
                     id: data.datasourceId
                 } }, function (queryData) {
                 var dataShape = data.data, error = data.error, loading = data.loading;
@@ -183,7 +185,7 @@ var List = /** @class */ (function (_super) {
                     return React.createElement("span", null, "Error...");
                 }
                 if (loading) {
-                    return React.createElement(Loader, null);
+                    return React.createElement(Loader_1.default, null);
                 }
                 var items = data.orderBy ?
                     datasourceItems
@@ -262,7 +264,7 @@ var List = /** @class */ (function (_super) {
                     (frontend && frontend.page && frontend.page.id);
                 console.log(pageId);
                 if (allPagesLoading || !allPagesData) {
-                    return React.createElement(Loader, null);
+                    return React.createElement(Loader_1.default, null);
                 }
                 if (allPagesError) {
                     return "Error...";
@@ -407,6 +409,6 @@ var List = /** @class */ (function (_super) {
     };
     return List;
 }(React.Component));
-export default withRouter(List);
+exports.default = react_router_1.withRouter(List);
 var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 //# sourceMappingURL=List.js.map

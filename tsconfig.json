@@ -2,32 +2,51 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build",
-    "module": "esnext",
+    "module": "commonjs",
     "target": "es5",
     "lib": [
       "dom",
+      "es2015.collection",
+      "es2015.core",
+      "es2015.generator",
+      "es2015.iterable",
+      "es2015.promise",
+      "es2015.proxy",
+      "es2015.reflect",
+      "es2015.symbol",
+      "es2015.symbol.wellknown",
       "es6",
-      "esnext"
+      "esnext",
+      "esnext.asynciterable"
     ],
     "jsx": "react",
     "sourceMap": true,
     "rootDir": "src",
-    "declaration": true,
-    "declarationDir": "lib/@types",
+    "declaration": false,
+    // "declarationDir": "lib",
     "moduleResolution": "node",
     "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": false,
     "allowSyntheticDefaultImports": true,
+    "noImplicitThis": true,
+    "noImplicitReturns": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "strict": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
     "paths": {
       "@source/*": ["./src/*"]
     },
     "typeRoots": [
       "./node_modules/@types",
-      "./src/types"
+      "./src/@types"
     ]
   },
   "exclude": [
+    "assets",
     "build",
-    "lib",
     "node_module",
     "config",
     "scripts",

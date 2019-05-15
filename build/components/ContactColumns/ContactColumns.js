@@ -1,5 +1,7 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 var ContactColumns = function (props) {
     var _a = props.data, firstTitle = _a.firstTitle, firstAddress = _a.firstAddress, firstEmail = _a.firstEmail, firstAccounts = _a.firstAccounts, secondTitle = _a.secondTitle, secondAddress = _a.secondAddress, secondEmail = _a.secondEmail, secondAccounts = _a.secondAccounts, bottomInfo = _a.bottomInfo;
     return (React.createElement("div", { className: 'container' },
@@ -24,5 +26,5 @@ var ContactColumns = function (props) {
             bottomInfo && React.createElement("p", { className: 'contactColumns__bottomInfo' }, bottomInfo),
             React.createElement("div", { className: 'contactColumns__divider' }))));
 };
-export default ContactColumns;
+exports.default = ContactColumns;
 //# sourceMappingURL=ContactColumns.js.map

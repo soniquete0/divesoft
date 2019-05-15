@@ -1,0 +1,41 @@
+{
+    "name": "AboutLeftPicture",
+    "data": {
+        "title": "Factory",
+        "subtitle": "Cras risus massa, faucibus sit amet justo a, faucibus vulputate tellus.",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc. Sed vehicula condimentum nulla non dictum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus eget mauris in diam bibendum blandit id id nunc.",
+        "img": {
+            "recommendedSizes": {
+                "width": "450",
+                "height": "450"
+            }
+        },
+        "paddingTop": false
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "subtitle": {
+                    "type": "text",
+                    "title": "Subtitle"
+                },
+                "text": {
+                    "type": "markdown",
+                    "title": "Text"
+                },
+                "img": {
+                    "type": "image"
+                },
+                "paddingTop": {
+                    "type": "boolean",
+                    "title": "Remove indent at top?"
+                }
+            }
+        }
+    }
+}

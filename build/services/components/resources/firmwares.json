@@ -1,0 +1,51 @@
+{
+    "name": "Firmwares",
+    "data": {
+        "title": "Freedom dive computer",
+        "divider": false,
+        "articles": [
+            {
+                "text": "FW manager for Windows can automatically download the latest version of firmware from Internet or you can use firmware from a file (off-line). It is easy to install and use. No prior driver installation is necessary, no special IT skills required."
+            },
+            {
+                "title": "29th October 2018, firmware 1.15.4",
+                "text": "stopwatch available in any dive mode"
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "divider": {
+                    "type": "boolean",
+                    "title": "Add divider at the bottom?"
+                },
+                "articles": {
+                    "type": "array",
+                    "title": "Articles",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "text": {
+                                "type": "markdown",
+                                "title": "Text"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

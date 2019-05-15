@@ -2,7 +2,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { adopt } from 'react-adopt';
 import { Query } from 'react-apollo';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';
@@ -93,26 +93,26 @@ class Footer extends React.Component<FooterProps, FooterState> {
           const firstBottomNav = 'firstBottom';
 
           const firstBottomNavItems =
-            transformedNavigations && transformedNavigations[firstBottomNav] ? 
-            transformedNavigations[firstBottomNav] : 
+            transformedNavigations && transformedNavigations[firstBottomNav] ?
+            transformedNavigations[firstBottomNav] :
             [];
 
           const secondBottomNav = 'secondBottom';
 
           const secondBottomNavItems =
-            transformedNavigations && transformedNavigations[secondBottomNav] ? 
-            transformedNavigations[secondBottomNav] : 
+            transformedNavigations && transformedNavigations[secondBottomNav] ?
+            transformedNavigations[secondBottomNav] :
             [];
-          
+
           const thirdBottomNav = 'thirdBottom';
 
           const thirdBottomNavItems =
-            transformedNavigations && transformedNavigations[thirdBottomNav] ? 
-            transformedNavigations[thirdBottomNav] : 
+            transformedNavigations && transformedNavigations[thirdBottomNav] ?
+            transformedNavigations[thirdBottomNav] :
             [];
-          
+
           return (
-            <>              
+            <>
               <footer className={'footer'}>
                 <CookiePopup />
                 <div className={'container'}>

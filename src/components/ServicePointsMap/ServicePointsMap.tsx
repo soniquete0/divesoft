@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
 export const GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
@@ -34,7 +34,7 @@ export interface ServicePointsMapState {
   countrySelectedValue: string;
   citySelectedValue: string;
   serviceSelectedValue: string;
-  mapCenter: { 
+  mapCenter: {
     lat: number,
     lng: number
   };
@@ -52,9 +52,9 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
       countrySelectedValue: 'all',
       citySelectedValue: 'all',
       serviceSelectedValue: 'all',
-      mapCenter: { 
+      mapCenter: {
         lat: 50,
-        lng: 14 
+        lng: 14
       },
       cities: [],
       countries: [],
@@ -81,12 +81,12 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     };
 
     const uniqueArray = arr => Array.from(new Set(arr));
-    
+
     propsToArray();
     uniqCities = uniqueArray(uniqCities);
     uniqCountries = uniqueArray(uniqCountries);
     uniqServices = uniqueArray(uniqServices);
-    
+
     return {
       cities: uniqCities,
       countries: uniqCountries,
@@ -121,7 +121,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
               currentCountry: mapItems[i].country
             });
             break;
-          
+
           default: break;
         }
 
@@ -139,19 +139,19 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
 
     switch (type) {
       case 'country':
-        this.setState({ 
+        this.setState({
           countrySelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type) 
+          mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
         break;
       case 'city':
-        this.setState({ 
+        this.setState({
           citySelectedValue: safeSearchTypeValue,
           mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
         break;
       case 'service':
-        this.setState({ 
+        this.setState({
           serviceSelectedValue: safeSearchTypeValue,
           mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
@@ -179,8 +179,8 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
           <div className="row">
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'country')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'country')}
                   value={this.state.countrySelectedValue}
                 >
                   <option value={'all'} key="all">Select country</option>
@@ -192,8 +192,8 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             </div>
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'city')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'city')}
                   value={this.state.citySelectedValue}
                 >
                   <option value={'all'} key="all">Select city</option>
@@ -205,8 +205,8 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             </div>
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'service')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'service')}
                   value={this.state.serviceSelectedValue}
                 >
                   <option value={'all'} key="all">Select service</option>
@@ -249,10 +249,10 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
                 web: mapItems[j].web
               }
             );
-          }   
+          }
         }
       }
-      
+
       if (this.state.currentCountry === countries[i] || this.state.currentCountry === 'all') {
         resultRows.push(
           <ServiceRow key={i} title={countries[i]} items={composedRows} />
@@ -271,7 +271,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
         {({ data }) => (
           <>
             <div className={'servicePointsMapWrapper'}>
-              {title ? 
+              {title ?
                 <div className="container">
                   <p className={'textDescription servicePointsMapWrapper__title'}>{title}</p>
                 </div> : ''}
@@ -280,12 +280,12 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
               <section className={'map'}>
                 {mapItems && (
                   <GoogleMapReact
-                    yesIWantToUseGoogleMapApiInternals={true}  
+                    yesIWantToUseGoogleMapApiInternals={true}
                     bootstrapURLKeys={{ key: GoogleMapsApiKey }}
                     defaultCenter={{ lat: 50, lng: 14 }}
                     center={this.state.mapCenter}
                     defaultZoom={5}
-                    options={{ 
+                    options={{
                       scrollwheel: false,
                       styles: MapStyles
                     }}
@@ -301,7 +301,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
                 )}
               </section>
             </div>
-            
+
             <div className={'map__rows'}>
               {this.renderRows(data)}
             </div>

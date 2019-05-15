@@ -1,0 +1,51 @@
+{
+    "name": "Hero",
+    "data": {
+        "title": "Hero title",
+        "text": "Divesoft is dedicated to providing customers with superior quality specialized diving equipment.",
+        "btnTitle": "",
+        "url": "",
+        "image": {
+            "recommendedSizes": {
+                "width": "1600",
+                "height": "560"
+            }
+        },
+        "paddingTop": false,
+        "smallFontSize": false
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "text": {
+                    "type": "text",
+                    "title": "Text"
+                },
+                "btnTitle": {
+                    "type": "text",
+                    "title": "Button title"
+                },
+                "url": {
+                    "type": "urlAutocomplete",
+                    "title": "URL"
+                },
+                "image": {
+                    "type": "image"
+                },
+                "paddingTop": {
+                    "type": "boolean",
+                    "title": "Is this component under the top menu?"
+                },
+                "smallFontSize": {
+                    "type": "boolean",
+                    "title": "Make title smaller?"
+                }
+            }
+        }
+    }
+}

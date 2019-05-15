@@ -1,3 +1,4 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -26,23 +27,24 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { adopt } from 'react-adopt';
-import Search from '../Search';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import Loader from '@source/partials/Loader';
-import Button from '@source/partials/Button';
-import Hamburger from './components/Hamburger';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var graphql_tag_1 = require("graphql-tag");
+var react_apollo_1 = require("react-apollo");
+var react_adopt_1 = require("react-adopt");
+var Search_1 = require("../Search");
+var Link_1 = require("@source/partials/Link");
+var Media_1 = require("@source/partials/Media");
+var Loader_1 = require("@source/partials/Loader");
+var Button_1 = require("@source/partials/Button");
+var Hamburger_1 = require("./components/Hamburger");
 // import Country from './components/Country/Country';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
-var ComposedQuery = adopt({
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
+var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var ComposedQuery = react_adopt_1.adopt({
     context: function (_a) {
         var render = _a.render;
-        return React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+        return React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return render(data);
         });
@@ -52,7 +54,7 @@ var ComposedQuery = adopt({
         if (!(languageData && websiteData)) {
             return render({});
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
+        return (React.createElement(react_apollo_1.Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
@@ -90,7 +92,7 @@ var Header = /** @class */ (function (_super) {
                 !context.languagesData ||
                 !data ||
                 !data.pagesUrls) {
-                return React.createElement(Loader, null);
+                return React.createElement(Loader_1.default, null);
             }
             if (error) {
                 return "Error..." + error;
@@ -107,35 +109,35 @@ var Header = /** @class */ (function (_super) {
                     React.createElement("div", { className: "container" },
                         React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
                             React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
-                                React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
-                                React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
+                                React.createElement(Hamburger_1.default, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
+                                React.createElement(Link_1.default, { url: (context.websiteData.urlMask === '/' ?
                                         '' : context.websiteData.urlMask) + "/" + context.languageData.code },
                                     React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                             React.createElement("nav", null,
                                 React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
                                     return (React.createElement("li", { key: i, style: { position: 'relative' } },
-                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title),
+                                        React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title),
                                         navItem.name === 'products' ?
                                             React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdownProducts__arrow' }) : ''));
                                 }))),
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                                 React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.png", alt: "search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
-                                    React.createElement(Search, { language: context.languageData.code }) : '',
+                                    React.createElement(Search_1.default, { language: context.languageData.code }) : '',
                                 React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
                                 React.createElement("button", null, "e-shop")))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
                             React.createElement("ul", null, topNavItems &&
-                                topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))),
+                                topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link_1.default, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))),
                 _this.state.showDropdown ?
                     React.createElement("div", { className: 'dropdownProducts' }, products && React.createElement("div", { className: "container" },
                         React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },
                             React.createElement("div", { className: 'productsPreview__list__item' },
-                                React.createElement(Media, { type: 'image', data: item.img }),
+                                React.createElement(Media_1.default, { type: 'image', data: item.img }),
                                 item.title && React.createElement("h5", null, item.title),
                                 item.description && React.createElement("p", null, item.description),
-                                React.createElement(Button, { url: item.url }, "shop now")))); })))) : ''));
+                                React.createElement(Button_1.default, { url: item.url }, "shop now")))); })))) : ''));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {
@@ -177,6 +179,6 @@ var Header = /** @class */ (function (_super) {
     };
     return Header;
 }(React.Component));
-export default Header;
+exports.default = Header;
 var templateObject_1, templateObject_2;
 //# sourceMappingURL=Header.js.map

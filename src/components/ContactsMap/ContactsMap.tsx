@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { GeolocatedProps, geolocated } from 'react-geolocated';
 export const GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
@@ -32,7 +32,7 @@ export interface ContactsMapState {
   countrySelectedValue: string;
   citySelectedValue: string;
   associationSelectedValue: string;
-  mapCenter: { 
+  mapCenter: {
     lat: number,
     lng: number
   };
@@ -50,9 +50,9 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
       countrySelectedValue: 'all',
       citySelectedValue: 'all',
       associationSelectedValue: 'all',
-      mapCenter: { 
+      mapCenter: {
         lat: 50,
-        lng: 14 
+        lng: 14
       },
       cities: [],
       countries: [],
@@ -92,12 +92,12 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
     };
 
     const uniqueArray = arr => Array.from(new Set(arr));
-    
+
     propsToArray();
     uniqCities = uniqueArray(uniqCities);
     uniqCountries = uniqueArray(uniqCountries);
     uniqAssociations = uniqueArray(uniqAssociations);
-    
+
     return this.setState({
       cities: uniqCities,
       countries: uniqCountries,
@@ -132,7 +132,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
               currentAssociation: mapItems[i].association
             });
             break;
-          
+
           default: break;
         }
         // this.renderRows();
@@ -150,19 +150,19 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
 
     switch (type) {
       case 'country':
-        this.setState({ 
+        this.setState({
           countrySelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type) 
+          mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
         break;
       case 'city':
-        this.setState({ 
+        this.setState({
           citySelectedValue: safeSearchTypeValue,
           mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
         break;
       case 'association':
-        this.setState({ 
+        this.setState({
           associationSelectedValue: safeSearchTypeValue,
           mapCenter: this.defineLocation(safeSearchTypeValue, type)
         });
@@ -181,8 +181,8 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
           <div className="row">
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'country')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'country')}
                   value={this.state.countrySelectedValue}
                 >
                   <option value={'all'} key="all">Select country</option>
@@ -194,8 +194,8 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
             </div>
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'city')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'city')}
                   value={this.state.citySelectedValue}
                 >
                   <option value={'all'} key="all">Select city</option>
@@ -207,8 +207,8 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
             </div>
             <div className="col-12 col-md-3">
               <div className={'select'}>
-                <select 
-                  onChange={e => this.onSelectChange(e, 'association')} 
+                <select
+                  onChange={e => this.onSelectChange(e, 'association')}
                   value={this.state.associationSelectedValue}
                 >
                    <option value={'all'} key="all">Select assoc.</option>
@@ -247,10 +247,10 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
                 web: data[j].web
               }
             );
-          }   
+          }
         }
       }
-      
+
       if (this.state.currentAssociation === associations[i] || this.state.currentAssociation === 'all') {
         resultRows.push(
           <ContactRow key={i} title={associations[i]} rows={composedRows} />
@@ -274,12 +274,12 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
               <section className={'map'}>
                 {mapItems && (
                   <GoogleMapReact
-                    yesIWantToUseGoogleMapApiInternals={true}  
+                    yesIWantToUseGoogleMapApiInternals={true}
                     bootstrapURLKeys={{ key: GoogleMapsApiKey }}
                     defaultCenter={{ lat: 50, lng: 14 }}
                     center={this.state.mapCenter}
                     defaultZoom={5}
-                    options={{ 
+                    options={{
                       scrollwheel: false,
                       styles: MapStyles
                     }}
@@ -295,7 +295,7 @@ class ContactsMap extends React.Component<ContactsMapProps & GeolocatedProps, Co
                 )}
               </section>
             </div>
-            
+
             {this.renderRows(data)}
           </>
         )}

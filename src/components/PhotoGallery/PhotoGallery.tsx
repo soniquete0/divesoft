@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Lightbox from 'react-images';
 
 import List from '../List';
@@ -42,7 +42,7 @@ class PhotoGallery extends React.Component<PhotoGalleryProps, PhotoGalleryState>
 
     const gallery = data.map((item, i) => {
       return (
-        <div 
+        <div
           key={i}
           className={`photoGallery__img col-6 col-md-3`}
           onClick={(e) => this.openLightbox(i, e)}
@@ -51,16 +51,16 @@ class PhotoGallery extends React.Component<PhotoGalleryProps, PhotoGalleryState>
         </div>
       );
     });
-    
+
     return <div className="row">{gallery}</div>;
   }
 
   getImageUrls = () => {
     const { images } = this.props.data;
     if (!images) { return; }
-    
+
     let result = [];
-    
+
     images.map((item, i) => {
       result[i] = {
         src: getImageUrl(item.img)
@@ -90,27 +90,27 @@ class PhotoGallery extends React.Component<PhotoGalleryProps, PhotoGalleryState>
   gotoNext = () => this.setState({ currentImage: this.state.currentImage + 1 });
 
   gotoImage = (index: number) => this.setState({ currentImage: index });
-  
+
   handleClickImage = () => {
     if (this.state.currentImage === this.state.imageUrls.length - 1) { return; }
-    
+
     this.gotoNext();
   }
 
   public render () {
     const { title, description, divider, images } = this.props.data;
-    
+
     return (
       <List data={images}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 8);
-          
+
           return (
             <div className="photoGallery">
               <div className={'container'}>
                 {title && <h2>{title}</h2>}
                 {description && <h4>{description}</h4>}
-  
+
                 <Lightbox
                   images={this.state.imageUrls}
                   isOpen={this.state.lightboxIsOpen}
@@ -119,16 +119,16 @@ class PhotoGallery extends React.Component<PhotoGalleryProps, PhotoGalleryState>
                   onClickNext={this.gotoNext}
                   onClose={this.closeLightbox}
                 />
-  
+
                 {this.renderGallery(items)}
-  
+
                 {this.state.numberOfPage < lastPage &&
-                  <button 
-                    className={'btn'} 
+                  <button
+                    className={'btn'}
                     onClick={() => this.setState({ numberOfPage: this.state.numberOfPage + 1 })}
                   >Show more
                   </button>}
-  
+
                 {divider && <div className={'photoGallery__divider'} />}
               </div>
             </div>

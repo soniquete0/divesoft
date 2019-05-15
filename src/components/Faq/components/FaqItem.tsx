@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
 interface FaqItemState {
   show: boolean;
@@ -25,9 +25,9 @@ class FaqItem extends React.Component<FaqItemProps, FaqItemState> {
     return (
       <div className="row">
         <div className="col-12">
-          <div 
+          <div
             onClick={() => this.setState({ show: !this.state.show })}
-            className={`faq__list__show ${this.state.show ? 'faq__list__show--minus' : ''}`} 
+            className={`faq__list__show ${this.state.show ? 'faq__list__show--minus' : ''}`}
           />
           <div className={'faq__list__item'}>
             <h5 onClick={() => this.setState({ show: !this.state.show })}>{title}</h5>
@@ -36,7 +36,7 @@ class FaqItem extends React.Component<FaqItemProps, FaqItemState> {
           <div className={'faq__list__divider'} />
         </div>
       </div>
-    ); 
+    );
   }
 }
 

@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,12 +10,13 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import Link from '../Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Link_1 = require("../Link");
 var Button = function (props) {
     // Button with link
     if (props.url) {
-        return (React.createElement(Link, __assign({ className: "btn " + props.classes }, props.url), props.children));
+        return (React.createElement(Link_1.default, __assign({ className: "btn " + props.classes }, props.url), props.children));
     }
     else {
         return (
@@ -22,5 +24,5 @@ var Button = function (props) {
         React.createElement("button", { className: "btn " + props.classes }, props.children));
     }
 };
-export default Button;
+exports.default = Button;
 //# sourceMappingURL=Button.js.map

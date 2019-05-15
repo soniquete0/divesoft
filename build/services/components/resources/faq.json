@@ -1,0 +1,53 @@
+{
+    "name": "Faq",
+    "data": {
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi justo, vitae eleifend enim vestibulum at. Nulla dignissim facilisis nisl et ultrices. Nam ac massa auctor, maximus eros in, malesuada eros. Vestibulum iaculis facilisis eleifend.",
+        "title": "Freedom",
+        "paddingTop": true,
+        "questions": [
+            {
+                "title": "Freedom is still diving even when I’m on land. How can I solve it?",
+                "text": "For unblocking a fictitious dive follow this procedure: press both buttons > release one of them > press it again > release both (see the video of this procedure here) Now you are in the service menu. Please select “Force dive end” item. All parameters of this “unwanted dive” will be erased (deco data and CNS included) and it doesn’t affect your next dive."
+            },
+            {
+                "title": "Is it possible to update/upgrade firmware on my Mac?",
+                "text": "For unblocking a fictitious dive follow this procedure: press both buttons > release one of them > press it again > release both (see the video of this procedure here)"
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "paddingTop": {
+                    "type": "boolean",
+                    "title": "Clear indent at top?"
+                },
+                "text": {
+                    "type": "text",
+                    "title": "Text"
+                },
+                "questions": {
+                    "type": "array",
+                    "title": "Questions",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "text": {
+                                "type": "markdown",
+                                "title": "Text"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
