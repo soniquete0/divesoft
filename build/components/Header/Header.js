@@ -146,11 +146,13 @@ var Header = /** @class */ (function (_super) {
                                 _this.state.showSearch ?
                                     React.createElement(Search, { language: context.languageData.code }) : '',
                                 React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" }),
-                                React.createElement("button", null, "e-shop")))),
+                                React.createElement("button", { className: 'btn_eshop' },
+                                    React.createElement("span", { className: "text" }, "e-shop"))))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
                             React.createElement("ul", null, topNavItems &&
                                 topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))),
+                console.log(products),
                 _this.state.subMenuVisible === 'products' ?
                     React.createElement("div", { className: "dropdownProducts", onMouseLeave: _this.hideSubMenu }, products && React.createElement("div", { className: "container" },
                         React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },

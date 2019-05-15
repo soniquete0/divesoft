@@ -56,6 +56,18 @@ export interface FooterProps {
   };
 }
 
+const facebookUrl = {
+  url: 'https://facebook.com'
+};
+
+const youtubeUrl = {
+  url: 'https://www.youtube.com'
+};
+
+const instagramUrl = {
+  url: 'https://www.instagram.com'
+};
+
 export interface FooterState {}
 
 class Footer extends React.Component<FooterProps, FooterState> {
@@ -64,7 +76,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
   }
 
   public render() {
-    const { copyrights, facebookUrl, youtubeUrl, instagramUrl, contacts } = this.props.data;
+    const { copyrights, contacts } = this.props.data;
 
     return (
       <ComposedQuery>
@@ -127,7 +139,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
                   <div className={'footer__divider'} />
                   <div className={'footer__navigation row d-flex justify-content-between align-items-start'}>
                     <nav className={'footer__navigation__item col-12 col-md-6 col-xl'}>
-                      <h6 className="headline">All about buying</h6>
+                      <h6 className="headline">About</h6>
                       <ul>
                         {firstBottomNavItems &&
                           firstBottomNavItems.map((navItem, i) => (
@@ -170,14 +182,23 @@ class Footer extends React.Component<FooterProps, FooterState> {
                       {contacts && <ReactMarkdown source={contacts} />}
                     </div>
                   </div>
+                  <div className={'footer__divider'} />
                   <div className={'footer__bottom row'}>
-                    <div className={'col'}>
-                      <div className={'footer__bottom__social d-flex justify-content-center'}>
-                        <Link {...facebookUrl}><div /></Link>
-                        <Link {...youtubeUrl}><div /></Link>
-                        <Link {...instagramUrl}><div /></Link>
+                    <div className={'col-12 col-md-6 col-xl'}>
+                        {copyrights && <p className={'text-copyright'}>{copyrights}</p>}
+                    </div>
+                    <div className={'col-12 col-md-6 col-xl'}>
+                      <div className={'footer__bottom__social d-flex'}>
+                        <Link {...facebookUrl} className="facebook">
+                          <div />
+                        </Link>
+                        <Link {...youtubeUrl} className="youtube">
+                          <div />
+                        </Link>
+                        <Link {...instagramUrl} className="instagram">
+                          <div />
+                        </Link>
                       </div>
-                      {copyrights && <p>{copyrights}</p>}
                     </div>
                   </div>
                 </div>

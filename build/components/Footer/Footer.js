@@ -54,6 +54,15 @@ var ComposedQuery = adopt({
         }));
     },
 });
+var facebookUrl = {
+    url: 'https://facebook.com'
+};
+var youtubeUrl = {
+    url: 'https://www.youtube.com'
+};
+var instagramUrl = {
+    url: 'https://www.instagram.com'
+};
 var Footer = /** @class */ (function (_super) {
     __extends(Footer, _super);
     function Footer(props) {
@@ -61,7 +70,7 @@ var Footer = /** @class */ (function (_super) {
     }
     Footer.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, copyrights = _a.copyrights, facebookUrl = _a.facebookUrl, youtubeUrl = _a.youtubeUrl, instagramUrl = _a.instagramUrl, contacts = _a.contacts;
+        var _a = this.props.data, copyrights = _a.copyrights, contacts = _a.contacts;
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData ||
@@ -101,7 +110,7 @@ var Footer = /** @class */ (function (_super) {
                         React.createElement("div", { className: 'footer__divider' }),
                         React.createElement("div", { className: 'footer__navigation row d-flex justify-content-between align-items-start' },
                             React.createElement("nav", { className: 'footer__navigation__item col-12 col-md-6 col-xl' },
-                                React.createElement("h6", { className: "headline" }, "All about buying"),
+                                React.createElement("h6", { className: "headline" }, "About"),
                                 React.createElement("ul", null, firstBottomNavItems &&
                                     firstBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
                                         React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
@@ -118,16 +127,17 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'footer__navigation__contacts col-12 col-md-6 col-xl' },
                                 React.createElement("h6", { className: "headline" }, "Contact"),
                                 contacts && React.createElement(ReactMarkdown, { source: contacts }))),
+                        React.createElement("div", { className: 'footer__divider' }),
                         React.createElement("div", { className: 'footer__bottom row' },
-                            React.createElement("div", { className: 'col' },
-                                React.createElement("div", { className: 'footer__bottom__social d-flex justify-content-center' },
-                                    React.createElement(Link, __assign({}, facebookUrl),
+                            React.createElement("div", { className: 'col-12 col-md-6 col-xl' }, copyrights && React.createElement("p", { className: 'text-copyright' }, copyrights)),
+                            React.createElement("div", { className: 'col-12 col-md-6 col-xl' },
+                                React.createElement("div", { className: 'footer__bottom__social d-flex' },
+                                    React.createElement(Link, __assign({}, facebookUrl, { className: "facebook" }),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, __assign({}, youtubeUrl),
+                                    React.createElement(Link, __assign({}, youtubeUrl, { className: "youtube" }),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, __assign({}, instagramUrl),
-                                        React.createElement("div", null))),
-                                copyrights && React.createElement("p", null, copyrights)))))));
+                                    React.createElement(Link, __assign({}, instagramUrl, { className: "instagram" }),
+                                        React.createElement("div", null)))))))));
         }));
     };
     Footer.prototype.transformNavigationsIntoTree = function (navigation, urls) {

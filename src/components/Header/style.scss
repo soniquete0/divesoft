@@ -50,7 +50,7 @@
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
-  @include max-sm { min-height: 70px; }
+  @include max-sm { height: 70px; }
 
   &__activePage {
     background-color: $red;
@@ -162,6 +162,16 @@
         background-color: transparent;
         background-position: center center;
         background-image: url('/assets/divesoft/images/black-bag.png');
+
+        .text {
+          display: none;
+        }
+      }
+    }
+
+    .btn_eshop {
+      @media screen and (min-width: 123px) and (max-width: 767px) {
+
       }
     }
   }

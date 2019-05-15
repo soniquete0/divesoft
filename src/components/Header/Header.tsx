@@ -225,7 +225,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
                       <img src="/assets/divesoft/images/user.svg" alt="account" className="header-ico header-ico_user"/>
-                      <button>e-shop</button>
+                      <button className={'btn_eshop'}><span className="text">e-shop</span></button>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
                     {/* <Country /> */}
@@ -252,6 +252,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               </header>
 
               {/* PRODUCTS SUB MENU - start */}
+              {/* {console.log(products)} */}
               {this.state.subMenuVisible === 'products' ?
                 <div className="dropdownProducts" onMouseLeave={this.hideSubMenu}>
                   {products && <div className="container">
