@@ -101,21 +101,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
   toggleDropdown = () => this.setState({ showDropdown: !this.state.showDropdown });
 
-  // showSubMenu = (linkItem) => {
-  //   switch (linkItem.name) {
-  //     case 'products':
-  //       this.setState({ visibleProductsSubMenu: true });
-  //       break;
-  //     default:
-  //       this.setState({ visibleProductsSubMenu: false });
-  //       this.setState({ subMenuVisible: '' });
-  //   }
-  // }
-
-  // hideProductsSubMenu = () => this.setState({ visibleProductsSubMenu: false });
-
-  // categorySubmenu = (cat) => ( cat.map => .children );
-
   hideSubMenu = () => {
     this.setState({subMenuVisible: ''});
   }
@@ -181,17 +166,20 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                     {/* TOP MENU - desktop - start */}
                     <nav>
                       <ul>
+                      {/* EXPORT NAVIGATION JSON  {console.log(topNavItems)} */}
                       {topNavItems && topNavItems.map((navItem, i) => {
                         return (
                           <li key={i} style={{ position: 'relative' }}>
                             {/* tslint:disable-next-line: max-line-length */}
                             <Link {...navItem.url} url={this.canToggle(navItem)} onMouseEnter={() => this.submenuVisibility(navItem)}>
-                              {navItem.name || navItem.title}
-                              {(navItem.name === 'products' || navItem.children) ?
-                              <span
-                                onClick={() => this.toggleDropdown()}
-                                className={'dropdown__arrow'}
-                              /> : ''}
+                              <span className="d-flex no-wrap">
+                                {navItem.name || navItem.title}
+                                {(navItem.name === 'products' || navItem.children) ?
+                                <span
+                                  onClick={() => this.toggleDropdown()}
+                                  className={'dropdown__arrow'}
+                                /> : ''}
+                              </span>
                             </Link>
                             {/* {context.pageData.name === navItem.name ?
                               <span className={'header__activePage'} /> : ''} */}
@@ -205,7 +193,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                                   <ul className="categoriesSubmenu_list">
                                     {
                                       navItem.children.map((navItemChild) => {
-                                        // console.log('navItemChild v submenu', navItemChild);
                                         // tslint:disable-next-line: max-line-length
                                         return <Link {...navItemChild.url} className="categoriesSubmenu_link" key={navItemChild.id}>
                                           {navItemChild.name}
@@ -225,20 +212,22 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       </ul>
                     </nav>
                     {/* TOP MENU - desktop - end */}
+                    {/* SEARCH AND LOGIN - start */}
                     <div className={'header__controls d-flex justify-content-between align-items-center'}>
                       <img
                         onClick={() => this.setState({ showSearch: !this.state.showSearch })}
-                        src="/assets/divesoft/images/search.png"
+                        src="/assets/divesoft/images/search.svg"
                         alt="search"
+                        className="header-ico header-ico_search"
                         style={{ cursor: 'pointer' }}
                       />
 
                       {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
-
-                      <img src="/assets/divesoft/images/user.png" alt="account"/>
+                      <img src="/assets/divesoft/images/user.svg" alt="account" className="header-ico header-ico_user"/>
                       <button>e-shop</button>
                     </div>
+                    {/* SEARCH AND LOGIN - end */}
                     {/* <Country /> */}
                   </div>
                 </div>

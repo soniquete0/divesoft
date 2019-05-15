@@ -72,18 +72,6 @@ var Header = /** @class */ (function (_super) {
             });
         };
         _this.toggleDropdown = function () { return _this.setState({ showDropdown: !_this.state.showDropdown }); };
-        // showSubMenu = (linkItem) => {
-        //   switch (linkItem.name) {
-        //     case 'products':
-        //       this.setState({ visibleProductsSubMenu: true });
-        //       break;
-        //     default:
-        //       this.setState({ visibleProductsSubMenu: false });
-        //       this.setState({ subMenuVisible: '' });
-        //   }
-        // }
-        // hideProductsSubMenu = () => this.setState({ visibleProductsSubMenu: false });
-        // categorySubmenu = (cat) => ( cat.map => .children );
         _this.hideSubMenu = function () {
             _this.setState({ subMenuVisible: '' });
         };
@@ -138,26 +126,26 @@ var Header = /** @class */ (function (_super) {
                                 React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
                                     return (React.createElement("li", { key: i, style: { position: 'relative' } },
                                         React.createElement(Link, __assign({}, navItem.url, { url: _this.canToggle(navItem), onMouseEnter: function () { return _this.submenuVisibility(navItem); } }),
-                                            navItem.name || navItem.title,
-                                            (navItem.name === 'products' || navItem.children) ?
-                                                React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdown__arrow' }) : ''),
+                                            React.createElement("span", { className: "d-flex no-wrap" },
+                                                navItem.name || navItem.title,
+                                                (navItem.name === 'products' || navItem.children) ?
+                                                    React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdown__arrow' }) : '')),
                                         navItem.name === _this.state.subMenuVisible &&
                                             navItem.children ?
                                             // tslint:disable-next-line: max-line-length
                                             React.createElement("div", { className: "categoriesSubmenu_wrapper", key: navItem.id, onMouseLeave: _this.hideSubMenu },
                                                 React.createElement("nav", { className: "categoriesSubmenu" },
                                                     React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
-                                                        // console.log('navItemChild v submenu', navItemChild);
                                                         // tslint:disable-next-line: max-line-length
                                                         return React.createElement(Link, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id }), navItemChild.name);
                                                     }))))
                                             : ''));
                                 }))),
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
-                                React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.png", alt: "search", style: { cursor: 'pointer' } }),
+                                React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.svg", alt: "search", className: "header-ico header-ico_search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
                                     React.createElement(Search, { language: context.languageData.code }) : '',
-                                React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
+                                React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" }),
                                 React.createElement("button", null, "e-shop")))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },

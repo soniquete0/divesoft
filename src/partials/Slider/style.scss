@@ -5,7 +5,7 @@
   height: 100%;
   overflow: hidden;
   white-space: nowrap;
-  
+
   p, span, h1, h2, h3, h4, h5, h6 {
     white-space: normal;
   }
@@ -24,7 +24,6 @@
 
   &__arrow {
     position: absolute;
-    cursor: pointer;
     top: 50%;
     width: 30px;
     height: 30px;
@@ -32,6 +31,7 @@
     border-top: 6px solid #b5b5b5;
     border-right: 6px solid #b5b5b5;
     box-shadow: 0 0 0 lightgray;
+    cursor: pointer;
 
     @include max-md {
       width: 20px;
@@ -44,7 +44,7 @@
   &__nextArrow {
     right: 30px;
     transform: translate3d(0,-50%,0) rotate(45deg);
-    
+
     @include max-md { right: 10px; }
   }
 

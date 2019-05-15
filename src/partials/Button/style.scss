@@ -19,6 +19,10 @@
     background-color: #f72c2c;
   }
 
+  &:visited {
+    color: $white;
+  }
+
   &--bordered {
     color: $red;
     border: 2px solid $red;
