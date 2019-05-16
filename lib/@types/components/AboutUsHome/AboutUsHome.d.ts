@@ -1,6 +1,7 @@
 import * as React from 'react';
 export interface AboutUsHomeState {
-    hover: boolean;
+    hoverLeft: boolean;
+    hoverRight: boolean;
 }
 export interface AboutUsHomeProps {
     data: {
@@ -20,7 +21,8 @@ export interface AboutUsHomeProps {
 }
 declare class AboutUsHome extends React.Component<AboutUsHomeProps, AboutUsHomeState> {
     constructor(props: AboutUsHomeProps);
-    toggleHover: () => void;
+    toggleHoverRight: () => void;
+    toggleHoverLeft: () => void;
     render(): JSX.Element;
 }
 export default AboutUsHome;
