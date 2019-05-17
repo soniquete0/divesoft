@@ -56,6 +56,18 @@ export interface FooterProps {
   };
 }
 
+const facebookUrl = {
+  url: 'https://facebook.com'
+};
+
+const youtubeUrl = {
+  url: 'https://www.youtube.com'
+};
+
+const instagramUrl = {
+  url: 'https://www.instagram.com'
+};
+
 export interface FooterState {}
 
 class Footer extends React.Component<FooterProps, FooterState> {
@@ -64,7 +76,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
   }
 
   public render() {
-    const { copyrights, facebookUrl, youtubeUrl, instagramUrl, contacts } = this.props.data;
+    const { copyrights, contacts } = this.props.data;
 
     return (
       <ComposedQuery>
@@ -93,26 +105,26 @@ class Footer extends React.Component<FooterProps, FooterState> {
           const firstBottomNav = 'firstBottom';
 
           const firstBottomNavItems =
-            transformedNavigations && transformedNavigations[firstBottomNav] ? 
-            transformedNavigations[firstBottomNav] : 
+            transformedNavigations && transformedNavigations[firstBottomNav] ?
+            transformedNavigations[firstBottomNav] :
             [];
 
           const secondBottomNav = 'secondBottom';
 
           const secondBottomNavItems =
-            transformedNavigations && transformedNavigations[secondBottomNav] ? 
-            transformedNavigations[secondBottomNav] : 
+            transformedNavigations && transformedNavigations[secondBottomNav] ?
+            transformedNavigations[secondBottomNav] :
             [];
-          
+
           const thirdBottomNav = 'thirdBottom';
 
           const thirdBottomNavItems =
-            transformedNavigations && transformedNavigations[thirdBottomNav] ? 
-            transformedNavigations[thirdBottomNav] : 
+            transformedNavigations && transformedNavigations[thirdBottomNav] ?
+            transformedNavigations[thirdBottomNav] :
             [];
-          
+
           return (
-            <>              
+            <>
               <footer className={'footer'}>
                 <CookiePopup />
                 <div className={'container'}>
@@ -127,7 +139,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
                   <div className={'footer__divider'} />
                   <div className={'footer__navigation row d-flex justify-content-between align-items-start'}>
                     <nav className={'footer__navigation__item col-12 col-md-6 col-xl'}>
-                      <h6>Vše o nákupu</h6>
+                      <h6 className="headline">About</h6>
                       <ul>
                         {firstBottomNavItems &&
                           firstBottomNavItems.map((navItem, i) => (
@@ -140,7 +152,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
                       </ul>
                     </nav>
                     <nav className={'footer__navigation__item col-12 col-md-6 col-xl'}>
-                      <h6>podpora</h6>
+                      <h6 className="headline">Support</h6>
                       <ul>
                         {secondBottomNavItems &&
                           secondBottomNavItems.map((navItem, i) => (
@@ -153,7 +165,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
                       </ul>
                     </nav>
                     <nav className={'footer__navigation__item col-12 col-md-6 col-xl'}>
-                      <h6>Mapa prodejců</h6>
+                      <h6 className="headline">Dealers</h6>
                       <ul>
                         {thirdBottomNavItems &&
                           thirdBottomNavItems.map((navItem, i) => (
@@ -166,18 +178,27 @@ class Footer extends React.Component<FooterProps, FooterState> {
                       </ul>
                     </nav>
                     <div className={'footer__navigation__contacts col-12 col-md-6 col-xl'}>
-                      <h6>Kontakt</h6>
+                      <h6 className="headline">Contact</h6>
                       {contacts && <ReactMarkdown source={contacts} />}
                     </div>
                   </div>
+                  <div className={'footer__divider'} />
                   <div className={'footer__bottom row'}>
-                    <div className={'col'}>
-                      <div className={'footer__bottom__social d-flex justify-content-center'}>
-                        <Link {...facebookUrl}><div /></Link>
-                        <Link {...youtubeUrl}><div /></Link>
-                        <Link {...instagramUrl}><div /></Link>
+                    <div className={'col-12 col-md-6 col-xl'}>
+                        {copyrights && <p className={'text-copyright'}>{copyrights}</p>}
+                    </div>
+                    <div className={'col-12 col-md-6 col-xl'}>
+                      <div className={'footer__bottom__social d-flex'}>
+                        <Link {...facebookUrl} className="facebook">
+                          <div />
+                        </Link>
+                        <Link {...youtubeUrl} className="youtube">
+                          <div />
+                        </Link>
+                        <Link {...instagramUrl} className="instagram">
+                          <div />
+                        </Link>
                       </div>
-                      {copyrights && <p>{copyrights}</p>}
                     </div>
                   </div>
                 </div>

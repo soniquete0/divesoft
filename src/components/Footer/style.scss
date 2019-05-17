@@ -2,12 +2,12 @@
 
 .footer {
   height: 100%;
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-image: url('/assets/divesoft/images/footer-bg.jpg');
-  
-  h6 {
+
+  h6.headline {
     padding-bottom: 1.8rem;
     text-transform: uppercase;
   }
@@ -73,7 +73,7 @@
         &:before {
           position: absolute;
           left: 0;
-          top: 6px;
+          top: 4px;
           content: " ";
           padding: 3px;
           border: solid $red;
@@ -81,6 +81,14 @@
           border-width: 0 3px 3px 0;
           transform: rotate(-45deg);
           -webkit-transform: rotate(-45deg);
+        }
+
+        a {
+          display: block;
+          font-weight: 200;
+          &:first-letter {
+            text-transform: uppercase;
+          }
         }
       }
     }
@@ -99,33 +107,24 @@
       }
     }
 
-    &__item {
+    &__item, &__contacts {
       @include max-md {
-        h6 {  text-align: center;}
+        h6.headline {
+          text-align: center;
+          padding-bottom: .5em;
+        }
 
         ul {
           text-align: center;
-
-          a {
-            position: relative;
-
-            &:before {
-              position: absolute;
-              left: -20px;
-              top: 3px;
-              content: " ";
-              padding: 3px;
-              border: solid $red;
-              display: inline-block;
-              border-width: 0 3px 3px 0;
-              transform: rotate(-45deg);
-              -webkit-transform: rotate(-45deg);
-            }
-          }
+          padding-bottom: 3.5em;
 
           li {
-            padding: 0;
+            padding: .3rem 0;
             &:before { display: none; }
+
+            a {
+              padding: .3em;
+            }
           }
         }
       }
@@ -143,24 +142,43 @@
       margin: 0;
       padding: 0;
       color: #5c5c5c;
-      text-align: center;
+      text-align: left;
+
+      @include max-md {
+        text-align: center;
+      }
     }
 
     &__social {
       width: 100%;
+      padding-top: 2em;
       padding-bottom: 40px;
-      
+      text-align: right;
+      justify-content: flex-end;
+
+      @include max-md {
+        padding-top: 2em;
+        text-align: center;
+        justify-content: center;
+      }
+
       a {
         div {
           width: 50px;
           height: 50px;
           border-radius: 50px;
           background-color: white;
+          border: 1px solid rgba(255,255,255,0);
+          transition: border .2s ease;
+
+          &:hover {
+            border-color: #e50000;
+          }
         }
 
         &:not(:last-child) { margin-right: 25px; }
 
-        &:nth-of-type(1) {
+        &.facebook {
           div {
             background-size: 10px 22px;
             background-repeat: no-repeat;
@@ -168,7 +186,7 @@
             background-image: url("/assets/divesoft/images/fb.svg");
           }
         }
-        &:nth-of-type(2) {
+        &.youtube {
           div {
             background-size: 25px 19px;
             background-repeat: no-repeat;
@@ -176,7 +194,7 @@
             background-image: url("/assets/divesoft/images/you.svg");
           }
         }
-        &:nth-of-type(3) {
+        &.instagram {
           div {
             background-size: 23px 23px;
             background-repeat: no-repeat;
@@ -186,5 +204,9 @@
         }
       }
     }
+  }
+
+  .text-copyright {
+    padding-top: 2em;
   }
 }

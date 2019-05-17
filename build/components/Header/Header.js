@@ -72,9 +72,20 @@ var Header = /** @class */ (function (_super) {
             });
         };
         _this.toggleDropdown = function () { return _this.setState({ showDropdown: !_this.state.showDropdown }); };
+        _this.hideSubMenu = function () {
+            _this.setState({ subMenuVisible: '' });
+        };
+        _this.submenuVisibility = function (cat) {
+            _this.setState({ subMenuVisible: cat.name });
+        };
+        _this.canToggle = function (item) {
+            return item.children ? '#' : item.url.url;
+        };
         _this.state = {
             menuActive: false,
             showDropdown: false,
+            visibleProductsSubMenu: false,
+            subMenuVisible: '',
             showSearch: false,
             searchQuery: ''
         };
@@ -106,30 +117,43 @@ var Header = /** @class */ (function (_super) {
                         { overflow: 'hidden' } },
                     React.createElement("div", { className: "container" },
                         React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
-                            React.createElement("div", { className: 'header__logo d-flex justify-content-between align-items-center' },
-                                React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
+                            React.createElement(Hamburger, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
+                            React.createElement("div", { className: "header__logo" },
                                 React.createElement(Link, { url: (context.websiteData.urlMask === '/' ?
                                         '' : context.websiteData.urlMask) + "/" + context.languageData.code },
                                     React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                             React.createElement("nav", null,
                                 React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
                                     return (React.createElement("li", { key: i, style: { position: 'relative' } },
-                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title),
-                                        navItem.name === 'products' ?
-                                            React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdownProducts__arrow' }) : ''));
+                                        React.createElement(Link, __assign({}, navItem.url, { url: _this.canToggle(navItem), onMouseEnter: function () { return _this.submenuVisibility(navItem); } }),
+                                            React.createElement("span", { className: "d-flex no-wrap" },
+                                                navItem.name || navItem.title,
+                                                (navItem.name === 'products' || navItem.children) ?
+                                                    React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdown__arrow' }) : '')),
+                                        navItem.name === _this.state.subMenuVisible &&
+                                            navItem.children ?
+                                            // tslint:disable-next-line: max-line-length
+                                            React.createElement("div", { className: "categoriesSubmenu_wrapper", key: navItem.id, onMouseLeave: _this.hideSubMenu },
+                                                React.createElement("nav", { className: "categoriesSubmenu" },
+                                                    React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
+                                                        // tslint:disable-next-line: max-line-length
+                                                        return React.createElement(Link, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id }), navItemChild.name);
+                                                    }))))
+                                            : ''));
                                 }))),
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
-                                React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.png", alt: "search", style: { cursor: 'pointer' } }),
+                                React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.svg", alt: "search", className: "header-ico header-ico_search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
                                     React.createElement(Search, { language: context.languageData.code }) : '',
-                                React.createElement("img", { src: "/assets/divesoft/images/user.png", alt: "account" }),
-                                React.createElement("button", null, "e-shop")))),
+                                React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" }),
+                                React.createElement("button", { className: 'btn_eshop' },
+                                    React.createElement("span", { className: "text" }, "e-shop"))))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
                             React.createElement("ul", null, topNavItems &&
                                 topNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i }, React.createElement(Link, __assign({}, navItem.url, { onClick: function () { return _this.closeMenu(); } }), navItem.name || navItem.title))); }))))),
-                _this.state.showDropdown ?
-                    React.createElement("div", { className: 'dropdownProducts' }, products && React.createElement("div", { className: "container" },
+                _this.state.subMenuVisible === 'products' ?
+                    React.createElement("div", { className: "dropdownProducts", onMouseLeave: _this.hideSubMenu }, products && React.createElement("div", { className: "container" },
                         React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },
                             React.createElement("div", { className: 'productsPreview__list__item' },
                                 React.createElement(Media, { type: 'image', data: item.img }),

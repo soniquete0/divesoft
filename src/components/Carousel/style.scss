@@ -1,5 +1,5 @@
 .sliderAtTop {
-  padding-top: 120px;
+  padding-top: 100px;
   @include max-sm { padding-top: 70px; }
 }
 
@@ -24,14 +24,14 @@
         line-height: 6rem;
         @include max-md { line-height: 4rem; }
       }
-      h2 { 
+      h2 {
         text-transform: none;
         @include max-md {
           padding-bottom: 0;
           line-height: 3rem;
         }
       }
-      
+
       .center {
         left: 0;
         width: 100%;
@@ -67,7 +67,7 @@
           .btn { width: 100%; }
         }
 
-        p { 
+        p {
           font-size: 2.4rem;
           font-weight: 400;
           color: #808080;

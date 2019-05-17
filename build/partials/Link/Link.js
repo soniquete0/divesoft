@@ -29,7 +29,7 @@ import gql from 'graphql-tag';
 import Loader from '../Loader';
 import { adopt } from 'react-adopt';
 var isExternalLink = function (url) {
-    var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
+    var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:|(^#$)/gi;
     return pattern.test(url);
 };
 var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    languageData @client\n    websiteData @client\n  }\n"])));

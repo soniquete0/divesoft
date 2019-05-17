@@ -11,44 +11,74 @@
   }
 
   &__block {
+    display: flex;
+    align-items: stretch;
     width: 100%;
     padding: 40px;
     height: 390px;
     max-height: 390px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    
+    overflow: hidden;
+
     @include max-md {
       height: 100%;
       max-height: 100%;
     }
 
-    &--right {
-      p { 
-        width: 55%;
-        @include max-md { width: 60%; }
-      }
+    .aboutUsHome__info {
+      position: relative;
+      z-index: 9;
     }
 
-    &:hover {
-      p { color: $lightGrey; }
-      h3 { color: $darkGrey; }
-      p { width: 100%; }
+    &.right {
+      p {
+        width: 70%;
+        @include max-md { width: 65%; }
+      }
     }
 
     p {
       line-height: 2.8rem;
-      color: white;
+      color: $darkGrey;
+    }
+    h3 { color: $darkGrey; }
+    h4 { color: #ababab; }
+
+    &.hovered {
+      p { color: white; }
+      h3 { color: white; }
     }
 
-    h3 { color: white; }
-    h4 { color: #ababab; }
+    .img-wrap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+
+      .img-under {
+        position: absolute;
+        top: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: all .2s ease-in;
+      }
+    }
+
+    &.hovered {
+      .img-wrap {
+        .img-under {
+          top: 0;
+          opacity: .9;
+        }
+      }
+    }
   }
 
   .btn {
     position: absolute;
-    bottom: 40px;
+    bottom: 0;
 
     @include max-md {
       position: relative;

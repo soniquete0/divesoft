@@ -4,7 +4,8 @@ import Button from '@source/partials/Button';
 import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface AboutUsHomeState {
-  hover: boolean;
+  hoverLeft: boolean;
+  hoverRight: boolean;
 }
 
 export interface AboutUsHomeProps {
@@ -29,14 +30,16 @@ class AboutUsHome extends React.Component<AboutUsHomeProps, AboutUsHomeState> {
     super(props);
 
     this.state = {
-      hover: false
+      hoverLeft: true,
+      hoverRight: true
     };
   }
 
-  toggleHover = () => this.setState({ hover: !this.state.hover });
-  
+  toggleHoverRight = () => this.setState({ hoverRight: !this.state.hoverRight });
+  toggleHoverLeft = () => this.setState({ hoverLeft: !this.state.hoverLeft });
+
   public render () {
-    const { 
+    const {
       leftTitle,
       leftSubtitle,
       leftText,
@@ -56,51 +59,37 @@ class AboutUsHome extends React.Component<AboutUsHomeProps, AboutUsHomeState> {
         <div className="container">
           <div className="row">
             <div className="col-12 col-xl-6">
-              <div 
-                className={'aboutUsHome__block'} 
-                style={this.state.hover ?
-                  { backgroundImage: leftImg && `url(${getImageUrl(leftImg)})` } :
-                  { background: 'white !important'}}
+              <div
+                className={this.state.hoverLeft ? 'aboutUsHome__block left' : 'aboutUsHome__block left hovered'}
+                onMouseEnter={this.toggleHoverLeft}
+                onMouseLeave={this.toggleHoverLeft}
               >
-                {leftTitle && 
-                  <h3 
-                    style={
-                      this.state.hover ? 
-                      {color: '#ffffff'} : 
-                      {color: '#343434'}}
-                  >
-                    {leftTitle}
-                  </h3>}
-                {leftSubtitle && <h4>{leftSubtitle}</h4>}
-                {leftText && 
-                  <p
-                    style={
-                      this.state.hover ? 
-                      {color: '#ffffff'} : 
-                      {color: '#6c6c6c'}}
-                  >
-                    {leftText}
-                  </p>}
-                {leftUrl && leftBtnTitle && 
-                  <Button url={leftUrl}>{leftBtnTitle}</Button>}
+                <div className="img-wrap">
+                  {leftImg && <img src={getImageUrl(leftImg)} className="img-under"/>}
+                </div>
+                <div className="aboutUsHome__info">
+                  {leftTitle && <h3> {leftTitle} </h3>}
+                  {leftSubtitle && <h4>{leftSubtitle}</h4>}
+                  {leftText && <p> {leftText} </p>}
+                  {leftUrl && leftBtnTitle && <Button url={leftUrl}>{leftBtnTitle}</Button>}
+                </div>
               </div>
             </div>
             <div className="col-12 col-xl-6">
-              <div 
-                className={'aboutUsHome__block aboutUsHome__block--right'} 
-                onMouseEnter={this.toggleHover}
-                onMouseLeave={this.toggleHover}
-                style={
-                  !this.state.hover ?
-                  { backgroundImage: rightImg && `url(${getImageUrl(rightImg)})` } :
-                  { background: 'white !important'}
-                } 
+              <div
+                className={this.state.hoverRight ? 'aboutUsHome__block right' : 'aboutUsHome__block right hovered'}
+                onMouseEnter={this.toggleHoverRight}
+                onMouseLeave={this.toggleHoverRight}
               >
-                {rightTitle && <h3>{rightTitle}</h3>}
-                {rightSubtitle && <h4>{rightSubtitle}</h4>}
-                {rightText && <p>{rightText}</p>}
-                {rightUrl && rightBtnTitle && 
-                  <Button url={rightUrl}>{rightBtnTitle}</Button>}
+                <div className="img-wrap">
+                  {rightImg && <img src={getImageUrl(rightImg)} className="img-under"/>}
+                </div>
+                <div className="aboutUsHome__info">
+                  {rightTitle && <h3> {rightTitle} </h3>}
+                  {rightSubtitle && <h4>{rightSubtitle}</h4>}
+                  {rightText && <p> {rightText} </p>}
+                  {rightUrl && rightBtnTitle && <Button url={rightUrl}>{rightBtnTitle}</Button>}
+                </div>
               </div>
             </div>
           </div>

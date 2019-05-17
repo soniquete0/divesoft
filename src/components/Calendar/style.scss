@@ -114,7 +114,7 @@
       color: $darkGrey;
       cursor: pointer;
     }
-    
+
     select::-ms-expand { display: none; }
 
     /* Transition */
@@ -127,23 +127,23 @@
   }
 
   &__header {
-    height: 120px;
+    height: 100px;
     position: relative;
     @include max-md { height: 60px; }
-    
-    h3 { 
-      line-height: 120px;
+
+    h3 {
+      line-height: 100px;
       padding: 0;
 
-      @include max-md { 
+      @include max-md {
         font-size: 20px;
         line-height: 60px;
       }
     }
 
-    .col { 
+    .col {
       height: 100%;
-      
+
       @include max-md {
         &-start { max-width: 15% !important; }
         &-end { max-width: 15% !important; }
@@ -175,7 +175,7 @@
         left: 0;
         transform: translate3d(0,-50%,0) rotate(45deg);
       }
-  
+
       &--left {
         right: 0;
         transform: translate3d(0,-50%,0) rotate(-135deg);
@@ -191,7 +191,7 @@
   }
 
 
-  
+
   /* DESKTOP CELLS */
   &__body {
     border: 1px solid #eaeaea;
@@ -200,7 +200,7 @@
       height: 160px;
       cursor: pointer;
       overflow: hidden;
-      position: relative;      
+      position: relative;
       background: transparent;
       transition: 0.25s ease-out;
       border-right: 1px solid #eaeaea;
@@ -327,7 +327,7 @@
     .mobileCell {
       height: 5rem;
       cursor: pointer;
-      position: relative;      
+      position: relative;
       background: transparent;
       transition: 0.25s ease-out;
       @include max-lg { padding: 0; }
@@ -352,7 +352,7 @@
         transition: .25s ease-out;
         letter-spacing: -.07em;
       }
-      
+
       &__content {
         display: inline-flex;
         height: 5rem;

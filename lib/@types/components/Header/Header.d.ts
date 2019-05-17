@@ -18,12 +18,17 @@ export interface HeaderState {
     showDropdown: boolean;
     showSearch: boolean;
     searchQuery: string;
+    visibleProductsSubMenu: boolean;
+    subMenuVisible: string;
 }
 declare class Header extends React.Component<HeaderProps, HeaderState> {
     constructor(props: HeaderProps);
     closeMenu: () => void;
     toggleMenu: () => void;
     toggleDropdown: () => void;
+    hideSubMenu: () => void;
+    submenuVisibility: (cat: any) => void;
+    canToggle: (item: any) => any;
     render(): JSX.Element;
     private transformNavigationsIntoTree;
     private buildNavTree;

@@ -1,5 +1,5 @@
 @font-face {
-  font-family: $corridor;
+  font-family: 'Corridor';
   font-style: normal;
   font-weight: 200;
   src: url('/assets/divesoft/fonts/Corridor.eot');
@@ -10,9 +10,9 @@
     url(/assets/divesoft/fonts/Corridor.ttf) format("truetype")
 }
 
-@font-face { 
-  font-family: $corridor;
-  font-style: italic; 
+@font-face {
+  font-family: 'Corridor';
+  font-style: italic;
   font-weight: 200;
   src: url('/assets/divesoft/fonts/CorridorItalic.eot');
   src: local('Corridor Italic'),
@@ -23,8 +23,8 @@
     url(/assets/divesoft/fonts/CorridorItalic.ttf) format("truetype"),
     url(/assets/divesoft/fonts/CorridorItalic.svg#CorridorItalic) format("svg")
 }
-@font-face { 
-  font-family: $corridor;
+@font-face {
+  font-family: 'Corridor';
   font-style: bold;
   font-weight: 500;
   src: url('/assets/divesoft/fonts/CorridorMedium.eot');
@@ -37,7 +37,7 @@
     url(/assets/divesoft/fonts/CorridorMedium.svg#CorridorMedium) format("svg")
 }
 @font-face {
-  font-family: $corridor;
+  font-family: 'Corridor';
   font-style: bold;
   font-weight: 700;
   src: url('/assets/divesoft/fonts/CorridorDemiBold.eot');
@@ -50,7 +50,7 @@
     url(/assets/divesoft/fonts/CorridorDemiBold.svg#CorridorDemiBold) format("svg")
 }
 @font-face {
-  font-family: $corridor;
+  font-family: 'Corridor';
   font-style: italic;
   font-weight: 700;
   src: url('/assets/divesoft/fonts/CorridorDemiBoldItalic.eot');
@@ -62,6 +62,8 @@
     url(/assets/divesoft/fonts/CorridorDemiBoldItalic.ttf) format("truetype"),
     url(/assets/divesoft/fonts/CorridorDemiBoldItalic.svg#CorridorDemiBoldItalic) format("svg")
 }
+
+$corridor: 'Corridor', Arial, sans-serif;
 
 h1, h2, h3, h4, h5, h6, p, a, li {
   font-family: $corridor;
