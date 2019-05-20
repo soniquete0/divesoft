@@ -1,0 +1,108 @@
+{
+    "name": "NewsAndEvents",
+    "data": {
+        "backgroundImage": {
+            "recommendedSizes": {
+                "width": "1600",
+                "height": "600"
+            }
+        },
+        "titleColor": "#ffffff",
+        "newsAndEvents": [
+            {
+                "img": {
+                    "recommendedSizes": {
+                        "width": "356",
+                        "height": "263"
+                    }
+                },
+                "day": "26",
+                "mounthAndYear": "January 2019",
+                "title": "New oxygen sensors",
+                "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc.",
+                "url": ""
+            },
+            {
+                "img": {
+                    "recommendedSizes": {
+                        "width": "356",
+                        "height": "263"
+                    }
+                },
+                "day": "10",
+                "mounthAndYear": "January 2019",
+                "title": "Tekdive USA 2019",
+                "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc.",
+                "url": ""
+            },
+            {
+                "img": {
+                    "recommendedSizes": {
+                        "width": "356",
+                        "height": "263"
+                    }
+                },
+                "day": "04",
+                "mounthAndYear": "January 2019",
+                "title": "New oxygen sensors",
+                "text": "Lorem ipsum dolor sit amet, lore conse ctetur adipiscing elit. And Vivamus eget mauris in diam bibendum blandit id id nunc.",
+                "url": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "backgroundImage": {
+                    "type": "image"
+                },
+                "titleColor": {
+                    "type": "enum",
+                    "title": "Title color",
+                    "options": {
+                        "#ffffff": "white",
+                        "#343434": "black",
+                        "#6c6c6c": "grey",
+                        "#e50000": "red"
+                    }
+                },
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "newsAndEvents": {
+                    "type": "array",
+                    "title": "News and Events",
+                    "items": {
+                        "properties": {
+                            "img": {
+                                "type": "image"
+                            },
+                            "day": {
+                                "type": "string",
+                                "title": "Day"
+                            },
+                            "mounthAndYear": {
+                                "type": "string",
+                                "title": "Mounth and Year"
+                            },
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "text": {
+                                "type": "text",
+                                "title": "Text"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

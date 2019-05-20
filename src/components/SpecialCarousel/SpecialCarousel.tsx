@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 import Link from '@source/partials/Link';
@@ -38,7 +38,7 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
     this.state = {};
   }
 
-  renderSlides(data: any) {  
+  renderSlides(data: any) {
     if (data.length < 1) { return; }
     let result = [];
 
@@ -48,18 +48,18 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
 
           <div className={`specialCarousel__content`}>
             <div className="container">
-              {slide.title && 
+              {slide.title &&
                 <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
                   {slide.title}
                 </h2>}
 
                 <div className="row">
                   <div className="specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6">
-                    {slide.subTitle && 
+                    {slide.subTitle &&
                       <h3 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
                         <span style={{ color: '#e50000' }}>{`0${i + 1}. `}</span>{slide.subTitle}
                       </h3>}
-                    {slide.description && 
+                    {slide.description &&
                       <div className="specialCarousel__content__info__description">
                         {slide.description && <ReactMarkdown source={slide.description} />}
                       </div>}
@@ -97,13 +97,13 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
 
     return (
       <List data={this.props.data.slides}>
-        {({ data }) => 
-          <Slider 
+        {({ data }) =>
+          <Slider
             delay={10000}
             slides={this.renderSlides(data)}
-            autoplay={this.props.data.slides.length <= 1 ? false : true} 
+            autoplay={this.props.data.slides.length <= 1 ? false : true}
             showDots={this.props.data.slides.length <= 1 ? false : true}
-            showArrows={this.props.data.slides.length <= 1 ? false : true} 
+            showArrows={this.props.data.slides.length <= 1 ? false : true}
           />}
       </List>
     );

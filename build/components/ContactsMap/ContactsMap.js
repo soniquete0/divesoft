@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,14 +12,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import { geolocated } from 'react-geolocated';
-export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
-import List from '../List';
-import Marker from './components/Marker';
-import MapStyles from './components/MapStyles';
-import ContactRow from './components/ContactRow';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var google_map_react_1 = require("google-map-react");
+var react_geolocated_1 = require("react-geolocated");
+exports.GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+var List_1 = require("../List");
+var Marker_1 = require("./components/Marker");
+var MapStyles_1 = require("./components/MapStyles");
+var ContactRow_1 = require("./components/ContactRow");
 var ContactsMap = /** @class */ (function (_super) {
     __extends(ContactsMap, _super);
     function ContactsMap(props) {
@@ -178,7 +180,7 @@ var ContactsMap = /** @class */ (function (_super) {
                 }
             }
             if (this.state.currentAssociation === associations[i] || this.state.currentAssociation === 'all') {
-                resultRows.push(React.createElement(ContactRow, { key: i, title: associations[i], rows: composedRows }));
+                resultRows.push(React.createElement(ContactRow_1.default, { key: i, title: associations[i], rows: composedRows }));
             }
         }
         return React.createElement("div", { className: 'map__rows' }, resultRows);
@@ -186,20 +188,20 @@ var ContactsMap = /** @class */ (function (_super) {
     ContactsMap.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, mapItems = _a.mapItems;
-        return (React.createElement(List, { data: mapItems }, function (_a) {
+        return (React.createElement(List_1.default, { data: mapItems }, function (_a) {
             var data = _a.data;
             return (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: 'contactsMapWrapper' },
                     title ? React.createElement("h2", { style: { paddingBottom: '30px', textAlign: 'center' } }, title) : '',
                     _this.renderControls(),
-                    React.createElement("section", { className: 'map' }, mapItems && (React.createElement(GoogleMapReact, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
+                    React.createElement("section", { className: 'map' }, mapItems && (React.createElement(google_map_react_1.default, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
                             scrollwheel: false,
-                            styles: MapStyles
-                        } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
+                            styles: MapStyles_1.default
+                        } }, data && data.map(function (item, i) { return (React.createElement(Marker_1.default, { key: i, lat: item.lat, lng: item.lng })); }))))),
                 _this.renderRows(data)));
         }));
     };
     return ContactsMap;
 }(React.Component));
-export default geolocated()(ContactsMap);
+exports.default = react_geolocated_1.geolocated()(ContactsMap);
 //# sourceMappingURL=ContactsMap.js.map

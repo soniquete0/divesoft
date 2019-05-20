@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,14 +12,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import GoogleMapReact from 'google-map-react';
-import { geolocated } from 'react-geolocated';
-export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
-import List from '../List';
-import Marker from './components/Marker';
-import MapStyles from './components/MapStyles';
-import ServiceRow from './components/ServiceRow';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var google_map_react_1 = require("google-map-react");
+var react_geolocated_1 = require("react-geolocated");
+exports.GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+var List_1 = require("../List");
+var Marker_1 = require("./components/Marker");
+var MapStyles_1 = require("./components/MapStyles");
+var ServiceRow_1 = require("./components/ServiceRow");
 var ServicePointsMap = /** @class */ (function (_super) {
     __extends(ServicePointsMap, _super);
     function ServicePointsMap(props) {
@@ -179,7 +181,7 @@ var ServicePointsMap = /** @class */ (function (_super) {
                 }
             }
             if (this.state.currentCountry === countries[i] || this.state.currentCountry === 'all') {
-                resultRows.push(React.createElement(ServiceRow, { key: i, title: countries[i], items: composedRows }));
+                resultRows.push(React.createElement(ServiceRow_1.default, { key: i, title: countries[i], items: composedRows }));
             }
         }
         return resultRows;
@@ -187,7 +189,7 @@ var ServicePointsMap = /** @class */ (function (_super) {
     ServicePointsMap.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, mapItems = _a.mapItems;
-        return (React.createElement(List, { data: mapItems }, function (_a) {
+        return (React.createElement(List_1.default, { data: mapItems }, function (_a) {
             var data = _a.data;
             return (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: 'servicePointsMapWrapper' },
@@ -195,14 +197,14 @@ var ServicePointsMap = /** @class */ (function (_super) {
                         React.createElement("div", { className: "container" },
                             React.createElement("p", { className: 'textDescription servicePointsMapWrapper__title' }, title)) : '',
                     _this.renderControls(data),
-                    React.createElement("section", { className: 'map' }, mapItems && (React.createElement(GoogleMapReact, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
+                    React.createElement("section", { className: 'map' }, mapItems && (React.createElement(google_map_react_1.default, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
                             scrollwheel: false,
-                            styles: MapStyles
-                        } }, data && data.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))),
+                            styles: MapStyles_1.default
+                        } }, data && data.map(function (item, i) { return (React.createElement(Marker_1.default, { key: i, lat: item.lat, lng: item.lng })); }))))),
                 React.createElement("div", { className: 'map__rows' }, _this.renderRows(data))));
         }));
     };
     return ServicePointsMap;
 }(React.Component));
-export default geolocated()(ServicePointsMap);
+exports.default = react_geolocated_1.geolocated()(ServicePointsMap);
 //# sourceMappingURL=ServicePointsMap.js.map

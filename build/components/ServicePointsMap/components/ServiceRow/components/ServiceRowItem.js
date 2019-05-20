@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,9 +23,10 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var Link_1 = require("@source/partials/Link");
 var ServiceRowItem = /** @class */ (function (_super) {
     __extends(ServiceRowItem, _super);
     function ServiceRowItem(props) {
@@ -53,7 +55,7 @@ var ServiceRowItem = /** @class */ (function (_super) {
                             React.createElement("a", { href: "mailto:" + email }, email)),
                         web && React.createElement("p", null,
                             "Web: ",
-                            React.createElement(Link, __assign({}, web), (web.url && web.url.toString()) || title))) : ''),
+                            React.createElement(Link_1.default, __assign({}, web), (web.url && web.url.toString()) || title))) : ''),
             React.createElement("div", { className: "col-12 col-md-8" },
                 React.createElement("div", { onClick: function () { return _this.setState({ show: !_this.state.show }); }, className: "serviceRow__list__show " + (this.state.show ? 'serviceRow__list__show--minus' : '') }),
                 React.createElement("div", { className: 'serviceRow__list__item' },
@@ -63,5 +65,5 @@ var ServiceRowItem = /** @class */ (function (_super) {
     };
     return ServiceRowItem;
 }(React.Component));
-export default ServiceRowItem;
+exports.default = ServiceRowItem;
 //# sourceMappingURL=ServiceRowItem.js.map

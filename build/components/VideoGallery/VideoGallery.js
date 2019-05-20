@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,9 +12,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import List from '../List';
-import Media from '@source/partials/Media';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var List_1 = require("../List");
+var Media_1 = require("@source/partials/Media");
 var VideoGallery = /** @class */ (function (_super) {
     __extends(VideoGallery, _super);
     function VideoGallery(props) {
@@ -26,7 +28,7 @@ var VideoGallery = /** @class */ (function (_super) {
     VideoGallery.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, description = _a.description, divider = _a.divider, videos = _a.videos;
-        return (React.createElement(List, { data: videos }, function (_a) {
+        return (React.createElement(List_1.default, { data: videos }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 3), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: "videoGallery" },
@@ -36,7 +38,7 @@ var VideoGallery = /** @class */ (function (_super) {
                         React.createElement("h4", { className: 'videoGallery__description' }, description),
                     React.createElement("div", { className: "row" }, items && items.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-4" },
                         React.createElement("div", { className: 'videoGallery__item' },
-                            item.video && React.createElement(Media, { type: 'embeddedVideo', data: item.video }),
+                            item.video && React.createElement(Media_1.default, { type: 'embeddedVideo', data: item.video }),
                             React.createElement("h4", null, item.title),
                             React.createElement("p", null, item.text)))); })),
                     _this.state.numberOfPage < lastPage &&
@@ -46,5 +48,5 @@ var VideoGallery = /** @class */ (function (_super) {
     };
     return VideoGallery;
 }(React.Component));
-export default VideoGallery;
+exports.default = VideoGallery;
 //# sourceMappingURL=VideoGallery.js.map

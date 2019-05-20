@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -22,12 +23,13 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import Lightbox from 'react-images';
-import Responsive from 'react-responsive';
-import List from '../List';
-import Media from '@source/partials/Media';
-import getImageUrl from '@source/helpers/getImageUrl';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_images_1 = require("react-images");
+var react_responsive_1 = require("react-responsive");
+var List_1 = require("../List");
+var Media_1 = require("@source/partials/Media");
+var getImageUrl_1 = require("@source/helpers/getImageUrl");
 var GalleryAndVideo = /** @class */ (function (_super) {
     __extends(GalleryAndVideo, _super);
     function GalleryAndVideo(props) {
@@ -38,7 +40,7 @@ var GalleryAndVideo = /** @class */ (function (_super) {
             }
             var gallery = data.map(function (item, i) {
                 return (React.createElement("div", { key: i, className: "galleryAndVideo__content__image col-6", onClick: function (e) { return _this.openLightbox(i, e); } },
-                    React.createElement(Media, { data: item.image, type: 'image' })));
+                    React.createElement(Media_1.default, { data: item.image, type: 'image' })));
             });
             return React.createElement("div", { className: "row" }, gallery);
         };
@@ -50,7 +52,7 @@ var GalleryAndVideo = /** @class */ (function (_super) {
             var result = [];
             images.map(function (item, i) {
                 result[i] = {
-                    src: getImageUrl(item.image)
+                    src: getImageUrl_1.default(item.image)
                 };
             });
             return result;
@@ -89,16 +91,16 @@ var GalleryAndVideo = /** @class */ (function (_super) {
     GalleryAndVideo.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, title = _a.title, video = _a.video, images = _a.images;
-        var Mobile = function (props) { return React.createElement(Responsive, __assign({}, props, { maxWidth: 1199 })); };
-        return (React.createElement(List, { data: images }, function (_a) {
+        var Mobile = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { maxWidth: 1199 })); };
+        return (React.createElement(List_1.default, { data: images }, function (_a) {
             var getPage = _a.getPage;
             var _b = getPage(_this.state.numberOfPage, 'infinite', 4), items = _b.items, lastPage = _b.lastPage;
             return (React.createElement("div", { className: 'galleryAndVideo' },
                 React.createElement("div", { className: "container" },
                     title && React.createElement("h2", null, title),
-                    React.createElement(Lightbox, { images: _this.state.imageUrls, isOpen: _this.state.lightboxIsOpen, currentImage: _this.state.currentImage, onClickPrev: _this.gotoPrevious, onClickNext: _this.gotoNext, onClose: _this.closeLightbox }),
+                    React.createElement(react_images_1.default, { images: _this.state.imageUrls, isOpen: _this.state.lightboxIsOpen, currentImage: _this.state.currentImage, onClickPrev: _this.gotoPrevious, onClickNext: _this.gotoNext, onClose: _this.closeLightbox }),
                     React.createElement("div", { className: 'row galleryAndVideo__content' },
-                        React.createElement("div", { className: "col" }, video && React.createElement(Media, { type: 'embeddedVideo', data: video })),
+                        React.createElement("div", { className: "col" }, video && React.createElement(Media_1.default, { type: 'embeddedVideo', data: video })),
                         React.createElement("div", { className: "col" }, _this.renderGallery(items))),
                     React.createElement(Mobile, null, _this.state.numberOfPage < lastPage &&
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({
@@ -108,5 +110,5 @@ var GalleryAndVideo = /** @class */ (function (_super) {
     };
     return GalleryAndVideo;
 }(React.Component));
-export default GalleryAndVideo;
+exports.default = GalleryAndVideo;
 //# sourceMappingURL=GalleryAndVideo.js.map

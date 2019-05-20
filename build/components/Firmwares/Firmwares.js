@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,13 +10,14 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import List from '../List';
-import Link from '@source/partials/Link';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var List_1 = require("../List");
+var Link_1 = require("@source/partials/Link");
 var Firmwares = function (props) {
     var _a = props.data, title = _a.title, divider = _a.divider, articles = _a.articles;
-    return (React.createElement(List, { data: articles }, function (_a) {
+    return (React.createElement(List_1.default, { data: articles }, function (_a) {
         var data = _a.data;
         return (React.createElement("div", { className: 'firmwares' },
             React.createElement("div", { className: 'container' },
@@ -23,9 +25,9 @@ var Firmwares = function (props) {
                 data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'firmwares__item' },
                     item.title && React.createElement("h4", null, item.title),
                     React.createElement(ReactMarkdown, { source: item.text }),
-                    item.url && React.createElement(Link, __assign({}, item.url), "Download"))); }),
+                    item.url && React.createElement(Link_1.default, __assign({}, item.url), "Download"))); }),
                 divider ? React.createElement("div", { className: 'firmwares__divider' }) : '')));
     }));
 };
-export default Firmwares;
+exports.default = Firmwares;
 //# sourceMappingURL=Firmwares.js.map

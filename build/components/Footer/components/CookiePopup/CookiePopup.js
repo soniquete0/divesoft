@@ -1,5 +1,7 @@
-import * as React from 'react';
-import CookieConsent from 'react-cookie-consent';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var react_cookie_consent_1 = require("react-cookie-consent");
 var CookiePopup = function () {
     function renderBanner() {
         return (React.createElement("div", { className: "cookiePopup" },
@@ -9,7 +11,7 @@ var CookiePopup = function () {
                 ' ',
                 React.createElement("a", { href: 'https://cookiesandyou.com/', target: '_blank' }, "Learn more"))));
     }
-    return (React.createElement(CookieConsent, { expires: 365, location: 'bottom', cookieName: 'DivesoftCookies', acceptOnScroll: false, buttonText: 'Got it!', acceptOnScrollPercentage: 100, style: { background: '#efefef', color: '#343434' }, buttonStyle: { background: '#e50000', color: '#ffffff', fontSize: '16px' } }, renderBanner()));
+    return (React.createElement(react_cookie_consent_1.default, { expires: 365, location: 'bottom', cookieName: 'DivesoftCookies', acceptOnScroll: false, buttonText: 'Got it!', acceptOnScrollPercentage: 100, style: { background: '#efefef', color: '#343434' }, buttonStyle: { background: '#e50000', color: '#ffffff', fontSize: '16px' } }, renderBanner()));
 };
-export default CookiePopup;
+exports.default = CookiePopup;
 //# sourceMappingURL=CookiePopup.js.map

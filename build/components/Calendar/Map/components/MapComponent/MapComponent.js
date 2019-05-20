@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,12 +12,13 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import GoogleMapReact from 'google-map-react';
-import { geolocated } from 'react-geolocated';
-export var GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
-import Marker from '../Marker';
-import MapStyles from './MapStyles';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var google_map_react_1 = require("google-map-react");
+var react_geolocated_1 = require("react-geolocated");
+exports.GoogleMapsApiKey = 'AIzaSyCSpatDLsxXguzdvuwbTrK3TulOh10MULI';
+var Marker_1 = require("../Marker");
+var MapStyles_1 = require("./MapStyles");
 var MapComponent = /** @class */ (function (_super) {
     __extends(MapComponent, _super);
     function MapComponent(props) {
@@ -24,13 +26,13 @@ var MapComponent = /** @class */ (function (_super) {
     }
     MapComponent.prototype.render = function () {
         return (React.createElement("div", { style: { width: '100%', position: 'relative' } },
-            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(GoogleMapReact, { bootstrapURLKeys: { key: GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: this.props.mapCenter, defaultZoom: 5, options: {
+            React.createElement("section", { className: 'map' }, this.props.items && (React.createElement(google_map_react_1.default, { bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: this.props.mapCenter, defaultZoom: 5, options: {
                     scrollwheel: false,
-                    styles: MapStyles
+                    styles: MapStyles_1.default
                 }, yesIWantToUseGoogleMapApiInternals: true }, this.props.items &&
-                this.props.items.map(function (item, i) { return (React.createElement(Marker, { key: i, lat: item.lat, lng: item.lng })); }))))));
+                this.props.items.map(function (item, i) { return (React.createElement(Marker_1.default, { key: i, lat: item.lat, lng: item.lng })); }))))));
     };
     return MapComponent;
 }(React.Component));
-export default geolocated()(MapComponent);
+exports.default = react_geolocated_1.geolocated()(MapComponent);
 //# sourceMappingURL=MapComponent.js.map

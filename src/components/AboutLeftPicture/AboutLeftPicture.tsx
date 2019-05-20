@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 import Media from '@source/partials/Media';
 
 export interface AboutLeftPictureProps {
@@ -16,8 +16,8 @@ const AboutLeftPicture = (props: AboutLeftPictureProps) => {
   const { title, subtitle, text, img, paddingTop } = props.data;
 
   return (
-    <div 
-      className={'aboutLeftPicture'} 
+    <div
+      className={'aboutLeftPicture'}
       style={paddingTop ? {paddingTop: 0} : {}}
     >
       <div className="container">

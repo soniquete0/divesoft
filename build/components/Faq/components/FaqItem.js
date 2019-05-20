@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,8 +12,9 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
 var FaqItem = /** @class */ (function (_super) {
     __extends(FaqItem, _super);
     function FaqItem(props) {
@@ -35,5 +37,5 @@ var FaqItem = /** @class */ (function (_super) {
     };
     return FaqItem;
 }(React.Component));
-export default FaqItem;
+exports.default = FaqItem;
 //# sourceMappingURL=FaqItem.js.map

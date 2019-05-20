@@ -2,7 +2,7 @@ import * as React from 'react';
 import gql from 'graphql-tag';
 import { adopt } from 'react-adopt';
 import { Query } from 'react-apollo';
-import ReactMarkdown from 'react-markdown';
+import * as ReactMarkdown from 'react-markdown';
 
 import Link from '@source/partials/Link';
 import Loader from '@source/partials/Loader';

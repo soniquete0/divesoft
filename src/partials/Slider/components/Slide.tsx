@@ -1,4 +1,4 @@
-import React from 'react';
+ import * as React from 'react';
 
 export interface SlideProps {
   // tslint:disable-next-line:no-any

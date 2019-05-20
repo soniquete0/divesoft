@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Lightbox from 'react-images';
 import Responsive from 'react-responsive';
 
@@ -44,7 +44,7 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
 
     const gallery = data.map((item, i) => {
       return (
-        <div 
+        <div
           key={i}
           className={`galleryAndVideo__content__image col-6`}
           onClick={(e) => this.openLightbox(i, e)}
@@ -53,16 +53,16 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
         </div>
       );
     });
-    
+
     return <div className="row">{gallery}</div>;
   }
 
   getImageUrls = () => {
     const { images } = this.props.data;
     if (!images) { return; }
-    
+
     let result = [];
-    
+
     images.map((item, i) => {
       result[i] = {
         src: getImageUrl(item.image)
@@ -92,10 +92,10 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
   gotoNext = () => this.setState({ currentImage: this.state.currentImage + 1 });
 
   gotoImage = (index: number) => this.setState({ currentImage: index });
-  
+
   handleClickImage = () => {
     if (this.state.currentImage === this.state.imageUrls.length - 1) { return; }
-    
+
     this.gotoNext();
   }
 
@@ -107,12 +107,12 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
       <List data={images}>
         {({ getPage }) => {
           const { items, lastPage } = getPage(this.state.numberOfPage, 'infinite', 4);
-          
+
           return (
             <div className={'galleryAndVideo'}>
               <div className="container">
                 {title && <h2>{title}</h2>}
-  
+
                 <Lightbox
                   images={this.state.imageUrls}
                   isOpen={this.state.lightboxIsOpen}
@@ -121,7 +121,7 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                   onClickNext={this.gotoNext}
                   onClose={this.closeLightbox}
                 />
-  
+
                 <div className={'row galleryAndVideo__content'}>
                   <div className="col">
                     {video && <Media type={'embeddedVideo'} data={video} />}
@@ -130,13 +130,13 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                     {this.renderGallery(items)}
                   </div>
                 </div>
-  
+
                 <Mobile>
                   {this.state.numberOfPage < lastPage &&
-                    <button 
-                      className={'btn'} 
-                      onClick={() => this.setState({ 
-                        numberOfPage: this.state.numberOfPage + 1 
+                    <button
+                      className={'btn'}
+                      onClick={() => this.setState({
+                        numberOfPage: this.state.numberOfPage + 1
                       })}
                     >
                       Show more

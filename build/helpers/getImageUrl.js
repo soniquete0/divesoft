@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var getImgUrl = function (data) {
     var baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
     if (data && data.filename) {
@@ -5,5 +7,5 @@ var getImgUrl = function (data) {
     }
     return null;
 };
-export default getImgUrl;
+exports.default = getImgUrl;
 //# sourceMappingURL=getImageUrl.js.map

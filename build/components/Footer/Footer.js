@@ -1,3 +1,4 @@
+"use strict";
 var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cooked, raw) {
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
@@ -26,20 +27,21 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as React from 'react';
-import gql from 'graphql-tag';
-import { adopt } from 'react-adopt';
-import { Query } from 'react-apollo';
-import ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
-import Loader from '@source/partials/Loader';
-import CookiePopup from './components/CookiePopup';
-var GET_CONTEXT = gql(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
-var GET_PAGES_URLS = gql(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
-var ComposedQuery = adopt({
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var graphql_tag_1 = require("graphql-tag");
+var react_adopt_1 = require("react-adopt");
+var react_apollo_1 = require("react-apollo");
+var ReactMarkdown = require("react-markdown");
+var Link_1 = require("@source/partials/Link");
+var Loader_1 = require("@source/partials/Loader");
+var CookiePopup_1 = require("./components/CookiePopup");
+var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
+var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
+var ComposedQuery = react_adopt_1.adopt({
     context: function (_a) {
         var render = _a.render;
-        return React.createElement(Query, { query: GET_CONTEXT }, function (_a) {
+        return React.createElement(react_apollo_1.Query, { query: GET_CONTEXT }, function (_a) {
             var data = _a.data;
             return render(data);
         });
@@ -49,7 +51,7 @@ var ComposedQuery = adopt({
         if (!(languageData && websiteData)) {
             return render({});
         }
-        return (React.createElement(Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
+        return (React.createElement(react_apollo_1.Query, { query: GET_PAGES_URLS, variables: { language: languageData.id, websiteId: websiteData.id } }, function (data) {
             return render(data);
         }));
     },
@@ -78,7 +80,7 @@ var Footer = /** @class */ (function (_super) {
                 !context.languagesData ||
                 !data ||
                 !data.pagesUrls) {
-                return React.createElement(Loader, null);
+                return React.createElement(Loader_1.default, null);
             }
             if (error) {
                 return "Error..." + error;
@@ -99,7 +101,7 @@ var Footer = /** @class */ (function (_super) {
                 [];
             return (React.createElement(React.Fragment, null,
                 React.createElement("footer", { className: 'footer' },
-                    React.createElement(CookiePopup, null),
+                    React.createElement(CookiePopup_1.default, null),
                     React.createElement("div", { className: 'container' },
                         React.createElement("div", { className: 'footer__newsletter' },
                             React.createElement("h3", null, "Divesoft newsletter"),
@@ -113,17 +115,17 @@ var Footer = /** @class */ (function (_super) {
                                 React.createElement("h6", { className: "headline" }, "About"),
                                 React.createElement("ul", null, firstBottomNavItems &&
                                     firstBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
+                                        React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("nav", { className: 'footer__navigation__item col-12 col-md-6 col-xl' },
                                 React.createElement("h6", { className: "headline" }, "Support"),
                                 React.createElement("ul", null, secondBottomNavItems &&
                                     secondBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
+                                        React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("nav", { className: 'footer__navigation__item col-12 col-md-6 col-xl' },
                                 React.createElement("h6", { className: "headline" }, "Dealers"),
                                 React.createElement("ul", null, thirdBottomNavItems &&
                                     thirdBottomNavItems.map(function (navItem, i) { return (React.createElement("li", { key: i },
-                                        React.createElement(Link, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
+                                        React.createElement(Link_1.default, __assign({}, navItem.url), navItem.name || navItem.title))); }))),
                             React.createElement("div", { className: 'footer__navigation__contacts col-12 col-md-6 col-xl' },
                                 React.createElement("h6", { className: "headline" }, "Contact"),
                                 contacts && React.createElement(ReactMarkdown, { source: contacts }))),
@@ -132,11 +134,11 @@ var Footer = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'col-12 col-md-6 col-xl' }, copyrights && React.createElement("p", { className: 'text-copyright' }, copyrights)),
                             React.createElement("div", { className: 'col-12 col-md-6 col-xl' },
                                 React.createElement("div", { className: 'footer__bottom__social d-flex' },
-                                    React.createElement(Link, __assign({}, facebookUrl, { className: "facebook" }),
+                                    React.createElement(Link_1.default, __assign({}, facebookUrl, { className: "facebook" }),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, __assign({}, youtubeUrl, { className: "youtube" }),
+                                    React.createElement(Link_1.default, __assign({}, youtubeUrl, { className: "youtube" }),
                                         React.createElement("div", null)),
-                                    React.createElement(Link, __assign({}, instagramUrl, { className: "instagram" }),
+                                    React.createElement(Link_1.default, __assign({}, instagramUrl, { className: "instagram" }),
                                         React.createElement("div", null)))))))));
         }));
     };
@@ -179,6 +181,6 @@ var Footer = /** @class */ (function (_super) {
     };
     return Footer;
 }(React.Component));
-export default Footer;
+exports.default = Footer;
 var templateObject_1, templateObject_2;
 //# sourceMappingURL=Footer.js.map

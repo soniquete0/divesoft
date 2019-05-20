@@ -1,0 +1,80 @@
+{
+    "name": "Downloads",
+    "data": {
+        "title": "Our projects",
+        "description": "Our company is supported by European Regional Development Fund, Operational Programme Enterprise and Innovations for Competitiveness. More information in the following documents:",
+        "files": [
+            {
+                "title": "Participation in international fairs and exhibitions",
+                "img": {
+                    "recommendedSizes": {
+                        "width": "50",
+                        "height": "50"
+                    }
+                },
+                "url": "",
+                "urlText": "PDF document download"
+            },
+            {
+                "title": "Head Up Display project",
+                "img": {
+                    "recommendedSizes": {
+                        "width": "50",
+                        "height": "50"
+                    }
+                },
+                "url": "",
+                "urlText": "PDF document download"
+            },
+            {
+                "title": "New generation for underwater communications and navigation",
+                "img": {
+                    "recommendedSizes": {
+                        "width": "50",
+                        "height": "50"
+                    }
+                },
+                "url": "",
+                "urlText": "PDF document download"
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "description": {
+                    "type": "text",
+                    "title": "Description"
+                },
+                "files": {
+                    "type": "array",
+                    "title": "Files",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "img": {
+                                "type": "image"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            },
+                            "urlText": {
+                                "type": "text",
+                                "title": "URL title"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

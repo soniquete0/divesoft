@@ -1,3 +1,4 @@
+"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -9,8 +10,9 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 /* tslint:disable */
-import * as React from 'react';
+var React = require("react");
 var SvgIcon = function (props) {
     var type = props.type;
     switch (props.name) {
@@ -60,5 +62,5 @@ var SvgIcon = function (props) {
             return React.createElement("div", null, "THERE WAS ERROR RENDERING SVG Icon");
     }
 };
-export default SvgIcon;
+exports.default = SvgIcon;
 //# sourceMappingURL=SvgIcon.js.map

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import dateFns from 'date-fns';
 import Responsive from 'react-responsive';
 
@@ -47,7 +47,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       selectedDate: new Date(),
       mapCenter: {
         lat: 50,
-        lng: 14 
+        lng: 14
       },
 
       countrySelectedValue: 'all',
@@ -74,11 +74,11 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     };
 
     const uniqueArray = arr => Array.from(new Set(arr));
-    
+
     propsToArray();
     uniqKeywords = uniqueArray(uniqKeywords);
     uniqCountries = uniqueArray(uniqCountries);
-    
+
     return this.setState({
       keywords: uniqKeywords,
       countries: uniqCountries
@@ -112,7 +112,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               currentDate: dates[i].date
             });
             break;
-          
+
           default: break;
         }
 
@@ -143,7 +143,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       </div>
     );
   }
-  
+
   /* DAYS OF THE WEEK */
   renderDays() {
     const dateFormat = 'dddd';
@@ -215,10 +215,10 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
         day = dateFns.addDays(day, 1);
       }
-      
+
       rows.push(
-        <div 
-          key={'row' + (++rKey).toString()} 
+        <div
+          key={'row' + (++rKey).toString()}
           className="row"
         >
           {days}
@@ -244,9 +244,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
       default: return;
     }
   }
-  
+
   search = (data: any) => {
-    const { 
+    const {
       countrySelectedValue,
       keywordSelectedValue,
     } = this.state;
@@ -256,7 +256,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         item.country === countrySelectedValue && countrySelectedValue !== 'all' ||
         item.keyword === keywordSelectedValue && keywordSelectedValue !== 'all'
       ) {
-        return this.setState({ 
+        return this.setState({
           mapCenter: {
             lat: parseFloat(item.lat),
             lng: parseFloat(item.lng)
@@ -282,7 +282,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               </span>
               <div className={'select'}>
                 <select
-                  onChange={e => this.onSelectChange(e, 'keyword')} 
+                  onChange={e => this.onSelectChange(e, 'keyword')}
                   value={this.state.keywordSelectedValue}
                 >
                   <option value={'all'} key="all">Select keyword</option>
@@ -298,7 +298,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               </span>
               <div className={'select'}>
                 <select
-                  onChange={e => this.onSelectChange(e, 'country')} 
+                  onChange={e => this.onSelectChange(e, 'country')}
                   value={this.state.countrySelectedValue}
                 >
                   <option value={'all'} key="all">Select country</option>
@@ -318,10 +318,10 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             </div>
           </div>
           <div className={'calendar__controls__switch'}>
-            <button 
+            <button
               className={`
-                calendar__controls__switch__btn 
-                ${this.state.switch ? 
+                calendar__controls__switch__btn
+                ${this.state.switch ?
                   'calendar__controls__switch__btn--active' : ''}`}
               onClick={() => this.setState({
                 switch: !this.state.switch
@@ -329,10 +329,10 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             >
               Calendar
             </button>
-            <button 
+            <button
               className={`
-                calendar__controls__switch__btn 
-                ${!this.state.switch ? 
+                calendar__controls__switch__btn
+                ${!this.state.switch ?
                   'calendar__controls__switch__btn--active' : ''}`}
               onClick={() => this.setState({
                 switch: !this.state.switch
@@ -373,13 +373,13 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
     ];
 
     const getDayofTheWeek = (key: number) => <p>{daysOfTheWeek[key]}</p>;
-    
+
     while (day <= endDate) {
 
       for (let i = 0; i < 7; i++) {
         const cloneDay = day;
         let myFormatOfDate = `${day.getDate()}.${day.getMonth() + 1}.${day.getFullYear()}`;
-        
+
         formattedDate = dateFns.format(day, dateFormat);
 
         if (dateFns.isSameMonth(day, monthStart)) {
@@ -417,7 +417,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
 
         day = dateFns.addDays(day, 1);
       }
-      
+
       resultView.push(
         <div key={'col' + (++rKey).toString()} className={'calendar__mobileBody__week'}>
           {days}
@@ -456,7 +456,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         {({ data }) => (
           <div className={'calendar'} style={!this.state.switch ? { paddingBottom: 0 } : {}}>
             {this.renderControls(data)}
-            {this.state.switch ? 
+            {this.state.switch ?
               <div className="container calendar__container">
                 {this.renderHeader()}
                 <Default>
@@ -467,9 +467,9 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
                   {this.renderMobileView(data)}
                   {this.renderHeader()}
                 </Mobile>
-              </div> : 
+              </div> :
               <MapComponent
-                items={data} 
+                items={data}
                 controls={false}
                 mapCenter={this.state.mapCenter}
               />}

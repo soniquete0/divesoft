@@ -1,0 +1,42 @@
+{
+    "name": "ListOfLinks",
+    "data": {
+        "links": [
+            {
+                "title": "User manual for FW version 1.13 (EN)",
+                "url": ""
+            },
+            {
+                "title": "Freedom Bottom Timer user manual 1.12 (EN)",
+                "url": ""
+            },
+            {
+                "title": "German user manual for FW version 1.5",
+                "url": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "links": {
+                    "type": "array",
+                    "title": "Links",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

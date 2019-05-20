@@ -1,6 +1,8 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import Media from '@source/partials/Media';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var ReactMarkdown = require("react-markdown");
+var Media_1 = require("@source/partials/Media");
 var AboutRightPicture = function (props) {
     var _a = props.data, title = _a.title, subtitle = _a.subtitle, text = _a.text, img = _a.img, paddingTop = _a.paddingTop;
     return (React.createElement("div", { className: 'aboutRightPicture', style: paddingTop ? { paddingTop: 0 } : {} },
@@ -11,7 +13,7 @@ var AboutRightPicture = function (props) {
                         title && React.createElement("h2", null, title),
                         subtitle && React.createElement("h4", null, subtitle),
                         text && React.createElement(ReactMarkdown, { source: text }))),
-                React.createElement("div", { className: "col-12 col-lg-6" }, img && React.createElement(Media, { type: 'image', data: img }))))));
+                React.createElement("div", { className: "col-12 col-lg-6" }, img && React.createElement(Media_1.default, { type: 'image', data: img }))))));
 };
-export default AboutRightPicture;
+exports.default = AboutRightPicture;
 //# sourceMappingURL=AboutRightPicture.js.map

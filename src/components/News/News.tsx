@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
 import Media from '@source/partials/Media';
 import Button from '@source/partials/Button';
@@ -19,7 +19,7 @@ export interface NewsProps {
 }
 
 const News = (props: NewsProps) => {
-  const { 
+  const {
     title,
     shareUrl,
     firstText,
@@ -39,10 +39,10 @@ const News = (props: NewsProps) => {
             {title && <h4 className={'news__title'}>{title}</h4>}
           </div>
           <div className="col-12 col-md-3">
-            {shareUrl && 
+            {shareUrl &&
               <div className={'news__btnHolder'}>
-                <Button 
-                  url={shareUrl} 
+                <Button
+                  url={shareUrl}
                   classes={'btn--bordered news__btnHolder__share'}
                 >
                   Share
@@ -83,7 +83,7 @@ const News = (props: NewsProps) => {
           </div>
         </div>}
 
-        {buttonUrl && 
+        {buttonUrl &&
           <Button classes={'news__btn btn--center'} url={buttonUrl}>All news & events</Button>}
       </div>
     </div>

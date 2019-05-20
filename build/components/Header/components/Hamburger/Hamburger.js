@@ -1,4 +1,6 @@
-import * as React from 'react';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
 var Hamburger = function (props) {
     return (React.createElement("div", { className: "hamburgerHolder " + (props.active ? 'active' : ''), onClick: function () { return props.onClick(); } },
         React.createElement("div", { className: "hamburger" },
@@ -6,5 +8,5 @@ var Hamburger = function (props) {
         React.createElement("div", { className: "hamburgerActive" },
             React.createElement("div", null))));
 };
-export default Hamburger;
+exports.default = Hamburger;
 //# sourceMappingURL=Hamburger.js.map

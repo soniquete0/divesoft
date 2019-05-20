@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,9 +12,10 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as React from 'react';
-import Button from '@source/partials/Button';
-import getImageUrl from '@source/helpers/getImageUrl';
+Object.defineProperty(exports, "__esModule", { value: true });
+var React = require("react");
+var Button_1 = require("@source/partials/Button");
+var getImageUrl_1 = require("@source/helpers/getImageUrl");
 var AboutUsHome = /** @class */ (function (_super) {
     __extends(AboutUsHome, _super);
     function AboutUsHome(props) {
@@ -33,7 +35,7 @@ var AboutUsHome = /** @class */ (function (_super) {
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-12 col-xl-6" },
                         React.createElement("div", { className: this.state.hoverLeft ? 'aboutUsHome__block left' : 'aboutUsHome__block left hovered', onMouseEnter: this.toggleHoverLeft, onMouseLeave: this.toggleHoverLeft },
-                            React.createElement("div", { className: "img-wrap" }, leftImg && React.createElement("img", { src: getImageUrl(leftImg), className: "img-under" })),
+                            React.createElement("div", { className: "img-wrap" }, leftImg && React.createElement("img", { src: getImageUrl_1.default(leftImg), className: "img-under" })),
                             React.createElement("div", { className: "aboutUsHome__info" },
                                 leftTitle && React.createElement("h3", null,
                                     " ",
@@ -44,10 +46,10 @@ var AboutUsHome = /** @class */ (function (_super) {
                                     " ",
                                     leftText,
                                     " "),
-                                leftUrl && leftBtnTitle && React.createElement(Button, { url: leftUrl }, leftBtnTitle)))),
+                                leftUrl && leftBtnTitle && React.createElement(Button_1.default, { url: leftUrl }, leftBtnTitle)))),
                     React.createElement("div", { className: "col-12 col-xl-6" },
                         React.createElement("div", { className: this.state.hoverRight ? 'aboutUsHome__block right' : 'aboutUsHome__block right hovered', onMouseEnter: this.toggleHoverRight, onMouseLeave: this.toggleHoverRight },
-                            React.createElement("div", { className: "img-wrap" }, rightImg && React.createElement("img", { src: getImageUrl(rightImg), className: "img-under" })),
+                            React.createElement("div", { className: "img-wrap" }, rightImg && React.createElement("img", { src: getImageUrl_1.default(rightImg), className: "img-under" })),
                             React.createElement("div", { className: "aboutUsHome__info" },
                                 rightTitle && React.createElement("h3", null,
                                     " ",
@@ -58,9 +60,9 @@ var AboutUsHome = /** @class */ (function (_super) {
                                     " ",
                                     rightText,
                                     " "),
-                                rightUrl && rightBtnTitle && React.createElement(Button, { url: rightUrl }, rightBtnTitle))))))));
+                                rightUrl && rightBtnTitle && React.createElement(Button_1.default, { url: rightUrl }, rightBtnTitle))))))));
     };
     return AboutUsHome;
 }(React.Component));
-export default AboutUsHome;
+exports.default = AboutUsHome;
 //# sourceMappingURL=AboutUsHome.js.map

@@ -1,0 +1,159 @@
+{
+    "name": "ServicePointsMap",
+    "data": {
+        "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod nisi justo, vitae eleifend enim vestibulum at. Nulla dignissim facilisis nisl et ultrices. Nam ac massa auctor, maximus eros in, malesuada eros. Vestibulum iaculis facilisis eleifend.",
+        "mapItems": [
+            {
+                "city": "Prague",
+                "service": "Service1",
+                "lat": "50.042957",
+                "lng": "14.451078",
+                "title": "TRYGON sport s.r.o.",
+                "country": "Czech republic",
+                "text": "Some text",
+                "address": "Na Beránce 57/2, Praha 6, Czech republic",
+                "storeChief": "Marcel Zezula",
+                "email": "info@trygonbrno.cz",
+                "phone": "+420541243872",
+                "web": ""
+            },
+            {
+                "city": "Prague",
+                "service": "Service2",
+                "lat": "51",
+                "lng": "15",
+                "title": "Dream Dive s.r.o.",
+                "country": "Czech republic",
+                "text": "",
+                "address": "Smetanova 3, Brno, Czech republic",
+                "storeChief": "Marcel Zezula",
+                "email": "info@trygonbrno.cz",
+                "phone": "+420541243872",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "service": "Service3",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "title": "Title3",
+                "country": "USA",
+                "text": "",
+                "address": "Washington street",
+                "storeChief": "Jack Black",
+                "email": "info@usa.com",
+                "phone": "+1541243872",
+                "web": ""
+            },
+            {
+                "city": "Washington",
+                "service": "Service3",
+                "lat": "38.902681",
+                "lng": "-77.019885",
+                "title": "Title3",
+                "country": "USA",
+                "text": "",
+                "address": "Washington street",
+                "storeChief": "Jack Black",
+                "email": "info@usa.com",
+                "phone": "+1541243872",
+                "web": ""
+            },
+            {
+                "city": "Rome",
+                "service": "ServiceRome",
+                "lat": "41.895289",
+                "lng": "12.482166",
+                "title": "Jakub Řeháček, US",
+                "country": "Italy",
+                "text": "Test text",
+                "address": "Rome street",
+                "storeChief": "Borgia",
+                "email": "info@usa.com",
+                "phone": "+1541243872",
+                "web": ""
+            },
+            {
+                "city": "Barcelona",
+                "service": "BarcelonaService",
+                "lat": "41.382190",
+                "lng": "2.184369",
+                "title": "Jakub Řeháček, US",
+                "country": "Spain",
+                "text": "",
+                "address": "Barcelona street",
+                "storeChief": "Master Chief",
+                "email": "info@usa.com",
+                "phone": "+1541243872",
+                "web": ""
+            }
+        ]
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "mapItems": {
+                    "type": "Array",
+                    "title": "Map items",
+                    "items": {
+                        "properties": {
+                            "city": {
+                                "type": "text",
+                                "title": "City"
+                            },
+                            "service": {
+                                "type": "text",
+                                "title": "Service"
+                            },
+                            "lat": {
+                                "type": "text",
+                                "title": "lat"
+                            },
+                            "lng": {
+                                "type": "text",
+                                "title": "lng"
+                            },
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "country": {
+                                "type": "text",
+                                "title": "Country"
+                            },
+                            "text": {
+                                "type": "markdown",
+                                "title": "Text"
+                            },
+                            "address": {
+                                "type": "text",
+                                "title": "Address"
+                            },
+                            "storeChief": {
+                                "type": "text",
+                                "title": "Store chief"
+                            },
+                            "email": {
+                                "type": "text",
+                                "title": "Email"
+                            },
+                            "phone": {
+                                "type": "text",
+                                "title": "Phone number (without spaces)"
+                            },
+                            "web": {
+                                "type": "urlAutocomplete",
+                                "title": "Web"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
