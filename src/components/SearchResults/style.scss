@@ -1,7 +1,7 @@
 .searchResults {
   padding: 10px 0;
   background: white;
-  top: 168px;
+  top: 148px;
   position: fixed;
   left: 0;
   width: 100%;
@@ -25,6 +25,7 @@
   }
 
   &__holder {
+    flex-direction: column;
 
     &__heading {
       text-transform: uppercase;

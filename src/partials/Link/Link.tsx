@@ -6,7 +6,7 @@ import Loader from '../Loader';
 import { adopt } from 'react-adopt';
 
 const isExternalLink = url => {
-  const pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
+  const pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:|(^#$)/gi;
   return pattern.test(url);
 };
 

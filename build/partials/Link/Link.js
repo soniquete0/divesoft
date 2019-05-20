@@ -31,7 +31,7 @@ var graphql_tag_1 = require("graphql-tag");
 var Loader_1 = require("../Loader");
 var react_adopt_1 = require("react-adopt");
 var isExternalLink = function (url) {
-    var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:/gi;
+    var pattern = /^https?|^www|^mailto:|^tel:|^sms:|^call:|(^#$)/gi;
     return pattern.test(url);
 };
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    languageData @client\n    websiteData @client\n  }\n"])));

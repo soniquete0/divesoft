@@ -25,9 +25,11 @@ var Search = /** @class */ (function (_super) {
             });
         };
         _this.unFocusSearch = function () {
-            _this.setState({
-                searchFocus: false,
-            });
+            setTimeout(function () {
+                _this.setState({
+                    searchFocus: false,
+                });
+            }, 1);
         };
         _this.focusSearch = function () {
             _this.searchInput.current.focus();
@@ -36,6 +38,7 @@ var Search = /** @class */ (function (_super) {
             });
         };
         _this.searchInput = React.createRef();
+        _this.unFocusSearch = _this.unFocusSearch.bind(_this);
         _this.state = {
             searchFocus: false,
             searchQuery: '',
@@ -50,7 +53,7 @@ var Search = /** @class */ (function (_super) {
             React.createElement("div", { className: 'search' },
                 React.createElement("div", { className: "container" },
                     React.createElement("input", { type: "text", placeholder: 'search', ref: this.searchInput, onFocus: function () { return _this.focusSearch(); }, onBlur: function () { return _this.unFocusSearch(); }, onChange: function (e) { return _this.handleChange(e.target.value); }, defaultValue: '' }))),
-            searchFocus && searchQuery && searchQuery.length > 0 && React.createElement(SearchResults_1.default, { searchQuery: searchQuery, active: searchQuery && searchQuery.length > 1, handleSearch: this.handleChange, languageCode: this.props.language })));
+            searchFocus && searchQuery && searchQuery.length > 2 && React.createElement(SearchResults_1.default, { searchQuery: searchQuery, active: searchQuery && searchQuery.length > 2, handleSearch: this.handleChange, languageCode: this.props.language })));
     };
     return Search;
 }(React.Component));

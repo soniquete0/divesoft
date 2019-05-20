@@ -20,9 +20,11 @@ var AboutUsHome = /** @class */ (function (_super) {
     __extends(AboutUsHome, _super);
     function AboutUsHome(props) {
         var _this = _super.call(this, props) || this;
-        _this.toggleHover = function () { return _this.setState({ hover: !_this.state.hover }); };
+        _this.toggleHoverRight = function () { return _this.setState({ hoverRight: !_this.state.hoverRight }); };
+        _this.toggleHoverLeft = function () { return _this.setState({ hoverLeft: !_this.state.hoverLeft }); };
         _this.state = {
-            hover: false
+            hoverLeft: true,
+            hoverRight: true
         };
         return _this;
     }
@@ -32,29 +34,33 @@ var AboutUsHome = /** @class */ (function (_super) {
             React.createElement("div", { className: "container" },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-12 col-xl-6" },
-                        React.createElement("div", { className: 'aboutUsHome__block', style: this.state.hover ?
-                                { backgroundImage: leftImg && "url(" + getImageUrl_1.default(leftImg) + ")" } :
-                                { background: 'white !important' } },
-                            leftTitle &&
-                                React.createElement("h3", { style: this.state.hover ?
-                                        { color: '#ffffff' } :
-                                        { color: '#343434' } }, leftTitle),
-                            leftSubtitle && React.createElement("h4", null, leftSubtitle),
-                            leftText &&
-                                React.createElement("p", { style: this.state.hover ?
-                                        { color: '#ffffff' } :
-                                        { color: '#6c6c6c' } }, leftText),
-                            leftUrl && leftBtnTitle &&
-                                React.createElement(Button_1.default, { url: leftUrl }, leftBtnTitle))),
+                        React.createElement("div", { className: this.state.hoverLeft ? 'aboutUsHome__block left' : 'aboutUsHome__block left hovered', onMouseEnter: this.toggleHoverLeft, onMouseLeave: this.toggleHoverLeft },
+                            React.createElement("div", { className: "img-wrap" }, leftImg && React.createElement("img", { src: getImageUrl_1.default(leftImg), className: "img-under" })),
+                            React.createElement("div", { className: "aboutUsHome__info" },
+                                leftTitle && React.createElement("h3", null,
+                                    " ",
+                                    leftTitle,
+                                    " "),
+                                leftSubtitle && React.createElement("h4", null, leftSubtitle),
+                                leftText && React.createElement("p", null,
+                                    " ",
+                                    leftText,
+                                    " "),
+                                leftUrl && leftBtnTitle && React.createElement(Button_1.default, { url: leftUrl }, leftBtnTitle)))),
                     React.createElement("div", { className: "col-12 col-xl-6" },
-                        React.createElement("div", { className: 'aboutUsHome__block aboutUsHome__block--right', onMouseEnter: this.toggleHover, onMouseLeave: this.toggleHover, style: !this.state.hover ?
-                                { backgroundImage: rightImg && "url(" + getImageUrl_1.default(rightImg) + ")" } :
-                                { background: 'white !important' } },
-                            rightTitle && React.createElement("h3", null, rightTitle),
-                            rightSubtitle && React.createElement("h4", null, rightSubtitle),
-                            rightText && React.createElement("p", null, rightText),
-                            rightUrl && rightBtnTitle &&
-                                React.createElement(Button_1.default, { url: rightUrl }, rightBtnTitle)))))));
+                        React.createElement("div", { className: this.state.hoverRight ? 'aboutUsHome__block right' : 'aboutUsHome__block right hovered', onMouseEnter: this.toggleHoverRight, onMouseLeave: this.toggleHoverRight },
+                            React.createElement("div", { className: "img-wrap" }, rightImg && React.createElement("img", { src: getImageUrl_1.default(rightImg), className: "img-under" })),
+                            React.createElement("div", { className: "aboutUsHome__info" },
+                                rightTitle && React.createElement("h3", null,
+                                    " ",
+                                    rightTitle,
+                                    " "),
+                                rightSubtitle && React.createElement("h4", null, rightSubtitle),
+                                rightText && React.createElement("p", null,
+                                    " ",
+                                    rightText,
+                                    " "),
+                                rightUrl && rightBtnTitle && React.createElement(Button_1.default, { url: rightUrl }, rightBtnTitle))))))));
     };
     return AboutUsHome;
 }(React.Component));

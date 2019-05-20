@@ -17,7 +17,7 @@ class Search extends React.Component<SearchProps, SearchState> {
   constructor(props: SearchProps) {
     super(props);
     this.searchInput = React.createRef();
-
+    this.unFocusSearch = this.unFocusSearch.bind(this);
     this.state = {
       searchFocus: false,
       searchQuery: '',
@@ -32,9 +32,14 @@ class Search extends React.Component<SearchProps, SearchState> {
   }
 
   unFocusSearch = () => {
-    this.setState({
-      searchFocus: false,
-    });
+    setTimeout(
+      () => {
+        this.setState({
+          searchFocus: false,
+        });
+      },
+      1
+    );
   }
 
   focusSearch = () => {
@@ -64,9 +69,9 @@ class Search extends React.Component<SearchProps, SearchState> {
           </div>
         </div>
 
-        {searchFocus && searchQuery && searchQuery.length > 0 && <SearchResults
+        {searchFocus && searchQuery && searchQuery.length > 2 && <SearchResults
           searchQuery={searchQuery}
-          active={searchQuery && searchQuery.length > 1}
+          active={searchQuery && searchQuery.length > 2}
           handleSearch={this.handleChange}
           languageCode={this.props.language}
         />}

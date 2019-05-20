@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_markdown_1 = require("react-markdown");
+var ReactMarkdown = require("react-markdown");
 var Link_1 = require("@source/partials/Link");
 var ServiceRowItem = /** @class */ (function (_super) {
     __extends(ServiceRowItem, _super);
@@ -60,7 +60,7 @@ var ServiceRowItem = /** @class */ (function (_super) {
                 React.createElement("div", { onClick: function () { return _this.setState({ show: !_this.state.show }); }, className: "serviceRow__list__show " + (this.state.show ? 'serviceRow__list__show--minus' : '') }),
                 React.createElement("div", { className: 'serviceRow__list__item' },
                     React.createElement("p", { onClick: function () { return _this.setState({ show: !_this.state.show }); } }, address),
-                    this.state.show && text && React.createElement(react_markdown_1.default, { source: text }))),
+                    this.state.show && text && React.createElement(ReactMarkdown, { source: text }))),
             React.createElement("div", { className: 'serviceRow__list__divider' })));
     };
     return ServiceRowItem;

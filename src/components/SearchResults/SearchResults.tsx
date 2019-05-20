@@ -115,7 +115,7 @@ const ComposedQuery = adopt({
   },
   allPages: ({ render, getContext: { languageData } }) => {
     if (!languageData) { return render({ loading: true }); }
-    
+
     return (
     <div>
       <Query query={GET_ALL_PAGES} variables={{ languageId: languageData.id }}>
@@ -140,7 +140,7 @@ const SearchResults = (props: SearchResultsProps) => {
   return (
     <div className={`searchResults ${active ? 'searchResults--active ' : ''} `}>
       <ComposedQuery>
-        {({ 
+        {({
           pagesUrls: {
             data: pagesUrlsData,
             error: pagesUrlsError,
@@ -167,7 +167,7 @@ const SearchResults = (props: SearchResultsProps) => {
           const { pagesUrls } = pagesUrlsData;
           const { pages } = allPagesData;
 
-          let filteredPages = (pages || [])      
+          let filteredPages = (pages || [])
             .filter(page => {
               return JSON.stringify(page)
                 .toLowerCase()

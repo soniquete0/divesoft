@@ -25,7 +25,7 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_markdown_1 = require("react-markdown");
+var ReactMarkdown = require("react-markdown");
 var List_1 = require("../List");
 var Link_1 = require("@source/partials/Link");
 var Media_1 = require("@source/partials/Media");
@@ -55,7 +55,7 @@ var SpecialCarousel = /** @class */ (function (_super) {
                                         React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
                                         slide.subTitle),
                                 slide.description &&
-                                    React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(react_markdown_1.default, { source: slide.description })),
+                                    React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),
                                 React.createElement("div", { className: 'specialCarousel__content__downloads' },
                                     React.createElement("div", { className: 'specialCarousel__content__downloads__item' },
                                         React.createElement(Link_1.default, __assign({}, slide.firstUrl),

@@ -1,7 +1,7 @@
 @import './components/Hamburger/style.scss';
 
 .dropdownProducts {
-  top: 120px;
+  top: 100px;
   width: 100%;
   z-index: 400;
   position: fixed;
@@ -11,17 +11,29 @@
   -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
   @include max-xl { display: none; }
+}
 
+.d-flex.no-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  align-items: center;
+}
+
+.dropdown {
   &__arrow {
-    position: absolute;
-    right: -15px;
-    top: 3px;
-    content: " ";
-    padding: 3px;
-    cursor: pointer;
-    border: solid $red;
+    // position: absolute;
+    // right: -13px;
     display: inline-block;
+    content: " ";
+    width: 3px;
+    height: 3px;
+    padding: 3px;
+    margin-left: 5px;
+    margin-top: -4px;
+    border: solid $red;
     border-width: 0 2px 2px 0;
+    cursor: pointer;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     @include max-xl { display: none; }
@@ -32,12 +44,13 @@
   width: 100%;
   z-index: 401;
   position: fixed;
-  min-height: 120px;
+  height: 100px;
+  align-items: center;
   background-color: #fff;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.05);
-  @include max-sm { min-height: 70px; }
+  @include max-sm { height: 70px; }
 
   &__activePage {
     background-color: $red;
@@ -48,18 +61,18 @@
     left: 0;
     @include max-xl { display: none; }
   }
-  
+
   &__wrapper {
     padding: 15px 0;
     position: relative;
-    @include sm { padding: 35px 0; }
+    @include sm { padding: 25px 0; }
   }
 
   &__select {
     position: absolute;
     right: 0;
     top: 10px;
-    
+
     select {
       outline: none;
       border: none;
@@ -74,7 +87,14 @@
   }
 
   &__logo {
-    width: 210px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    a {
+      display: block;
+    }
 
     img {
       height: 40px;
@@ -89,7 +109,7 @@
     ul {
       li {
         display: inline;
-        margin-right: 30px;
+        margin-right: 20px;
         text-transform: uppercase;
 
         a {
@@ -109,11 +129,11 @@
   &__controls {
     height: 40px;
     width: 200px;
-    
+
     @include max-sm { width: 50px; }
 
     img {
-      
+
       @include max-sm {
         margin-right: 0;
         &:first-of-type{ display: none; }
@@ -142,7 +162,43 @@
         background-color: transparent;
         background-position: center center;
         background-image: url('/assets/divesoft/images/black-bag.png');
+
+        .text {
+          display: none;
+        }
       }
+    }
+
+
+  }
+
+  @media screen and (min-width: 541px) and (max-width: 767px) {
+    .hamburgerHolder {
+      width: 105px;
+    }
+
+    .header__controls {
+      width: 105px;
+    }
+
+    .btn_eshop {
+      width: 45px;
+
+      .text {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (min-width: 540px) and (max-width: 540px) {
+    .header__wrapper {
+      padding: 10px 0;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    .hamburgerHolder {
+      width: 90px;
     }
   }
 
@@ -159,11 +215,11 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(calc(100% + 100px), 0, 0);
     box-shadow: 0 0 25px rgba(0, 52, 97, 0.18);
-  
+
     @include md { width: 100%; }
-  
+
     &--active { transform: translate3d(0, 0, 0); }
-  
+
     &__wrapper {
       padding: 100px 30px 50px 30px;
       overflow-y: scroll;
@@ -171,27 +227,27 @@
       display: grid;
       height: 100%;
       @include md { padding: 150px 50px 50px 50px; }
-  
+
       &::-webkit-scrollbar {
         width: 8px;
         height: 100%;
       }
-  
+
       &::-webkit-scrollbar-thumb {
         background: $darkGrey;
         border-radius: 10px;
       }
-  
+
       &::-webkit-scrollbar-track { background: #f8f8f8; }
-  
+
       ul {
         @include reset-list;
         align-self: center;
-  
+
         li {
           text-align: center;
           padding-bottom: 15px;
-  
+
           a {
             font-size: 2.6rem;
             color: $darkGrey;
@@ -202,5 +258,149 @@
         }
       }
     }
+  }
+
+  &-ico {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+// TODO: najít breakpoint tabletu
+@media (min-width: 1200px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    .container {
+      display: flex;
+      flex: 1;
+
+      .header__wrapper {
+        width: 100%;
+        padding: 0;
+        justify-content: stretch!important;
+        align-items: stretch!important;
+
+        nav {
+          height: auto;
+          display: flex;
+          flex-grow: 1;
+          justify-content: stretch;
+
+          ul {
+            display: flex;
+            flex-grow: 1;
+
+            li {
+              display: flex;
+            }
+
+            li a {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              font-size: 1.5rem;
+
+              .dropdown__arrow {
+                top: 44%;
+              }
+            }
+          }
+        }
+
+        .header__controls {
+          margin: auto;
+
+          button:hover {
+            background-color: lighten(#e50000, 5%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  header {
+    &.header {
+      .header {
+        &__wrapper {
+          justify-content: center;
+        }
+
+        &__logo {
+          flex: 1;
+          justify-content: center;
+          text-align: center;
+
+          a {
+            display: block;
+          }
+        }
+      }
+
+      .hamburgerHolder {
+        display: flex;
+        justify-content: left;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 539px) {
+  header.header {
+    .header {
+      &__logo {
+        align-items: center;
+      }
+
+      &__controls {
+        width: 90px;
+        justify-content: flex-end!important;
+        > * {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+}
+
+.categoriesSubmenu {
+  &_wrapper {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f2;
+    z-index: 999;
+    // display: none;
+
+    &.active {
+      display: none;
+    }
+  }
+
+  display: flex;
+  justify-content: center;
+
+  &_list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &_item {
+    display: inline-block;
+  }
+
+  &_link {
+    display: block;
+    text-transform: uppercase;
+    color: #343434;
+    padding: 1.5rem;
+    font-size: 16px;
   }
 }
