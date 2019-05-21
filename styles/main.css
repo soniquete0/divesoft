@@ -3298,6 +3298,27 @@ a {
   @media (max-width: 1200px) {
     .dropdownProducts {
       display: none; } }
+  .dropdownProducts_phone .productsPreview__list {
+    flex-direction: column; }
+    .dropdownProducts_phone .productsPreview__list__item {
+      display: flex;
+      justify-content: stretch;
+      background-image: none;
+      padding: 0;
+      margin-bottom: 1rem; }
+      .dropdownProducts_phone .productsPreview__list__item h5 {
+        flex-grow: 1;
+        padding: 0 .5rem;
+        text-align: left;
+        color: #6c6c6c;
+        line-height: 40px; }
+      .dropdownProducts_phone .productsPreview__list__item .btn {
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 1rem;
+        font-size: 14px;
+        color: #fff; }
 
 .d-flex.no-wrap {
   display: flex;
@@ -3530,6 +3551,8 @@ a {
             flex-grow: 1; }
             .header .container .header__wrapper nav ul li {
               display: flex; }
+              .header .container .header__wrapper nav ul li > a {
+                margin: 3rem 0; }
             .header .container .header__wrapper nav ul li a {
               display: flex;
               flex-direction: column;
@@ -3575,6 +3598,14 @@ a {
     width: 100%;
     background-color: #f1f1f2;
     z-index: 999; }
+    .categoriesSubmenu_wrapper_phone {
+      position: relative; }
+      .categoriesSubmenu_wrapper_phone .categoriesSubmenu {
+        height: auto;
+        display: block;
+        font-size: 1rem; }
+        .categoriesSubmenu_wrapper_phone .categoriesSubmenu_list {
+          flex-direction: column; }
     .categoriesSubmenu_wrapper.active {
       display: none; }
   .categoriesSubmenu_list {
@@ -3588,6 +3619,13 @@ a {
     color: #343434;
     padding: 1.5rem;
     font-size: 16px; }
+
+.header .hiddenMenu__wrapper ul li a.categoriesSubmenu_link {
+  display: block;
+  font-size: 2rem;
+  color: #6c6c6c;
+  text-align: left;
+  padding: 1rem 1rem 1rem 20px; }
 
 .cookiePopup p {
   display: inline;

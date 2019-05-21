@@ -72,6 +72,7 @@ export interface HeaderState {
   searchQuery: string;
   visibleProductsSubMenu: boolean;
   subMenuVisible: string;
+  phoneSubMenuVisible: string;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -82,6 +83,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       showDropdown: false,
       visibleProductsSubMenu: false,
       subMenuVisible: '',
+      phoneSubMenuVisible: '',
       showSearch: false,
       searchQuery: ''
     };
@@ -107,6 +109,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
   submenuVisibility = (cat) => {
     this.setState({subMenuVisible: cat.name});
+    this.setState({phoneSubMenuVisible: cat.name});
   }
 
   canToggle = item => {
@@ -166,7 +169,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                     {/* TOP MENU - desktop - start */}
                     <nav>
                       <ul>
-                      {/* EXPORT NAVIGATION JSON  {console.log(topNavItems)} */}
                       {topNavItems && topNavItems.map((navItem, i) => {
                         return (
                           <li key={i} style={{ position: 'relative' }}>
@@ -243,15 +245,79 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 <div className={`hiddenMenu ${this.state.menuActive ? 'hiddenMenu--active' : ''}`}>
                   <div className={'hiddenMenu__wrapper'}>
                     <ul>
-                      {topNavItems &&
-                        topNavItems.map((navItem, i) => (
-                          <li key={i}>
-                            {
-                              <Link {...navItem.url} onClick={() => this.closeMenu()}>
+                      {topNavItems && topNavItems.map((navItem, i) => {
+                        return (
+                          <li key={i} style={{ position: 'relative' }}>
+                            {/* tslint:disable-next-line: max-line-length */}
+                            <Link {...navItem.url} url={this.canToggle(navItem)}>
+                              {(navItem.name === 'products' || navItem.children) ?
+                              <span className="d-flex no-wrap"  onClick={() => this.submenuVisibility(navItem)}>
                                 {navItem.name || navItem.title}
-                              </Link>}
+                              </span> :
+                              <span
+                                className="d-flex no-wrap"
+                                onClick={(e) => {this.closeMenu(); this.submenuVisibility(''); }}
+                              >
+                                {navItem.name || navItem.title}
+                              </span>}
+                            </Link>
+                            {/* Phone SUB MENU - start */}
+                            {/* products */}
+                            { navItem.name === 'products' && this.state.phoneSubMenuVisible === 'products' ?
+                              <div className="dropdownProducts_phone" onClick={this.hideSubMenu}>
+                                {products && <div className="container">
+                                  <div className="row productsPreview__list">
+                                    {products.map((item, c) => (
+                                      <div key={c} className={'col-xs-12'}>
+                                        <div className={'productsPreview__list__item'}>
+                                          {item.title && <h5>{item.title}</h5>}
+                                          {item.description && <p>{item.description}</p>}
+                                          <Link
+                                            {...item.url}
+                                            onClick={() => this.closeMenu()}
+                                            onBlur={() => this.submenuVisibility('')}
+                                            className="btn"
+                                          >
+                                              Detail
+                                          </Link>
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div> }
+                              </div> : ''
+                            }
+                            {/* other submenus */}
+                            { navItem.name === this.state.phoneSubMenuVisible &&
+                              navItem.children ?
+                              // tslint:disable-next-line: max-line-length
+                              <div className="categoriesSubmenu_wrapper_phone" key={'phone' + navItem.id}>
+                                <nav className="categoriesSubmenu">
+                                  <ul className="categoriesSubmenu_list">
+                                    {
+                                      navItem.children.map((navItemChild) => {
+                                        return  <Link
+                                                  {...navItemChild.url}
+                                                  className="categoriesSubmenu_link"
+                                                  key={navItemChild.id}
+                                                  onClick={() => this.closeMenu()}
+                                                  onBlur={() => this.submenuVisibility('')}
+                                        >
+                                          {navItemChild.name}
+                                        </Link>;
+                                      })
+                                    }
+                                  </ul>
+                                </nav>
+                              </div>
+                              : ''
+                            }
+                            {/* Phone SUB MENU - end */}
                           </li>
-                        ))}
+                        );
+                        })
+                      }
+
                     </ul>
                   </div>
                 </div>
