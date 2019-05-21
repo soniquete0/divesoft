@@ -3319,6 +3319,8 @@ a {
         padding: 0 1rem;
         font-size: 14px;
         color: #fff; }
+        .dropdownProducts_phone .productsPreview__list__item .btn:hover, .dropdownProducts_phone .productsPreview__list__item .btn:visited, .dropdownProducts_phone .productsPreview__list__item .btn:focus {
+          color: #fff; }
 
 .d-flex.no-wrap {
   display: flex;
@@ -3603,7 +3605,8 @@ a {
       .categoriesSubmenu_wrapper_phone .categoriesSubmenu {
         height: auto;
         display: block;
-        font-size: 1rem; }
+        font-size: 1rem;
+        text-align: center; }
         .categoriesSubmenu_wrapper_phone .categoriesSubmenu_list {
           flex-direction: column; }
     .categoriesSubmenu_wrapper.active {
