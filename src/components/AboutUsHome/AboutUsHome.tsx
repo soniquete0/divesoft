@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Button from '@source/partials/Button';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Button from '../../partials/Button';
+import getImageUrl from '../../helpers/getImageUrl';
 
 export interface AboutUsHomeState {
   hoverLeft: boolean;

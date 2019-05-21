@@ -4,10 +4,10 @@ import { Query } from 'react-apollo';
 import { adopt } from 'react-adopt';
 
 import Search from '../Search';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import Loader from '@source/partials/Loader';
-import Button from '@source/partials/Button';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
+import Loader from '../../partials/Loader';
+import Button from '../../partials/Button';
 import Hamburger from './components/Hamburger';
 // import Country from './components/Country/Country';
 

@@ -2,8 +2,8 @@ import * as React from 'react';
 import Lightbox from 'react-images';
 
 import List from '../List';
-import Media from '@source/partials/Media';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Media from '../../partials/Media';
+import getImageUrl from '../../helpers/getImageUrl';
 
 export interface PhotoGalleryState {
   currentImage: number;

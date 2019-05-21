@@ -4,8 +4,8 @@ import { adopt } from 'react-adopt';
 import { Query } from 'react-apollo';
 import * as ReactMarkdown from 'react-markdown';
 
-import Link from '@source/partials/Link';
-import Loader from '@source/partials/Loader';
+import Link from '../../partials/Link';
+import Loader from '../../partials/Loader';
 import CookiePopup from './components/CookiePopup';
 
 const GET_CONTEXT = gql`

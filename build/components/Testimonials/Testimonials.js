@@ -14,8 +14,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_responsive_1 = require("react-responsive");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
-var Slider_1 = require("@source/partials/Slider");
+var Media_1 = require("../../partials/Media");
+var Slider_1 = require("../../partials/Slider");
 var Mobile = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { maxWidth: 767 })); };
 var Default = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { minWidth: 768 })); };
 var Testimonials = function (props) {

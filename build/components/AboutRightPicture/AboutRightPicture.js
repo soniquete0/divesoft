@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var Media_1 = require("@source/partials/Media");
+var Media_1 = require("../../partials/Media");
 var AboutRightPicture = function (props) {
     var _a = props.data, title = _a.title, subtitle = _a.subtitle, text = _a.text, img = _a.img, paddingTop = _a.paddingTop;
     return (React.createElement("div", { className: 'aboutRightPicture', style: paddingTop ? { paddingTop: 0 } : {} },

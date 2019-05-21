@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import List from '../List';
-import Media from '@source/partials/Media';
-import Button from '@source/partials/Button';
+import Media from '../../partials/Media';
+import Button from '../../partials/Button';
 
 interface Product {
   title: string;

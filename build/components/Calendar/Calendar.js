@@ -28,7 +28,7 @@ var React = require("react");
 var dateFns = require("date-fns");
 var react_responsive_1 = require("react-responsive");
 var List_1 = require("../List");
-var Button_1 = require("@source/partials/Button");
+var Button_1 = require("../../partials/Button");
 var MapComponent_1 = require("./Map/components/MapComponent");
 var Calendar = /** @class */ (function (_super) {
     __extends(Calendar, _super);

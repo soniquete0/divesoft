@@ -26,7 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../../../partials/Link");
 var ServiceRowItem = /** @class */ (function (_super) {
     __extends(ServiceRowItem, _super);
     function ServiceRowItem(props) {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
-import Link from '@source/partials/Link';
+import Link from '../../../../../partials/Link';
 
 interface ServiceRowItemState {
   show: boolean;
