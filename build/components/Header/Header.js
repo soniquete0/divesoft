@@ -36,7 +36,6 @@ var Search_1 = require("../Search");
 var Link_1 = require("@source/partials/Link");
 var Media_1 = require("@source/partials/Media");
 var Loader_1 = require("@source/partials/Loader");
-var Button_1 = require("@source/partials/Button");
 var Hamburger_1 = require("./components/Hamburger");
 // import Country from './components/Country/Country';
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
@@ -81,7 +80,7 @@ var Header = /** @class */ (function (_super) {
             _this.setState({ subMenuVisible: cat.name });
         };
         _this.canToggle = function (item) {
-            return item.children ? '#' : item.url.url;
+            return (item.children || item.name === 'products') ? '#' : item.url.url;
         };
         _this.state = {
             menuActive: false,
@@ -147,8 +146,9 @@ var Header = /** @class */ (function (_super) {
                                 React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.svg", alt: "search", className: "header-ico header-ico_search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
                                     React.createElement(Search_1.default, { language: context.languageData.code }) : '',
-                                React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" }),
-                                React.createElement("button", { className: 'btn_eshop' },
+                                React.createElement("a", { href: "http://93.185.96.70:3010/cz/login", className: "login-link" },
+                                    React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" })),
+                                React.createElement("a", { href: "http://93.185.96.70:3010/", className: 'btn btn_eshop cart-ico' },
                                     React.createElement("span", { className: "text" }, "e-shop"))))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
@@ -161,7 +161,7 @@ var Header = /** @class */ (function (_super) {
                                 React.createElement(Media_1.default, { type: 'image', data: item.img }),
                                 item.title && React.createElement("h5", null, item.title),
                                 item.description && React.createElement("p", null, item.description),
-                                React.createElement(Button_1.default, { url: item.url }, "shop now")))); })))) : ''));
+                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "Detail")))); })))) : ''));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

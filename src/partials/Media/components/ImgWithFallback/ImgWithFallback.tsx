@@ -1,19 +1,18 @@
 import * as React from 'react';
-import getImageUrl from '@source/helpers/getImageUrl';
 
 export interface ImgWithFallbackProps {
   alt?: string;
   originalSrc?: string;
   baseUrl: string;
-  class?: string;
   hash: string;
   recommendedSizes: LooseObject;
   originalData: LooseObject;
+  className: string;
 }
 
 export interface ImgWithFallbackState {
-  src: string;
   loading: boolean;
+  error: boolean;
 }
 
 class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallbackState> {
@@ -21,9 +20,12 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
     super(props);
 
     this.state = {
-      src: null,
       loading: true,
+      error: false
     };
+
+    this.createVariantIfDoesNotExist = this.createVariantIfDoesNotExist.bind(this);
+    this.getSizedUrl = this.getSizedUrl.bind(this);
   }
 
   createVariantIfDoesNotExist = () => {
@@ -43,100 +45,57 @@ class ImgWithFallback extends React.Component<ImgWithFallbackProps, ImgWithFallb
           // this.getSizedUrl();
         })
         .catch(() => {
-          console.log('There was an error creating variant');
+          console.error('There was an error creating variant');
         });
     }
   }
 
   getSizedUrl = props => {
-    let sizedUrl = null;
     let sizes = props.recommendedSizes;
-    let sizedFile = null;
-
-    this.setState({
-      loading: true,
-    });
 
     if (sizes && sizes.width && sizes.height) {
       let filename = props.originalData.filename.split('.');
       filename[0] = filename[0] + '_' + sizes.width + '_' + sizes.height;
       filename = filename.join('.');
 
-      sizedUrl = props.baseUrl + props.originalData.category + props.hash + '_' + filename;
-
-      this.setState({
-        src: sizedUrl,
-      });
-    } else {
-      this.setState({
-        src: props.originalSrc,
-      });
+      return props.baseUrl + props.originalData.category + props.hash + '_' + filename;
     }
-  }
 
-  loadImg(src: any) {
-    if (src) {
-      const img = new Image();
-
-      img.src = src;
-
-      img.onload = () => {
-        this.setState({
-          loading: false,
-        });
-      };
-
-      img.onerror = err => {
-        this.handleError();
-      };
-    }
-  }
-
-  componentDidMount() {
-    this.getSizedUrl(this.props);
-  }
-
-  componentWillUpdate(nextProps: ImgWithFallbackProps, nextState: ImgWithFallbackState) {
-    if (this.state.src !== nextState.src) {
-      this.loadImg(nextState.src);
-    }
-    if (nextProps.originalSrc !== this.props.originalSrc) {
-      this.getSizedUrl(nextProps);
-    }
+    return props.originalSrc;
   }
 
   handleError = () => {
     this.createVariantIfDoesNotExist();
-
-    this.setState({
-      loading: true,     
-      src: this.props.originalSrc,    
-    });
   }
 
-  public render() {  
+  public render() {
     const { alt } = this.props;
+    const props = this.props;
+    const error = this.state.error;
 
-    if (this.state.loading) {
-      return <div className={'mediaImageLoader'} />;
-    } else {
-      return (
-        <div
-          className={`mediaRatio ${this.props.class}`}
-          style={{
-            paddingTop: `${(parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.height : 1, 10) /
-              parseInt(this.props.recommendedSizes ? this.props.recommendedSizes.width : 1, 10)) *
-              100}%`,
+    return (
+      <div
+        className={'mediaRatio'}
+        style={{
+          paddingTop: `${(parseInt(props.recommendedSizes ? props.recommendedSizes.height : 1, 10) /
+            parseInt(props.recommendedSizes ? props.recommendedSizes.width : 1, 10)) *
+            100}%`,
+        }}
+      >
+        <img
+          alt={alt}
+          className={'mediaImage inner'}
+          src={error ? props.originalSrc : this.getSizedUrl(props)}
+          onError={() => {
+            this.createVariantIfDoesNotExist();
+            this.setState({ error: true });
           }}
-        >
-          <img 
-            alt={alt}
-            className={'mediaImage inner'}
-            src={this.state.src ? this.state.src : getImageUrl(this.props.originalData)}
-          />
-        </div>
-      );
-    }
+          onContextMenu={() => {
+            this.createVariantIfDoesNotExist();
+          }}
+        />
+      </div>
+    );
   }
 }
 

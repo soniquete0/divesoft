@@ -140,14 +140,14 @@
       }
     }
 
-    button {
+    button, a.cart-ico {
       color: white;
       height: 100%;
       width: 120px;
       border: none;
       outline: none;
       font-weight: 400;
-      padding-left: 20px;
+      padding: 1px 0 0 20px;
       text-transform: uppercase;
       line-height: 40px;
       background-color: $red;
@@ -181,8 +181,9 @@
       width: 105px;
     }
 
-    .btn_eshop {
+    a.btn_eshop.cart-ico {
       width: 45px;
+      padding:0;
 
       .text {
         display: none;
