@@ -1,8 +1,8 @@
 .specialCarousel {
     position: relative;
 
-    p { @include max-lg { margin-bottom: 5px; } } 
-    .mediaRatio { 
+    p { @include max-lg { margin-bottom: 5px; } }
+    .mediaRatio {
       height: 730px;
       opacity: 1;
       @include max-lg { height: 700px; }
@@ -35,10 +35,10 @@
 
         @include max-md {
           padding: 35px 35px 0 35px;
-          
-          &:first-child { 
+
+          &:first-child {
             text-align: center;
-            order: 2; 
+            order: 2;
           }
         }
 
@@ -46,6 +46,10 @@
           color: #949494;
           line-height: 2.3rem;
           padding-bottom: 3.4rem;
+          max-height: 350px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
         }
 
         &:nth-child(2) {
@@ -82,11 +86,11 @@
           width: 50%;
 
           a {
-            float: left; 
+            float: left;
             margin-right: 15px;
             @include max-sm { margin: 5px; }
           }
-          
+
           .mediaRatio {
             padding: 0 !important;
             height: 50px;

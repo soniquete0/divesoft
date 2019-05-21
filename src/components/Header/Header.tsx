@@ -110,7 +110,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   canToggle = item => {
-    return item.children ? '#' : item.url.url;
+    return (item.children || item.name === 'products') ? '#' : item.url.url;
   }
 
   public render() {
@@ -224,8 +224,15 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
                       {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
-                      <img src="/assets/divesoft/images/user.svg" alt="account" className="header-ico header-ico_user"/>
-                      <button className={'btn_eshop'}><span className="text">e-shop</span></button>
+                      <a href="http://93.185.96.70:3010/cz/login" className="login-link">
+                        <img
+                          src="/assets/divesoft/images/user.svg"
+                          alt="account"
+                          className="header-ico header-ico_user"
+                        />
+                      </a>
+{/* tslint:disable-next-line: max-line-length */}
+                      <a href="http://93.185.96.70:3010/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
                     {/* <Country /> */}
@@ -263,7 +270,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                             <Media type={'image'} data={item.img} />
                             {item.title && <h5>{item.title}</h5>}
                             {item.description && <p>{item.description}</p>}
-                            <Button url={item.url}>shop now</Button>
+                            <Link {...item.url} onClick={this.hideSubMenu} className="btn">Detail</Link>
                           </div>
                         </div>
                       ))}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import dateFns from 'date-fns';
+import * as dateFns from 'date-fns';
 import Responsive from 'react-responsive';
 
 import List from '../List';

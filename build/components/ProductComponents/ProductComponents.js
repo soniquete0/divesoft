@@ -38,7 +38,7 @@ var ProductComponents = function (props) {
                 React.createElement(Default, null,
                     React.createElement("div", { className: 'productComponents__list row' }, data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-6 col-lg-4" },
                         React.createElement("div", { className: 'productComponents__list__item' },
-                            React.createElement(Media_1.default, { type: 'image', data: item.image }),
+                            React.createElement(Media_1.default, { type: 'image', data: item.image, width: "130", height: "130" }),
                             React.createElement("div", { className: 'productComponents__list__item__content' },
                                 React.createElement("h5", null, item.title),
                                 React.createElement("p", null, item.description),

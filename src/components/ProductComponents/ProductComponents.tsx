@@ -52,7 +52,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
                   {data && data.map((item, i) => (
                     <div key={i} className="col-12 col-md-6 col-lg-4">
                       <div className={'productComponents__list__item'}>
-                        <Media type={'image'} data={item.image} />
+                        <Media type={'image'} data={item.image} width="130" height="130"/>
                         <div className={'productComponents__list__item__content'}>
                           <h5>{item.title}</h5>
                           <p>{item.description}</p>
