@@ -3592,7 +3592,7 @@ a {
 
 .categoriesSubmenu {
   display: flex;
-  justify-content: center; }
+  justify-content: left; }
   .categoriesSubmenu_wrapper {
     position: fixed;
     top: 100px;
@@ -3613,7 +3613,7 @@ a {
       display: none; }
   .categoriesSubmenu_list {
     display: flex;
-    justify-content: center; }
+    justify-content: left; }
   .categoriesSubmenu_item {
     display: inline-block; }
   .categoriesSubmenu_link {

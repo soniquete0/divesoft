@@ -265,22 +265,18 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                             {/* products */}
                             { navItem.name === 'products' && this.state.phoneSubMenuVisible === 'products' ?
                               <div className="dropdownProducts_phone" onClick={this.hideSubMenu}>
-                                {products && <div className="container">
-                                  <div className="row productsPreview__list">
+                                {products && <div className="categoriesSubmenu">
+                                  <div className="productsPreview__list">
                                     {products.map((item, c) => (
-                                      <div key={c} className={'col-xs-12'}>
-                                        <div className={'productsPreview__list__item'}>
-                                          {item.title && <h5>{item.title}</h5>}
-                                          {item.description && <p>{item.description}</p>}
-                                          <Link
-                                            {...item.url}
-                                            onClick={() => this.closeMenu()}
-                                            onBlur={() => this.submenuVisibility('')}
-                                            className="btn"
-                                          >
-                                              Detail
-                                          </Link>
-                                        </div>
+                                      <div key={c} className={'categoriesSubmenu_list'}>
+                                        <Link
+                                          {...item.url}
+                                          onClick={() => this.closeMenu()}
+                                          onBlur={() => this.submenuVisibility('')}
+                                          className="categoriesSubmenu_link"
+                                        >
+                                            {item.title}
+                                        </Link>
                                       </div>
                                     ))}
                                   </div>

@@ -160,12 +160,9 @@ var Header = /** @class */ (function (_super) {
                                         React.createElement("span", { className: "d-flex no-wrap", onClick: function () { return _this.submenuVisibility(navItem); } }, navItem.name || navItem.title) :
                                         React.createElement("span", { className: "d-flex no-wrap", onClick: function (e) { _this.closeMenu(); _this.submenuVisibility(''); } }, navItem.name || navItem.title)),
                                     navItem.name === 'products' && _this.state.phoneSubMenuVisible === 'products' ?
-                                        React.createElement("div", { className: "dropdownProducts_phone", onClick: _this.hideSubMenu }, products && React.createElement("div", { className: "container" },
-                                            React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, c) { return (React.createElement("div", { key: c, className: 'col-xs-12' },
-                                                React.createElement("div", { className: 'productsPreview__list__item' },
-                                                    item.title && React.createElement("h5", null, item.title),
-                                                    item.description && React.createElement("p", null, item.description),
-                                                    React.createElement(Link_1.default, __assign({}, item.url, { onClick: function () { return _this.closeMenu(); }, onBlur: function () { return _this.submenuVisibility(''); }, className: "btn" }), "Detail")))); })))) : '',
+                                        React.createElement("div", { className: "dropdownProducts_phone", onClick: _this.hideSubMenu }, products && React.createElement("div", { className: "categoriesSubmenu" },
+                                            React.createElement("div", { className: "productsPreview__list" }, products.map(function (item, c) { return (React.createElement("div", { key: c, className: 'categoriesSubmenu_list' },
+                                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: function () { return _this.closeMenu(); }, onBlur: function () { return _this.submenuVisibility(''); }, className: "categoriesSubmenu_link" }), item.title))); })))) : '',
                                     navItem.name === _this.state.phoneSubMenuVisible &&
                                         navItem.children ?
                                         // tslint:disable-next-line: max-line-length
