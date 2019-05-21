@@ -1,9 +1,9 @@
- import * as React from 'react';
+import * as React from 'react';
 import Responsive from 'react-responsive';
 
 import List from '../List';
-import Media from '@source/partials/Media';
-import Slider from '@source/partials/Slider';
+import Media from '../../partials/Media';
+import Slider from '../../partials/Slider';
 
 interface Testimonial {
   img: LooseObject;

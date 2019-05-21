@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface NewsOrEvent {
   img: LooseObject;

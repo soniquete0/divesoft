@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
 
 interface File {
   title: string;

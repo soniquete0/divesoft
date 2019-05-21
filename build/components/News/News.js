@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var ReactMarkdown = require("react-markdown");
-var Media_1 = require("@source/partials/Media");
-var Button_1 = require("@source/partials/Button");
+var Media_1 = require("../../partials/Media");
+var Button_1 = require("../../partials/Button");
 var News = function (props) {
     var _a = props.data, title = _a.title, firstText = _a.firstText, firstImg = _a.firstImg, secondText = _a.secondText, secondImg = _a.secondImg, thirdImg = _a.thirdImg, thirdText = _a.thirdText, buttonUrl = _a.buttonUrl;
     var facebookUrl = window && window.location && window.location.href &&

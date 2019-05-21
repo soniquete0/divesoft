@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
-import Media from '@source/partials/Media';
-import Button from '@source/partials/Button';
+import Media from '../../partials/Media';
+import Button from '../../partials/Button';
 
 export interface NewsProps {
   data: {

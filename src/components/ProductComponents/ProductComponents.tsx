@@ -2,9 +2,9 @@ import * as React from 'react';
 import Responsive from 'react-responsive';
 
 import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import Slider from '@source/partials/Slider';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
+import Slider from '../../partials/Slider';
 
 interface Component {
   title: string;

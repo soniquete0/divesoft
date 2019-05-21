@@ -14,8 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Button_1 = require("../../partials/Button");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var AboutUsHome = /** @class */ (function (_super) {
     __extends(AboutUsHome, _super);
     function AboutUsHome(props) {

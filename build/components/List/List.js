@@ -34,7 +34,7 @@ var react_apollo_1 = require("react-apollo");
 var R = require("ramda");
 var react_adopt_1 = require("react-adopt");
 var react_router_1 = require("react-router");
-var Loader_1 = require("@source/partials/Loader");
+var Loader_1 = require("../../partials/Loader");
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str
@@ -50,7 +50,7 @@ var escape = function (str) {
 var FRONTEND = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"], ["\n  query frontend($url: String!, $origin: String) {\n    frontend: frontend( where: { url: $url, origin: $origin } ) {\n      website @connection(key: \"websiteData\") {\n        id\n        title\n      }\n      language @connection(key: \"languageData\") {\n        id\n        code\n        name\n      }\n      page @connection(key: \"pageData\") {\n        id\n        name\n        content\n      }\n      navigations @connection(key: \"navigationsData\") {\n        id\n        name\n        nodes {\n          id\n          page\n          title\n          link\n          order\n          parent\n          __typename\n        }\n        __typename\n      },\n      languages @connection(key: \"languages\") {\n        id\n        code\n        name\n      },\n      datasourceItems @connection(key: \"datasourceItems\") {\n        id\n        content\n        slug\n        datasource {\n          type\n        }\n      },\n      seo,\n      project {\n        id\n        components\n      }\n    }\n  }\n"])));
 var DATASOURCE = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"], ["\n  query datasource($id: ID!) {\n    datasource(where: { id: $id }) {\n      id\n      type\n      schema\n      datasourceItems {\n        id\n        slug\n        content\n        createdAt\n        updatedAt\n      }\n    }\n  }\n"])));
 var GET_CONTEXT = graphql_tag_1.default(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"], ["\n  {\n    pageData @client\n    languageData @client\n    websiteData @client\n  }\n"])));
-var GET_ALL_PAGES = graphql_tag_1.default(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: { \n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
+var GET_ALL_PAGES = graphql_tag_1.default(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: {\n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"], ["\n  query localizedPages($languageId: ID! $websiteId: ID!) {\n    pages(where: { website: { id: $websiteId } }) {\n      id\n      type {\n        id\n        name\n      }\n      tags {\n        id\n        name\n      }\n      translations(where: {\n        language: { id: $languageId }\n      }) {\n        id\n        name\n        createdAt\n        content\n        annotations {\n          key\n          value\n        }\n        language {\n          id\n          code\n        }\n      }\n    }\n  }\n"])));
 var AllPagesComposedQuery = react_adopt_1.adopt({
     getContext: function (_a) {
         var render = _a.render;
@@ -133,7 +133,7 @@ var List = /** @class */ (function (_super) {
                 // Map datasourceItem data to placeholders
                 datasourceItems = datasourceItems
                     .map(function (item) {
-                    // Iterate through dataShape 
+                    // Iterate through dataShape
                     // in case that value inside some of keys is string
                     // try to find key inside item and replace value with it
                     var res = __assign({}, dataShape);
@@ -147,7 +147,7 @@ var List = /** @class */ (function (_super) {
                             return parsedFilter;
                         });
                     }
-                    // Iterate through keys and in case that value inside key is string value 
+                    // Iterate through keys and in case that value inside key is string value
                     // apply replace function which replace dynamic placeholders with dynamic source item values.
                     // In case that value of key is url and contains dynamic slug with same entity that we sourcing,
                     // replace it with dynamic source item slug.
