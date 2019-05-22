@@ -3524,6 +3524,7 @@ a {
           justify-content: stretch; }
           .header .container .header__wrapper nav ul {
             display: flex;
+            justify-content: center;
             flex-grow: 1; }
             .header .container .header__wrapper nav ul li {
               display: flex; }
