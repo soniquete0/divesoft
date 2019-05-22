@@ -28,8 +28,8 @@ var React = require("react");
 var react_images_1 = require("react-images");
 var react_responsive_1 = require("react-responsive");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Media_1 = require("../../partials/Media");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var GalleryAndVideo = /** @class */ (function (_super) {
     __extends(GalleryAndVideo, _super);
     function GalleryAndVideo(props) {

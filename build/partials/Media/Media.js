@@ -14,29 +14,28 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var ImgWithFallback_1 = require("./components/ImgWithFallback");
+var ImgWithFallback_1 = require("./components/ImgWithFallback/");
+var baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
 var Media = /** @class */ (function (_super) {
     __extends(Media, _super);
     function Media(props) {
         var _this = _super.call(this, props) || this;
-        _this.setDimensions = function () {
-            if (!(_this.props.width || _this.props.height)) {
-                return;
+        _this.setDimensions = function (recommendedSizes) {
+            var _a = _this.props, width = _a.width, height = _a.height;
+            if (width && height) {
+                return {
+                    width: width,
+                    height: height
+                };
             }
-            var result = null;
-            result = {
-                width: _this.props.width && _this.props.width,
-                height: _this.props.height && _this.props.height
-            };
-            return result;
+            return recommendedSizes;
         };
         _this.renderAsImage = function (data) {
-            var baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
             if (data && data.filename) {
                 var recommendedSizes = (data && data.recommendedSizes) || null;
                 var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-                recommendedSizes = _this.setDimensions();
-                return (React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, class: _this.props.class }));
+                recommendedSizes = _this.setDimensions(recommendedSizes);
+                return (React.createElement(ImgWithFallback_1.default, { originalSrc: originalUrl, alt: data.alt || '', baseUrl: baseUrl, recommendedSizes: recommendedSizes, originalData: data, hash: data.hash, className: _this.props.className }));
             }
             else {
                 return null;
@@ -46,12 +45,17 @@ var Media = /** @class */ (function (_super) {
     }
     Media.prototype.renderAsVideoEmbed = function (data) {
         var embedUrl = data.url;
-        return (React.createElement("div", { className: "mediaRatio mediaRatio--video " + this.props.class, style: {
+        return (React.createElement("div", { className: "mediaRatio mediaRatio--video " + this.props.className, style: {
                 paddingTop: (parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
                     parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
-                    100 + "%",
+                    100 + "%"
             } },
             React.createElement("iframe", { className: "mediaEmbeddedVideo inner", src: embedUrl, allowFullScreen: true, frameBorder: "0" })));
+    };
+    Media.prototype.renderAsFile = function (data) {
+        var originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
+        return (React.createElement("div", { className: 'fileDownload__holder' },
+            React.createElement("a", { className: 'roundButton roundButton--red', href: originalUrl }, "File")));
     };
     Media.prototype.render = function () {
         var data = this.props.data;
@@ -60,6 +64,8 @@ var Media = /** @class */ (function (_super) {
                 return this.renderAsImage(data);
             case 'embeddedVideo':
                 return this.renderAsVideoEmbed(data);
+            case 'file':
+                return this.renderAsFile(data);
             default:
                 return this.renderAsImage(data);
             // default:

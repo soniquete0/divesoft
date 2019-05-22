@@ -15,9 +15,9 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
-var Button_1 = require("@source/partials/Button");
-var Slider_1 = require("@source/partials/Slider");
+var Media_1 = require("../../partials/Media");
+var Button_1 = require("../../partials/Button");
+var Slider_1 = require("../../partials/Slider");
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
     function Carousel(props) {
@@ -41,7 +41,7 @@ var Carousel = /** @class */ (function (_super) {
                         React.createElement("p", null, slide.description),
                         slide.buttonTitle &&
                             React.createElement("div", { className: 'carousel__images__img__content__btnHolder', style: slide.isCentred ? { margin: '0 auto' } : {} },
-                                React.createElement(Button_1.default, { classes: (slide.isBackgroundBlack ? '' : 'btn--bordered') + " \n                              " + (slide.isCentred ? 'btn--center' : ''), url: slide.url }, slide.buttonTitle)))),
+                                React.createElement(Button_1.default, { classes: (slide.isBackgroundBlack ? '' : 'btn--bordered') + "\n                              " + (slide.isCentred ? 'btn--center' : ''), url: slide.url }, slide.buttonTitle)))),
                 slide.image && React.createElement(Media_1.default, { type: 'image', data: slide.image })));
         });
         return result;

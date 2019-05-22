@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
-import Media from '@source/partials/Media';
+import Media from '../../partials/Media';
 
 export interface AboutLeftPictureProps {
   data: {

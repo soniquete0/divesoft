@@ -26,7 +26,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../../List");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../../partials/Link");
 var ContactRow = /** @class */ (function (_super) {
     __extends(ContactRow, _super);
     function ContactRow(props) {

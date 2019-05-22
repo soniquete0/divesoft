@@ -26,9 +26,9 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Link_1 = require("@source/partials/Link");
-var Media_1 = require("@source/partials/Media");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Link_1 = require("../../partials/Link");
+var Media_1 = require("../../partials/Media");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var NewsAndEvents = /** @class */ (function (_super) {
     __extends(NewsAndEvents, _super);
     function NewsAndEvents(props) {

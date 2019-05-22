@@ -1,9 +1,9 @@
 import * as React from 'react';
-import dateFns from 'date-fns';
+import * as dateFns from 'date-fns';
 import Responsive from 'react-responsive';
 
 import List from '../List';
-import Button from '@source/partials/Button';
+import Button from '../../partials/Button';
 import MapComponent from './Map/components/MapComponent';
 
 export interface CalendarState {

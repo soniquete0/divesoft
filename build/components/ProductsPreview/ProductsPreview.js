@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
-var Button_1 = require("@source/partials/Button");
+var Media_1 = require("../../partials/Media");
+var Button_1 = require("../../partials/Button");
 var ProductsPreview = function (props) { return (React.createElement(List_1.default, { data: props.data.products }, function (_a) {
     var data = _a.data;
     return (React.createElement("div", { className: 'productsPreview' },

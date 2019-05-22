@@ -1,12 +1,16 @@
 .news {
-  padding: 85px 0;
+  padding: 45px 0;
   @include max-md { padding: 40px 0; }
 
   a {
     color: $red;
     &:hover { text-decoration: underline; }
+
+    &:visited {
+      color: #e50000;
+    }
   }
-  
+
   &__title {
     color: #5c5c5c;
     padding-left: 85px;
@@ -26,7 +30,7 @@
     @include max-sm { padding: 30px 25px 15px 25px; }
     @include max-xs { padding: 20px 15px 10px 15px; }
   }
-  
+
   &__btnHolder {
     position: absolute;
     width: 130px;
@@ -55,7 +59,7 @@
     }
   }
 
-  p { 
+  p {
     margin: 0;
     line-height: 2.8rem;
     color: #5c5c5c;
@@ -69,7 +73,7 @@
     background-color: #e8e8e8;
   }
 
-  &__btn { 
+  &__btn {
     max-width: 240px;
     color: white !important;
     &:hover { text-decoration: none !important; }

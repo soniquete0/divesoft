@@ -16,8 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_images_1 = require("react-images");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Media_1 = require("../../partials/Media");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var PhotoGallery = /** @class */ (function (_super) {
     __extends(PhotoGallery, _super);
     function PhotoGallery(props) {

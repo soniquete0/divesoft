@@ -2,9 +2,9 @@ import * as React from 'react';
 import Responsive from 'react-responsive';
 
 import List from '../List';
-import Link from '@source/partials/Link';
-import Media from '@source/partials/Media';
-import Slider from '@source/partials/Slider';
+import Link from '../../partials/Link';
+import Media from '../../partials/Media';
+import Slider from '../../partials/Slider';
 
 interface Component {
   title: string;
@@ -52,7 +52,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
                   {data && data.map((item, i) => (
                     <div key={i} className="col-12 col-md-6 col-lg-4">
                       <div className={'productComponents__list__item'}>
-                        <Media type={'image'} data={item.image} />
+                        <Media type={'image'} data={item.image} width="130" height="130"/>
                         <div className={'productComponents__list__item__content'}>
                           <h5>{item.title}</h5>
                           <p>{item.description}</p>

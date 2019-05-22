@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Button_1 = require("../../partials/Button");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var Hero = function (props) {
     var _a = props.data, url = _a.url, text = _a.text, image = _a.image, title = _a.title, btnTitle = _a.btnTitle, paddingTop = _a.paddingTop, smallFontSize = _a.smallFontSize;
     return (React.createElement("div", { className: paddingTop ? 'topWrapper' : '' },

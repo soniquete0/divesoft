@@ -1,43 +1,41 @@
 import * as React from 'react';
-import ImgWithFallback from './components/ImgWithFallback';
+import ImgWithFallback from './components/ImgWithFallback/';
 
 export interface MediaProps {
   type: string;
-  height?: string;
   width?: string;
+  height?: string;
   // tslint:disable:no-any
   data: any;
-  class?: string;
+  className?: any;
 }
 
 export interface MediaState {}
+
+const baseUrl = 'https://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
 
 class Media extends React.Component<MediaProps, MediaState> {
   constructor(props: MediaProps) {
     super(props);
   }
 
-  setDimensions = () => {
-    if (!(this.props.width || this.props.height)) { return; }
-    
-    let result = null;
-    result = {
-      width: this.props.width && this.props.width,
-      height: this.props.height && this.props.height
-    };
+  setDimensions = (recommendedSizes: any) => {
+    const { width, height } = this.props;
+    if (width && height) {
+      return {
+        width,
+        height
+      };
+    }
 
-    return result;
+    return recommendedSizes;
   }
 
   renderAsImage = data => {
-    const baseUrl = 'http://foxer360-media-library.s3.eu-central-1.amazonaws.com/';
-
     if (data && data.filename) {
       let recommendedSizes = (data && data.recommendedSizes) || null;
       let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
-
-      recommendedSizes = this.setDimensions();
-
+      recommendedSizes = this.setDimensions(recommendedSizes);
       return (
         <ImgWithFallback
           originalSrc={originalUrl}
@@ -46,7 +44,7 @@ class Media extends React.Component<MediaProps, MediaState> {
           recommendedSizes={recommendedSizes}
           originalData={data}
           hash={data.hash}
-          class={this.props.class}
+          className={this.props.className}
         />
       );
     } else {
@@ -59,14 +57,26 @@ class Media extends React.Component<MediaProps, MediaState> {
 
     return (
       <div
-        className={`mediaRatio mediaRatio--video ${this.props.class}`}
+        className={`mediaRatio mediaRatio--video ${this.props.className}`}
         style={{
           paddingTop: `${(parseInt(data.recommendedSizes ? data.recommendedSizes.height : 9, 10) /
             parseInt(data.recommendedSizes ? data.recommendedSizes.width : 16, 10)) *
-            100}%`,
+            100}%`
         }}
       >
         <iframe className="mediaEmbeddedVideo inner" src={embedUrl} allowFullScreen={true} frameBorder="0" />
+      </div>
+    );
+  }
+
+  renderAsFile(data: any) {
+    let originalUrl = baseUrl + data.category + data.hash + '_' + data.filename;
+
+    return (
+      <div className={'fileDownload__holder'}>
+        <a className={'roundButton roundButton--red'} href={originalUrl}>
+          File
+        </a>
       </div>
     );
   }
@@ -79,6 +89,8 @@ class Media extends React.Component<MediaProps, MediaState> {
         return this.renderAsImage(data);
       case 'embeddedVideo':
         return this.renderAsVideoEmbed(data);
+      case 'file':
+        return this.renderAsFile(data);
       default:
         return this.renderAsImage(data);
 

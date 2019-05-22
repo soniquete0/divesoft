@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Button from '@source/partials/Button';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Button from '../../partials/Button';
+import getImageUrl from '../../helpers/getImageUrl';
 
 export interface HeroProps {
   data: {
@@ -16,7 +16,7 @@ export interface HeroProps {
 }
 
 const Hero = (props: HeroProps) => {
-  const { 
+  const {
     url,
     text,
     image,
@@ -25,7 +25,7 @@ const Hero = (props: HeroProps) => {
     paddingTop,
     smallFontSize
   } = props.data;
-  
+
   return (
     <div className={paddingTop ? 'topWrapper' : ''}>
       <div className={'hero'} style={{ backgroundImage: image && `url(${getImageUrl(image)})` }}>

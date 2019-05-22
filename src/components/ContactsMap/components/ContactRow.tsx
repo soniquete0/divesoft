@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import List from '../../List';
-import Link from '@source/partials/Link';
+import Link from '../../../partials/Link';
 
 export interface ContactRowState {
   numberOfPage: number;

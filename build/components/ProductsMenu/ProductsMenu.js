@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var Button_1 = require("@source/partials/Button");
-var getImageUrl_1 = require("@source/helpers/getImageUrl");
+var Button_1 = require("../../partials/Button");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
 var ProductsMenu = function (props) {
     var _a = props.data, title = _a.title, subTitle = _a.subTitle, products = _a.products;
     return (React.createElement("div", { className: 'product-previews' },

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
-import Link from '@source/partials/Link';
+import Link from '../../partials/Link';
 
 interface Article {
   title?: string;

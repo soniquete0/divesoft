@@ -13,7 +13,7 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Link_1 = require("@source/partials/Link");
+var Link_1 = require("../../partials/Link");
 var ListOfLinks = function (props) { return (React.createElement(List_1.default, { data: props.data.links }, function (_a) {
     var data = _a.data;
     return (React.createElement("div", { className: 'listOfLinks' },

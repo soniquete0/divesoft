@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactMarkdown from 'react-markdown';
 
-import Media from '@source/partials/Media';
-import Button from '@source/partials/Button';
+import Media from '../../partials/Media';
+import Button from '../../partials/Button';
 
 export interface NewsProps {
   data: {
@@ -15,21 +15,25 @@ export interface NewsProps {
     thirdImg?: LooseObject;
     thirdText?: string;
     buttonUrl?: LooseObject;
+    facebookUrl: LooseObject;
   };
 }
 
 const News = (props: NewsProps) => {
   const {
     title,
-    shareUrl,
     firstText,
     firstImg,
     secondText,
     secondImg,
     thirdImg,
     thirdText,
-    buttonUrl
+    buttonUrl,
    } = props.data;
+
+  const facebookUrl = window && window.location && window.location.href &&
+    'https://www.facebook.com/sharer/sharer.php?u='
+    + window.location.href;
 
   return (
     <div className={'news'}>
@@ -39,14 +43,18 @@ const News = (props: NewsProps) => {
             {title && <h4 className={'news__title'}>{title}</h4>}
           </div>
           <div className="col-12 col-md-3">
-            {shareUrl &&
+            {facebookUrl &&
               <div className={'news__btnHolder'}>
-                <Button
-                  url={shareUrl}
-                  classes={'btn--bordered news__btnHolder__share'}
+                <button
+                  onClick={() => {
+                    window.open(facebookUrl,
+                                'Facebook Share',
+                                'toolbar=0,status=0,width=640,height=550,top=100,left=100');
+                  }}
+                  className={'btn btn--bordered news__btnHolder__share'}
                 >
                   Share
-                </Button>
+                </button>
               </div>}
           </div>
         </div>
@@ -60,7 +68,7 @@ const News = (props: NewsProps) => {
 
         {firstImg && <div className="row">
           <div className="col-12">
-            <Media type={'image'} data={firstImg} class={'news__firstImg'} />
+            <Media type={'image'} data={firstImg} className={'news__firstImg'} height={'1110'} width={'800'} />
           </div></div>}
 
         {secondText && <div className="row">
@@ -70,10 +78,10 @@ const News = (props: NewsProps) => {
 
         <div className="row">
           <div className="col-12 col-md-6">
-            {secondImg && <Media class={'news__secondImg'} type={'image'} data={secondImg} />}
+            {secondImg && <Media className={'news__secondImg'} type={'image'} data={secondImg} height={'540'} width={'540'} />}
           </div>
           <div className="col-12 col-md-6">
-            {thirdImg && <Media class={'news__thirdImg'} type={'image'} data={thirdImg} />}
+            {thirdImg && <Media className={'news__thirdImg'} type={'image'} data={thirdImg} height={'540'} width={'540'} />}
           </div>
         </div>
 

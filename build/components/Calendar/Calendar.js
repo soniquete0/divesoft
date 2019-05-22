@@ -25,10 +25,10 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var date_fns_1 = require("date-fns");
+var dateFns = require("date-fns");
 var react_responsive_1 = require("react-responsive");
 var List_1 = require("../List");
-var Button_1 = require("@source/partials/Button");
+var Button_1 = require("../../partials/Button");
 var MapComponent_1 = require("./Map/components/MapComponent");
 var Calendar = /** @class */ (function (_super) {
     __extends(Calendar, _super);
@@ -57,12 +57,12 @@ var Calendar = /** @class */ (function (_super) {
         };
         _this.nextMonth = function () {
             _this.setState({
-                currentMonth: date_fns_1.default.addMonths(_this.state.currentMonth, 1)
+                currentMonth: dateFns.addMonths(_this.state.currentMonth, 1)
             });
         };
         _this.prevMonth = function () {
             _this.setState({
-                currentMonth: date_fns_1.default.subMonths(_this.state.currentMonth, 1)
+                currentMonth: dateFns.subMonths(_this.state.currentMonth, 1)
             });
         };
         _this.state = {
@@ -142,7 +142,7 @@ var Calendar = /** @class */ (function (_super) {
             React.createElement("div", { className: "col col-start", onClick: this.prevMonth },
                 React.createElement("div", { className: "icon icon--left" })),
             React.createElement("div", { className: "col col-center" },
-                React.createElement("h3", null, date_fns_1.default.format(this.state.currentMonth, dateFormat))),
+                React.createElement("h3", null, dateFns.format(this.state.currentMonth, dateFormat))),
             React.createElement("div", { className: "col col-end", onClick: this.nextMonth },
                 React.createElement("div", { className: "icon icon--right" }))));
     };
@@ -150,9 +150,9 @@ var Calendar = /** @class */ (function (_super) {
     Calendar.prototype.renderDays = function () {
         var dateFormat = 'dddd';
         var days = [];
-        var startDate = date_fns_1.default.startOfWeek(this.state.currentMonth);
+        var startDate = dateFns.startOfWeek(this.state.currentMonth);
         for (var i = 0; i < 7; i++) {
-            days.push(React.createElement("div", { className: "col col-center", key: i }, date_fns_1.default.format(date_fns_1.default.addDays(startDate, i), dateFormat)));
+            days.push(React.createElement("div", { className: "col col-center", key: i }, dateFns.format(dateFns.addDays(startDate, i), dateFormat)));
         }
         return (React.createElement("div", { className: "calendar__days" },
             React.createElement("div", { className: "row" }, days)));
@@ -161,10 +161,10 @@ var Calendar = /** @class */ (function (_super) {
     Calendar.prototype.renderCells = function (data) {
         var _this = this;
         var _a = this.state, currentMonth = _a.currentMonth, selectedDate = _a.selectedDate;
-        var monthStart = date_fns_1.default.startOfMonth(currentMonth);
-        var monthEnd = date_fns_1.default.endOfMonth(monthStart);
-        var startDate = date_fns_1.default.startOfWeek(monthStart);
-        var endDate = date_fns_1.default.endOfWeek(monthEnd);
+        var monthStart = dateFns.startOfMonth(currentMonth);
+        var monthEnd = dateFns.endOfMonth(monthStart);
+        var startDate = dateFns.startOfWeek(monthStart);
+        var endDate = dateFns.endOfWeek(monthEnd);
         var dateFormat = 'D';
         var rows = [];
         var rKey = 0;
@@ -173,22 +173,22 @@ var Calendar = /** @class */ (function (_super) {
         var formattedDate = '';
         while (day <= endDate) {
             var _loop_1 = function (i) {
-                formattedDate = date_fns_1.default.format(day, dateFormat);
+                formattedDate = dateFns.format(day, dateFormat);
                 var cloneDay = day;
                 var myFormatOfDate = day.getDate() + "." + (day.getMonth() + 1) + "." + day.getFullYear();
-                days.push(React.createElement("div", { className: "col cell " + (!date_fns_1.default.isSameMonth(day, monthStart)
+                days.push(React.createElement("div", { className: "col cell " + (!dateFns.isSameMonth(day, monthStart)
                         ? 'disabled'
-                        : date_fns_1.default.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(date_fns_1.default.parse(cloneDay)); } },
+                        : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(dateFns.parse(cloneDay)); } },
                     React.createElement("span", { className: "number" }, formattedDate),
                     React.createElement("span", { className: "bg" }, formattedDate),
                     data && data.map(function (item, j) {
-                        if (item.date === myFormatOfDate && date_fns_1.default.isSameMonth(day, monthStart)) {
+                        if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                             return (React.createElement("div", { className: 'cell__content', key: j },
                                 React.createElement("p", null, item.text),
                                 React.createElement(Button_1.default, { url: item.url }, "See details")));
                         }
                     })));
-                day = date_fns_1.default.addDays(day, 1);
+                day = dateFns.addDays(day, 1);
             };
             for (var i = 0; i < 7; i++) {
                 _loop_1(i);
@@ -245,10 +245,10 @@ var Calendar = /** @class */ (function (_super) {
     Calendar.prototype.renderMobileView = function (data) {
         var _this = this;
         var _a = this.state, currentMonth = _a.currentMonth, selectedDate = _a.selectedDate;
-        var monthStart = date_fns_1.default.startOfMonth(currentMonth);
-        var monthEnd = date_fns_1.default.endOfMonth(monthStart);
-        var startDate = date_fns_1.default.startOfWeek(monthStart);
-        var endDate = date_fns_1.default.endOfWeek(monthEnd);
+        var monthStart = dateFns.startOfMonth(currentMonth);
+        var monthEnd = dateFns.endOfMonth(monthStart);
+        var startDate = dateFns.startOfWeek(monthStart);
+        var endDate = dateFns.endOfWeek(monthEnd);
         var dateFormat = 'D';
         var resultView = [];
         var rKey = 0;
@@ -269,25 +269,25 @@ var Calendar = /** @class */ (function (_super) {
             var _loop_2 = function (i) {
                 var cloneDay = day;
                 var myFormatOfDate = day.getDate() + "." + (day.getMonth() + 1) + "." + day.getFullYear();
-                formattedDate = date_fns_1.default.format(day, dateFormat);
-                if (date_fns_1.default.isSameMonth(day, monthStart)) {
+                formattedDate = dateFns.format(day, dateFormat);
+                if (dateFns.isSameMonth(day, monthStart)) {
                     days.push(React.createElement("div", { className: 'row' },
                         React.createElement("div", { className: "col-2" }, getDayofTheWeek(i)),
                         React.createElement("div", { className: "col-10" },
-                            React.createElement("div", { className: "row mobileCell " + (!date_fns_1.default.isSameMonth(day, monthStart)
+                            React.createElement("div", { className: "row mobileCell " + (!dateFns.isSameMonth(day, monthStart)
                                     ? 'disabled'
-                                    : date_fns_1.default.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(date_fns_1.default.parse(cloneDay)); } },
+                                    : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(dateFns.parse(cloneDay)); } },
                                 React.createElement("span", { className: "mobileCell__number" }, formattedDate),
                                 React.createElement("span", { className: "mobileCell__bg" }, formattedDate),
                                 data && data.map(function (item, j) {
-                                    if (item.date === myFormatOfDate && date_fns_1.default.isSameMonth(day, monthStart)) {
+                                    if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                                         return (React.createElement("div", { className: 'mobileCell__content', key: j },
                                             React.createElement("p", null, item.text),
                                             React.createElement(Button_1.default, { url: item.url }, ">")));
                                     }
                                 })))));
                 }
-                day = date_fns_1.default.addDays(day, 1);
+                day = dateFns.addDays(day, 1);
             };
             for (var i = 0; i < 7; i++) {
                 _loop_2(i);

@@ -15,7 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var List_1 = require("../List");
-var Media_1 = require("@source/partials/Media");
+var Media_1 = require("../../partials/Media");
 var VideoGallery = /** @class */ (function (_super) {
     __extends(VideoGallery, _super);
     function VideoGallery(props) {

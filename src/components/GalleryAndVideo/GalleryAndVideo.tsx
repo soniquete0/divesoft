@@ -3,8 +3,8 @@ import Lightbox from 'react-images';
 import Responsive from 'react-responsive';
 
 import List from '../List';
-import Media from '@source/partials/Media';
-import getImageUrl from '@source/helpers/getImageUrl';
+import Media from '../../partials/Media';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface Image {
   image: LooseObject;
