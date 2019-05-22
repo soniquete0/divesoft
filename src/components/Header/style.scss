@@ -11,6 +11,41 @@
   -moz-box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1);
   @include max-xl { display: none; }
+
+  &_phone {
+    .productsPreview__list {
+      flex-direction: column;
+
+      &__item {
+        display: flex;
+        justify-content: stretch;
+        background-image: none;
+        padding: 0;
+        margin-bottom: 1rem;
+
+        h5 {
+          flex-grow: 1;
+          padding: 0 .5rem;
+          text-align: left;
+          color: $lightGrey;
+          line-height: 40px;
+        }
+
+        .btn {
+          width: 100px;
+          height: 40px;
+          line-height: 40px;
+          padding: 0 1rem;
+          font-size: 14px;
+          color: #fff;
+
+          &:hover, &:visited, &:focus {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 
 .d-flex.no-wrap {
@@ -297,6 +332,10 @@
 
             li {
               display: flex;
+
+              > a {
+                margin: 3rem 0;
+              }
             }
 
             li a {
@@ -380,17 +419,32 @@
     z-index: 999;
     // display: none;
 
+    &_phone {
+      position: relative;
+
+      .categoriesSubmenu {
+        height: auto;
+        display: block;
+        font-size: 1rem;
+        text-align: center;
+
+        &_list {
+          flex-direction: column;
+        }
+      }
+    }
+
     &.active {
       display: none;
     }
   }
 
   display: flex;
-  justify-content: center;
+  justify-content: left;
 
   &_list {
     display: flex;
-    justify-content: center;
+    justify-content: left;
   }
 
   &_item {
@@ -404,4 +458,13 @@
     padding: 1.5rem;
     font-size: 16px;
   }
+}
+
+// overwritting specificity
+.header .hiddenMenu__wrapper ul li a.categoriesSubmenu_link {
+  display: block;
+  font-size: 2rem;
+  color: $lightGrey;
+  text-align: left;
+  padding: 1rem 1rem 1rem 20px;
 }
