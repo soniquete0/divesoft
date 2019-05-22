@@ -226,7 +226,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
                       {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
-                      <a href="http://93.185.96.70:3010/cz/login" className="login-link">
+                      <a href="http://93.185.96.70:3014/cz/login" className="login-link">
                         <img
                           src="/assets/divesoft/images/user.svg"
                           alt="account"
@@ -234,7 +234,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         />
                       </a>
 {/* tslint:disable-next-line: max-line-length */}
-                      <a href="http://93.185.96.70:3010/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
+                      <a href="http://93.185.96.70:3014/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
                     {/* <Country /> */}
