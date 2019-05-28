@@ -1,10 +1,10 @@
 import * as React from 'react';
+import Slider from 'react-slick';
 import Responsive from 'react-responsive';
 
 import List from '../List';
 import Link from '../../partials/Link';
 import Media from '../../partials/Media';
-import Slider from '../../partials/Slider';
 
 interface Component {
   title: string;
@@ -27,48 +27,60 @@ const Default = props => <Responsive {...props} minWidth={768} />;
 const ProductComponents = (props: ProductComponentsProps) => {
   const { title, description, components } = props.data;
 
-  const mobileViews = [];
-  for (let i = 0; i < components.length; i++) {
-    mobileViews.push(
-      <div key={i} className={'productComponents__mobileItem'}>
-        <Media type={'image'} data={components[i].image} />
-        {components[i].title && <h5>{components[i].title}</h5>}
-        {components[i].description && <p>{components[i].description}</p>}
-        <Link {...components[i].url}>More information</Link>
-      </div>
-    );
-  }
-
   return (
-    <List data={components}>
-        {({ data }) => (
-          <div className={'productComponents'}>
-            <div className="container">
-              {title && <h2>{title}</h2>}
-              {description && <p className={'textDescription'}>{description}</p>}
+    <List data={components || []}>
+        {({ data: slides }) => {
+          const arrayOfMobileSlides = (slides && slides.map((slide, i) => (
+            <div key={i}>
+              <div className={'productComponents__mobileItem'}>
+                <Media type={'image'} data={slide.image} />
+                {slide.title && <h5>{slide.title}</h5>}
+                {slide.description && <p>{slide.description}</p>}
+                <Link {...slide.url}>More information</Link>
+              </div>
+            </div>
+          ))) || [];
+        
+          var settings = {
+            speed: 1000,
+            dots: false,
+            arrows: true,
+            autoplay: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            pauseOnHover: true
+          };
 
-              <Default>
-                <div className={'productComponents__list row'}>
-                  {data && data.map((item, i) => (
-                    <div key={i} className="col-12 col-md-6 col-lg-4">
-                      <div className={'productComponents__list__item'}>
-                        <Media type={'image'} data={item.image} width="130" height="130"/>
-                        <div className={'productComponents__list__item__content'}>
-                          <h5>{item.title}</h5>
-                          <p>{item.description}</p>
-                          <Link {...item.url}>More information</Link>
+          return (
+            <div className={'productComponents'}>
+              <div className="container">
+                {title && <h2>{title}</h2>}
+                {description && <p className={'textDescription'}>{description}</p>}
+
+                <Default>
+                  <div className={'productComponents__list row'}>
+                    {slides && slides.map((item, i) => (
+                      <div key={i} className="col-12 col-md-6 col-lg-4">
+                        <div className={'productComponents__list__item'}>
+                          <Media type={'image'} data={item.image} width="130" height="130"/>
+                          <div className={'productComponents__list__item__content'}>
+                            <h5>{item.title}</h5>
+                            <p>{item.description}</p>
+                            <Link {...item.url}>More information</Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </Default>
-              <Mobile>
-                <Slider isFullWidth={false} delay={7000} slides={mobileViews} showArrows={true} />
-              </Mobile>
+                    ))}
+                  </div>
+                </Default>
+
+                <Mobile>
+                  <Slider {...settings}>{arrayOfMobileSlides}</Slider>
+                </Mobile>
+              </div>
             </div>
-          </div>
-        )}
+          );
+        }}
     </List>
   );
 };

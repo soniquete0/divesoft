@@ -1,7 +1,7 @@
 .productComponents {
-  padding: 100px 0;
+  padding: 10rem 0;
   background-color: #f4f4f4;
-  @include max-md { padding: 40px 0; }
+  @include max-md { padding: 4rem 0; }
 
   h2 { text-align: center; }
   h5 { padding-bottom: 1.6rem; }
@@ -19,21 +19,25 @@
 
   &__list {
 
-    .col-12, .col-md-6, .col-lg-4 { padding: 8px 8px; }
+    .col-12,
+    .col-md-6,
+    .col-lg-4 {
+      padding: 8px 8px;
+    }
 
     &__item {
       width: 100%;
       min-width: 350px;
       position: relative;
-      margin-bottom: 30px;
+      margin-bottom: 3rem;
       @include clearfix;
       @include max-md { margin-bottom: 0; }
 
       &__content {
-        width: 60%;
+        width: 55%;
         float: left;
         max-height: 140px;
-        padding-left: 15px;
+        padding-left: 1.5rem;
         overflow: hidden;
   
         p {
@@ -43,30 +47,18 @@
         }
         a {
           color: $red;
-          &:hover { text-decoration: underline; }
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
-    }
-  }
-  
-  // MOBILE
-  .slider { 
-    padding-top: 0; 
-
-    &__arrow {
-      top: 25%;
-      border-color: $red;
-    }
-
-    .mediaRatio {
-      opacity: 1 !important;
     }
   }
 
   &__mobileItem {
     text-align: center;
     
-    h5 { padding: 25px 0; }
+    h5 { padding: 2.5rem 0; }
 
     p {
       margin: 0;
