@@ -21,6 +21,7 @@ var List_1 = require("../List");
 var Marker_1 = require("./components/Marker");
 var MapStyles_1 = require("./components/MapStyles");
 var ServiceRow_1 = require("./components/ServiceRow");
+var getUniqMapControls_1 = require("../../helpers/getUniqMapControls");
 var ServicePointsMap = /** @class */ (function (_super) {
     __extends(ServicePointsMap, _super);
     function ServicePointsMap(props) {
@@ -48,34 +49,7 @@ var ServicePointsMap = /** @class */ (function (_super) {
         };
         return _this;
     }
-    ServicePointsMap.prototype.getUniqControlProps = function (mapItems) {
-        var uniqCities = [];
-        var uniqCountries = [];
-        var uniqServices = [];
-        var propsToArray = function () {
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqCountries.push(mapItems[i].country);
-            }
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqCities.push(mapItems[i].city);
-            }
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqServices.push(mapItems[i].service);
-            }
-        };
-        var uniqueArray = function (arr) { return Array.from(new Set(arr)); };
-        propsToArray();
-        uniqCities = uniqueArray(uniqCities);
-        uniqCountries = uniqueArray(uniqCountries);
-        uniqServices = uniqueArray(uniqServices);
-        return {
-            cities: uniqCities,
-            countries: uniqCountries,
-            services: uniqServices
-        };
-    };
-    ServicePointsMap.prototype.defineLocation = function (loc, type) {
-        var mapItems = this.props.data.mapItems;
+    ServicePointsMap.prototype.defineLocation = function (loc, type, mapItems) {
         for (var i = 0; i < mapItems.length; i++) {
             if (mapItems[i][type] === loc) {
                 switch (type) {
@@ -109,25 +83,25 @@ var ServicePointsMap = /** @class */ (function (_super) {
             }
         }
     };
-    ServicePointsMap.prototype.onSelectChange = function (event, type) {
+    ServicePointsMap.prototype.onSelectChange = function (event, mapItems, type) {
         var safeSearchTypeValue = event.currentTarget.value;
         switch (type) {
             case 'country':
                 this.setState({
                     countrySelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             case 'city':
                 this.setState({
                     citySelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             case 'service':
                 this.setState({
                     serviceSelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             default: return;
@@ -135,30 +109,30 @@ var ServicePointsMap = /** @class */ (function (_super) {
     };
     ServicePointsMap.prototype.renderControls = function (mapItems) {
         var _this = this;
-        var _a = this.getUniqControlProps(mapItems), cities = _a.cities, countries = _a.countries, services = _a.services;
+        var _a = getUniqMapControls_1.default(mapItems), cities = _a.cities, countries = _a.countries, services = _a.services;
         return (React.createElement("div", { className: 'map__controls' },
             React.createElement("div", { className: 'container' },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'country'); }, value: this.state.countrySelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'country'); }, value: this.state.countrySelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select country"),
                                 countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'city'); }, value: this.state.citySelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'city'); }, value: this.state.citySelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select city"),
                                 cities && cities.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'service'); }, value: this.state.serviceSelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'service'); }, value: this.state.serviceSelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select service"),
                                 services && services.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
     };
     ServicePointsMap.prototype.renderRows = function (mapItems) {
-        var countries = this.getUniqControlProps(mapItems).countries;
+        var countries = getUniqMapControls_1.default(mapItems).countries;
         var resultRows = [];
         for (var i = 0; i < countries.length; i++) {
             var composedRows = [];

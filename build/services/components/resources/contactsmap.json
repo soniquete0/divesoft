@@ -5,7 +5,7 @@
         "mapItems": [
             {
                 "city": "Prague",
-                "association": "ANDI",
+                "service": "ANDI",
                 "lat": "50.042957",
                 "lng": "14.451078",
                 "name": "Jakub Řeháček, US",
@@ -17,7 +17,7 @@
             },
             {
                 "city": "Washington",
-                "association": "DC",
+                "service": "DC",
                 "lat": "38.902681",
                 "lng": "-77.019885",
                 "name": "Jack",
@@ -29,7 +29,7 @@
             },
             {
                 "city": "Washington",
-                "association": "DC",
+                "service": "DC",
                 "lat": "38.902681",
                 "lng": "-77.019885",
                 "name": "Jack",
@@ -41,7 +41,7 @@
             },
             {
                 "city": "Washington",
-                "association": "DC",
+                "service": "DC",
                 "lat": "38.902681",
                 "lng": "-77.019885",
                 "name": "Jack",
@@ -53,7 +53,7 @@
             },
             {
                 "city": "Washington",
-                "association": "DC",
+                "service": "DC",
                 "lat": "38.902681",
                 "lng": "-77.019885",
                 "name": "Jack",
@@ -65,7 +65,7 @@
             },
             {
                 "city": "Rome",
-                "association": "RIM",
+                "service": "RIM",
                 "lat": "41.895289",
                 "lng": "12.482166",
                 "name": "Jakub Řeháček, US",
@@ -77,7 +77,7 @@
             },
             {
                 "city": "Barcelona",
-                "association": "SP",
+                "service": "SP",
                 "lat": "41.382190",
                 "lng": "2.184369",
                 "name": "Jakub Řeháček, US",
@@ -106,7 +106,7 @@
                                 "type": "text",
                                 "title": "City"
                             },
-                            "association": {
+                            "service": {
                                 "type": "text",
                                 "title": "Association"
                             },

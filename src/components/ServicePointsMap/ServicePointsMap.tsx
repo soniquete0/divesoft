@@ -7,6 +7,7 @@ import List from '../List';
 import Marker from './components/Marker';
 import MapStyles from './components/MapStyles';
 import ServiceRow from './components/ServiceRow';
+import getUniqMapControls from '../../helpers/getUniqMapControls';
 
 interface MapItem {
   city: string;
@@ -63,40 +64,16 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     };
   }
 
-  getUniqControlProps(mapItems: LooseObject[] ) {
-    let uniqCities = [];
-    let uniqCountries = [];
-    let uniqServices = [];
-
-    const propsToArray = () => {
-      for (let i = 0; i < mapItems.length; i++) {
-        uniqCountries.push(mapItems[i].country);
-      }
-      for (let i = 0; i < mapItems.length; i++) {
-        uniqCities.push(mapItems[i].city);
-      }
-      for (let i = 0; i < mapItems.length; i++) {
-        uniqServices.push(mapItems[i].service);
-      }
-    };
-
-    const uniqueArray = arr => Array.from(new Set(arr));
-
-    propsToArray();
-    uniqCities = uniqueArray(uniqCities);
-    uniqCountries = uniqueArray(uniqCountries);
-    uniqServices = uniqueArray(uniqServices);
-
-    return {
-      cities: uniqCities,
-      countries: uniqCountries,
-      services: uniqServices
-    };
+  resetFilters = () => {
+    this.setState({
+      countrySelectedValue: 'all',
+      citySelectedValue: 'all',
+      serviceSelectedValue: 'all',
+      currentCountry: 'all',
+    });
   }
 
-  defineLocation(loc: string, type: string) {
-    const { mapItems } = this.props.data;
-
+  defineLocation(loc: string, type: string, mapItems: any) {
     for (let i = 0; i < mapItems.length; i++) {
       if (mapItems[i][type] === loc) {
         switch (type) {
@@ -134,26 +111,26 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
 
   }
 
-  onSelectChange(event: React.FormEvent<HTMLSelectElement>, type?: string) {
+  onSelectChange(event: React.FormEvent<HTMLSelectElement>, mapItems: any, type?: string) {
     var safeSearchTypeValue: string = event.currentTarget.value;
 
     switch (type) {
       case 'country':
         this.setState({
           countrySelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type)
+          mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
         });
         break;
       case 'city':
         this.setState({
           citySelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type)
+          mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
         });
         break;
       case 'service':
         this.setState({
           serviceSelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type)
+          mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
         });
         break;
 
@@ -161,17 +138,12 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
     }
   }
 
-  resetFilters = () => {
-    this.setState({
-      countrySelectedValue: 'all',
-      citySelectedValue: 'all',
-      serviceSelectedValue: 'all',
-      currentCountry: 'all',
-    });
-  }
-
-  renderControls(mapItems: LooseObject[]) {
-    const { cities, countries, services } = this.getUniqControlProps(mapItems);
+  renderControls(mapItems: any) {
+    const {
+      cities,
+      countries, 
+      services 
+    } = getUniqMapControls(mapItems);
 
     return (
       <div className={'map__controls'}>
@@ -180,7 +152,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select
-                  onChange={e => this.onSelectChange(e, 'country')}
+                  onChange={e => this.onSelectChange(e, mapItems, 'country')}
                   value={this.state.countrySelectedValue}
                 >
                   <option value={'all'} key="all">Select country</option>
@@ -193,7 +165,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select
-                  onChange={e => this.onSelectChange(e, 'city')}
+                  onChange={e => this.onSelectChange(e, mapItems, 'city')}
                   value={this.state.citySelectedValue}
                 >
                   <option value={'all'} key="all">Select city</option>
@@ -206,7 +178,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
             <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select
-                  onChange={e => this.onSelectChange(e, 'service')}
+                  onChange={e => this.onSelectChange(e, mapItems, 'service')}
                   value={this.state.serviceSelectedValue}
                 >
                   <option value={'all'} key="all">Select service</option>
@@ -226,7 +198,7 @@ class ServicePointsMap extends React.Component<ServicePointsMapProps & Geolocate
   }
 
   renderRows (mapItems: LooseObject[] ) {
-    const { countries } = this.getUniqControlProps(mapItems);
+    const { countries } = getUniqMapControls(mapItems);
     let resultRows = [];
 
     for (let i = 0; i < countries.length; i++) {

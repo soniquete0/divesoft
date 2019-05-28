@@ -21,6 +21,7 @@ var List_1 = require("../List");
 var Marker_1 = require("./components/Marker");
 var MapStyles_1 = require("./components/MapStyles");
 var ContactRow_1 = require("./components/ContactRow");
+var getUniqMapControls_1 = require("../../helpers/getUniqMapControls");
 var ContactsMap = /** @class */ (function (_super) {
     __extends(ContactsMap, _super);
     function ContactsMap(props) {
@@ -29,82 +30,52 @@ var ContactsMap = /** @class */ (function (_super) {
             _this.setState({
                 countrySelectedValue: 'all',
                 citySelectedValue: 'all',
-                associationSelectedValue: 'all',
-                currentAssociation: 'all',
+                serviceSelectedValue: 'all',
+                currentService: 'all',
             });
         };
-        _this.componentWillReceiveProps = function () { return _this.getUniqControlProps(); };
         _this.state = {
             countrySelectedValue: 'all',
             citySelectedValue: 'all',
-            associationSelectedValue: 'all',
+            serviceSelectedValue: 'all',
             mapCenter: {
                 lat: 50,
                 lng: 14
             },
             cities: [],
             countries: [],
-            associations: [],
-            currentAssociation: 'all',
+            services: [],
+            currentService: 'all',
         };
         return _this;
     }
-    ContactsMap.prototype.getUniqControlProps = function () {
-        var uniqCities = [];
-        var uniqCountries = [];
-        var uniqAssociations = [];
-        var mapItems = this.props.data.mapItems;
-        var propsToArray = function () {
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqCountries.push(mapItems[i].country);
-            }
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqCities.push(mapItems[i].city);
-            }
-            for (var i = 0; i < mapItems.length; i++) {
-                uniqAssociations.push(mapItems[i].association);
-            }
-        };
-        var uniqueArray = function (arr) { return Array.from(new Set(arr)); };
-        propsToArray();
-        uniqCities = uniqueArray(uniqCities);
-        uniqCountries = uniqueArray(uniqCountries);
-        uniqAssociations = uniqueArray(uniqAssociations);
-        return this.setState({
-            cities: uniqCities,
-            countries: uniqCountries,
-            associations: uniqAssociations
-        });
-    };
-    ContactsMap.prototype.defineLocation = function (loc, type) {
-        var mapItems = this.props.data.mapItems;
+    ContactsMap.prototype.defineLocation = function (loc, type, mapItems) {
         for (var i = 0; i < mapItems.length; i++) {
             if (mapItems[i][type] === loc) {
                 switch (type) {
                     case 'country':
                         this.setState({
                             citySelectedValue: mapItems[i].city,
-                            associationSelectedValue: mapItems[i].association,
-                            currentAssociation: mapItems[i].association
+                            serviceSelectedValue: mapItems[i].service,
+                            currentService: mapItems[i].service
                         });
                         break;
                     case 'city':
                         this.setState({
                             countrySelectedValue: mapItems[i].country,
-                            associationSelectedValue: mapItems[i].association,
-                            currentAssociation: mapItems[i].association
+                            serviceSelectedValue: mapItems[i].service,
+                            currentService: mapItems[i].service
                         });
                         break;
-                    case 'association':
+                    case 'service':
                         this.setState({
                             countrySelectedValue: mapItems[i].country,
                             citySelectedValue: mapItems[i].city,
-                            currentAssociation: mapItems[i].association
+                            currentService: mapItems[i].service
                         });
                         break;
                     default: break;
                 }
-                // this.renderRows();
                 return {
                     lat: parseFloat(mapItems[i].lat),
                     lng: parseFloat(mapItems[i].lng)
@@ -112,63 +83,62 @@ var ContactsMap = /** @class */ (function (_super) {
             }
         }
     };
-    ContactsMap.prototype.onSelectChange = function (event, type) {
+    ContactsMap.prototype.onSelectChange = function (event, mapItems, type) {
         var safeSearchTypeValue = event.currentTarget.value;
         switch (type) {
             case 'country':
                 this.setState({
                     countrySelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             case 'city':
                 this.setState({
                     citySelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
-            case 'association':
+            case 'service':
                 this.setState({
-                    associationSelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type)
+                    serviceSelectedValue: safeSearchTypeValue,
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             default: return;
         }
     };
-    ContactsMap.prototype.renderControls = function () {
+    ContactsMap.prototype.renderControls = function (mapItems) {
         var _this = this;
-        var _a = this.state, cities = _a.cities, countries = _a.countries, associations = _a.associations;
+        var _a = getUniqMapControls_1.default(mapItems), cities = _a.cities, countries = _a.countries, services = _a.services;
         return (React.createElement("div", { className: 'map__controls' },
             React.createElement("div", { className: 'container' },
                 React.createElement("div", { className: "row" },
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'country'); }, value: this.state.countrySelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'country'); }, value: this.state.countrySelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select country"),
                                 countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'city'); }, value: this.state.citySelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'city'); }, value: this.state.citySelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select city"),
                                 cities && cities.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, 'association'); }, value: this.state.associationSelectedValue },
+                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'service'); }, value: this.state.serviceSelectedValue },
                                 React.createElement("option", { value: 'all', key: "all" }, "Select assoc."),
-                                associations && associations.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
+                                services && services.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
                     React.createElement("div", { className: "col-12 col-md-3" },
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
     };
-    // tslint:disable-next-line:no-any
     ContactsMap.prototype.renderRows = function (data) {
-        var associations = this.state.associations;
+        var services = this.state.services;
         var resultRows = [];
-        for (var i = 0; i < associations.length; i++) {
+        for (var i = 0; i < services.length; i++) {
             var composedRows = [];
             for (var j = 0; j < data.length; j++) {
-                if (data[j].association === associations[i]) {
-                    if (data[j].association === this.state.currentAssociation || this.state.currentAssociation === 'all') {
+                if (data[j].service === services[i]) {
+                    if (data[j].service === this.state.currentService || this.state.currentService === 'all') {
                         composedRows.push({
                             name: data[j].name,
                             position: data[j].position,
@@ -179,8 +149,8 @@ var ContactsMap = /** @class */ (function (_super) {
                     }
                 }
             }
-            if (this.state.currentAssociation === associations[i] || this.state.currentAssociation === 'all') {
-                resultRows.push(React.createElement(ContactRow_1.default, { key: i, title: associations[i], rows: composedRows }));
+            if (this.state.currentService === services[i] || this.state.currentService === 'all') {
+                resultRows.push(React.createElement(ContactRow_1.default, { key: i, title: services[i], rows: composedRows }));
             }
         }
         return React.createElement("div", { className: 'map__rows' }, resultRows);
@@ -193,7 +163,7 @@ var ContactsMap = /** @class */ (function (_super) {
             return (React.createElement(React.Fragment, null,
                 React.createElement("div", { className: 'contactsMapWrapper' },
                     title ? React.createElement("h2", { style: { paddingBottom: '30px', textAlign: 'center' } }, title) : '',
-                    _this.renderControls(),
+                    _this.renderControls(data),
                     React.createElement("section", { className: 'map' }, mapItems && (React.createElement(google_map_react_1.default, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: _this.state.mapCenter, defaultZoom: 5, options: {
                             scrollwheel: false,
                             styles: MapStyles_1.default
