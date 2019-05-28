@@ -70,7 +70,7 @@ const Carousel = (props: CarouselProps) => (
         speed: 1000,
         dots: true,
         arrows: true,
-        autoplay: false,
+        autoplay: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,

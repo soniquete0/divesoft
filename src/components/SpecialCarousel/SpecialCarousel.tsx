@@ -1,12 +1,13 @@
 import * as React from 'react';
+import Slider from 'react-slick';
 import * as ReactMarkdown from 'react-markdown';
 
 import List from '../List';
 import Link from '../../partials/Link';
 import Media from '../../partials/Media';
-import Slider from '../../partials/Slider';
-
-export interface SpecialCarouselState {}
+import NextArrow from '../../partials/NextArrow';
+import PrevArrow from '../../partials/PrevArrow';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface Slide {
   image: LooseObject;
@@ -31,27 +32,25 @@ export interface SpecialCarouselProps {
   };
 }
 
-class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarouselState> {
-  constructor(props: SpecialCarouselProps) {
-    super(props);
+const SpecialCarousel = (props: SpecialCarouselProps) => (
+  <List data={props.data.slides || []}>
+    {({ data: slides }) => {
 
-    this.state = {};
-  }
-
-  renderSlides(data: any) {
-    if (data.length < 1) { return; }
-    let result = [];
-
-    data.map((slide, i) => {
-      result.push(
-        <div key={i} className={'specialCarousel'}>
-
-          <div className={`specialCarousel__content`}>
-            <div className="container">
-              {slide.title &&
-                <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                  {slide.title}
-                </h2>}
+      const arrayOfSlides = (slides && slides.map((slide, i) => (
+        <div key={i}>
+          <div 
+            className={'specialCarousel'}
+            style={{ backgroundImage: slide.image && `url(${getImageUrl(slide.image)})` }}
+          >
+            <div className={`specialCarousel__content`}>
+              <div className="container">
+                {slide.title && 
+                  <h2 
+                    style={slide.isBackgroundBlack ? {color: 'white'} : {}}
+                  >
+                    {slide.title}
+                  </h2>
+                }
 
                 <div className="row">
                   <div className="specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6">
@@ -80,34 +79,35 @@ class SpecialCarousel extends React.Component<SpecialCarouselProps, SpecialCarou
                     </div>
                   </div>
                   <div className="specialCarousel__content__info col-12 col-md-4 col-lg-4 col-xl-6">
-                    <Media type={'image'} data={slide.productImg} />
+                    <div style={{ display: 'table', height: '100%', width: '100%' }}>
+                      <div style={{ display: 'table-cell', verticalAlign: 'middle' }}>
+                        <Media type={'image'} data={slide.productImg} />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      ))) || [];
+    
+      var settings = {
+        speed: 1000,
+        dots: true,
+        arrows: true,
+        autoplay: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: true,
+        nextArrow: <NextArrow classes={'carousel--nextArrow'} />,
+        prevArrow: <PrevArrow classes={'carousel--prevArrow'} />
+      };
 
-          <Media key={i} type={'image'} data={slide.image}/>
-        </div>);
-    });
-
-    return result;
-  }
-
-  public render() {
-
-    return (
-      <List data={this.props.data.slides}>
-        {({ data }) =>
-          <Slider
-            delay={10000}
-            slides={this.renderSlides(data)}
-            autoplay={this.props.data.slides.length <= 1 ? false : true}
-            showDots={this.props.data.slides.length <= 1 ? false : true}
-            showArrows={this.props.data.slides.length <= 1 ? false : true}
-          />}
-      </List>
-    );
-  }
-}
+      return <Slider {...settings}>{arrayOfSlides}</Slider>;
+    }}
+  </List>
+);
 
 export default SpecialCarousel;

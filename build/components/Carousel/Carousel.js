@@ -37,7 +37,7 @@ var Carousel = function (props) { return (React.createElement(List_1.default, { 
         speed: 1000,
         dots: true,
         arrows: true,
-        autoplay: false,
+        autoplay: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,

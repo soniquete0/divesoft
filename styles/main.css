@@ -2989,6 +2989,8 @@ body {
     .slick-dots li button {
       width: 100%;
       height: 100%; }
+      .slick-dots li button::before {
+        display: none; }
   .slick-dots .slick-active {
     background-color: #e50000; }
 
@@ -5437,57 +5439,47 @@ a {
           height: 110px; } }
 
 .specialCarousel {
-  position: relative; }
-  @media (max-width: 992px) {
-    .specialCarousel p {
-      margin-bottom: 5px; } }
-  .specialCarousel .mediaRatio {
-    height: 730px;
-    opacity: 1; }
-    @media (max-width: 992px) {
-      .specialCarousel .mediaRatio {
-        height: 700px; } }
-    @media (max-width: 768px) {
-      .specialCarousel .mediaRatio {
-        height: 950px; } }
-    @media (max-width: 375px) {
-      .specialCarousel .mediaRatio {
-        height: 1050px; } }
+  height: 730px;
+  background-size: cover; }
+  @media (max-width: 768px) {
+    .specialCarousel {
+      height: 950px; } }
   .specialCarousel .center {
-    left: 0;
     width: 100%;
-    text-align: center;
-    padding: 0 25px; }
+    padding: 0 2.5rem;
+    text-align: center; }
   .specialCarousel__content {
-    position: absolute;
     z-index: 3;
     width: 100%;
     height: 100%;
-    padding: 100px 0; }
+    padding: 10rem 0; }
     @media (max-width: 768px) {
       .specialCarousel__content {
-        padding: 40px 0; } }
+        padding: 4rem 0; } }
     .specialCarousel__content h2 {
       text-align: center;
       padding-bottom: 0; }
     .specialCarousel__content__info {
-      padding: 65px 0 0 0; }
-      @media (max-width: 768px) {
+      padding: 6.5rem 0 0 0; }
+      @media (max-width: 992px) {
         .specialCarousel__content__info {
-          padding: 35px 35px 0 35px; }
-          .specialCarousel__content__info:first-child {
-            text-align: center;
-            order: 2; } }
+          padding: 3.5rem 0; } }
+      @media (max-width: 768px) {
+        .specialCarousel__content__info:first-child {
+          text-align: center;
+          order: 2; } }
+      @media (max-width: 540px) {
+        .specialCarousel__content__info:first-child {
+          text-align: left; } }
       .specialCarousel__content__info__description {
         color: #949494;
         line-height: 2.3rem;
         padding-right: 2em;
         padding-bottom: 3.4em;
-        max-height: 350px;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        max-height: 300px;
         overflow: auto;
-        margin-bottom: 20px; }
+        text-overflow: ellipsis;
+        margin-bottom: 2rem; }
         .specialCarousel__content__info__description::-webkit-scrollbar {
           width: 3px;
           height: 8px;
@@ -5497,21 +5489,17 @@ a {
           background: #686868; }
       .specialCarousel__content__info:nth-child(2) .mediaRatio {
         padding: 0 !important;
+        margin: 0 auto;
         height: 400px;
-        width: 400px;
-        left: 25%; }
+        width: 400px; }
         @media (max-width: 1200px) {
           .specialCarousel__content__info:nth-child(2) .mediaRatio {
             height: 250px;
-            width: 250px;
-            left: 5%; } }
+            width: 250px; } }
         @media (max-width: 768px) {
           .specialCarousel__content__info:nth-child(2) .mediaRatio {
-            left: 0;
-            display: block;
             height: 300px;
-            width: 300px;
-            margin: 0 auto; } }
+            width: 300px; } }
         @media (max-width: 540px) {
           .specialCarousel__content__info:nth-child(2) .mediaRatio {
             height: 250px;
@@ -5521,7 +5509,7 @@ a {
       width: 50%; }
       .specialCarousel__content__downloads__item a {
         float: left;
-        margin-right: 15px; }
+        margin-right: 1.5rem; }
         @media (max-width: 540px) {
           .specialCarousel__content__downloads__item a {
             margin: 5px; } }
@@ -5530,9 +5518,9 @@ a {
         height: 50px;
         width: 50px; }
       .specialCarousel__content__downloads__item p {
+        display: inline-block;
         text-align: left;
         color: #e50000;
-        display: inline-block;
         width: 70%;
         padding: 0;
         margin: 0; }
@@ -6064,71 +6052,6 @@ a {
     height: 5px;
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); } }
-
-.slider {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  overflow: hidden;
-  white-space: nowrap; }
-  .slider p, .slider span, .slider h1, .slider h2, .slider h3, .slider h4, .slider h5, .slider h6 {
-    white-space: normal; }
-  .slider__wrapper {
-    position: relative;
-    height: 100%;
-    width: 100%; }
-  .slider__slide {
-    display: inline-block;
-    height: 100%;
-    width: 100%; }
-  .slider__arrow {
-    position: absolute;
-    top: 50%;
-    width: 30px;
-    height: 30px;
-    background: transparent;
-    border-top: 6px solid #b5b5b5;
-    border-right: 6px solid #b5b5b5;
-    box-shadow: 0 0 0 lightgray;
-    cursor: pointer; }
-    @media (max-width: 768px) {
-      .slider__arrow {
-        width: 20px;
-        height: 20px;
-        border-top: 4px solid #b5b5b5;
-        border-right: 4px solid #b5b5b5; } }
-  .slider__nextArrow {
-    right: 30px;
-    -webkit-transform: translate3d(0, -50%, 0) rotate(45deg);
-            transform: translate3d(0, -50%, 0) rotate(45deg); }
-    @media (max-width: 768px) {
-      .slider__nextArrow {
-        right: 10px; } }
-  .slider__backArrow {
-    left: 30px;
-    -webkit-transform: translate3d(0, -50%, 0) rotate(-135deg);
-            transform: translate3d(0, -50%, 0) rotate(-135deg); }
-    @media (max-width: 768px) {
-      .slider__backArrow {
-        left: 10px; } }
-  .slider__dots {
-    position: relative;
-    display: flex;
-    bottom: 50px;
-    justify-content: center;
-    align-items: center; }
-    .slider__dots__dot {
-      display: block;
-      width: 60px;
-      height: 4px;
-      border-radius: 0;
-      background-color: white;
-      cursor: pointer; }
-      .slider__dots__dot--active {
-        background-color: #e50000; }
-      .slider__dots__dot:not(:last-child) {
-        margin-right: 15px; }
 
 .svgIcon {
   transition: 300ms cubic-bezier(0.215, 0.61, 0.355, 1);

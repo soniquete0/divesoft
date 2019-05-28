@@ -14,8 +14,8 @@
         "description": "**Thanks** to the careful design of all parts of the breathing loop, the Liberty has extraordinarily low breathing resistance. No off-the-shelf pipe fittings or piping components are used in the Liberty – everything is specially manufactured precisely according to calculations, simulations and test results. Therefore, airflow is not disrupted by sudden changes in the cross section or by sharp bends, except for the intentionally induced turbulent flow in the areas around the necks of the ppO2 sensors and channeling of a small amount of gas through the helium concentration sensors.",
         "productImg": {
           "recommendedSizes": {
-            "width": "450",
-            "height": "450"
+            "width": "400",
+            "height": "400"
           }
         },
         "isBackgroundBlack": false,
