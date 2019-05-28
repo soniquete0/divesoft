@@ -1,9 +1,8 @@
 import * as React from 'react';
-import Responsive from 'react-responsive';
+import Slider from 'react-slick';
 
 import List from '../List';
 import Media from '../../partials/Media';
-import Slider from '../../partials/Slider';
 
 interface Testimonial {
   img: LooseObject;
@@ -20,58 +19,61 @@ export interface TestimonialsProps {
   };
 }
 
-const Mobile = props => <Responsive {...props} maxWidth={767} />;
-const Default = props => <Responsive {...props} minWidth={768} />;
-
 const Testimonials = (props: TestimonialsProps) => {
   const { title, description, testimonials } = props.data;
 
   return (
-    <List data={testimonials}>
-      {({ data }) => (
-        <div className={'testimonials'}>
-          <div className="container">
-            {title && <h2>{title}</h2>}
-            {description && <p className={'testimonials__description textDescription'}>{description}</p>}
-
-            <Default>
-              <div className={'testimonials__list'}>
-                <div className="row">
-                  {data && data.map((item, i) => (
-                    <div key={i} className={'col-12 col-md-4'}>
-                      <div className={'testimonials__list__item'}>
-                        {item.img && <Media type={'image'} data={item.img} />}
-                        {item.title && <h4>{item.title}</h4>}
-                        {item.from && <span>{item.from}</span>}
-                        {item.text && <p>{item.text}</p>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </Default>
-
-            <Mobile>
-              <Slider
-                slides={data && data.map((item, i) => (
-                  <div key={i} className={'col-12'}>
-                    <div className={'testimonials__list__item'}>
-                      {item.img && <Media type={'image'} data={item.img} />}
-                      {item.title && <h4>{item.title}</h4>}
-                      {item.from && <span>{item.from}</span>}
-                      {item.text && <p>{item.text}</p>}
-                    </div>
-                  </div>
-                ))}
-                delay={7000}
-                showArrows={data.length > 1 ? true : false}
-                autoplay={data.length > 1 ? true : false}
-                isFullWidth={false}
-              />
-            </Mobile>
+    <List data={testimonials || []}>
+      {({ data: slides }) => {
+      
+        const arrayOfSlides = (slides && slides.map((slide, i) => (
+          <div key={i}>
+            <div className={'testimonials__list__item'}>
+              {slide.img && <Media type={'image'} data={slide.img} />}
+              {slide.title && <h4>{slide.title}</h4>}
+              {slide.from && <span>{slide.from}</span>}
+              {slide.text && <p>{slide.text}</p>}
+            </div>
           </div>
-        </div>
-      )}
+        ))) || [];
+      
+        var settings = {
+          speed: 1000,
+          dots: false,
+          arrows: true,
+          autoplay: true,
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          pauseOnHover: true,
+          responsive: [
+            {
+              breakpoint: 1200,
+              settings: { slidesToShow: 2 }
+            },
+            {
+              breakpoint: 768,
+              settings: { slidesToShow: 1 }
+            }
+
+          ]
+        };
+
+        return (
+          <div className={'testimonials'}>
+            <div className="container">
+              {title && <h2>{title}</h2>}
+              {description && <p className={'testimonials__description textDescription'}>{description}</p>}
+           
+              <div className={'testimonials__list'}>
+                <Slider {...settings}>
+                  {arrayOfSlides}
+                </Slider>
+              </div>
+            </div>
+          </div>
+        );
+      }}
     </List>
   );
 };

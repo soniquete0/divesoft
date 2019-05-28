@@ -1,0 +1,8 @@
+$slick-font-path: "/fonts/" !default;
+$slick-loader-path: "/" !default;
+
+.slick-arrow {
+  &::before {
+    color: black !important;
+  }
+}

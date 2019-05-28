@@ -1,0 +1,33 @@
+.prevArrow {
+  left: 0;
+  top: 50%;
+  width: 32px;
+  height: 18px;
+  cursor: pointer;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  
+  &::before {
+    display: none;
+  }
+
+  &--top,
+  &--bottom {
+    top: 50%;
+    width: 100%;
+    left: -25px;
+    height: 5px;
+    position: relative;
+    background-color: #bfbfbf;
+  }
+  
+  &--top {
+    transform: rotate(130deg);
+    transform-origin: bottom right;
+  }
+  
+  &--bottom {
+    transform: rotate(-140deg);
+    transform-origin: top right;
+  }
+}

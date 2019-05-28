@@ -12,35 +12,45 @@ var __assign = (this && this.__assign) || function () {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
-var react_responsive_1 = require("react-responsive");
+var react_slick_1 = require("react-slick");
 var List_1 = require("../List");
 var Media_1 = require("../../partials/Media");
-var Slider_1 = require("../../partials/Slider");
-var Mobile = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { maxWidth: 767 })); };
-var Default = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { minWidth: 768 })); };
 var Testimonials = function (props) {
     var _a = props.data, title = _a.title, description = _a.description, testimonials = _a.testimonials;
-    return (React.createElement(List_1.default, { data: testimonials }, function (_a) {
-        var data = _a.data;
+    return (React.createElement(List_1.default, { data: testimonials || [] }, function (_a) {
+        var slides = _a.data;
+        var arrayOfSlides = (slides && slides.map(function (slide, i) { return (React.createElement("div", { key: i },
+            React.createElement("div", { className: 'testimonials__list__item' },
+                slide.img && React.createElement(Media_1.default, { type: 'image', data: slide.img }),
+                slide.title && React.createElement("h4", null, slide.title),
+                slide.from && React.createElement("span", null, slide.from),
+                slide.text && React.createElement("p", null, slide.text)))); })) || [];
+        var settings = {
+            speed: 1000,
+            dots: false,
+            arrows: true,
+            autoplay: true,
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            pauseOnHover: true,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: { slidesToShow: 2 }
+                },
+                {
+                    breakpoint: 768,
+                    settings: { slidesToShow: 1 }
+                }
+            ]
+        };
         return (React.createElement("div", { className: 'testimonials' },
             React.createElement("div", { className: "container" },
                 title && React.createElement("h2", null, title),
                 description && React.createElement("p", { className: 'testimonials__description textDescription' }, description),
-                React.createElement(Default, null,
-                    React.createElement("div", { className: 'testimonials__list' },
-                        React.createElement("div", { className: "row" }, data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-md-4' },
-                            React.createElement("div", { className: 'testimonials__list__item' },
-                                item.img && React.createElement(Media_1.default, { type: 'image', data: item.img }),
-                                item.title && React.createElement("h4", null, item.title),
-                                item.from && React.createElement("span", null, item.from),
-                                item.text && React.createElement("p", null, item.text)))); })))),
-                React.createElement(Mobile, null,
-                    React.createElement(Slider_1.default, { slides: data && data.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12' },
-                            React.createElement("div", { className: 'testimonials__list__item' },
-                                item.img && React.createElement(Media_1.default, { type: 'image', data: item.img }),
-                                item.title && React.createElement("h4", null, item.title),
-                                item.from && React.createElement("span", null, item.from),
-                                item.text && React.createElement("p", null, item.text)))); }), delay: 7000, showArrows: data.length > 1 ? true : false, autoplay: data.length > 1 ? true : false, isFullWidth: false })))));
+                React.createElement("div", { className: 'testimonials__list' },
+                    React.createElement(react_slick_1.default, __assign({}, settings), arrayOfSlides)))));
     }));
 };
 exports.default = Testimonials;
