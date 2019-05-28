@@ -13,8 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 function PrevArrow(props) {
-    var className = props.className, style = props.style, onClick = props.onClick;
-    return (React.createElement("div", { onClick: onClick, style: __assign({}, style), className: className + " prevArrow" },
+    var className = props.className, style = props.style, onClick = props.onClick, classes = props.classes;
+    return (React.createElement("div", { onClick: onClick, style: __assign({}, style), className: className + " prevArrow " + classes },
         React.createElement("div", { className: "prevArrow--top" }),
         React.createElement("div", { className: "prevArrow--bottom" })));
 }

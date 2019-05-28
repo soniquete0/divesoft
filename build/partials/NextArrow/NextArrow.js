@@ -13,8 +13,8 @@ var __assign = (this && this.__assign) || function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 function NextArrow(props) {
-    var className = props.className, style = props.style, onClick = props.onClick;
-    return (React.createElement("div", { onClick: onClick, style: __assign({}, style), className: className + " nextArrow" },
+    var className = props.className, style = props.style, classes = props.classes, onClick = props.onClick;
+    return (React.createElement("div", { onClick: onClick, style: __assign({}, style), className: className + " nextArrow " + classes },
         React.createElement("div", { className: "nextArrow--top" }),
         React.createElement("div", { className: "nextArrow--bottom" })));
 }

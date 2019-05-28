@@ -1,85 +1,108 @@
 .sliderAtTop {
-  padding-top: 100px;
-  @include max-sm { padding-top: 70px; }
-}
+  padding-top: 10rem;
 
-.slider {
-  overflow: hidden;
-
-  .mediaRatio  {
-    height: 700px;
-    padding-top: 0!important;
-
-    @include max-md {height: 450px; opacity: 0.8; }
-    @include max-sm { height: 400px; }
+  @include max-sm {
+    padding-top: 7rem;
   }
 }
 
 .carousel {
-  &__images {
-    &__img {
-      position: relative;
+  height: 700px;
+  background-size: cover;
+  
+  @include max-md { height: 450px; }
+  @include max-sm { height: 400px; }
 
-      h1 {
-        line-height: 6rem;
-        @include max-md { line-height: 4rem; }
+  h1 {
+    line-height: 6rem;
+
+    @include max-md {
+      line-height: 4rem;
+    }
+  }
+  h2 {
+    text-transform: none;
+
+    @include max-md {
+      padding-bottom: 0;
+      line-height: 3rem;
+    }
+  }
+
+  .center {
+    width: 100%;
+    padding: 0 2.5rem;
+    text-align: center;
+  }
+  
+  &__contentWrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__content {
+    z-index: 2;
+    width: 500px;
+    display: table-cell;
+    vertical-align: middle;
+
+    @include max-md {
+      width: 100%;
+      padding: 0 2.5rem;
+      text-align: center;
+    }
+
+    @include max-sm {
+      width: 100%;
+      padding: 0 2.5rem;
+      text-align: center;
+    }
+
+    &__btnHolder {
+      max-width: 320px;
+
+      @include max-md {
+        margin: 0 auto;
       }
-      h2 {
-        text-transform: none;
-        @include max-md {
-          padding-bottom: 0;
-          line-height: 3rem;
-        }
+
+      .btn { width: 100%; }
+    }
+
+    p {
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: #808080;
+      padding-bottom: 3.6rem;
+      @include max-md { display: none; }
+    }
+  }
+
+  &--prevArrow {
+    left: 1.5rem !important;
+    
+    @include max-md {
+      left: 2.5rem !important;
+      width: 16px !important;
+      height: 9px !important;
+
+      .prevArrow--top,
+      .prevArrow--bottom {
+        height: 3px !important;
       }
+    }
+  }
+  &--nextArrow {
+    right: 1.8rem !important;
+    
+    @include max-md {
+      right: 2.8rem !important;
+      width: 16px !important;
+      height: 9px !important;
 
-      .center {
-        left: 0;
-        width: 100%;
-        text-align: center;
-        padding: 0 25px;
-      }
-
-      &__content {
-        width: 500px;
-        position: absolute;
-        z-index: 2;
-        top: 25%;
-
-        @include max-md {
-          left: 0;
-          top: 20%;
-          width: 100%;
-          text-align: center;
-          padding: 0 25px;
-        }
-
-        @include max-sm {
-          left: 0;
-          width: 100%;
-          padding: 0 25px;
-          text-align: center;
-        }
-
-        &__btnHolder {
-          max-width: 320px;
-          @include max-md { margin: 0 auto; }
-
-          .btn { width: 100%; }
-        }
-
-        p {
-          font-size: 2.4rem;
-          font-weight: 400;
-          color: #808080;
-          padding-bottom: 3.6rem;
-
-          @include max-md {
-            display: none;
-            // padding-block-end: 2.4rem;
-            // color: $darkGrey;
-            // text-shadow: 1px 0px 1px rgba(0, 0, 0, 0.2);
-          }
-        }
+      .nextArrow--top,
+      .nextArrow--bottom {
+        height: 3px !important;
       }
     }
   }

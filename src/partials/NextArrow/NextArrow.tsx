@@ -3,18 +3,19 @@ import { MouseEventHandler } from 'react';
 
 interface NextArrowProps {
   style?: object;
+  classes?: string;
   className?: string;
   onClick?: MouseEventHandler;
 }
 
 export default function NextArrow(props: NextArrowProps) {
-  const { className, style, onClick } = props;
+  const { className, style, classes, onClick } = props;
 
   return (
     <div 
       onClick={onClick} 
       style={{ ...style }} 
-      className={`${className} nextArrow`}
+      className={`${className} nextArrow ${classes}`}
     >
       <div className="nextArrow--top" />
       <div className="nextArrow--bottom" />

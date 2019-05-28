@@ -1,19 +1,21 @@
 import * as React from 'react';
+import Slider from 'react-slick';
 
 import List from '../List';
-import Media from '../../partials/Media';
 import Button from '../../partials/Button';
-import Slider from '../../partials/Slider';
+import NextArrow from '../../partials/NextArrow';
+import PrevArrow from '../../partials/PrevArrow';
+import getImageUrl from '../../helpers/getImageUrl';
 
 interface Slide {
-  image: LooseObject;
+  image?: LooseObject;
   url?: LooseObject;
   title?: string;
   subTitle?: string;
   description?: string;
   buttonTitle?: string;
-  isBackgroundBlack: boolean;
   isCentred: boolean;
+  isBackgroundBlack: boolean;
 }
 
 export interface CarouselProps {
@@ -22,72 +24,68 @@ export interface CarouselProps {
   };
 }
 
-export interface CarouselState {}
+const Carousel = (props: CarouselProps) => (
+  <List data={props.data.slides || []}>
+    {({ data: slides }) => {
 
-class Carousel extends React.Component<CarouselProps, CarouselState> {
-  constructor(props: CarouselProps) {
-    super(props);
-
-    this.state = {};
-  }
-
-  renderSlides(data: any) {
-    if (data.length < 1) { return; }
-    let result = [];
-
-    data.map((slide, i) => {
-      result.push(
-        <div key={i} className={'carousel__images__img'}>
-          <div className={'container'}>
-            <div className={`carousel__images__img__content ${slide.isCentred ? 'center' : ''}`}>
-              {slide.subTitle &&
-                <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                  {slide.subTitle}
-                </h2>}
-              {slide.title &&
-                <h1 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                  {slide.title}
-                </h1>}
-              <p>{slide.description}</p>
-              {slide.buttonTitle &&
-                <div
-                  className={'carousel__images__img__content__btnHolder'}
-                  style={slide.isCentred ? {margin: '0 auto'} : {}}
-                >
-                  <Button
-                    classes={`${slide.isBackgroundBlack ? '' : 'btn--bordered'}
-                              ${slide.isCentred ? 'btn--center' : ''}`}
-                    url={slide.url}
-                  >
-                    {slide.buttonTitle}
-                  </Button>
-                </div>}
+      const arrayOfSlides = (slides && slides.map((slide, i) => (
+        <div key={i}>
+          <div 
+            className={'carousel'} 
+            style={{ backgroundImage: slide.image && `url(${getImageUrl(slide.image)})` }}
+          >
+            <div className={'container'} style={{ height: '100%' }}>
+              <div className={'carousel__contentWrapper'}>
+                <div className={`carousel__content ${slide.isCentred ? 'center' : ''}`}>
+                  {slide.subTitle &&
+                    <h2 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
+                      {slide.subTitle}
+                    </h2>}
+                  {slide.title &&
+                    <h1 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
+                      {slide.title}
+                    </h1>}
+                  <p>{slide.description}</p>
+                  {slide.buttonTitle &&
+                    <div
+                      className={'carousel__content__btnHolder'}
+                      style={slide.isCentred ? {margin: '0 auto'} : {}}
+                    >
+                      <Button
+                        classes={`${slide.isBackgroundBlack ? '' : 'btn--bordered'}
+                                  ${slide.isCentred ? 'btn--center' : ''}`}
+                        url={slide.url}
+                      >
+                        {slide.buttonTitle}
+                      </Button>
+                    </div>}
+                </div>
+              </div>
             </div>
           </div>
-          {slide.image && <Media type={'image'} data={slide.image}/>}
-        </div>);
-    });
+        </div>
+      ))) || [];
+    
+      var settings = {
+        speed: 1000,
+        dots: true,
+        arrows: true,
+        autoplay: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: true,
+        nextArrow: <NextArrow classes={'carousel--nextArrow'} />,
+        prevArrow: <PrevArrow classes={'carousel--prevArrow'} />
+      };
 
-    return result;
-  }
-
-  public render() {
-    const { slides } = this.props.data;
-
-    return (
-      <List data={slides}>
-        {({ data }) =>
-          <Slider
-            delay={10000}
-            slides={this.renderSlides(data)}
-            wrapperClasses={'sliderAtTop'}
-            autoplay={data.length <= 1 ? false : true}
-            showDots={data.length <= 1 ? false : true}
-            showArrows={data.length <= 1 ? false : true}
-          />}
-      </List>
-    );
-  }
-}
+      return (
+        <div className="sliderAtTop">
+          <Slider {...settings}>{arrayOfSlides}</Slider>
+        </div>
+      );
+    }}
+  </List>
+);
 
 export default Carousel;

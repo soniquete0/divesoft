@@ -55,7 +55,6 @@ const Testimonials = (props: TestimonialsProps) => {
               breakpoint: 768,
               settings: { slidesToShow: 1 }
             }
-
           ]
         };
 

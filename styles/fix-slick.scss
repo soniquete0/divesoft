@@ -2,6 +2,8 @@ $slick-font-path: "/fonts/" !default;
 $slick-loader-path: "/" !default;
 
 .slick-arrow {
+  z-index: 10;
+  
   &::before {
     color: black !important;
   }

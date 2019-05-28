@@ -1,6 +1,8 @@
 @charset "UTF-8";
-.slick-arrow::before {
-  color: black !important; }
+.slick-arrow {
+  z-index: 10; }
+  .slick-arrow::before {
+    color: black !important; }
 
 /*!
  * Bootstrap Reboot v4.3.1 (https://getbootstrap.com/)
@@ -2978,6 +2980,18 @@ body {
   .slick-next {
     right: -10px; } }
 
+.slick-dots {
+  bottom: 2.5rem; }
+  .slick-dots li {
+    width: 6rem;
+    height: 4px;
+    background-color: white; }
+    .slick-dots li button {
+      width: 100%;
+      height: 100%; }
+  .slick-dots .slick-active {
+    background-color: #e50000; }
+
 input {
   border: 2px solid #e7e7e7;
   padding: 4px 8px; }
@@ -4445,75 +4459,89 @@ a {
     text-align: right; }
 
 .sliderAtTop {
-  padding-top: 100px; }
+  padding-top: 10rem; }
   @media (max-width: 540px) {
     .sliderAtTop {
-      padding-top: 70px; } }
+      padding-top: 7rem; } }
 
-.slider {
-  overflow: hidden; }
-  .slider .mediaRatio {
-    height: 700px;
-    padding-top: 0 !important; }
-    @media (max-width: 768px) {
-      .slider .mediaRatio {
-        height: 450px;
-        opacity: 0.8; } }
-    @media (max-width: 540px) {
-      .slider .mediaRatio {
-        height: 400px; } }
-
-.carousel__images__img {
-  position: relative; }
-  .carousel__images__img h1 {
+.carousel {
+  height: 700px;
+  background-size: cover; }
+  @media (max-width: 768px) {
+    .carousel {
+      height: 450px; } }
+  @media (max-width: 540px) {
+    .carousel {
+      height: 400px; } }
+  .carousel h1 {
     line-height: 6rem; }
     @media (max-width: 768px) {
-      .carousel__images__img h1 {
+      .carousel h1 {
         line-height: 4rem; } }
-  .carousel__images__img h2 {
+  .carousel h2 {
     text-transform: none; }
     @media (max-width: 768px) {
-      .carousel__images__img h2 {
+      .carousel h2 {
         padding-bottom: 0;
         line-height: 3rem; } }
-  .carousel__images__img .center {
-    left: 0;
+  .carousel .center {
     width: 100%;
-    text-align: center;
-    padding: 0 25px; }
-  .carousel__images__img__content {
-    width: 500px;
-    position: absolute;
+    padding: 0 2.5rem;
+    text-align: center; }
+  .carousel__contentWrapper {
+    display: table;
+    height: 100%;
+    width: 100%; }
+  .carousel__content {
     z-index: 2;
-    top: 25%; }
+    width: 500px;
+    display: table-cell;
+    vertical-align: middle; }
     @media (max-width: 768px) {
-      .carousel__images__img__content {
-        left: 0;
-        top: 20%;
+      .carousel__content {
         width: 100%;
-        text-align: center;
-        padding: 0 25px; } }
-    @media (max-width: 540px) {
-      .carousel__images__img__content {
-        left: 0;
-        width: 100%;
-        padding: 0 25px;
+        padding: 0 2.5rem;
         text-align: center; } }
-    .carousel__images__img__content__btnHolder {
+    @media (max-width: 540px) {
+      .carousel__content {
+        width: 100%;
+        padding: 0 2.5rem;
+        text-align: center; } }
+    .carousel__content__btnHolder {
       max-width: 320px; }
       @media (max-width: 768px) {
-        .carousel__images__img__content__btnHolder {
+        .carousel__content__btnHolder {
           margin: 0 auto; } }
-      .carousel__images__img__content__btnHolder .btn {
+      .carousel__content__btnHolder .btn {
         width: 100%; }
-    .carousel__images__img__content p {
+    .carousel__content p {
       font-size: 2.4rem;
       font-weight: 400;
       color: #808080;
       padding-bottom: 3.6rem; }
       @media (max-width: 768px) {
-        .carousel__images__img__content p {
+        .carousel__content p {
           display: none; } }
+  .carousel--prevArrow {
+    left: 1.5rem !important; }
+    @media (max-width: 768px) {
+      .carousel--prevArrow {
+        left: 2.5rem !important;
+        width: 16px !important;
+        height: 9px !important; }
+        .carousel--prevArrow .prevArrow--top,
+        .carousel--prevArrow .prevArrow--bottom {
+          height: 3px !important; } }
+  .carousel--nextArrow {
+    right: 1.8rem !important; }
+    @media (max-width: 768px) {
+      .carousel--nextArrow {
+        right: 2.8rem !important;
+        width: 16px !important;
+        height: 9px !important; }
+        .carousel--nextArrow .nextArrow--top,
+        .carousel--nextArrow .nextArrow--bottom {
+          height: 3px !important; } }
 
 .firmwares {
   padding-bottom: 30px; }
@@ -4609,13 +4637,13 @@ a {
       text-decoration: underline; }
 
 .aboutUsHome {
-  padding: 75px 0 100px 0; }
+  padding: 7.5rem 0 10rem 0; }
   @media (max-width: 768px) {
     .aboutUsHome {
-      padding: 55px 0; } }
+      padding: 5.5rem 0; } }
   @media (max-width: 540px) {
     .aboutUsHome {
-      padding: 35px 0; } }
+      padding: 3.5rem 0; } }
   .aboutUsHome .col {
     padding: 0; }
   .aboutUsHome h3, .aboutUsHome h4 {
@@ -4624,14 +4652,15 @@ a {
     display: flex;
     align-items: stretch;
     width: 100%;
-    padding: 40px;
+    padding: 4rem;
     height: 390px;
     max-height: 390px;
     overflow: hidden; }
     @media (max-width: 768px) {
       .aboutUsHome__block {
         height: 100%;
-        max-height: 100%; } }
+        max-height: 100%;
+        padding: 2rem; } }
     .aboutUsHome__block .aboutUsHome__info {
       position: relative;
       z-index: 9; }
@@ -4640,6 +4669,9 @@ a {
       @media (max-width: 768px) {
         .aboutUsHome__block.right p {
           width: 65%; } }
+      @media (max-width: 540px) {
+        .aboutUsHome__block.right p {
+          width: 100%; } }
     .aboutUsHome__block p {
       line-height: 2.8rem;
       color: #343434; }
@@ -4662,8 +4694,9 @@ a {
       .aboutUsHome__block .img-wrap .img-under {
         position: absolute;
         top: 100%;
-        height: 100%;
+        width: 100%;
         opacity: 0;
+        min-height: 100%;
         transition: all .2s ease-in; }
     .aboutUsHome__block.hovered .img-wrap .img-under {
       top: 0;
@@ -5857,11 +5890,12 @@ a {
   transition: cubic-bezier(0.215, 0.61, 0.355, 1);
   text-transform: uppercase;
   background-color: #e50000; }
+  @media (max-width: 540px) {
+    .btn {
+      padding: 1.6rem 1rem; } }
   .btn:hover {
     color: #fff;
     background-color: #f72c2c; }
-  .btn:visited {
-    color: #fff; }
   .btn--bordered {
     color: #e50000;
     border: 2px solid #e50000;

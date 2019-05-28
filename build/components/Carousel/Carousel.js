@@ -1,60 +1,52 @@
 "use strict";
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
     };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var react_slick_1 = require("react-slick");
 var List_1 = require("../List");
-var Media_1 = require("../../partials/Media");
 var Button_1 = require("../../partials/Button");
-var Slider_1 = require("../../partials/Slider");
-var Carousel = /** @class */ (function (_super) {
-    __extends(Carousel, _super);
-    function Carousel(props) {
-        var _this = _super.call(this, props) || this;
-        _this.state = {};
-        return _this;
-    }
-    Carousel.prototype.renderSlides = function (data) {
-        if (data.length < 1) {
-            return;
-        }
-        var result = [];
-        data.map(function (slide, i) {
-            result.push(React.createElement("div", { key: i, className: 'carousel__images__img' },
-                React.createElement("div", { className: 'container' },
-                    React.createElement("div", { className: "carousel__images__img__content " + (slide.isCentred ? 'center' : '') },
+var NextArrow_1 = require("../../partials/NextArrow");
+var PrevArrow_1 = require("../../partials/PrevArrow");
+var getImageUrl_1 = require("../../helpers/getImageUrl");
+var Carousel = function (props) { return (React.createElement(List_1.default, { data: props.data.slides || [] }, function (_a) {
+    var slides = _a.data;
+    var arrayOfSlides = (slides && slides.map(function (slide, i) { return (React.createElement("div", { key: i },
+        React.createElement("div", { className: 'carousel', style: { backgroundImage: slide.image && "url(" + getImageUrl_1.default(slide.image) + ")" } },
+            React.createElement("div", { className: 'container', style: { height: '100%' } },
+                React.createElement("div", { className: 'carousel__contentWrapper' },
+                    React.createElement("div", { className: "carousel__content " + (slide.isCentred ? 'center' : '') },
                         slide.subTitle &&
                             React.createElement("h2", { style: slide.isBackgroundBlack ? { color: 'white' } : {} }, slide.subTitle),
                         slide.title &&
                             React.createElement("h1", { style: slide.isBackgroundBlack ? { color: 'white' } : {} }, slide.title),
                         React.createElement("p", null, slide.description),
                         slide.buttonTitle &&
-                            React.createElement("div", { className: 'carousel__images__img__content__btnHolder', style: slide.isCentred ? { margin: '0 auto' } : {} },
-                                React.createElement(Button_1.default, { classes: (slide.isBackgroundBlack ? '' : 'btn--bordered') + "\n                              " + (slide.isCentred ? 'btn--center' : ''), url: slide.url }, slide.buttonTitle)))),
-                slide.image && React.createElement(Media_1.default, { type: 'image', data: slide.image })));
-        });
-        return result;
+                            React.createElement("div", { className: 'carousel__content__btnHolder', style: slide.isCentred ? { margin: '0 auto' } : {} },
+                                React.createElement(Button_1.default, { classes: (slide.isBackgroundBlack ? '' : 'btn--bordered') + "\n                                  " + (slide.isCentred ? 'btn--center' : ''), url: slide.url }, slide.buttonTitle)))))))); })) || [];
+    var settings = {
+        speed: 1000,
+        dots: true,
+        arrows: true,
+        autoplay: false,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnHover: true,
+        nextArrow: React.createElement(NextArrow_1.default, { classes: 'carousel--nextArrow' }),
+        prevArrow: React.createElement(PrevArrow_1.default, { classes: 'carousel--prevArrow' })
     };
-    Carousel.prototype.render = function () {
-        var _this = this;
-        var slides = this.props.data.slides;
-        return (React.createElement(List_1.default, { data: slides }, function (_a) {
-            var data = _a.data;
-            return React.createElement(Slider_1.default, { delay: 10000, slides: _this.renderSlides(data), wrapperClasses: 'sliderAtTop', autoplay: data.length <= 1 ? false : true, showDots: data.length <= 1 ? false : true, showArrows: data.length <= 1 ? false : true });
-        }));
-    };
-    return Carousel;
-}(React.Component));
+    return (React.createElement("div", { className: "sliderAtTop" },
+        React.createElement(react_slick_1.default, __assign({}, settings), arrayOfSlides)));
+})); };
 exports.default = Carousel;
 //# sourceMappingURL=Carousel.js.map
