@@ -19,6 +19,7 @@ export interface CalendarState {
   keywords: any;
   countries: any;
   currentDate: string;
+  reset: boolean;
 }
 
 export interface MyFormatOfDate {
@@ -49,6 +50,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         lat: 50,
         lng: 14
       },
+      reset: false,
 
       countrySelectedValue: 'all',
       keywordSelectedValue: 'all',
@@ -456,6 +458,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
         {({ data }) => (
           <div className={'calendar'} style={!this.state.switch ? { paddingBottom: 0 } : {}}>
             {this.renderControls(data)}
+
             {this.state.switch ?
               <div className="container calendar__container">
                 {this.renderHeader()}
@@ -471,6 +474,7 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
               <MapComponent
                 items={data}
                 controls={false}
+                reset={this.state.reset}
                 mapCenter={this.state.mapCenter}
               />}
           </div>

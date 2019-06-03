@@ -1,0 +1,84 @@
+.mapBox {
+  position: absolute;
+  height: 90%;
+  top: 5%;
+  z-index: 2;
+  right: 6rem;
+  width: 380px;
+  min-width: 290px;
+  padding: 4rem 3rem;
+  background-color: white;
+  border-top: 3px solid $red;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+
+  @include max-sm {
+    width: 90%;
+    right: 5%;
+  }
+
+  a {
+    color: $red;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    color: #6c6c6c;
+    padding-bottom: 1rem;
+  }
+
+  &--btn {
+    background: transparent;
+    border: 2px solid $red;
+    
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+
+  &__info {
+    max-height: 180px;
+    overflow-y: scroll;
+    text-overflow: ellipsis;
+
+    &::-webkit-scrollbar {
+      width: 3px;
+      height: 8px;
+      background-color: #aaa; /* or add it to the track */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgb(104, 104, 104);
+    }
+  }
+
+  &--close {
+    cursor: pointer;
+    position: absolute;
+    transform: rotate(45deg);
+    width: 18px;
+    height: 18px;
+    right: 15px;
+    top: 15px;
+
+    &:before {
+      background-color: $red;
+      width: 2px;
+      height: 16px;
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      content: "";  
+    }
+    &:after {
+      background-color: $red;
+      width: 16px;
+      height: 2px;
+      position: absolute;
+      top: 11px;
+      left: 0;
+      content: "";
+    }
+  }
+}

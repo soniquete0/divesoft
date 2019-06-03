@@ -3414,6 +3414,241 @@ a {
     padding: 1.5rem 0;
     width: 100%; }
 
+.marker {
+  border-style: solid;
+  border-left-width: 14px;
+  border-bottom-width: 14px;
+  border-color: #e50000 transparent transparent #e50000;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  z-index: 200;
+  cursor: pointer; }
+
+.mapRow__text {
+  padding: 6rem 0;
+  color: #5c5c5c;
+  line-height: 3.2rem; }
+  @media (max-width: 768px) {
+    .mapRow__text {
+      padding: 3rem 0;
+      line-height: 2rem; } }
+
+.mapRow__list {
+  position: relative;
+  padding: 5rem 0 3rem 0; }
+  .mapRow__list__item {
+    width: 85%;
+    cursor: pointer; }
+    .mapRow__list__item p {
+      color: #5c5c5c; }
+  @media (max-width: 768px) {
+    .mapRow__list__title {
+      font-size: 2.4rem; } }
+  .mapRow__list h5 {
+    cursor: pointer;
+    padding-bottom: 1.6rem; }
+    @media (max-width: 768px) {
+      .mapRow__list h5 {
+        font-size: 2rem; } }
+  .mapRow__list__contacts {
+    color: #5c5c5c; }
+    .mapRow__list__contacts p {
+      padding-bottom: 1rem;
+      word-break: break-all; }
+    .mapRow__list__contacts a {
+      font-weight: 200;
+      color: #e50000; }
+      .mapRow__list__contacts a:hover {
+        text-decoration: underline; }
+  .mapRow__list::before {
+    background-color: #e8e8e8;
+    position: absolute;
+    display: block;
+    content: '';
+    height: 1px;
+    width: 100%;
+    top: 0; }
+  .mapRow__list__divider {
+    background-color: #e8e8e8;
+    position: relative;
+    display: block;
+    margin: 25px 0;
+    width: 100%;
+    height: 1px;
+    bottom: 0; }
+  .mapRow__list__show {
+    cursor: pointer;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    right: 15px;
+    top: 0; }
+    .mapRow__list__show::after {
+      background-color: #e50000;
+      width: 16px;
+      height: 2px;
+      position: absolute;
+      top: 11px;
+      left: 0;
+      content: ""; }
+    .mapRow__list__show::before {
+      background-color: #e50000;
+      width: 2px;
+      height: 16px;
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      content: ""; }
+    .mapRow__list__show--minus::before {
+      display: none; }
+    .mapRow__list__show .col-12:last-of-type .row:last-of-type .col-12 .faq__list__divider {
+      margin-bottom: 0; }
+
+.contactRow {
+  padding: 35px 0; }
+  @media (max-width: 768px) {
+    .contactRow {
+      padding-bottom: 5px; } }
+  @media (max-width: 768px) {
+    .contactRow h3 {
+      padding: 0 0 10px 0;
+      font-size: 2.4rem !important; } }
+  .contactRow__divider::after {
+    background-color: #e8e8e8;
+    position: relative;
+    display: block;
+    bottom: -35px;
+    content: '';
+    height: 1px;
+    width: 100%; }
+    @media (max-width: 768px) {
+      .contactRow__divider::after {
+        display: none; } }
+  .contactRow__showMore {
+    text-decoration: underline;
+    position: absolute;
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: #e50000;
+    bottom: 0; }
+    .contactRow__showMore:hover {
+      text-decoration: none; }
+    @media (max-width: 768px) {
+      .contactRow__showMore {
+        display: block;
+        position: relative;
+        padding: 0 0 15px 0; } }
+  .contactRow__item {
+    position: relative; }
+    @media (max-width: 768px) {
+      .contactRow__item:not(:last-child) {
+        margin-bottom: 20px; } }
+    @media (max-width: 768px) {
+      .contactRow__item:after {
+        bottom: 0;
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: #e8e8e8; } }
+    .contactRow__item h5 {
+      padding-bottom: 10px; }
+      @media (max-width: 768px) {
+        .contactRow__item h5 {
+          font-size: 2rem !important; } }
+    .contactRow__item span {
+      display: block;
+      font-size: 1.4rem;
+      color: #aaaaaa;
+      padding-bottom: 15px; }
+    .contactRow__item p {
+      padding: 5px 0;
+      color: #6c6c6c; }
+      .contactRow__item p:first-of-type {
+        padding-top: 0; }
+      .contactRow__item p:last-child {
+        padding-bottom: 15px; }
+      .contactRow__item p:not(:last-child) a {
+        color: #e50000 !important; }
+        .contactRow__item p:not(:last-child) a:hover {
+          text-decoration: underline; }
+
+.mapRows {
+  padding-top: 5rem; }
+
+.mapControls {
+  z-index: 200;
+  width: 100%;
+  position: relative !important;
+  margin-bottom: 30px !important;
+  top: 0 !important;
+  /* Reset Select */
+  /* Custom Select */
+  /* Transition */ }
+  .mapControls .btn {
+    width: 100%;
+    height: 44px;
+    line-height: 0; }
+    @media (max-width: 992px) {
+      .mapControls .btn {
+        padding: 0; } }
+  @media (max-width: 768px) {
+    .mapControls .select {
+      margin-bottom: 10px; }
+      .mapControls .select:last-child {
+        margin-bottom: 20px; } }
+  .mapControls select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #fff;
+    background-image: none; }
+  .mapControls .select {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 4rem !important;
+    background: #fff;
+    overflow: hidden;
+    border: 3px solid #e7e7e7 !important; }
+    .mapControls .select::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 13px;
+      right: 15px;
+      height: 8px;
+      width: 8px;
+      border: 1px solid #6c6c6c;
+      border-width: 1px 1px 0 0;
+      -webkit-transform: rotate(135deg);
+              transform: rotate(135deg); }
+  .mapControls select {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 15px;
+    color: #343434;
+    cursor: pointer; }
+  .mapControls select::-ms-expand {
+    display: none; }
+  .mapControls .select::after {
+    transition: .25s all ease; }
+
+.map {
+  height: 400px;
+  width: 100%;
+  display: block;
+  position: relative; }
+  @media (min-width: 768px) {
+    .map {
+      height: 510px; } }
+
 .hamburgerHolder {
   display: flex;
   justify-content: space-between;
@@ -4029,24 +4264,15 @@ a {
   .footer .text-copyright {
     padding-top: 2em; }
 
-.marker {
-  border-style: solid;
-  border-left-width: 14px;
-  border-bottom-width: 14px;
-  border-color: #e50000 transparent transparent #e50000;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  z-index: 200; }
-
-.map {
+.calendar .map {
   height: 400px;
   width: 100%;
   display: block;
   position: relative; }
   @media (min-width: 768px) {
-    .map {
+    .calendar .map {
       height: 510px; } }
-  .map__controls {
+  .calendar .map__controls {
     position: absolute;
     z-index: 200;
     width: 100%;
@@ -4055,14 +4281,14 @@ a {
     /* Custom Select */
     /* Transition */ }
     @media (max-width: 768px) {
-      .map__controls {
+      .calendar .map__controls {
         position: relative;
         top: 0; }
-        .map__controls .select {
+        .calendar .map__controls .select {
           margin-bottom: 10px; }
-          .map__controls .select:last-child {
+          .calendar .map__controls .select:last-child {
             margin-bottom: 20px; } }
-    .map__controls select {
+    .calendar .map__controls select {
       -webkit-appearance: none;
       -moz-appearance: none;
       -ms-appearance: none;
@@ -4072,7 +4298,7 @@ a {
       border: 0 !important;
       background: #fff;
       background-image: none; }
-    .map__controls .select {
+    .calendar .map__controls .select {
       position: relative;
       display: block;
       width: 100%;
@@ -4081,7 +4307,7 @@ a {
       background: #fff;
       overflow: hidden;
       border: 3px solid #e7e7e7 !important; }
-      .map__controls .select::after {
+      .calendar .map__controls .select::after {
         content: '';
         display: block;
         position: absolute;
@@ -4093,16 +4319,16 @@ a {
         border-width: 1px 1px 0 0;
         -webkit-transform: rotate(135deg);
                 transform: rotate(135deg); }
-    .map__controls select {
+    .calendar .map__controls select {
       width: 100%;
       height: 100%;
       margin: 0;
       padding: 0 0 0 15px;
       color: #343434;
       cursor: pointer; }
-    .map__controls select::-ms-expand {
+    .calendar .map__controls select::-ms-expand {
       display: none; }
-    .map__controls .select::after {
+    .calendar .map__controls .select::after {
       transition: .25s all ease; }
 
 .calendar {
@@ -4711,165 +4937,12 @@ a {
         position: relative;
         bottom: 0; } }
 
-.contactRow {
-  padding: 35px 0; }
-  @media (max-width: 768px) {
-    .contactRow {
-      padding-bottom: 5px; } }
-  @media (max-width: 768px) {
-    .contactRow h3 {
-      padding: 0 0 10px 0;
-      font-size: 2.4rem !important; } }
-  .contactRow__divider::after {
-    background-color: #e8e8e8;
-    position: relative;
-    display: block;
-    bottom: -35px;
-    content: '';
-    height: 1px;
-    width: 100%; }
-    @media (max-width: 768px) {
-      .contactRow__divider::after {
-        display: none; } }
-  .contactRow__showMore {
-    text-decoration: underline;
-    position: absolute;
-    font-size: 1.6rem;
-    cursor: pointer;
-    color: #e50000;
-    bottom: 0; }
-    .contactRow__showMore:hover {
-      text-decoration: none; }
-    @media (max-width: 768px) {
-      .contactRow__showMore {
-        display: block;
-        position: relative;
-        padding: 0 0 15px 0; } }
-  .contactRow__item {
-    position: relative; }
-    @media (max-width: 768px) {
-      .contactRow__item:not(:last-child) {
-        margin-bottom: 20px; } }
-    @media (max-width: 768px) {
-      .contactRow__item:after {
-        bottom: 0;
-        content: '';
-        display: block;
-        height: 1px;
-        width: 100%;
-        background-color: #e8e8e8; } }
-    .contactRow__item h5 {
-      padding-bottom: 10px; }
-      @media (max-width: 768px) {
-        .contactRow__item h5 {
-          font-size: 2rem !important; } }
-    .contactRow__item span {
-      display: block;
-      font-size: 1.4rem;
-      color: #aaaaaa;
-      padding-bottom: 15px; }
-    .contactRow__item p {
-      padding: 5px 0;
-      color: #6c6c6c; }
-      .contactRow__item p:first-of-type {
-        padding-top: 0; }
-      .contactRow__item p:last-child {
-        padding-bottom: 15px; }
-      .contactRow__item p:not(:last-child) a {
-        color: #e50000 !important; }
-        .contactRow__item p:not(:last-child) a:hover {
-          text-decoration: underline; }
-
 .contactsMapWrapper {
   position: relative;
   width: 100%; }
   @media (max-width: 540px) {
     .contactsMapWrapper {
-      padding-top: 50px; } }
-
-.marker {
-  border-style: solid;
-  border-left-width: 14px;
-  border-bottom-width: 14px;
-  border-color: #e50000 transparent transparent #e50000;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  z-index: 200; }
-
-.map {
-  height: 400px;
-  width: 100%;
-  display: block;
-  position: relative; }
-  @media (min-width: 768px) {
-    .map {
-      height: 510px; } }
-  .map__rows {
-    padding-bottom: 30px;
-    bottom: 0 !important; }
-  .map__controls {
-    z-index: 200;
-    width: 100%;
-    position: relative !important;
-    margin-bottom: 30px !important;
-    top: 0 !important;
-    /* Reset Select */
-    /* Custom Select */
-    /* Transition */ }
-    .map__controls .btn {
-      width: 100%;
-      height: 44px;
-      line-height: 0; }
-      @media (max-width: 992px) {
-        .map__controls .btn {
-          padding: 0; } }
-    @media (max-width: 768px) {
-      .map__controls .select {
-        margin-bottom: 10px; }
-        .map__controls .select:last-child {
-          margin-bottom: 20px; } }
-    .map__controls select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -ms-appearance: none;
-      appearance: none;
-      outline: 0;
-      box-shadow: none;
-      border: 0 !important;
-      background: #fff;
-      background-image: none; }
-    .map__controls .select {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 44px;
-      line-height: 4rem !important;
-      background: #fff;
-      overflow: hidden;
-      border: 3px solid #e7e7e7 !important; }
-      .map__controls .select::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 13px;
-        right: 15px;
-        height: 8px;
-        width: 8px;
-        border: 1px solid #6c6c6c;
-        border-width: 1px 1px 0 0;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg); }
-    .map__controls select {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0 0 0 15px;
-      color: #343434;
-      cursor: pointer; }
-    .map__controls select::-ms-expand {
-      display: none; }
-    .map__controls .select::after {
-      transition: .25s all ease; }
+      padding-top: 5rem; } }
 
 .testimonials {
   padding: 10rem 0; }
@@ -5528,174 +5601,18 @@ a {
           .specialCarousel__content__downloads__item p {
             width: 45%; } }
 
-.serviceRow__text {
-  padding: 6rem 0;
-  color: #5c5c5c;
-  line-height: 3.2rem; }
-  @media (max-width: 768px) {
-    .serviceRow__text {
-      padding: 3rem 0;
-      line-height: 2rem; } }
-
-.serviceRow__list {
-  position: relative;
-  padding: 5rem 0 3rem 0; }
-  @media (max-width: 768px) {
-    .serviceRow__list__title {
-      font-size: 2.4rem; } }
-  .serviceRow__list h5 {
-    padding-bottom: 1.6rem; }
-    @media (max-width: 768px) {
-      .serviceRow__list h5 {
-        font-size: 2rem; } }
-  .serviceRow__list__contacts {
-    color: #5c5c5c; }
-    .serviceRow__list__contacts p {
-      padding-bottom: 1rem; }
-    .serviceRow__list__contacts a {
-      font-weight: 200;
-      color: #e50000; }
-      .serviceRow__list__contacts a:hover {
-        text-decoration: underline; }
-  .serviceRow__list::before {
-    background-color: #e8e8e8;
-    position: absolute;
-    display: block;
-    content: '';
-    height: 1px;
-    width: 100%;
-    top: 0; }
-  .serviceRow__list__divider {
-    background-color: #e8e8e8;
-    position: relative;
-    display: block;
-    margin: 25px 0;
-    width: 100%;
-    height: 1px;
-    bottom: 0; }
-  .serviceRow__list__show {
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    right: 15px;
-    top: 0; }
-    .serviceRow__list__show::after {
-      background-color: #e50000;
-      width: 16px;
-      height: 2px;
-      position: absolute;
-      top: 11px;
-      left: 0;
-      content: ""; }
-    .serviceRow__list__show::before {
-      background-color: #e50000;
-      width: 2px;
-      height: 16px;
-      position: absolute;
-      top: 4px;
-      left: 7px;
-      content: ""; }
-    .serviceRow__list__show--minus::before {
-      display: none; }
-    .serviceRow__list__show .col-12:last-of-type .row:last-of-type .col-12 .faq__list__divider {
-      margin-bottom: 0; }
-  .serviceRow__list__item {
-    width: 85%; }
-    .serviceRow__list__item p {
-      color: #5c5c5c; }
-
 .servicePointsMapWrapper {
   position: relative;
   width: 100%; }
+  .servicePointsMapWrapper .btn {
+    padding: 14px 16px;
+    width: 100%; }
   .servicePointsMapWrapper__title {
     color: #343434;
     padding: 6rem 0; }
     @media (max-width: 768px) {
       .servicePointsMapWrapper__title {
         padding: 3rem 0; } }
-
-.marker {
-  border-style: solid;
-  border-left-width: 14px;
-  border-bottom-width: 14px;
-  border-color: #e50000 transparent transparent #e50000;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  z-index: 200; }
-
-.map {
-  height: 400px;
-  width: 100%;
-  display: block;
-  position: relative; }
-  @media (min-width: 768px) {
-    .map {
-      height: 510px; } }
-  @media (max-width: 768px) {
-    .map__rows {
-      position: relative;
-      bottom: -200px; } }
-  @media (max-width: 540px) {
-    .map__rows {
-      bottom: -240px; } }
-  .map__controls {
-    position: absolute;
-    z-index: 200;
-    width: 100%;
-    top: 40px;
-    /* Reset Select */
-    /* Custom Select */
-    /* Transition */ }
-    @media (max-width: 768px) {
-      .map__controls {
-        position: relative;
-        top: 0; }
-        .map__controls .select {
-          margin-bottom: 10px; }
-          .map__controls .select:last-child {
-            margin-bottom: 20px; } }
-    .map__controls select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      -ms-appearance: none;
-      appearance: none;
-      outline: 0;
-      box-shadow: none;
-      border: 0 !important;
-      background: #fff;
-      background-image: none; }
-    .map__controls .select {
-      position: relative;
-      display: block;
-      width: 100%;
-      height: 44px;
-      line-height: 44px;
-      background: #fff;
-      overflow: hidden;
-      border: 3px solid #e7e7e7 !important; }
-      .map__controls .select::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 13px;
-        right: 15px;
-        height: 8px;
-        width: 8px;
-        border: 1px solid #6c6c6c;
-        border-width: 1px 1px 0 0;
-        -webkit-transform: rotate(135deg);
-                transform: rotate(135deg); }
-    .map__controls select {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0 0 0 15px;
-      color: #343434;
-      cursor: pointer; }
-    .map__controls select::-ms-expand {
-      display: none; }
-    .map__controls .select::after {
-      transition: .25s all ease; }
 
 .aboutLeftPicture {
   padding: 80px 0; }
@@ -6119,3 +6036,68 @@ a {
             transform: rotate(-45deg);
     -webkit-transform-origin: top right;
             transform-origin: top right; }
+
+.mapBox {
+  position: absolute;
+  height: 90%;
+  top: 5%;
+  z-index: 2;
+  right: 6rem;
+  width: 380px;
+  min-width: 290px;
+  padding: 4rem 3rem;
+  background-color: white;
+  border-top: 3px solid #e50000;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1); }
+  @media (max-width: 540px) {
+    .mapBox {
+      width: 90%;
+      right: 5%; } }
+  .mapBox a {
+    color: #e50000; }
+    .mapBox a:hover {
+      text-decoration: underline; }
+  .mapBox p {
+    color: #6c6c6c;
+    padding-bottom: 1rem; }
+  .mapBox--btn {
+    background: transparent;
+    border: 2px solid #e50000; }
+    .mapBox--btn:hover {
+      text-decoration: none !important; }
+  .mapBox__info {
+    max-height: 180px;
+    overflow-y: scroll;
+    text-overflow: ellipsis; }
+    .mapBox__info::-webkit-scrollbar {
+      width: 3px;
+      height: 8px;
+      background-color: #aaa;
+      /* or add it to the track */ }
+    .mapBox__info::-webkit-scrollbar-thumb {
+      background: #686868; }
+  .mapBox--close {
+    cursor: pointer;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    width: 18px;
+    height: 18px;
+    right: 15px;
+    top: 15px; }
+    .mapBox--close:before {
+      background-color: #e50000;
+      width: 2px;
+      height: 16px;
+      position: absolute;
+      top: 4px;
+      left: 7px;
+      content: ""; }
+    .mapBox--close:after {
+      background-color: #e50000;
+      width: 16px;
+      height: 2px;
+      position: absolute;
+      top: 11px;
+      left: 0;
+      content: ""; }

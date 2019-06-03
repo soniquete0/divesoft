@@ -1,4 +1,3 @@
-import ContactsMap, { GoogleMapsApiKey } from './ContactsMap';
+import ContactsMap from './ContactsMap';
 
 export default ContactsMap;
-export { GoogleMapsApiKey };

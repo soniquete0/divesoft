@@ -1,0 +1,96 @@
+@import './components/Marker/style.scss';
+@import './components/MapRows/style.scss';
+@import './components/ContactRow/style.scss';
+
+.mapRows {
+  padding-top: 5rem;
+}
+
+.mapControls {
+  z-index: 200;
+  width: 100%;
+  position: relative !important;
+  margin-bottom: 30px !important;
+  top: 0 !important;
+
+  .btn {
+    width: 100%;
+    height: 44px;
+    line-height: 0;
+    @include max-lg { padding: 0; }
+  }
+
+  @include max-md {
+    .select {
+      margin-bottom: 10px;
+      &:last-child { margin-bottom: 20px; }
+    }
+  }
+
+  /* Reset Select */
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #fff;
+    background-image: none;
+  }
+
+  /* Custom Select */
+  .select {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 44px;
+    line-height: 4rem !important;
+    background: #fff;
+    overflow: hidden;
+    border: 3px solid #e7e7e7 !important;
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 13px;
+      right: 15px;
+      height: 8px;
+      width: 8px;
+      border: 1px solid $lightGrey;
+      border-width: 1px 1px 0 0;
+      transform: rotate(135deg);
+    }
+  }
+
+  select {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 0 0 15px;
+    color: $darkGrey;
+    cursor: pointer;
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+
+  /* Transition */
+  // .select:hover::after { color: $red; }
+  .select::after {
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+  }
+}
+
+.map {
+  height: 400px;
+  width: 100%;
+  display: block;
+  position: relative;
+  @include md { height: 510px; }
+}

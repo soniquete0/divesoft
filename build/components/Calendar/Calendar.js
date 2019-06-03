@@ -73,6 +73,7 @@ var Calendar = /** @class */ (function (_super) {
                 lat: 50,
                 lng: 14
             },
+            reset: false,
             countrySelectedValue: 'all',
             keywordSelectedValue: 'all',
             keywords: [],
@@ -314,7 +315,7 @@ var Calendar = /** @class */ (function (_super) {
                         React.createElement(Mobile, null,
                             _this.renderMobileView(data),
                             _this.renderHeader())) :
-                    React.createElement(MapComponent_1.default, { items: data, controls: false, mapCenter: _this.state.mapCenter })));
+                    React.createElement(MapComponent_1.default, { items: data, controls: false, reset: _this.state.reset, mapCenter: _this.state.mapCenter })));
         }));
     };
     return Calendar;
