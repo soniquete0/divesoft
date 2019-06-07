@@ -12,8 +12,17 @@
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
 
   @include max-sm {
-    width: 90%;
-    right: 5%;
+    width: 80%;
+    left: 10%;
+  }
+
+  @include max-xs {
+    left: 5%;
+  }
+
+  @media (max-width: 330px) {
+    width: 75%;
+    left: 2%;
   }
 
   a {
@@ -57,8 +66,8 @@
     cursor: pointer;
     position: absolute;
     transform: rotate(45deg);
-    width: 18px;
-    height: 18px;
+    width: 35px;
+    height: 60px;
     right: 15px;
     top: 15px;
 
