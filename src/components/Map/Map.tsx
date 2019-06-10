@@ -10,6 +10,7 @@ import ContactRow from './components/ContactRow';
 import MapBox from '../../partials/MapBox';
 import MapStyles from './components/MapStyles';
 import getUniqMapControls from '../../helpers/getUniqMapControls';
+import { number } from 'prop-types';
 
 export interface MapProps {
   mapItems: any;
@@ -73,6 +74,13 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
     };
   }
 
+  readLatLng(item: any) {
+    return {
+      lat: parseFloat(item.lat),
+      lng: parseFloat(item.lng)
+    };
+  }
+
   setMapBox(item: any) {
     this.setState({
       lat: item.lat,
@@ -89,7 +97,9 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
       text: item.text,
       name: item.name,
       position: item.position,
-      showBox: item ? true : !this.state.showBox
+      showBox: item ? true : !this.state.showBox,
+      mapZoom: 14,
+      mapCenter: this.readLatLng(item)
     });
   }
 
@@ -103,27 +113,29 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
       for (let j = 0; j < mapItems.length; j++) {
         if (mapItems[j].country === countries[i]) {
           if (mapItems[j].country === this.state.countrySelectedValue || this.state.countrySelectedValue === 'all') {
-            composedRows.push(
-              {
-                city: mapItems[j].city,
-                service: mapItems[j].service,
-                country: mapItems[j].country,
-                title: mapItems[j].title,
-                text: mapItems[j].text,
-                address: mapItems[j].address,
-                storeChief: mapItems[j].storeChief,
-                email: mapItems[j].email,
-                phone: mapItems[j].phone,
-                web: mapItems[j].web
-              }
-            );
+            if (mapItems[j].city === this.state.citySelectedValue || this.state.citySelectedValue === 'all') {
+              composedRows.push(
+                {
+                  city: mapItems[j].city,
+                  service: mapItems[j].service,
+                  country: mapItems[j].country,
+                  title: mapItems[j].title,
+                  text: mapItems[j].text,
+                  address: mapItems[j].address,
+                  storeChief: mapItems[j].storeChief,
+                  email: mapItems[j].email,
+                  phone: mapItems[j].phone,
+                  web: mapItems[j].web
+                }
+              );
+            }
           }
         }
       }
 
       if (this.state.countrySelectedValue === countries[i] || this.state.countrySelectedValue === 'all') {
         resultRows.push(
-          <MapRows key={i} title={countries[i]} items={composedRows} />
+          <MapRows key={i} title={countries[i]} items={composedRows.reverse()} />
         );
       }
     }
@@ -182,14 +194,14 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
               citySelectedValue: 'all',
               serviceSelectedValue: 'all',
               countrySelectedValue: mapItems[i].country,
-              mapZoom: 7
+              mapZoom: 6
             });
+            // console.log(mapItems[i], mapItems[i].lat, mapItems[i].lng);
             break;
           case 'city':
             this.setState({
               countrySelectedValue: mapItems[i].country,
               mapZoom: 11
-              // serviceSelectedValue: mapItems[i].service,
             });
             break;
           case 'service':

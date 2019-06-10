@@ -62,6 +62,12 @@ var Map = /** @class */ (function (_super) {
         };
         return _this;
     }
+    Map.prototype.readLatLng = function (item) {
+        return {
+            lat: parseFloat(item.lat),
+            lng: parseFloat(item.lng)
+        };
+    };
     Map.prototype.setMapBox = function (item) {
         this.setState({
             lat: item.lat,
@@ -78,7 +84,9 @@ var Map = /** @class */ (function (_super) {
             text: item.text,
             name: item.name,
             position: item.position,
-            showBox: item ? true : !this.state.showBox
+            showBox: item ? true : !this.state.showBox,
+            mapZoom: 14,
+            mapCenter: this.readLatLng(item)
         });
     };
     Map.prototype.renderServiceRows = function (mapItems) {
@@ -89,23 +97,25 @@ var Map = /** @class */ (function (_super) {
             for (var j = 0; j < mapItems.length; j++) {
                 if (mapItems[j].country === countries[i]) {
                     if (mapItems[j].country === this.state.countrySelectedValue || this.state.countrySelectedValue === 'all') {
-                        composedRows.push({
-                            city: mapItems[j].city,
-                            service: mapItems[j].service,
-                            country: mapItems[j].country,
-                            title: mapItems[j].title,
-                            text: mapItems[j].text,
-                            address: mapItems[j].address,
-                            storeChief: mapItems[j].storeChief,
-                            email: mapItems[j].email,
-                            phone: mapItems[j].phone,
-                            web: mapItems[j].web
-                        });
+                        if (mapItems[j].city === this.state.citySelectedValue || this.state.citySelectedValue === 'all') {
+                            composedRows.push({
+                                city: mapItems[j].city,
+                                service: mapItems[j].service,
+                                country: mapItems[j].country,
+                                title: mapItems[j].title,
+                                text: mapItems[j].text,
+                                address: mapItems[j].address,
+                                storeChief: mapItems[j].storeChief,
+                                email: mapItems[j].email,
+                                phone: mapItems[j].phone,
+                                web: mapItems[j].web
+                            });
+                        }
                     }
                 }
             }
             if (this.state.countrySelectedValue === countries[i] || this.state.countrySelectedValue === 'all') {
-                resultRows.push(React.createElement(MapRows_1.default, { key: i, title: countries[i], items: composedRows }));
+                resultRows.push(React.createElement(MapRows_1.default, { key: i, title: countries[i], items: composedRows.reverse() }));
             }
         }
         return resultRows;
@@ -143,14 +153,14 @@ var Map = /** @class */ (function (_super) {
                             citySelectedValue: 'all',
                             serviceSelectedValue: 'all',
                             countrySelectedValue: mapItems[i].country,
-                            mapZoom: 7
+                            mapZoom: 6
                         });
+                        // console.log(mapItems[i], mapItems[i].lat, mapItems[i].lng);
                         break;
                     case 'city':
                         this.setState({
                             countrySelectedValue: mapItems[i].country,
                             mapZoom: 11
-                            // serviceSelectedValue: mapItems[i].service,
                         });
                         break;
                     case 'service':
