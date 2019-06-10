@@ -4,7 +4,8 @@ import { Query, ApolloConsumer } from 'react-apollo';
 import * as R from 'ramda';
 import { adopt } from 'react-adopt';
 import { withRouter, RouteComponentProps } from 'react-router';
-import Loader from '../Loader';
+import Loader from '../../partials/Loader';
+
 const escape = function (str: string) {
   // TODO: escape %x75 4HEXDIG ?? chars
   return str
