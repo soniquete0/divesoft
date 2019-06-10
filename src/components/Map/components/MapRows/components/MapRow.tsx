@@ -43,7 +43,7 @@ class MapRow extends React.Component<MapRowProps, MapRowState> {
 
     return (
       <div className="row">
-        <div className="col-12 col-md-4">
+        <div className="col-12 col-md-5">
           <h5 onClick={() => this.setState({ show: !this.state.show })}>{title}</h5>
           {this.state.show ?
             <div className={'mapRow__list__contacts'}>
@@ -54,7 +54,7 @@ class MapRow extends React.Component<MapRowProps, MapRowState> {
 
             </div> : ''}
         </div>
-        <div className="col-12 col-md-8">
+        <div className="col-12 col-md-7">
           <div
             onClick={() => this.setState({ show: !this.state.show })}
             className={`mapRow__list__show ${this.state.show ? 'mapRow__list__show--minus' : ''}`}

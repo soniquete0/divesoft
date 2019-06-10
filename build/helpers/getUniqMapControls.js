@@ -21,9 +21,9 @@ function getUniqMapControls(data) {
     uniqCountries = uniqueArray(uniqCountries);
     uniqServices = uniqueArray(uniqServices);
     return {
-        cities: uniqCities,
-        countries: uniqCountries,
-        services: uniqServices
+        cities: uniqCities.sort(),
+        countries: uniqCountries.sort(),
+        services: uniqServices.sort()
     };
 }
 exports.default = getUniqMapControls;

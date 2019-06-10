@@ -13,7 +13,7 @@ const escape = function (str: string) {
     .replace(/[\f]/g, '\\f')
     .replace(/[\n]/g, '\\n')
     .replace(/[\r]/g, '\\r')
-    .replace(/[\t]/g, '\\t'); 
+    .replace(/[\t]/g, '\\t');
 };
 
 export interface Properties extends RouteComponentProps<LooseObject> {
@@ -132,7 +132,7 @@ const GET_ALL_PAGES = gql`
         id
         name
       }
-      translations(where: { 
+      translations(where: {
         language: { id: $languageId }
       }) {
         id
@@ -174,7 +174,7 @@ const AllPagesComposedQuery = adopt({
 
         return (
           <Query
-            query={FRONTEND} 
+            query={FRONTEND}
             variables={{ origin, url }}
           >
             {({ data: frontend }) => render(frontend)}
@@ -183,17 +183,17 @@ const AllPagesComposedQuery = adopt({
       }}
      </ApolloConsumer>
   ),
-  allPages: ({ 
+  allPages: ({
     render,
     getFrontend: {
       frontend
     },
-    getContext: { 
+    getContext: {
       languageData,
       websiteData,
     },
   }) => {
-    const languageId = (languageData && languageData.id) || 
+    const languageId = (languageData && languageData.id) ||
       (frontend && frontend.language && frontend.language.id);
 
     const websiteId = (websiteData && websiteData.id) ||
@@ -204,10 +204,10 @@ const AllPagesComposedQuery = adopt({
     }
 
     return (
-      <>  
-        <Query 
+      <>
+        <Query
           query={GET_ALL_PAGES}
-          variables={{ 
+          variables={{
             languageId,
             websiteId,
           }}
@@ -217,36 +217,36 @@ const AllPagesComposedQuery = adopt({
             return render(data);
           }}
         </Query>
-      </> 
+      </>
     );
   },
 });
 class List extends React.Component<Properties, {}> {
   getPaginatingFunction: GetPaginatingFunction = (items) => {
-    
+
     const getPage: GetPage = function (
-      numberOfPage: number, 
+      numberOfPage: number,
       paginationType: 'pagination' | 'infinite' = 'pagination',
       pageSize: number = 10) {
 
         let numberOfItems = items.length;
         let lastPage = Math.ceil(items.length / pageSize);
 
-        const cutTo = 
-          (numberOfPage) * pageSize < numberOfItems ? 
+        const cutTo =
+          (numberOfPage) * pageSize < numberOfItems ?
             (numberOfPage) * pageSize : numberOfItems;
-        const cutFrom = 
-          (numberOfPage) * pageSize < numberOfItems ? 
+        const cutFrom =
+          (numberOfPage) * pageSize < numberOfItems ?
             cutTo - pageSize : (((numberOfPage - 1) && ((numberOfPage - 1) * pageSize)) || 0);
 
         return { items: items.slice(
-          paginationType === 'pagination' ? cutFrom : 0, 
+          paginationType === 'pagination' ? cutFrom : 0,
           cutTo),
           lastPage
         };
       };
     return getPage;
-    
+
   }
 
   render() {
@@ -254,14 +254,14 @@ class List extends React.Component<Properties, {}> {
     if (window) {
       origin = window.origin;
     }
-    
+
     const { data, location } = this.props;
     let { searchedText } = this.props;
 
     const fulltextFilter = data && data.fulltextFilter;
 
     const regex = /^\[([a-z]*)\]$/;
-    
+
     var searchParams = typeof window !== 'undefined' && new URLSearchParams(location && location.search || '');
 
     if (fulltextFilter) {
@@ -277,7 +277,7 @@ class List extends React.Component<Properties, {}> {
       } else {
         searchedText = `${searchedText ? searchedText : ''} ${fulltextFilter}`;
       }
-    }  
+    }
     const searchedFragments = searchedText && searchedText.trim().split(' ').map(fragment => fragment.trim());
 
     if (Array.isArray(data)) {
@@ -299,41 +299,41 @@ class List extends React.Component<Properties, {}> {
               const pageId = (pageData && pageData.id) ||
                 (frontend && frontend.page && frontend.page.id);
 
-              console.log(pageId);
+              // console.log(pageId);
               if (allPagesLoading || !allPagesData) {
                 return <Loader />;
               }
-  
+
               if (allPagesError) {
                 return `Error...`;
               }
-  
+
               let { pages } = allPagesData;
 
               if (searchedFragments && searchedFragments.length > 0) {
                 pages = searchedFragments.reduce(
                 (filteredPages, fragment) => {
                   return filteredPages
-                    .filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase())); 
-                },                                       
+                    .filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()));
+                },
                 pages);
               }
-          
+
               const pagesWithTag = pages
                 .filter(p => {
-  
+
                   if (!(p.translations && p.translations.length > 0)) {
                     return false;
                   }
-  
+
                   if (data.tagIds && !p.tags.some(t => data.tagIds.some(tagId => t.id === tagId))) {
                     return false;
                   }
-  
+
                   if (pageId && p.id === pageId) {
                     return false;
                   }
-  
+
                   return true;
                 })
                 .map(p => {
@@ -344,10 +344,10 @@ class List extends React.Component<Properties, {}> {
                   });
 
                   const res = { ...data.data };
-                  
+
                   const item = {
                     page: {
-                      name: (translation && translation.name) || '', 
+                      name: (translation && translation.name) || '',
                       annotations,
                     }
                   };
@@ -355,12 +355,12 @@ class List extends React.Component<Properties, {}> {
                   if (data.orderBy) {
                     res.orderBy = this.replaceWithSourceItemValues(data.orderBy, item);
                   }
-      
+
                   if (data.filters) {
                     res.filters = data.filters.map(filter => {
                       let parsedFilter = { ...filter };
                       parsedFilter.filterBy = this.replaceWithSourceItemValues(filter.filterBy, item);
-      
+
                       return parsedFilter;
                     });
                   }
@@ -385,16 +385,16 @@ class List extends React.Component<Properties, {}> {
                   return res;
                 })
                 .filter(item => {
-                  return  !item.filters || 
+                  return  !item.filters ||
                     !item.filters
-                      .some(filter => 
+                      .some(filter =>
                         !filter.filterBy.toLowerCase()
                           .includes(filter && filter.includes && filter.includes.toLowerCase())
                       );
                 })
                 .filter((item, i) => !data.limit || i < data.limit);
 
-              pages = data.orderBy ? 
+              pages = data.orderBy ?
                 pagesWithTag
                   .sort((a, b) => {
                     if (data.order === 'DESC') {
@@ -402,7 +402,7 @@ class List extends React.Component<Properties, {}> {
                       { if (a.orderBy < b.orderBy) { return 1; } }
                       return 0;
                     }
-    
+
                     if (a.orderBy < b.orderBy) { return -1; }
                     { if (a.orderBy > b.orderBy) { return 1; } }
                     return 0;
@@ -410,14 +410,14 @@ class List extends React.Component<Properties, {}> {
                   .map(item => {
                     delete item.orderBy;
                     return item;
-                  })  
+                  })
                 :
                 pagesWithTag;
- 
+
               return this.props.children({ data: pages, getPage: this.getPaginatingFunction(pages) });
             }}
           </AllPagesComposedQuery>
-      ); 
+      );
     }
 
     return this.props.children({ data: [], getPage: this.getPaginatingFunction([]) });
@@ -443,19 +443,19 @@ class List extends React.Component<Properties, {}> {
             } else {
               replaced = '';
             }
-          }    
+          }
         } catch (e) {
           console.log(e);
         }
       }
     }
-    
+
     return replaced;
   }
 
   datasourcesList = (data, searchedFragments) => {
     return (
-      <Query 
+      <Query
         query={DATASOURCE}
         variables={{
           id: data.datasourceId
@@ -469,15 +469,15 @@ class List extends React.Component<Properties, {}> {
         if (searchedFragments && searchedFragments.length > 0) {
           datasourceItems = searchedFragments.reduce(
           (filteredItems, fragment) => {
-            return filteredItems.filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase())); 
-          },                                       
+            return filteredItems.filter(page => JSON.stringify(page).toLowerCase().includes(fragment.toLowerCase()));
+          },
           datasourceItems);
         }
         // Map datasourceItem data to placeholders
         datasourceItems = datasourceItems
           .map((item) => {
 
-            // Iterate through dataShape 
+            // Iterate through dataShape
             // in case that value inside some of keys is string
             // try to find key inside item and replace value with it
 
@@ -496,7 +496,7 @@ class List extends React.Component<Properties, {}> {
               });
             }
 
-            // Iterate through keys and in case that value inside key is string value 
+            // Iterate through keys and in case that value inside key is string value
             // apply replace function which replace dynamic placeholders with dynamic source item values.
             // In case that value of key is url and contains dynamic slug with same entity that we sourcing,
             // replace it with dynamic source item slug.
@@ -525,9 +525,9 @@ class List extends React.Component<Properties, {}> {
             return res;
           })
             .filter(item => {
-              return  !item.filters || 
+              return  !item.filters ||
                 !item.filters
-                  .some(filter => 
+                  .some(filter =>
                     !filter.filterBy.toLowerCase()
                       .includes(filter && filter.includes && filter.includes.toLowerCase())
                   );
@@ -538,7 +538,7 @@ class List extends React.Component<Properties, {}> {
 
         if (loading) { return <Loader />; }
 
-        const items = data.orderBy ? 
+        const items = data.orderBy ?
         datasourceItems
           .sort((a, b) => {
             if (data.order === 'DESC') {
@@ -554,7 +554,7 @@ class List extends React.Component<Properties, {}> {
           .map(item => {
             delete item.orderBy;
             return item;
-          }) 
+          })
         :
         datasourceItems;
 

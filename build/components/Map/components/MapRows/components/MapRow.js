@@ -40,7 +40,7 @@ var MapRow = /** @class */ (function (_super) {
         var _this = this;
         var _a = this.props, title = _a.title, text = _a.text, address = _a.address, storeChief = _a.storeChief, phone = _a.phone, email = _a.email, web = _a.web;
         return (React.createElement("div", { className: "row" },
-            React.createElement("div", { className: "col-12 col-md-4" },
+            React.createElement("div", { className: "col-12 col-md-5" },
                 React.createElement("h5", { onClick: function () { return _this.setState({ show: !_this.state.show }); } }, title),
                 this.state.show ?
                     React.createElement("div", { className: 'mapRow__list__contacts' },
@@ -56,7 +56,7 @@ var MapRow = /** @class */ (function (_super) {
                         web && React.createElement("p", null,
                             "Web: ",
                             React.createElement(Link_1.default, __assign({}, web), (web.url && web.url.toString()) || title))) : ''),
-            React.createElement("div", { className: "col-12 col-md-8" },
+            React.createElement("div", { className: "col-12 col-md-7" },
                 React.createElement("div", { onClick: function () { return _this.setState({ show: !_this.state.show }); }, className: "mapRow__list__show " + (this.state.show ? 'mapRow__list__show--minus' : '') }),
                 React.createElement("div", { className: 'mapRow__list__item' },
                     React.createElement("p", { onClick: function () { return _this.setState({ show: !_this.state.show }); } }, address),

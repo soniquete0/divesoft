@@ -38,9 +38,6 @@ var Loader_1 = require("../../partials/Loader");
 var escape = function (str) {
     // TODO: escape %x75 4HEXDIG ?? chars
     return str
-        .replace(/[\"]/g, '\\"')
-        .replace(/[\\]/g, '\\\\')
-        .replace(/[\/]/g, '\\/')
         .replace(/[\b]/g, '\\b')
         .replace(/[\f]/g, '\\f')
         .replace(/[\n]/g, '\\n')
@@ -262,7 +259,7 @@ var List = /** @class */ (function (_super) {
                 var _b = _a.allPages, allPagesData = _b.data, allPagesLoading = _b.loading, allPagesError = _b.error, frontend = _a.getFrontend.frontend, pageData = _a.getContext.pageData;
                 var pageId = (pageData && pageData.id) ||
                     (frontend && frontend.page && frontend.page.id);
-                console.log(pageId);
+                // console.log(pageId);
                 if (allPagesLoading || !allPagesData) {
                     return React.createElement(Loader_1.default, null);
                 }
@@ -397,6 +394,9 @@ var List = /** @class */ (function (_super) {
                         }
                         else if (replacement && typeof replacement === 'number') {
                             replaced = replaced.replace(result[0], replacement.toString());
+                        }
+                        else {
+                            replaced = '';
                         }
                     }
                 }

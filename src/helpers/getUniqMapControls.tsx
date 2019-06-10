@@ -23,8 +23,8 @@ export default function getUniqMapControls(data: any) {
   uniqServices = uniqueArray(uniqServices);
 
   return {
-    cities: uniqCities,
-    countries: uniqCountries,
-    services: uniqServices
+    cities: uniqCities.sort(),
+    countries: uniqCountries.sort(),
+    services: uniqServices.sort()
   };
 }

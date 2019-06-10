@@ -43,6 +43,7 @@ var Map = /** @class */ (function (_super) {
                 lat: 50,
                 lng: 14
             },
+            mapZoom: 5,
             cities: [],
             countries: [],
             services: [],
@@ -139,21 +140,24 @@ var Map = /** @class */ (function (_super) {
                 switch (type) {
                     case 'country':
                         this.setState({
-                            citySelectedValue: mapItems[i].city,
-                            serviceSelectedValue: mapItems[i].service,
-                            countrySelectedValue: mapItems[i].country
+                            citySelectedValue: 'all',
+                            serviceSelectedValue: 'all',
+                            countrySelectedValue: mapItems[i].country,
+                            mapZoom: 7
                         });
                         break;
                     case 'city':
                         this.setState({
                             countrySelectedValue: mapItems[i].country,
-                            serviceSelectedValue: mapItems[i].service,
+                            mapZoom: 11
+                            // serviceSelectedValue: mapItems[i].service,
                         });
                         break;
                     case 'service':
                         this.setState({
                             countrySelectedValue: mapItems[i].country,
                             citySelectedValue: mapItems[i].city,
+                            mapZoom: 15
                         });
                         break;
                     default: break;
@@ -165,6 +169,13 @@ var Map = /** @class */ (function (_super) {
             }
         }
     };
+    Map.prototype.filterCities = function (country, mapItems) {
+        var filteredCities = [];
+        mapItems.forEach(function (item) {
+            item && item.country && item.city && item.country === country ? filteredCities.push(item.city) : '';
+        });
+        return filteredCities;
+    };
     Map.prototype.onSelectChange = function (event, mapItems, type) {
         var safeSearchTypeValue = event.currentTarget.value;
         switch (type) {
@@ -172,7 +183,7 @@ var Map = /** @class */ (function (_super) {
                 this.setState({
                     showBox: false,
                     countrySelectedValue: safeSearchTypeValue,
-                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems),
+                    mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
                 break;
             case 'city':
@@ -184,7 +195,7 @@ var Map = /** @class */ (function (_super) {
                 break;
             case 'service':
                 this.setState({
-                    showBox: false,
+                    showBox: true,
                     serviceSelectedValue: safeSearchTypeValue,
                     mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
                 });
@@ -194,30 +205,32 @@ var Map = /** @class */ (function (_super) {
     };
     Map.prototype.renderControls = function (mapItems) {
         var _this = this;
-        var _a = getUniqMapControls_1.default(mapItems), cities = _a.cities, countries = _a.countries, services = _a.services;
+        var _a = getUniqMapControls_1.default(mapItems), countries = _a.countries, services = _a.services;
+        var cities = this.filterCities(this.state.countrySelectedValue, mapItems).sort();
         return (React.createElement("div", { className: 'mapControls' },
             React.createElement("div", { className: 'container' },
-                React.createElement("div", { className: "row" },
-                    React.createElement("div", { className: "col-12 col-md-3" },
+                React.createElement("div", { className: "row justify-content-center" },
+                    React.createElement("div", { className: "col-12 col-md-4 col-lg-3" },
                         React.createElement("div", { className: 'select' },
                             React.createElement("select", { value: this.state.countrySelectedValue, onChange: function (e) { return _this.onSelectChange(e, mapItems, 'country'); } },
                                 this.state.countrySelectedValue === 'all' &&
                                     React.createElement("option", { key: "countrySelectedValue" }, "Select country"),
-                                countries && countries.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
-                    React.createElement("div", { className: "col-12 col-md-3" },
-                        React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'city'); }, value: this.state.citySelectedValue },
-                                this.state.citySelectedValue === 'all' &&
-                                    React.createElement("option", { key: "citySelectedValue" }, "Select city"),
-                                cities && cities.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
-                    React.createElement("div", { className: "col-12 col-md-3" },
-                        React.createElement("div", { className: 'select' },
-                            React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'service'); }, value: this.state.serviceSelectedValue },
-                                this.state.serviceSelectedValue === 'all' &&
-                                    React.createElement("option", { key: "serviceSelectedValue" }, "Select service"),
-                                services && services.map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
-                    React.createElement("div", { className: "col-12 col-md-3" },
+                                countries && this.orderByAlphabet(countries).map(function (item, i) { return (React.createElement("option", { key: i, value: item }, item)); })))),
+                    this.state.countrySelectedValue !== 'all' &&
+                        React.createElement("div", { className: "col-12 col-md-4 col-lg-3" },
+                            React.createElement("div", { className: 'select' },
+                                React.createElement("select", { onChange: function (e) { return _this.onSelectChange(e, mapItems, 'city'); }, value: this.state.citySelectedValue },
+                                    this.state.citySelectedValue === 'all' &&
+                                        React.createElement("option", { key: "citySelectedValue" }, "Select city"),
+                                    cities && cities.map(function (item, i) { return (
+                                    // item.children === this.state.countrySelectedValue
+                                    React.createElement("option", { key: i, value: item }, item)); })))),
+                    React.createElement("div", { className: "col-12 col-md-4 col-lg-3" },
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.resetFilters(); } }, "reset filters"))))));
+    };
+    Map.prototype.orderByAlphabet = function (item) {
+        item.sort();
+        return item;
     };
     Map.prototype.render = function () {
         var _this = this;
@@ -231,7 +244,7 @@ var Map = /** @class */ (function (_super) {
             React.createElement("section", { className: 'map' },
                 this.state.showBox &&
                     React.createElement(MapBox_1.default, { web: this.state.web, text: this.state.text, city: this.state.citySelectedValue, service: this.state.serviceSelectedValue, storeChief: this.state.storeChief, email: this.state.currrentEmail, phone: this.state.currentPhone, title: this.state.currentTitle, address: this.state.currentAddress, country: this.state.countrySelectedValue, name: this.state.name, position: this.state.position, onClick: function () { return _this.setState({ showBox: !_this.state.showBox }); } }),
-                React.createElement(google_map_react_1.default, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: this.state.mapCenter, defaultZoom: 5, options: {
+                React.createElement(google_map_react_1.default, { yesIWantToUseGoogleMapApiInternals: true, bootstrapURLKeys: { key: exports.GoogleMapsApiKey }, defaultCenter: { lat: 50, lng: 14 }, center: this.state.mapCenter, defaultZoom: 5, zoom: this.state.mapZoom, options: {
                         scrollwheel: false,
                         styles: MapStyles_1.default
                     } }, mapItems && mapItems.map(function (item, i) {

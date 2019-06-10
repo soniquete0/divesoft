@@ -24,6 +24,7 @@ export interface MapState {
     lat: number,
     lng: number
   };
+  mapZoom: number;
   cities: Array<string>;
   countries: Array<string>;
   services: Array<string>;
@@ -53,6 +54,7 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         lat: 50,
         lng: 14
       },
+      mapZoom: 5,
       cities: [],
       countries: [],
       services: [],
@@ -72,9 +74,9 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
   }
 
   setMapBox(item: any) {
-    this.setState({ 
-      lat: item.lat, 
-      lng: item.lng, 
+    this.setState({
+      lat: item.lat,
+      lng: item.lng,
       currrentEmail: item.email,
       currentPhone: item.phone,
       currentTitle: item.title,
@@ -128,7 +130,7 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
 
     return resultRows;
   }
-  
+
   renderContactRows(mapItems: any) {
     const { services } = getUniqMapControls(mapItems);
     let resultRows = [];
@@ -177,21 +179,24 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         switch (type) {
           case 'country':
             this.setState({
-              citySelectedValue: mapItems[i].city,
-              serviceSelectedValue: mapItems[i].service,
-              countrySelectedValue: mapItems[i].country
+              citySelectedValue: 'all',
+              serviceSelectedValue: 'all',
+              countrySelectedValue: mapItems[i].country,
+              mapZoom: 7
             });
             break;
           case 'city':
             this.setState({
               countrySelectedValue: mapItems[i].country,
-              serviceSelectedValue: mapItems[i].service,
+              mapZoom: 11
+              // serviceSelectedValue: mapItems[i].service,
             });
             break;
           case 'service':
             this.setState({
               countrySelectedValue: mapItems[i].country,
               citySelectedValue: mapItems[i].city,
+              mapZoom: 15
             });
             break;
 
@@ -204,7 +209,14 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         };
       }
     }
+  }
 
+  filterCities(country: string, mapItems: any) {
+    let filteredCities = [];
+    mapItems.forEach(item => {
+      item && item.country && item.city && item.country === country ? filteredCities.push(item.city) : '';
+    });
+    return filteredCities;
   }
 
   onSelectChange(event: React.FormEvent<HTMLSelectElement>, mapItems: any, type?: string) {
@@ -215,7 +227,7 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         this.setState({
           showBox: false,
           countrySelectedValue: safeSearchTypeValue,
-          mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems),
+          mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
         });
         break;
       case 'city':
@@ -227,7 +239,7 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         break;
       case 'service':
         this.setState({
-          showBox: false,
+          showBox: true,
           serviceSelectedValue: safeSearchTypeValue,
           mapCenter: this.defineLocation(safeSearchTypeValue, type, mapItems)
         });
@@ -239,56 +251,64 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
 
   renderControls(mapItems: any) {
     const {
-      cities,
       countries,
       services
     } = getUniqMapControls(mapItems);
 
+    const cities = this.filterCities(this.state.countrySelectedValue, mapItems).sort();
+
     return (
       <div className={'mapControls'}>
         <div className={'container'}>
-          <div className="row">
-            <div className="col-12 col-md-3">
+          <div className="row justify-content-center">
+            <div className="col-12 col-md-4 col-lg-3">
               <div className={'select'}>
                 <select
                   value={this.state.countrySelectedValue}
                   onChange={e => this.onSelectChange(e, mapItems, 'country')}
                 >
-                  {this.state.countrySelectedValue === 'all' && 
+                  {this.state.countrySelectedValue === 'all' &&
                     <option key="countrySelectedValue">
                       Select country
                     </option>}
 
-                  {countries && countries.map((item, i) => (
+                  {countries && this.orderByAlphabet(countries).map((item, i) => (
                     <option key={i} value={item}>{item}</option>
                   ))}
                 </select>
               </div>
             </div>
-            <div className="col-12 col-md-3">
-              <div className={'select'}>
-                <select
-                  onChange={e => this.onSelectChange(e, mapItems, 'city')}
-                  value={this.state.citySelectedValue}
-                >
-                  {this.state.citySelectedValue === 'all' && 
-                    <option key="citySelectedValue">
-                      Select city
-                    </option>}
+            { this.state.countrySelectedValue !== 'all' &&
+              <div className="col-12 col-md-4 col-lg-3">
+                <div className={'select'}>
+                  <select
+                    onChange={e => this.onSelectChange(e, mapItems, 'city')}
+                    value={this.state.citySelectedValue}
+                  >
+                    {this.state.citySelectedValue === 'all' &&
+                      <option key="citySelectedValue">
+                        Select city
+                      </option>}
 
-                  {cities && cities.map((item, i) => (
-                    <option key={i} value={item}>{item}</option>
-                  ))}
-                </select>
+                    {cities && cities.map((item, i) => (
+                      // item.children === this.state.countrySelectedValue
+                      <option key={i} value={item}>{item}</option>
+                    ))}
+                    {/* {cities && this.orderByAlphabet(cities).map((item, i) => (
+                      <option key={i} value={item}>{item}</option>
+                    ))} */}
+                  </select>
+                </div>
               </div>
-            </div>
-            <div className="col-12 col-md-3">
+            }
+
+            {/* {this.state.citySelectedValue !== 'all' && <div className="col-12 col-md-3">
               <div className={'select'}>
                 <select
                   onChange={e => this.onSelectChange(e, mapItems, 'service')}
                   value={this.state.serviceSelectedValue}
                 >
-                  {this.state.serviceSelectedValue === 'all' && 
+                  {this.state.serviceSelectedValue === 'all' &&
                     <option key="serviceSelectedValue">
                       Select service
                     </option>}
@@ -298,8 +318,9 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
                   ))}
                 </select>
               </div>
-            </div>
-            <div className="col-12 col-md-3">
+            </div> } */}
+
+            <div className="col-12 col-md-4 col-lg-3">
               <button className={'btn'} onClick={() => this.resetFilters()}>reset filters</button>
             </div>
           </div>
@@ -308,9 +329,14 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
     );
   }
 
+  orderByAlphabet(item: any) {
+    item.sort();
+    return item;
+  }
+
   render() {
     const { mapItems, type } = this.props;
-    
+
     // FOR TESTS
     // for (let i = 0; i < mapItems.length; i++) {
     //   mapItems[i].service = mapItems[i].association;
@@ -321,7 +347,7 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
         {this.renderControls(mapItems)}
 
         <section className={'map'}>
-          {this.state.showBox && 
+          {this.state.showBox &&
             <MapBox
               web={this.state.web}
               text={this.state.text}
@@ -335,16 +361,17 @@ class Map extends React.Component<MapProps & GeolocatedProps, MapState> {
               country={this.state.countrySelectedValue}
               name={this.state.name}
               position={this.state.position}
-              onClick={() => this.setState({ showBox: !this.state.showBox })} 
+              onClick={() => this.setState({ showBox: !this.state.showBox })}
             />
           }
-      
+
           <GoogleMapReact
             yesIWantToUseGoogleMapApiInternals={true}
             bootstrapURLKeys={{ key: GoogleMapsApiKey }}
             defaultCenter={{ lat: 50, lng: 14 }}
             center={this.state.mapCenter}
             defaultZoom={5}
+            zoom={this.state.mapZoom}
             options={{
               scrollwheel: false,
               styles: MapStyles
