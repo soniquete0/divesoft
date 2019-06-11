@@ -37,8 +37,9 @@ class Search extends React.Component<SearchProps, SearchState> {
         this.setState({
           searchFocus: false,
         });
+        console.log('unfocus search')
       },
-      1
+      10
     );
   }
 
@@ -62,7 +63,7 @@ class Search extends React.Component<SearchProps, SearchState> {
               placeholder={'search'}
               ref={this.searchInput}
               onFocus={() => this.focusSearch()}
-              onBlur={() => this.unFocusSearch()}
+              onBlur={() => setTimeout(() => this.unFocusSearch(), 300)}
               onChange={e => this.handleChange(e.target.value)}
               defaultValue={''}
             />
