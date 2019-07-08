@@ -20,10 +20,11 @@ var Media_1 = require("../../partials/Media");
 var NextArrow_1 = require("../../partials/NextArrow");
 var PrevArrow_1 = require("../../partials/PrevArrow");
 var getImageUrl_1 = require("../../helpers/getImageUrl");
+var isOneSlide = function (slidesArray) { return slidesArray.length === 1 ? true : false; };
 var SpecialCarousel = function (props) { return (React.createElement(List_1.default, { data: props.data.slides || [] }, function (_a) {
     var slides = _a.data;
     var arrayOfSlides = (slides && slides.map(function (slide, i) { return (React.createElement("div", { key: i },
-        React.createElement("div", { className: 'specialCarousel', style: { backgroundImage: slide.image && "url(" + getImageUrl_1.default(slide.image) + ")" } },
+        React.createElement("div", { className: "specialCarousel " + (isOneSlide(slides) ? 'oneSlide' : ''), style: { backgroundImage: slide.image && "url(" + getImageUrl_1.default(slide.image) + ")" } },
             React.createElement("div", { className: "specialCarousel__content" },
                 React.createElement("div", { className: "container" },
                     slide.title &&
@@ -32,7 +33,7 @@ var SpecialCarousel = function (props) { return (React.createElement(List_1.defa
                         React.createElement("div", { className: "specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6" },
                             slide.subTitle &&
                                 React.createElement("h3", { style: slide.isBackgroundBlack ? { color: 'white' } : {} },
-                                    React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
+                                    isOneSlide(slides) ? '' : React.createElement("span", { style: { color: '#e50000' } }, "0" + (i + 1) + ". "),
                                     slide.subTitle),
                             slide.description &&
                                 React.createElement("div", { className: "specialCarousel__content__info__description" }, slide.description && React.createElement(ReactMarkdown, { source: slide.description })),

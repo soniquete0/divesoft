@@ -32,20 +32,22 @@ export interface SpecialCarouselProps {
   };
 }
 
+const isOneSlide = slidesArray => slidesArray.length === 1 ? true : false;
+
 const SpecialCarousel = (props: SpecialCarouselProps) => (
   <List data={props.data.slides || []}>
     {({ data: slides }) => {
 
       const arrayOfSlides = (slides && slides.map((slide, i) => (
         <div key={i}>
-          <div 
-            className={'specialCarousel'}
+          <div
+            className={`specialCarousel ${isOneSlide(slides) ? 'oneSlide' : ''}`}
             style={{ backgroundImage: slide.image && `url(${getImageUrl(slide.image)})` }}
           >
             <div className={`specialCarousel__content`}>
               <div className="container">
-                {slide.title && 
-                  <h2 
+                {slide.title &&
+                  <h2
                     style={slide.isBackgroundBlack ? {color: 'white'} : {}}
                   >
                     {slide.title}
@@ -56,7 +58,8 @@ const SpecialCarousel = (props: SpecialCarouselProps) => (
                   <div className="specialCarousel__content__info col-12 col-md-8 col-lg-8 col-xl-6">
                     {slide.subTitle &&
                       <h3 style={slide.isBackgroundBlack ? {color: 'white'} : {}}>
-                        <span style={{ color: '#e50000' }}>{`0${i + 1}. `}</span>{slide.subTitle}
+                        {isOneSlide(slides) ? '' : <span style={{ color: '#e50000' }}>{`0${i + 1}. `}</span>}
+                        {slide.subTitle}
                       </h3>}
                     {slide.description &&
                       <div className="specialCarousel__content__info__description">
@@ -91,7 +94,7 @@ const SpecialCarousel = (props: SpecialCarouselProps) => (
           </div>
         </div>
       ))) || [];
-    
+
       var settings = {
         speed: 1000,
         dots: true,

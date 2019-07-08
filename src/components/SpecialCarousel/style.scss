@@ -2,7 +2,7 @@
   height: 730px;
   background-size: cover;
 
-  @include max-md { height: 950px; }
+  // @include max-md { height: 950px; }
 
   .center {
     width: 100%;
@@ -25,6 +25,10 @@
       padding-bottom: 0;
     }
 
+    h3 {
+      @include max-md { margin: 0 3rem; }
+    }
+
     &__info {
       padding: 6.5rem 0 0 0;
 
@@ -38,7 +42,7 @@
           order: 2;
         }
       }
-      
+
       @include max-sm {
         &:first-child {
           text-align: left;
@@ -54,6 +58,8 @@
         overflow: auto;
         text-overflow: ellipsis;
         margin-bottom: 2rem;
+
+        @include max-md { margin: 3rem; }
 
         &::-webkit-scrollbar {
           width: 3px;
@@ -123,6 +129,13 @@
           }
         }
       }
+    }
+  }
+
+  &.oneSlide {
+    height: auto;
+    .specialCarousel__content__info__description {
+      max-height: 1500px;
     }
   }
 }

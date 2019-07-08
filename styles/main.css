@@ -5514,9 +5514,6 @@ a {
 .specialCarousel {
   height: 730px;
   background-size: cover; }
-  @media (max-width: 768px) {
-    .specialCarousel {
-      height: 950px; } }
   .specialCarousel .center {
     width: 100%;
     padding: 0 2.5rem;
@@ -5532,6 +5529,9 @@ a {
     .specialCarousel__content h2 {
       text-align: center;
       padding-bottom: 0; }
+    @media (max-width: 768px) {
+      .specialCarousel__content h3 {
+        margin: 0 3rem; } }
     .specialCarousel__content__info {
       padding: 6.5rem 0 0 0; }
       @media (max-width: 992px) {
@@ -5553,6 +5553,9 @@ a {
         overflow: auto;
         text-overflow: ellipsis;
         margin-bottom: 2rem; }
+        @media (max-width: 768px) {
+          .specialCarousel__content__info__description {
+            margin: 3rem; } }
         .specialCarousel__content__info__description::-webkit-scrollbar {
           width: 3px;
           height: 8px;
@@ -5600,6 +5603,10 @@ a {
         @media (max-width: 540px) {
           .specialCarousel__content__downloads__item p {
             width: 45%; } }
+  .specialCarousel.oneSlide {
+    height: auto; }
+    .specialCarousel.oneSlide .specialCarousel__content__info__description {
+      max-height: 1500px; }
 
 .servicePointsMapWrapper {
   position: relative;
@@ -5735,7 +5742,6 @@ a {
     min-width: 130px;
     max-width: 130px;
     height: 130px;
-    width: 35%;
     float: left; }
   .productComponents__list .col-12,
   .productComponents__list .col-md-6,
@@ -5754,13 +5760,13 @@ a {
       .productComponents__list__item {
         margin-bottom: 0; } }
     .productComponents__list__item__content {
-      width: 55%;
+      width: calc(100% - 130px);
       float: left;
-      max-height: 140px;
       padding-left: 1.5rem;
       overflow: hidden; }
       .productComponents__list__item__content p {
         margin: 0;
+        padding-right: 2rem;
         font-weight: 400;
         color: #5c5c5c; }
       .productComponents__list__item__content a {
@@ -5772,6 +5778,7 @@ a {
     .productComponents__mobileItem h5 {
       padding: 2.5rem 0; }
     .productComponents__mobileItem p {
+      padding: 0 2rem;
       margin: 0;
       color: #6c6c6c; }
     .productComponents__mobileItem a {

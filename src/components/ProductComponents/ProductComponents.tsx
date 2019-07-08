@@ -30,6 +30,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
   return (
     <List data={components || []}>
         {({ data: slides }) => {
+          console.log('slajdy', slides);
           const arrayOfMobileSlides = (slides && slides.map((slide, i) => (
             <div key={i}>
               <div className={'productComponents__mobileItem'}>
@@ -40,7 +41,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
               </div>
             </div>
           ))) || [];
-        
+
           var settings = {
             speed: 1000,
             dots: false,
@@ -60,7 +61,7 @@ const ProductComponents = (props: ProductComponentsProps) => {
                 <Default>
                   <div className={'productComponents__list row'}>
                     {slides && slides.map((item, i) => (
-                      <div key={i} className="col-12 col-md-6 col-lg-4">
+                      <div key={i} className="col-12 col-md-12 col-lg-6">
                         <div className={'productComponents__list__item'}>
                           <Media type={'image'} data={item.image} width="130" height="130"/>
                           <div className={'productComponents__list__item__content'}>
