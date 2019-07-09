@@ -22,12 +22,16 @@
     &--video {
       padding-top: 0 !important;
       height: 494px !important;
-      
-      @include max-xl { 
+
+      @include max-xl {
         padding-top: 100% !important;
         height: 100% !important;
         margin-bottom: 15px;
       }
+    }
+
+    > .inner {
+      object-fit: contain;
     }
   }
 
