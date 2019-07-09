@@ -46,10 +46,10 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
       return (
         <div
           key={i}
-          className={`galleryAndVideo__content__image col-6`}
+          className={`galleryAndVideo__content__image col-3`}
           onClick={(e) => this.openLightbox(i, e)}
         >
-          <Media data={item.image} type={'image'} />
+          <Media data={item.image} type={'image'} width={'275'} height={'240'}/>
         </div>
       );
     });
@@ -112,7 +112,6 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
             <div className={'galleryAndVideo'}>
               <div className="container">
                 {title && <h2>{title}</h2>}
-
                 <Lightbox
                   images={this.state.imageUrls}
                   isOpen={this.state.lightboxIsOpen}
@@ -123,10 +122,10 @@ class GalleryAndVideo extends React.Component<GalleryAndVideoProps, GalleryAndVi
                 />
 
                 <div className={'row galleryAndVideo__content'}>
-                  <div className="col">
+                  <div className="col-md-12">
                     {video && <Media type={'embeddedVideo'} data={video} />}
                   </div>
-                  <div className="col">
+                  <div className="col-md-12">
                     {this.renderGallery(items)}
                   </div>
                 </div>

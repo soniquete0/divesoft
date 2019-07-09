@@ -39,8 +39,8 @@ var GalleryAndVideo = /** @class */ (function (_super) {
                 return;
             }
             var gallery = data.map(function (item, i) {
-                return (React.createElement("div", { key: i, className: "galleryAndVideo__content__image col-6", onClick: function (e) { return _this.openLightbox(i, e); } },
-                    React.createElement(Media_1.default, { data: item.image, type: 'image' })));
+                return (React.createElement("div", { key: i, className: "galleryAndVideo__content__image col-3", onClick: function (e) { return _this.openLightbox(i, e); } },
+                    React.createElement(Media_1.default, { data: item.image, type: 'image', width: '275', height: '240' })));
             });
             return React.createElement("div", { className: "row" }, gallery);
         };
@@ -100,8 +100,8 @@ var GalleryAndVideo = /** @class */ (function (_super) {
                     title && React.createElement("h2", null, title),
                     React.createElement(react_images_1.default, { images: _this.state.imageUrls, isOpen: _this.state.lightboxIsOpen, currentImage: _this.state.currentImage, onClickPrev: _this.gotoPrevious, onClickNext: _this.gotoNext, onClose: _this.closeLightbox }),
                     React.createElement("div", { className: 'row galleryAndVideo__content' },
-                        React.createElement("div", { className: "col" }, video && React.createElement(Media_1.default, { type: 'embeddedVideo', data: video })),
-                        React.createElement("div", { className: "col" }, _this.renderGallery(items))),
+                        React.createElement("div", { className: "col-md-12" }, video && React.createElement(Media_1.default, { type: 'embeddedVideo', data: video })),
+                        React.createElement("div", { className: "col-md-12" }, _this.renderGallery(items))),
                     React.createElement(Mobile, null, _this.state.numberOfPage < lastPage &&
                         React.createElement("button", { className: 'btn', onClick: function () { return _this.setState({
                                 numberOfPage: _this.state.numberOfPage + 1
