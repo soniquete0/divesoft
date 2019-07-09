@@ -100,6 +100,7 @@ const SpecialCarousel = (props: SpecialCarouselProps) => (
         dots: true,
         arrows: true,
         autoplay: true,
+        autoplaySpeed: 10000,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
