@@ -23,6 +23,10 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps , Produ
     window.addEventListener('scroll', this.handleScroll);
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   handleScroll = () => {
     const panel = document.getElementById('configuration-rect');
     const panelRect = panel.getBoundingClientRect();
