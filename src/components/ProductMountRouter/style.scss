@@ -1,0 +1,148 @@
+// Configuration types styles
+.configuration-types {
+  margin-bottom: 40px;
+
+  .configuration-box {
+    margin-bottom: 40px;
+
+    .headline {
+      font-size: 26px;
+    }
+
+    .text {
+      font-size: 16px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .image-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      min-height: 360px;
+      background-color: #f4f4f4;
+      text-align: center;
+
+      > img {
+        object-position: absolute;
+        object-fit: contain;
+      }
+
+      .btn {
+        position: absolute;
+        width: 108px;
+        bottom: 10px;
+        left: calc(50% - 54px);
+      }
+    }
+  }
+
+  &-panel {
+    position: fixed;
+    left: 0;
+    bottom: -900px;
+    width: 100%;
+    background-color: #F4F4F4;
+    border-top: 1px solid darken(#f4f4f4, 4%);
+    padding: 15px;
+    z-index: 999;
+    transition: all .3s ease;
+
+    .options-toggler {
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      left: calc(50% - 60px);
+      width: 120px;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #f72c2c;
+      color: #ffffff;
+
+      &:active, &:focus {
+        background-color: $red;
+      }
+
+      &-close {
+        display: none;
+      }
+
+      .dropdown__arrow {
+        display: block;
+        border-color: #fff;
+        transform: rotate(225deg);
+        margin-bottom: -6px;
+      }
+    }
+
+    &.active {
+      bottom: 0;
+      .options-toggler {
+        display: none;
+        &-close {
+          display: flex;
+          position: absolute;
+          bottom: 100%;
+        }
+      }
+    }
+
+    .config-type-link {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.3em;
+      background-color: #fff;
+      text-transform: uppercase;
+      transition: background-color .3s ease;
+
+      &:hover {
+        background-color: #f72c2c;
+        color: #fff;
+      }
+      > span.headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        width: 100%;
+      }
+      > img {
+        margin-right: 10px;
+        justify-self: center;
+        height: auto;
+      }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    &-panel {
+      top: auto;
+      bottom: 0;
+
+      .options-toggler {
+        display: none;
+      }
+
+      .config-type-link {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    &-panel {
+      .config-type-link {
+        font-size: 19px;
+      }
+    }
+  }
+}

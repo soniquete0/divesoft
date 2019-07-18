@@ -5790,6 +5790,111 @@ a {
       float: none;
       margin: 0 auto; }
 
+.configuration-types {
+  margin-bottom: 40px; }
+  .configuration-types .configuration-box {
+    margin-bottom: 40px; }
+    .configuration-types .configuration-box .headline {
+      font-size: 26px; }
+    .configuration-types .configuration-box .text {
+      font-size: 16px; }
+    .configuration-types .configuration-box .text-center {
+      text-align: center; }
+    .configuration-types .configuration-box .image-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      min-height: 360px;
+      background-color: #f4f4f4;
+      text-align: center; }
+      .configuration-types .configuration-box .image-wrap > img {
+        -o-object-position: absolute;
+           object-position: absolute;
+        -o-object-fit: contain;
+           object-fit: contain; }
+      .configuration-types .configuration-box .image-wrap .btn {
+        position: absolute;
+        width: 108px;
+        bottom: 10px;
+        left: calc(50% - 54px); }
+  .configuration-types-panel {
+    position: fixed;
+    left: 0;
+    bottom: -900px;
+    width: 100%;
+    background-color: #F4F4F4;
+    border-top: 1px solid #eaeaea;
+    padding: 15px;
+    z-index: 999;
+    transition: all .3s ease; }
+    .configuration-types-panel .options-toggler {
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      left: calc(50% - 60px);
+      width: 120px;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #f72c2c;
+      color: #ffffff; }
+      .configuration-types-panel .options-toggler:active, .configuration-types-panel .options-toggler:focus {
+        background-color: #e50000; }
+      .configuration-types-panel .options-toggler-close {
+        display: none; }
+      .configuration-types-panel .options-toggler .dropdown__arrow {
+        display: block;
+        border-color: #fff;
+        -webkit-transform: rotate(225deg);
+                transform: rotate(225deg);
+        margin-bottom: -6px; }
+    .configuration-types-panel.active {
+      bottom: 0; }
+      .configuration-types-panel.active .options-toggler {
+        display: none; }
+        .configuration-types-panel.active .options-toggler-close {
+          display: flex;
+          position: absolute;
+          bottom: 100%; }
+    .configuration-types-panel .config-type-link {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.3em;
+      background-color: #fff;
+      text-transform: uppercase;
+      transition: background-color .3s ease; }
+      .configuration-types-panel .config-type-link:hover {
+        background-color: #f72c2c;
+        color: #fff; }
+      .configuration-types-panel .config-type-link > span.headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        width: 100%; }
+      .configuration-types-panel .config-type-link > img {
+        margin-right: 10px;
+        -ms-grid-column-align: center;
+            justify-self: center;
+        height: auto; }
+  @media screen and (min-width: 768px) {
+    .configuration-types-panel {
+      top: auto;
+      bottom: 0; }
+      .configuration-types-panel .options-toggler {
+        display: none; }
+      .configuration-types-panel .config-type-link {
+        margin-bottom: 0; } }
+  @media screen and (min-width: 992px) {
+    .configuration-types-panel .config-type-link {
+      font-size: 19px; } }
+
 .btn {
   border: none;
   outline: none;

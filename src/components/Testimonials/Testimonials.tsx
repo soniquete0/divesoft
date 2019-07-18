@@ -4,6 +4,8 @@ import Slider from 'react-slick';
 import List from '../List';
 import Media from '../../partials/Media';
 
+import ProductMountRouter from '../ProductMountRouter/ProductMountrouter';
+
 interface Testimonial {
   img: LooseObject;
   title: string;
@@ -23,9 +25,10 @@ const Testimonials = (props: TestimonialsProps) => {
   const { title, description, testimonials } = props.data;
 
   return (
+    <div>
     <List data={testimonials || []}>
       {({ data: slides }) => {
-      
+
         const arrayOfSlides = (slides && slides.map((slide, i) => (
           <div key={i}>
             <div className={'testimonials__list__item'}>
@@ -36,7 +39,7 @@ const Testimonials = (props: TestimonialsProps) => {
             </div>
           </div>
         ))) || [];
-      
+
         var settings = {
           speed: 1000,
           dots: false,
@@ -63,7 +66,7 @@ const Testimonials = (props: TestimonialsProps) => {
             <div className="container">
               {title && <h2>{title}</h2>}
               {description && <p className={'testimonials__description textDescription'}>{description}</p>}
-           
+
               <div className={'testimonials__list'}>
                 <Slider {...settings}>
                   {arrayOfSlides}
@@ -74,6 +77,9 @@ const Testimonials = (props: TestimonialsProps) => {
         );
       }}
     </List>
+
+    <ProductMountRouter headline="blabla" />
+    </div>
   );
 };
 
