@@ -43,6 +43,7 @@ var ComponentsService = /** @class */ (function () {
             ABOUTLEFTPICTURE: 'AboutLeftPicture',
             ABOUTRIGHTPICTURE: 'AboutRightPicture',
             PRODUCTCOMPONENTS: 'ProductComponents',
+            PRODUCTMOUNTROUTER: 'ProductMountRouter',
         };
     }
     /***/
@@ -104,6 +105,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.AboutRightPicture;
             case this.Types.PRODUCTCOMPONENTS:
                 return components_1.ProductComponents;
+            case this.Types.PRODUCTMOUNTROUTER:
+                return components_1.ProductMountRouter;
             case this.Types.CONTACTSMAP:
                 return components_1.ContactsMap;
             default:

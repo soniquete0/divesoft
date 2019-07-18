@@ -33,6 +33,9 @@ var ProductMountRouter = /** @class */ (function (_super) {
     ProductMountRouter.prototype.componentDidMount = function () {
         window.addEventListener('scroll', this.handleScroll);
     };
+    ProductMountRouter.prototype.componentWillUnmount = function () {
+        window.removeEventListener('scroll', this.handleScroll);
+    };
     ProductMountRouter.prototype.render = function () {
         var _this = this;
         return (React.createElement("div", null,

@@ -1,16 +1,16 @@
 import * as React from 'react';
 
-export interface ProductMountRouterProps {
-  headline: String;
-}
+// export interface ProductMountRouterProps {
+//   headline: String;
+// }
 
 export interface ProductMountRouterState {
   panelActive: boolean;
   panelHidden: boolean;
 }
 
-class ProductMountRouter extends React.Component<ProductMountRouterProps , ProductMountRouterState> {
-  constructor(props: ProductMountRouterProps) {
+class ProductMountRouter extends React.Component<any, ProductMountRouterState> {
+  constructor(props: any) {
     super(props);
 
     this.state = {

@@ -52,4 +52,6 @@ var aboutrightpicture = require("./aboutrightpicture.json");
 exports.aboutrightpicture = aboutrightpicture;
 var productcomponents = require("./productcomponents.json");
 exports.productcomponents = productcomponents;
+var productmountrouter = require("./productmountrouter.json");
+exports.productmountrouter = productmountrouter;
 //# sourceMappingURL=index.js.map

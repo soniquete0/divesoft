@@ -25,7 +25,6 @@ const Testimonials = (props: TestimonialsProps) => {
   const { title, description, testimonials } = props.data;
 
   return (
-    <div>
     <List data={testimonials || []}>
       {({ data: slides }) => {
 
@@ -77,9 +76,6 @@ const Testimonials = (props: TestimonialsProps) => {
         );
       }}
     </List>
-
-    <ProductMountRouter headline="blabla" />
-    </div>
   );
 };
 
