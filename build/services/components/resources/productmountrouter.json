@@ -1,4 +1,42 @@
 {
     "name": "ProductMountRouter",
-    "data": {}
+    "data": {
+        "sideHeadline": "Sidemount Configuration",
+        "sideText": "Sidemount lorem lipsum",
+        "frontHeadline": "Frontmount Configuration",
+        "frontText": "Frontmount lorem lipsum",
+        "backHeadline": "Backmount Configuration",
+        "backText": "backmount lorem ipsum, pipsum"
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "sideHeadline": {
+                    "type": "text",
+                    "title": "Sidemount headline"
+                },
+                "sideText": {
+                    "type": "text",
+                    "title": "Sidemount text"
+                },
+                "frontHeadline": {
+                    "type": "text",
+                    "title": "Frontmount headline"
+                },
+                "frontText": {
+                    "type": "text",
+                    "title": "Frontmount text"
+                },
+                "backHeadline": {
+                    "type": "text",
+                    "title": "Backmount headline"
+                },
+                "backText": {
+                    "type": "text",
+                    "title": "Backmount text"
+                }
+            }
+        }
+    }
 }

@@ -1,16 +1,23 @@
 import * as React from 'react';
 
-// export interface ProductMountRouterProps {
-//   headline: String;
-// }
+export interface ProductMountRouterProps {
+  data: {
+    sideHeadline: String;
+    sideText: String;
+    frontHeadline: String;
+    frontText: String;
+    backHeadline: String;
+    backText: String;
+  }
+}
 
 export interface ProductMountRouterState {
   panelActive: boolean;
   panelHidden: boolean;
 }
 
-class ProductMountRouter extends React.Component<any, ProductMountRouterState> {
-  constructor(props: any) {
+class ProductMountRouter extends React.Component<ProductMountRouterProps, ProductMountRouterState> {
+  constructor(props: ProductMountRouterProps) {
     super(props);
 
     this.state = {
@@ -36,31 +43,34 @@ class ProductMountRouter extends React.Component<any, ProductMountRouterState> {
   }
 
   public render() {
+    const { sideHeadline, sideText, frontHeadline, frontText, backHeadline, backText } = this.props.data;
+
     return (
       <div>
+        {console.log({...this.props.data})}
         {/* START: CONFIGURATION COMPONENT */}
         {/* Start: Mount Info boxes */}
         <div className="container configuration-types" id="configuration-rect">
           <div className="row">
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">SIDEMOUNT<br/>CONFIGURATION</h3>
-              <p className="text text-center">Backplates, Consumables, Tanks, Blackplates, Consumables</p>
+              <h3 className="headline text-center">{sideHeadline && sideHeadline}</h3>
+              <p className="text text-center">{sideText && sideText}</p>
               <div className="image-wrap">
                 <img src="https://fakeimg.pl/380x380/f0f0f0/" />
                 <button className="btn btn-primary">View</button>
               </div>
             </div>
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">FRONTMOUNT<br/>CONFIGURATION</h3>
-              <p className="text text-center">Backplates, Consumables, Tanks, Blackplates, Consumables</p>
+              <h3 className="headline text-center">{frontHeadline && frontHeadline}</h3>
+              <p className="text text-center">{frontText && frontText}</p>
               <div className="image-wrap">
                 <img src="https://fakeimg.pl/380x380/f0f0f0/" />
                 <button className="btn btn-primary">View</button>
               </div>
             </div>
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">BACKMOUNT<br/>CONFIGURATION</h3>
-              <p className="text text-center">Backplates, Consumables, Tanks, Blackplates, Consumables</p>
+              <h3 className="headline text-center">{backHeadline && backHeadline}</h3>
+              <p className="text text-center">{backText && backText}</p>
               <div className="image-wrap">
                 <img src="https://fakeimg.pl/380x380/f0f0f0/" />
                 <button className="btn btn-primary">View</button>
@@ -71,36 +81,36 @@ class ProductMountRouter extends React.Component<any, ProductMountRouterState> {
         {/* End: Mount Info boxes */}
 
         {/* Start: Mount Info panel */}
-        { !this.state.panelHidden ? <div className={`configuration-types-panel ${this.state.panelActive ? 'active' : ''}`}>
-          <span className="options-toggler" onClick={() => this.setState({ panelActive: true})}>
+        <div className={`configuration-types-panel ${this.state.panelActive ? 'active' : ''} ${this.state.panelHidden ? 'animate-slidedown' : ''}`}>
+        { !this.state.panelHidden ? <><span className="options-toggler" onClick={() => this.setState({ panelActive: true})}>
             OPTIONS <span className="dropdown__arrow" />
           </span>
           <span className="options-toggler options-toggler-close" onClick={() => this.setState({ panelActive: false})}>
             CLOSE
-          </span>
+          </span></> : '' }
           <div className="container">
             <div className="row">
               <div className="col-md-4">
                 <a href="#" className="config-type-link">
                   <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">Sidemount Configuration</span>
+                  <span className="headline">{sideHeadline && sideHeadline}</span>
                 </a>
               </div>
               <div className="col-md-4">
                 <a href="#" className="config-type-link">
                   <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">Front Mounted Configuration</span>
+                  <span className="headline">{frontHeadline && frontHeadline}</span>
                 </a>
               </div>
               <div className="col-md-4">
                 <a href="#" className="config-type-link">
                   <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">Sidemount Configuration</span>
+                  <span className="headline">{backHeadline && backHeadline}</span>
                 </a>
               </div>
             </div>
           </div>
-        </div> : '' }
+        </div>
         {/* End: Mount Info panel */}
         {/* // END: CONFIGURATION COMPONENT */}
       </div>
