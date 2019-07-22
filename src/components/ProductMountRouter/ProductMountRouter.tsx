@@ -1,13 +1,25 @@
 import * as React from 'react';
+import Button from '../../partials/Button';
+import Link from '../../partials/Link';
+
+import getImageUrl from '../../helpers/getImageUrl';
 
 export interface ProductMountRouterProps {
   data: {
-    sideHeadline: String;
-    sideText: String;
-    frontHeadline: String;
-    frontText: String;
-    backHeadline: String;
-    backText: String;
+    toggleOpen: String;
+    toggleClose: String;
+    leftHeadline: String;
+    leftText: String;
+    leftUrl?: LooseObject;
+    leftImg?: LooseObject;
+    middleHeadline: String;
+    middleText: String;
+    middleUrl?: LooseObject;
+    middleImg?: LooseObject;
+    rightHeadline: String;
+    rightText: String;
+    rightUrl?: LooseObject;
+    rightImg?: LooseObject;
   }
 }
 
@@ -43,7 +55,20 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
   }
 
   public render() {
-    const { sideHeadline, sideText, frontHeadline, frontText, backHeadline, backText } = this.props.data;
+    const { toggleOpen,
+            toggleClose,
+            leftHeadline,
+            leftText,
+            leftUrl,
+            leftImg,
+            middleHeadline,
+            middleText,
+            middleUrl,
+            middleImg,
+            rightHeadline,
+            rightText,
+            rightUrl,
+            rightImg } = this.props.data;
 
     return (
       <div>
@@ -53,27 +78,27 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
         <div className="container configuration-types" id="configuration-rect">
           <div className="row">
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">{sideHeadline && sideHeadline}</h3>
-              <p className="text text-center">{sideText && sideText}</p>
+              <h3 className="headline text-center">{leftHeadline && leftHeadline}</h3>
+              <p className="text text-center">{leftText && leftText}</p>
               <div className="image-wrap">
-                <img src="https://fakeimg.pl/380x380/f0f0f0/" />
-                <button className="btn btn-primary">View</button>
+                {leftImg && <img src={getImageUrl(leftImg)}/>}
+                {leftUrl && <Button url={leftUrl} classes="btn-primary">View</Button>}
               </div>
             </div>
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">{frontHeadline && frontHeadline}</h3>
-              <p className="text text-center">{frontText && frontText}</p>
+              <h3 className="headline text-center">{middleHeadline && middleHeadline}</h3>
+              <p className="text text-center">{middleText && middleText}</p>
               <div className="image-wrap">
-                <img src="https://fakeimg.pl/380x380/f0f0f0/" />
-                <button className="btn btn-primary">View</button>
+              {middleImg && <img src={getImageUrl(middleImg)}/>}
+                {middleUrl && <Button url={middleUrl} classes="btn-primary">View</Button>}
               </div>
             </div>
             <div className="col-md-4 configuration-box">
-              <h3 className="headline text-center">{backHeadline && backHeadline}</h3>
-              <p className="text text-center">{backText && backText}</p>
+              <h3 className="headline text-center">{rightHeadline && rightHeadline}</h3>
+              <p className="text text-center">{rightText && rightText}</p>
               <div className="image-wrap">
-                <img src="https://fakeimg.pl/380x380/f0f0f0/" />
-                <button className="btn btn-primary">View</button>
+                {rightImg && <img src={getImageUrl(rightImg)}/>}
+                {rightUrl && <Button url={rightUrl} classes="btn-primary">View</Button>}
               </div>
             </div>
           </div>
@@ -83,30 +108,30 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
         {/* Start: Mount Info panel */}
         <div className={`configuration-types-panel ${this.state.panelActive ? 'active' : ''} ${this.state.panelHidden ? 'animate-slidedown' : ''}`}>
         { !this.state.panelHidden ? <><span className="options-toggler" onClick={() => this.setState({ panelActive: true})}>
-            OPTIONS <span className="dropdown__arrow" />
+            {toggleOpen && toggleOpen} <span className="dropdown__arrow" />
           </span>
           <span className="options-toggler options-toggler-close" onClick={() => this.setState({ panelActive: false})}>
-            CLOSE
+          {toggleClose && toggleClose}
           </span></> : '' }
           <div className="container">
             <div className="row">
               <div className="col-md-4">
-                <a href="#" className="config-type-link">
-                  <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">{sideHeadline && sideHeadline}</span>
-                </a>
+                {leftUrl && <Link {...leftUrl} className="config-type-link">
+                  {leftImg && <img src={getImageUrl(leftImg)}/>}
+                  <span className="headline">{leftHeadline && leftHeadline}</span>
+                </Link>}
               </div>
               <div className="col-md-4">
-                <a href="#" className="config-type-link">
-                  <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">{frontHeadline && frontHeadline}</span>
-                </a>
+                {middleUrl && <Link {...middleUrl} className="config-type-link">
+                  {middleImg && <img src={getImageUrl(middleImg)}/>}
+                  <span className="headline">{middleHeadline && middleHeadline}</span>
+                </Link>}
               </div>
               <div className="col-md-4">
-                <a href="#" className="config-type-link">
-                  <img src="https://fakeimg.pl/55x62/f0f0f0/" />
-                  <span className="headline">{backHeadline && backHeadline}</span>
-                </a>
+                {rightUrl && <Link {...rightUrl} className="config-type-link">
+                  {rightImg && <img src={getImageUrl(rightImg)} className="img-under"/>}
+                  <span className="headline">{rightHeadline && rightHeadline}</span>
+                </Link>}
               </div>
             </div>
           </div>

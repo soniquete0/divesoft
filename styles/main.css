@@ -5804,7 +5804,8 @@ a {
       font-size: 16px;
       min-height: 4em;
       margin-bottom: 0;
-      padding-bottom: 1em; }
+      padding-bottom: 1em;
+      color: #6C6C6C; }
     .configuration-types .configuration-box .text-center {
       text-align: center; }
     .configuration-types .configuration-box .image-wrap {
@@ -5817,7 +5818,9 @@ a {
         -o-object-position: top;
            object-position: top;
         -o-object-fit: contain;
-           object-fit: contain; }
+           object-fit: contain;
+        max-height: 360px;
+        max-width: 360px; }
       .configuration-types .configuration-box .image-wrap .btn {
         position: absolute;
         width: 108px;
@@ -5902,7 +5905,8 @@ a {
         margin-right: 10px;
         -ms-grid-column-align: center;
             justify-self: center;
-        height: auto; }
+        max-width: 55px;
+        height: 62px; }
   @media screen and (min-width: 768px) {
     .configuration-types-panel {
       top: auto;

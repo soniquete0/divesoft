@@ -1,40 +1,77 @@
 {
   "name": "ProductMountRouter",
   "data": {
-    "sideHeadline": "Sidemount Configuration",
-    "sideText": "Sidemount lorem lipsum",
-    "frontHeadline": "Frontmount Configuration",
-    "frontText": "Frontmount lorem lipsum",
-    "backHeadline": "Backmount Configuration",
-    "backText": "backmount lorem ipsum, pipsum"
+    "toggleOpen": "Options",
+    "toggleClose": "Close",
+    "leftHeadline": "leftmount Configuration",
+    "leftText": "leftmount lorem lipsum",
+    "leftUrl": "",
+    "middleHeadline": "middlemount Configuration",
+    "middleText": "middlemount lorem lipsum",
+    "middleUrl": "",
+    "rightHeadline": "rightmount Configuration",
+    "rightText": "rightmount lorem ipsum, pipsum",
+    "rightUrl": ""
   },
   "form": {
     "schema": {
       "type": "object",
       "properties": {
-        "sideHeadline": {
+        "toggleOpen": {
           "type": "text",
-          "title": "Sidemount headline"
+          "title": "Mobile Toggler - Open"
         },
-        "sideText": {
+        "toggleClose": {
           "type": "text",
-          "title": "Sidemount text"
+          "title": "Mobile Toggler - Close"
         },
-        "frontHeadline": {
+        "leftHeadline": {
           "type": "text",
-          "title": "Frontmount headline"
+          "title": "left headline"
         },
-        "frontText": {
+        "leftText": {
           "type": "text",
-          "title": "Frontmount text"
+          "title": "left text"
         },
-        "backHeadline": {
-          "type": "text",
-          "title": "Backmount headline"
+        "leftUrl": {
+          "type": "urlAutocomplete",
+          "title": "Left block URL"
         },
-        "backText": {
+        "leftImg": {
+          "type": "image",
+          "title": "Left block background image"
+        },
+        "middleHeadline": {
           "type": "text",
-          "title": "Backmount text"
+          "title": "middle headline"
+        },
+        "middleText": {
+          "type": "text",
+          "title": "middle text"
+        },
+        "middleUrl": {
+          "type": "urlAutocomplete",
+          "title": "Middle block URL"
+        },
+        "middleImg": {
+          "type": "image",
+          "title": "Middle block background image"
+        },
+        "rightHeadline": {
+          "type": "text",
+          "title": "right headline"
+        },
+        "rightText": {
+          "type": "text",
+          "title": "right text"
+        },
+        "rightUrl": {
+          "type": "urlAutocomplete",
+          "title": "Right block URL"
+        },
+        "rightImg": {
+          "type": "image",
+          "title": "Right block background image"
         }
       }
     }

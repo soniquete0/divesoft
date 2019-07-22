@@ -18,6 +18,7 @@
       min-height: 4em;
       margin-bottom: 0;
       padding-bottom: 1em;
+      color: #6C6C6C;
     }
 
     .text-center {
@@ -34,6 +35,8 @@
       > img {
         object-position: top;
         object-fit: contain;
+        max-height: 360px;
+        max-width: 360px;
       }
 
       .btn {
@@ -149,7 +152,8 @@
       > img {
         margin-right: 10px;
         justify-self: center;
-        height: auto;
+        max-width: 55px;
+        height: 62px;
       }
     }
   }
