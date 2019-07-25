@@ -11,7 +11,12 @@
     "middleUrl": "",
     "rightHeadline": "rightmount Configuration",
     "rightText": "rightmount lorem ipsum, pipsum",
-    "rightUrl": ""
+    "rightUrl": "",
+    "extraHeadline": "extramount Configuration",
+    "extraText": "extramount lorem ipsum, pipsum",
+    "extraUrl": "",
+    "desktopBackText": "go back",
+    "desktopBackUrl": ""
   },
   "form": {
     "schema": {
@@ -27,11 +32,11 @@
         },
         "leftHeadline": {
           "type": "text",
-          "title": "left headline"
+          "title": "Left headline"
         },
         "leftText": {
           "type": "text",
-          "title": "left text"
+          "title": "Left text"
         },
         "leftUrl": {
           "type": "urlAutocomplete",
@@ -43,11 +48,11 @@
         },
         "middleHeadline": {
           "type": "text",
-          "title": "middle headline"
+          "title": "Middle headline"
         },
         "middleText": {
           "type": "text",
-          "title": "middle text"
+          "title": "Middle text"
         },
         "middleUrl": {
           "type": "urlAutocomplete",
@@ -59,11 +64,11 @@
         },
         "rightHeadline": {
           "type": "text",
-          "title": "right headline"
+          "title": "Right headline"
         },
         "rightText": {
           "type": "text",
-          "title": "right text"
+          "title": "Right text"
         },
         "rightUrl": {
           "type": "urlAutocomplete",
@@ -72,6 +77,30 @@
         "rightImg": {
           "type": "image",
           "title": "Right block background image"
+        },
+        "extraHeadline": {
+          "type": "text",
+          "title": "Extra headline"
+        },
+        "extraText": {
+          "type": "text",
+          "title": "Extra text"
+        },
+        "extraUrl": {
+          "type": "urlAutocomplete",
+          "title": "Extra block URL"
+        },
+        "extraImg": {
+          "type": "image",
+          "title": "Extra block background image"
+        },
+        "desktopBackText": {
+          "type": "text",
+          "title": "Desktop button"
+        },
+        "desktopBackUrl": {
+          "type": "urlAutocomplete",
+          "title": "Desktop button link"
         }
       }
     }

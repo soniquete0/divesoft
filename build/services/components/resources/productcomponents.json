@@ -3,6 +3,7 @@
     "data": {
         "title": "Fault-tolerant rebreather",
         "description": "The Liberty rebreather is designed to be fault-tolerant. No single malfunction in the electronic system could cause a breakdown of the whole apparatus. And even multiple malfunctions often do not lead to a complete breakdown.",
+        "columns": "col-lg-4",
         "components": [
             {
                 "title": "4 oxygen sensors",
@@ -83,6 +84,14 @@
                 "description": {
                     "type": "text",
                     "title": "Description"
+                },
+                "columns": {
+                    "type": "enum",
+                    "title": "Columns",
+                    "options": {
+                        "col-lg-6": "two",
+                        "col-lg-4": "three"
+                    }
                 },
                 "components": {
                     "type": "array",

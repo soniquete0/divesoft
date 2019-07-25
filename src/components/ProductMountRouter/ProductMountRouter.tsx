@@ -20,6 +20,10 @@ export interface ProductMountRouterProps {
     rightText: String;
     rightUrl?: LooseObject;
     rightImg?: LooseObject;
+    extraHeadline: String;
+    extraText: String;
+    extraUrl?: LooseObject;
+    extraImg?: LooseObject;
   }
 }
 
@@ -68,7 +72,11 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
             rightHeadline,
             rightText,
             rightUrl,
-            rightImg } = this.props.data;
+            rightImg,
+            extraHeadline,
+            extraText,
+            extraUrl,
+            extraImg } = this.props.data;
 
     return (
       <div>
@@ -76,31 +84,39 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
         {/* START: CONFIGURATION COMPONENT */}
         {/* Start: Mount Info boxes */}
         <div className="container configuration-types" id="configuration-rect">
-          <div className="row">
-            <div className="col-md-4 configuration-box">
+          <div className="configuration-box-wrapper">
+            {leftImg && <div className="configuration-box">
               <h3 className="headline text-center">{leftHeadline && leftHeadline}</h3>
               <p className="text text-center">{leftText && leftText}</p>
               <div className="image-wrap">
                 {leftImg && <img src={getImageUrl(leftImg)}/>}
                 {leftUrl && <Button url={leftUrl} classes="btn-primary">View</Button>}
               </div>
-            </div>
-            <div className="col-md-4 configuration-box">
+            </div>}
+            {middleHeadline && <div className="configuration-box">
               <h3 className="headline text-center">{middleHeadline && middleHeadline}</h3>
               <p className="text text-center">{middleText && middleText}</p>
               <div className="image-wrap">
               {middleImg && <img src={getImageUrl(middleImg)}/>}
                 {middleUrl && <Button url={middleUrl} classes="btn-primary">View</Button>}
               </div>
-            </div>
-            <div className="col-md-4 configuration-box">
+            </div>}
+            {rightHeadline && <div className="configuration-box">
               <h3 className="headline text-center">{rightHeadline && rightHeadline}</h3>
               <p className="text text-center">{rightText && rightText}</p>
               <div className="image-wrap">
                 {rightImg && <img src={getImageUrl(rightImg)}/>}
                 {rightUrl && <Button url={rightUrl} classes="btn-primary">View</Button>}
               </div>
-            </div>
+            </div>}
+            {extraHeadline && <div className="configuration-box">
+              <h3 className="headline text-center">{extraHeadline && extraHeadline}</h3>
+              <p className="text text-center">{extraText && extraText}</p>
+              <div className="image-wrap">
+                {extraImg && <img src={getImageUrl(extraImg)}/>}
+                {extraUrl && <Button url={extraUrl} classes="btn-primary">View</Button>}
+              </div>
+            </div>}
           </div>
         </div>
         {/* End: Mount Info boxes */}
@@ -114,25 +130,23 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
           {toggleClose && toggleClose}
           </span></> : '' }
           <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                {leftUrl && <Link {...leftUrl} className="config-type-link">
-                  {leftImg && <img src={getImageUrl(leftImg)}/>}
-                  <span className="headline">{leftHeadline && leftHeadline}</span>
-                </Link>}
-              </div>
-              <div className="col-md-4">
-                {middleUrl && <Link {...middleUrl} className="config-type-link">
-                  {middleImg && <img src={getImageUrl(middleImg)}/>}
-                  <span className="headline">{middleHeadline && middleHeadline}</span>
-                </Link>}
-              </div>
-              <div className="col-md-4">
-                {rightUrl && <Link {...rightUrl} className="config-type-link">
-                  {rightImg && <img src={getImageUrl(rightImg)} className="img-under"/>}
-                  <span className="headline">{rightHeadline && rightHeadline}</span>
-                </Link>}
-              </div>
+            <div className="links-wrapper">
+              {leftHeadline && <Link {...leftUrl} className="config-type-link">
+                {leftImg && <img src={getImageUrl(leftImg)}/>}
+                <span className="headline">{leftHeadline && leftHeadline}</span>
+              </Link>}
+              {middleHeadline && <Link {...middleUrl} className="config-type-link">
+                {middleImg && <img src={getImageUrl(middleImg)}/>}
+                <span className="headline">{middleHeadline && middleHeadline}</span>
+              </Link>}
+              {rightHeadline && <Link {...rightUrl} className="config-type-link">
+                {rightImg && <img src={getImageUrl(rightImg)} className="img-under"/>}
+                <span className="headline">{rightHeadline && rightHeadline}</span>
+              </Link>}
+              {extraHeadline && <Link {...extraUrl} className="config-type-link">
+                {extraImg && <img src={getImageUrl(extraImg)} className="img-under"/>}
+                <span className="headline">{extraHeadline && extraHeadline}</span>
+              </Link>}
             </div>
           </div>
         </div>

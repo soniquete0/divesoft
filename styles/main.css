@@ -5792,8 +5792,18 @@ a {
 
 .configuration-types {
   margin-top: 40px; }
+  .configuration-types .configuration-box-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; }
+  @media screen and (min-width: 1200px) {
+    .configuration-types .configuration-box-wrapper {
+      justify-content: space-between;
+      flex-wrap: nowrap; } }
   .configuration-types .configuration-box {
-    margin-bottom: 80px; }
+    margin-bottom: 80px;
+    margin-left: 5px;
+    margin-right: 5px; }
     .configuration-types .configuration-box .headline {
       font-size: 26px;
       white-space: pre-line;
@@ -5880,6 +5890,20 @@ a {
           bottom: 100%; }
         .configuration-types-panel.active .options-toggler.animate-slidedown {
           bottom: -900px; }
+    .configuration-types-panel .links-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: stretch; }
+      .configuration-types-panel .links-wrapper .config-type-link {
+        margin-bottom: 10px;
+        width: 100%; }
+    @media screen and (min-width: 1145px) {
+      .configuration-types-panel .links-wrapper {
+        flex-wrap: nowrap;
+        justify-content: space-between; }
+        .configuration-types-panel .links-wrapper .config-type-link {
+          margin: 0 5px;
+          width: auto; } }
     .configuration-types-panel .config-type-link {
       display: flex;
       flex-wrap: nowrap;
@@ -5907,7 +5931,7 @@ a {
             justify-self: center;
         max-width: 55px;
         height: 62px; }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1145px) {
     .configuration-types-panel {
       top: auto;
       bottom: 0; }
