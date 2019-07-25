@@ -1,0 +1,108 @@
+{
+    "name": "ProductMountRouter",
+    "data": {
+        "toggleOpen": "Options",
+        "toggleClose": "Close",
+        "leftHeadline": "leftmount Configuration",
+        "leftText": "leftmount lorem lipsum",
+        "leftUrl": "",
+        "middleHeadline": "middlemount Configuration",
+        "middleText": "middlemount lorem lipsum",
+        "middleUrl": "",
+        "rightHeadline": "rightmount Configuration",
+        "rightText": "rightmount lorem ipsum, pipsum",
+        "rightUrl": "",
+        "extraHeadline": "extramount Configuration",
+        "extraText": "extramount lorem ipsum, pipsum",
+        "extraUrl": "",
+        "desktopBackText": "go back",
+        "desktopBackUrl": ""
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "toggleOpen": {
+                    "type": "text",
+                    "title": "Mobile Toggler - Open"
+                },
+                "toggleClose": {
+                    "type": "text",
+                    "title": "Mobile Toggler - Close"
+                },
+                "leftHeadline": {
+                    "type": "text",
+                    "title": "Left headline"
+                },
+                "leftText": {
+                    "type": "text",
+                    "title": "Left text"
+                },
+                "leftUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Left block URL"
+                },
+                "leftImg": {
+                    "type": "image",
+                    "title": "Left block background image"
+                },
+                "middleHeadline": {
+                    "type": "text",
+                    "title": "Middle headline"
+                },
+                "middleText": {
+                    "type": "text",
+                    "title": "Middle text"
+                },
+                "middleUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Middle block URL"
+                },
+                "middleImg": {
+                    "type": "image",
+                    "title": "Middle block background image"
+                },
+                "rightHeadline": {
+                    "type": "text",
+                    "title": "Right headline"
+                },
+                "rightText": {
+                    "type": "text",
+                    "title": "Right text"
+                },
+                "rightUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Right block URL"
+                },
+                "rightImg": {
+                    "type": "image",
+                    "title": "Right block background image"
+                },
+                "extraHeadline": {
+                    "type": "text",
+                    "title": "Extra headline"
+                },
+                "extraText": {
+                    "type": "text",
+                    "title": "Extra text"
+                },
+                "extraUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Extra block URL"
+                },
+                "extraImg": {
+                    "type": "image",
+                    "title": "Extra block background image"
+                },
+                "desktopBackText": {
+                    "type": "text",
+                    "title": "Desktop button"
+                },
+                "desktopBackUrl": {
+                    "type": "urlAutocomplete",
+                    "title": "Desktop button link"
+                }
+            }
+        }
+    }
+}

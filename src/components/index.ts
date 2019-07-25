@@ -24,6 +24,7 @@ import AboutLeftPicture from './AboutLeftPicture';
 import ServicePointsMap from './ServicePointsMap';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
+import ProductMountRouter from './ProductMountRouter';
 
 export {
   AlertNotFound,
@@ -52,4 +53,5 @@ export {
   ServicePointsMap,
   AboutRightPicture,
   ProductComponents,
+  ProductMountRouter,
 };

@@ -52,4 +52,6 @@ var AboutRightPicture_1 = require("./AboutRightPicture");
 exports.AboutRightPicture = AboutRightPicture_1.default;
 var ProductComponents_1 = require("./ProductComponents");
 exports.ProductComponents = ProductComponents_1.default;
+var ProductMountRouter_1 = require("./ProductMountRouter");
+exports.ProductMountRouter = ProductMountRouter_1.default;
 //# sourceMappingURL=index.js.map

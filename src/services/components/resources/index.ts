@@ -24,6 +24,7 @@ import * as servicepointsmap from './servicepointsmap.json';
 import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
+import * as productmountrouter from './productmountrouter.json';
 
 export {
   def as default,
@@ -52,4 +53,5 @@ export {
   aboutleftpicture,
   aboutrightpicture,
   productcomponents,
+  productmountrouter,
 };

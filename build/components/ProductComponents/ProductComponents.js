@@ -20,10 +20,9 @@ var Media_1 = require("../../partials/Media");
 var Mobile = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { maxWidth: 767 })); };
 var Default = function (props) { return React.createElement(react_responsive_1.default, __assign({}, props, { minWidth: 768 })); };
 var ProductComponents = function (props) {
-    var _a = props.data, title = _a.title, description = _a.description, components = _a.components;
+    var _a = props.data, title = _a.title, description = _a.description, columns = _a.columns, components = _a.components;
     return (React.createElement(List_1.default, { data: components || [] }, function (_a) {
         var slides = _a.data;
-        console.log('slajdy', slides);
         var arrayOfMobileSlides = (slides && slides.map(function (slide, i) { return (React.createElement("div", { key: i },
             React.createElement("div", { className: 'productComponents__mobileItem' },
                 React.createElement(Media_1.default, { type: 'image', data: slide.image }),
@@ -44,7 +43,7 @@ var ProductComponents = function (props) {
                 title && React.createElement("h2", null, title),
                 description && React.createElement("p", { className: 'textDescription' }, description),
                 React.createElement(Default, null,
-                    React.createElement("div", { className: 'productComponents__list row' }, slides && slides.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-12 col-lg-6" },
+                    React.createElement("div", { className: 'productComponents__list row' }, slides && slides.map(function (item, i) { return (React.createElement("div", { key: i, className: "col-12 col-md-6 " + columns },
                         React.createElement("div", { className: 'productComponents__list__item' },
                             React.createElement(Media_1.default, { type: 'image', data: item.image, width: "130", height: "130" }),
                             React.createElement("div", { className: 'productComponents__list__item__content' },

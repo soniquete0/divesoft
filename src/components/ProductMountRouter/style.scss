@@ -1,0 +1,221 @@
+// Configuration types styles
+.configuration-types {
+  margin-top: 40px;
+
+  .configuration-box-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .configuration-box-wrapper {
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+  }
+
+  .configuration-box {
+    margin-bottom: 80px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    .headline {
+      font-size: 26px;
+      white-space: pre-line;
+      min-height: 2.5em;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .text {
+      font-size: 16px;
+      min-height: 4em;
+      margin-bottom: 0;
+      padding-bottom: 1em;
+      color: #6C6C6C;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .image-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      background-color: #f4f4f4;
+      text-align: center;
+
+      > img {
+        object-position: top;
+        object-fit: contain;
+        max-height: 360px;
+        max-width: 360px;
+      }
+
+      .btn {
+        position: absolute;
+        width: 108px;
+        bottom: 10px;
+        left: calc(50% - 54px);
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      .image-wrap {
+        min-height: 400px;
+      }
+    }
+
+    @media screen and (min-width: 400px) and (max-width: 761px) {
+      .image-wrap {
+        min-height: 450px;
+      }
+    }
+  }
+
+  &-panel {
+    position: fixed;
+    left: 0;
+    bottom: -900px;
+    width: 100%;
+    background-color: #F4F4F4;
+    border-top: 1px solid darken(#f4f4f4, 4%);
+    padding: 15px;
+    z-index: 999;
+    transition: all .3s ease;
+
+    &.animate-slidedown {
+      bottom: -900px;
+    }
+
+    .options-toggler {
+      position: fixed;
+      display: flex;
+      bottom: 0;
+      left: calc(50% - 60px);
+      width: 120px;
+      height: 70px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #f72c2c;
+      color: #ffffff;
+      &.animate-slidedown {
+        bottom: -900px;
+      }
+
+      &:active, &:focus {
+        background-color: $red;
+      }
+
+      &-close {
+        display: none;
+      }
+
+      .dropdown__arrow {
+        display: block;
+        border-color: #fff;
+        transform: rotate(225deg);
+        margin-bottom: -6px;
+      }
+    }
+
+    &.active {
+      bottom: 0;
+      &.animate-slidedown {
+        bottom: -900px;
+      }
+      .options-toggler {
+        display: none;
+        &-close {
+          display: flex;
+          position: absolute;
+          bottom: 100%;
+        }
+        &.animate-slidedown {
+          bottom: -900px;
+        }
+      }
+    }
+
+    .links-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: stretch;
+
+      .config-type-link {
+        margin-bottom: 10px;
+        width: 100%;
+      }
+    }
+
+    @media screen and (min-width: 1145px) {
+      .links-wrapper {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .config-type-link {
+          margin: 0 5px;
+          width: auto;
+        }
+      }
+    }
+
+    .config-type-link {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.3em;
+      background-color: #fff;
+      text-transform: uppercase;
+      transition: background-color .3s ease;
+
+      &:hover {
+        background-color: #f72c2c;
+        color: #fff;
+      }
+      > span.headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        width: 100%;
+      }
+      > img {
+        margin-right: 10px;
+        justify-self: center;
+        max-width: 55px;
+        height: 62px;
+      }
+    }
+  }
+
+  @media screen and (min-width: 1145px) {
+    &-panel {
+      top: auto;
+      bottom: 0;
+
+      .options-toggler {
+        display: none;
+      }
+
+      .config-type-link {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 992px) {
+    &-panel {
+      .config-type-link {
+        font-size: 19px;
+      }
+    }
+  }
+}
