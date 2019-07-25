@@ -4,8 +4,6 @@ import Slider from 'react-slick';
 import List from '../List';
 import Media from '../../partials/Media';
 
-import ProductMountRouter from '../ProductMountRouter/ProductMountrouter';
-
 interface Testimonial {
   img: LooseObject;
   title: string;
