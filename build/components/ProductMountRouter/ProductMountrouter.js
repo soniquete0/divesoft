@@ -65,7 +65,7 @@ var ProductMountRouter = /** @class */ (function (_super) {
     };
     ProductMountRouter.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, toggleOpen = _a.toggleOpen, toggleClose = _a.toggleClose, leftHeadline = _a.leftHeadline, leftText = _a.leftText, leftUrl = _a.leftUrl, leftImg = _a.leftImg, middleHeadline = _a.middleHeadline, middleText = _a.middleText, middleUrl = _a.middleUrl, middleImg = _a.middleImg, rightHeadline = _a.rightHeadline, rightText = _a.rightText, rightUrl = _a.rightUrl, rightImg = _a.rightImg, extraHeadline = _a.extraHeadline, extraText = _a.extraText, extraUrl = _a.extraUrl, extraImg = _a.extraImg;
+        var _a = this.props.data, toggleOpen = _a.toggleOpen, toggleClose = _a.toggleClose, leftHeadline = _a.leftHeadline, leftText = _a.leftText, leftUrl = _a.leftUrl, leftImg = _a.leftImg, middleHeadline = _a.middleHeadline, middleText = _a.middleText, middleUrl = _a.middleUrl, middleImg = _a.middleImg, rightHeadline = _a.rightHeadline, rightText = _a.rightText, rightUrl = _a.rightUrl, rightImg = _a.rightImg, extraHeadline = _a.extraHeadline, extraText = _a.extraText, extraUrl = _a.extraUrl, extraImg = _a.extraImg, desktopBackText = _a.desktopBackText, desktopBackUrl = _a.desktopBackUrl;
         return (React.createElement("div", null,
             React.createElement("div", { className: "container configuration-types", id: "configuration-rect" },
                 React.createElement("div", { className: "configuration-box-wrapper row" },
@@ -102,6 +102,7 @@ var ProductMountRouter = /** @class */ (function (_super) {
                     React.createElement("span", { className: "options-toggler options-toggler-close", onClick: function () { return _this.setState({ panelActive: false }); } }, toggleClose && toggleClose)) : '',
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "links-wrapper" },
+                        desktopBackUrl && React.createElement(Link_1.default, __assign({}, desktopBackUrl, { className: "btn-back" }), desktopBackText),
                         leftHeadline && React.createElement(Link_1.default, __assign({}, leftUrl, { className: "config-type-link " + this.columnsActive() }),
                             leftImg && React.createElement(Media_1.default, { type: 'image', data: leftImg, width: "60", height: "60" }),
                             React.createElement("span", { className: "headline" }, leftHeadline && leftHeadline)),

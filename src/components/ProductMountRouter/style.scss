@@ -91,6 +91,7 @@
     .options-toggler {
       position: fixed;
       display: flex;
+      padding: 0 1em;
       bottom: 0;
       left: calc(50% - 60px);
       width: 120px;
@@ -117,6 +118,20 @@
         border-color: #fff;
         transform: rotate(225deg);
         margin-bottom: -6px;
+      }
+    }
+
+    .btn-back {
+      position: absolute;
+      bottom: calc(100% + 1px);
+      left: 0;
+      background-color: #f72c2c;
+      min-width: 120px;
+      padding: 1em 2em;
+      color: #fff;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #e50000;
       }
     }
 

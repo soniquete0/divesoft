@@ -5865,6 +5865,7 @@ a {
     .configuration-types-panel .options-toggler {
       position: fixed;
       display: flex;
+      padding: 0 1em;
       bottom: 0;
       left: calc(50% - 60px);
       width: 120px;
@@ -5886,6 +5887,17 @@ a {
         -webkit-transform: rotate(225deg);
                 transform: rotate(225deg);
         margin-bottom: -6px; }
+    .configuration-types-panel .btn-back {
+      position: absolute;
+      bottom: calc(100% + 1px);
+      left: 0;
+      background-color: #f72c2c;
+      min-width: 120px;
+      padding: 1em 2em;
+      color: #fff;
+      text-transform: uppercase; }
+      .configuration-types-panel .btn-back:hover {
+        background-color: #e50000; }
     .configuration-types-panel.active {
       bottom: 0; }
       .configuration-types-panel.active.animate-slidedown {

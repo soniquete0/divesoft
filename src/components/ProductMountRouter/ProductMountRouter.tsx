@@ -4,8 +4,6 @@ import Link from '../../partials/Link';
 
 import Media from '../../partials/Media';
 
-import getImageUrl from '../../helpers/getImageUrl';
-
 export interface ProductMountRouterProps {
   data: {
     toggleOpen: String;
@@ -26,7 +24,9 @@ export interface ProductMountRouterProps {
     extraText: String;
     extraUrl?: LooseObject;
     extraImg?: LooseObject;
-  }
+    desktopBackText: String;
+    desktopBackUrl?: LooseObject;
+  };
 }
 
 export interface ProductMountRouterState {
@@ -90,7 +90,9 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
             extraHeadline,
             extraText,
             extraUrl,
-            extraImg } = this.props.data;
+            extraImg,
+            desktopBackText,
+            desktopBackUrl } = this.props.data;
 
     return (
       <div>
@@ -145,6 +147,7 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
           </span></> : '' }
           <div className="container">
             <div className="links-wrapper">
+            {desktopBackUrl && <Link {...desktopBackUrl} className={`btn-back`}>{desktopBackText}</Link>}
               {leftHeadline && <Link {...leftUrl} className={`config-type-link ${this.columnsActive()}`}>
                 {leftImg && <Media type={'image'} data={leftImg} width={`60`} height={`60`} />}
                 <span className="headline">{leftHeadline && leftHeadline}</span>
