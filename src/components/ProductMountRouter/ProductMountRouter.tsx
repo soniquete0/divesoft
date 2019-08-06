@@ -136,7 +136,6 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
           </div>
         </div>
         {/* End: Mount Info boxes */}
-
         {/* Start: Mount Info panel */}
         <div className={`configuration-types-panel ${this.state.panelActive ? 'active' : ''} ${this.state.panelHidden ? 'animate-slidedown' : ''}`}>
         { !this.state.panelHidden ? <><span className="options-toggler" onClick={() => this.setState({ panelActive: true})}>
