@@ -59,6 +59,22 @@
         text-overflow: ellipsis;
         margin-bottom: 2rem;
 
+        h3 {
+          margin-top: 3rem;
+        }
+
+        ul {
+          list-style: circle;
+          list-style-type: circle;
+          list-style-position: inside;
+          text-indent: 0.2rem;
+        }
+
+        ol {
+          list-style-position: inside;
+          text-indent: 0.2rem;
+        }
+
         @include max-md { margin: 3rem; }
 
         &::-webkit-scrollbar {

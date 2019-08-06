@@ -5556,6 +5556,16 @@ a {
         overflow: auto;
         text-overflow: ellipsis;
         margin-bottom: 2rem; }
+        .specialCarousel__content__info__description h3 {
+          margin-top: 3rem; }
+        .specialCarousel__content__info__description ul {
+          list-style: circle;
+          list-style-type: circle;
+          list-style-position: inside;
+          text-indent: 0.2rem; }
+        .specialCarousel__content__info__description ol {
+          list-style-position: inside;
+          text-indent: 0.2rem; }
         @media (max-width: 768px) {
           .specialCarousel__content__info__description {
             margin: 3rem; } }
@@ -5791,7 +5801,7 @@ a {
       margin: 0 auto; }
 
 .configuration-types {
-  margin-top: 40px; }
+  padding-top: 7.5rem; }
   .configuration-types .configuration-box-wrapper {
     display: flex;
     justify-content: center;
@@ -5801,9 +5811,7 @@ a {
       justify-content: space-between;
       flex-wrap: nowrap; } }
   .configuration-types .configuration-box {
-    margin-bottom: 80px;
-    margin-left: 5px;
-    margin-right: 5px; }
+    margin-bottom: 80px; }
     .configuration-types .configuration-box .headline {
       font-size: 26px;
       white-space: pre-line;
@@ -5897,6 +5905,9 @@ a {
       .configuration-types-panel .links-wrapper .config-type-link {
         margin-bottom: 10px;
         width: 100%; }
+        .configuration-types-panel .links-wrapper .config-type-link > img, .configuration-types-panel .links-wrapper .config-type-link > .mediaRatio {
+          width: 60px;
+          padding-top: 60px !important; }
     @media screen and (min-width: 1145px) {
       .configuration-types-panel .links-wrapper {
         flex-wrap: nowrap;

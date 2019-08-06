@@ -1,6 +1,6 @@
 // Configuration types styles
 .configuration-types {
-  margin-top: 40px;
+  padding-top: 7.5rem;
 
   .configuration-box-wrapper {
     display: flex;
@@ -17,8 +17,6 @@
 
   .configuration-box {
     margin-bottom: 80px;
-    margin-left: 5px;
-    margin-right: 5px;
 
     .headline {
       font-size: 26px;
@@ -148,6 +146,11 @@
       .config-type-link {
         margin-bottom: 10px;
         width: 100%;
+
+        > img, > .mediaRatio {
+          width: 60px;
+          padding-top: 60px!important;
+        }
       }
     }
 

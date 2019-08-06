@@ -27,7 +27,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var Button_1 = require("../../partials/Button");
 var Link_1 = require("../../partials/Link");
-var getImageUrl_1 = require("../../helpers/getImageUrl");
+var Media_1 = require("../../partials/Media");
 var ProductMountRouter = /** @class */ (function (_super) {
     __extends(ProductMountRouter, _super);
     function ProductMountRouter(props) {
@@ -35,8 +35,21 @@ var ProductMountRouter = /** @class */ (function (_super) {
         _this.handleScroll = function () {
             var panel = document.getElementById('configuration-rect');
             var panelRect = panel.getBoundingClientRect();
-            var windowHeight = window.outerHeight;
+            var windowHeight = window && window.outerHeight;
             (panelRect.top - windowHeight < 0) ? _this.setState({ panelHidden: true }) : _this.setState({ panelHidden: false });
+        };
+        _this.columnsActive = function () {
+            // tslint:disable-next-line: max-line-length
+            if (_this.props.data.leftHeadline.length > 0 && _this.props.data.middleHeadline.length > 0 && _this.props.data.rightHeadline.length > 0 && _this.props.data.extraHeadline.length > 0) {
+                return 'col-md-3';
+                // tslint:disable-next-line: max-line-length
+            }
+            else if (_this.props.data.leftHeadline.length > 0 && _this.props.data.middleHeadline.length > 0 && _this.props.data.rightHeadline.length > 0) {
+                return 'col-md-4';
+            }
+            else if (_this.props.data.leftHeadline.length > 0 && _this.props.data.middleHeadline.length > 0) {
+                return 'col-md-6';
+            }
         };
         _this.state = {
             panelActive: false,
@@ -45,41 +58,40 @@ var ProductMountRouter = /** @class */ (function (_super) {
         return _this;
     }
     ProductMountRouter.prototype.componentDidMount = function () {
-        window.addEventListener('scroll', this.handleScroll);
+        return window && window.addEventListener('scroll', this.handleScroll);
     };
     ProductMountRouter.prototype.componentWillUnmount = function () {
-        window.removeEventListener('scroll', this.handleScroll);
+        return window && window.removeEventListener('scroll', this.handleScroll);
     };
     ProductMountRouter.prototype.render = function () {
         var _this = this;
         var _a = this.props.data, toggleOpen = _a.toggleOpen, toggleClose = _a.toggleClose, leftHeadline = _a.leftHeadline, leftText = _a.leftText, leftUrl = _a.leftUrl, leftImg = _a.leftImg, middleHeadline = _a.middleHeadline, middleText = _a.middleText, middleUrl = _a.middleUrl, middleImg = _a.middleImg, rightHeadline = _a.rightHeadline, rightText = _a.rightText, rightUrl = _a.rightUrl, rightImg = _a.rightImg, extraHeadline = _a.extraHeadline, extraText = _a.extraText, extraUrl = _a.extraUrl, extraImg = _a.extraImg;
         return (React.createElement("div", null,
-            console.log(__assign({}, this.props.data)),
             React.createElement("div", { className: "container configuration-types", id: "configuration-rect" },
-                React.createElement("div", { className: "configuration-box-wrapper" },
-                    leftImg && React.createElement("div", { className: "configuration-box" },
+                React.createElement("div", { className: "configuration-box-wrapper row" },
+                    leftImg && React.createElement("div", { className: "configuration-box " + this.columnsActive() },
                         React.createElement("h3", { className: "headline text-center" }, leftHeadline && leftHeadline),
                         React.createElement("p", { className: "text text-center" }, leftText && leftText),
                         React.createElement("div", { className: "image-wrap" },
-                            leftImg && React.createElement("img", { src: getImageUrl_1.default(leftImg) }),
+                            leftImg && React.createElement(Media_1.default, { type: 'image', data: leftImg }),
                             leftUrl && React.createElement(Button_1.default, { url: leftUrl, classes: "btn-primary" }, "View"))),
-                    middleHeadline && React.createElement("div", { className: "configuration-box" },
+                    middleHeadline && React.createElement("div", { className: "configuration-box " + this.columnsActive() },
                         React.createElement("h3", { className: "headline text-center" }, middleHeadline && middleHeadline),
                         React.createElement("p", { className: "text text-center" }, middleText && middleText),
                         React.createElement("div", { className: "image-wrap" },
-                            middleImg && React.createElement("img", { src: getImageUrl_1.default(middleImg) }),
+                            middleImg && React.createElement(Media_1.default, { type: 'image', data: middleImg }),
                             middleUrl && React.createElement(Button_1.default, { url: middleUrl, classes: "btn-primary" }, "View"))),
-                    rightHeadline && React.createElement("div", { className: "configuration-box" },
+                    rightHeadline && React.createElement("div", { className: "configuration-box " + this.columnsActive() },
                         React.createElement("h3", { className: "headline text-center" }, rightHeadline && rightHeadline),
                         React.createElement("p", { className: "text text-center" }, rightText && rightText),
                         React.createElement("div", { className: "image-wrap" },
-                            rightImg && React.createElement("img", { src: getImageUrl_1.default(rightImg) }),
+                            rightImg && React.createElement(Media_1.default, { type: 'image', data: rightImg }),
                             rightUrl && React.createElement(Button_1.default, { url: rightUrl, classes: "btn-primary" }, "View"))),
-                    extraHeadline && React.createElement("div", { className: "configuration-box" },
+                    extraHeadline && React.createElement("div", { className: "configuration-box " + this.columnsActive() },
                         React.createElement("h3", { className: "headline text-center" }, extraHeadline && extraHeadline),
                         React.createElement("p", { className: "text text-center" }, extraText && extraText),
                         React.createElement("div", { className: "image-wrap" },
-                            extraImg && React.createElement("img", { src: getImageUrl_1.default(extraImg) }),
+                            extraImg && React.createElement(Media_1.default, { type: 'image', data: extraImg }),
                             extraUrl && React.createElement(Button_1.default, { url: extraUrl, classes: "btn-primary" }, "View"))))),
             React.createElement("div", { className: "configuration-types-panel " + (this.state.panelActive ? 'active' : '') + " " + (this.state.panelHidden ? 'animate-slidedown' : '') },
                 !this.state.panelHidden ? React.createElement(React.Fragment, null,
@@ -90,20 +102,20 @@ var ProductMountRouter = /** @class */ (function (_super) {
                     React.createElement("span", { className: "options-toggler options-toggler-close", onClick: function () { return _this.setState({ panelActive: false }); } }, toggleClose && toggleClose)) : '',
                 React.createElement("div", { className: "container" },
                     React.createElement("div", { className: "links-wrapper" },
-                        leftHeadline && React.createElement(Link_1.default, __assign({}, leftUrl, { className: "config-type-link" }),
-                            leftImg && React.createElement("img", { src: getImageUrl_1.default(leftImg) }),
+                        leftHeadline && React.createElement(Link_1.default, __assign({}, leftUrl, { className: "config-type-link " + this.columnsActive() }),
+                            leftImg && React.createElement(Media_1.default, { type: 'image', data: leftImg, width: "60", height: "60" }),
                             React.createElement("span", { className: "headline" }, leftHeadline && leftHeadline)),
-                        middleHeadline && React.createElement(Link_1.default, __assign({}, middleUrl, { className: "config-type-link" }),
-                            middleImg && React.createElement("img", { src: getImageUrl_1.default(middleImg) }),
+                        middleHeadline && React.createElement(Link_1.default, __assign({}, middleUrl, { className: "config-type-link " + this.columnsActive() }),
+                            middleImg && React.createElement(Media_1.default, { type: 'image', data: middleImg, width: "60", height: "60" }),
                             React.createElement("span", { className: "headline" }, middleHeadline && middleHeadline)),
-                        rightHeadline && React.createElement(Link_1.default, __assign({}, rightUrl, { className: "config-type-link" }),
-                            rightImg && React.createElement("img", { src: getImageUrl_1.default(rightImg), className: "img-under" }),
+                        rightHeadline && React.createElement(Link_1.default, __assign({}, rightUrl, { className: "config-type-link " + this.columnsActive() }),
+                            rightImg && React.createElement(Media_1.default, { type: 'image', data: rightImg, width: "60", height: "60" }),
                             React.createElement("span", { className: "headline" }, rightHeadline && rightHeadline)),
-                        extraHeadline && React.createElement(Link_1.default, __assign({}, extraUrl, { className: "config-type-link" }),
-                            extraImg && React.createElement("img", { src: getImageUrl_1.default(extraImg), className: "img-under" }),
+                        extraHeadline && React.createElement(Link_1.default, __assign({}, extraUrl, { className: "config-type-link " + this.columnsActive() }),
+                            extraImg && React.createElement(Media_1.default, { type: 'image', data: extraImg, width: "60", height: "60" }),
                             React.createElement("span", { className: "headline" }, extraHeadline && extraHeadline)))))));
     };
     return ProductMountRouter;
 }(React.Component));
 exports.default = ProductMountRouter;
-//# sourceMappingURL=ProductMountrouter.js.map
+//# sourceMappingURL=ProductMountRouter.js.map

@@ -2,6 +2,8 @@ import * as React from 'react';
 import Button from '../../partials/Button';
 import Link from '../../partials/Link';
 
+import Media from '../../partials/Media';
+
 import getImageUrl from '../../helpers/getImageUrl';
 
 export interface ProductMountRouterProps {
@@ -43,19 +45,31 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    return window && window.addEventListener('scroll', this.handleScroll);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    return window && window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
     const panel = document.getElementById('configuration-rect');
     const panelRect = panel.getBoundingClientRect();
-    const windowHeight = window.outerHeight;
+    const windowHeight = window && window.outerHeight;
 
     (panelRect.top - windowHeight < 0) ? this.setState({ panelHidden: true }) : this.setState({ panelHidden: false });
+  }
+
+  columnsActive = () => {
+    // tslint:disable-next-line: max-line-length
+    if (this.props.data.leftHeadline.length > 0 && this.props.data.middleHeadline.length > 0 && this.props.data.rightHeadline.length > 0 && this.props.data.extraHeadline.length > 0) {
+      return 'col-md-3';
+    // tslint:disable-next-line: max-line-length
+    } else if (this.props.data.leftHeadline.length > 0 && this.props.data.middleHeadline.length > 0 && this.props.data.rightHeadline.length > 0) {
+      return 'col-md-4';
+    } else if (this.props.data.leftHeadline.length > 0 && this.props.data.middleHeadline.length > 0) {
+      return 'col-md-6';
+    }
   }
 
   public render() {
@@ -80,40 +94,40 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
 
     return (
       <div>
-        {console.log({...this.props.data})}
         {/* START: CONFIGURATION COMPONENT */}
         {/* Start: Mount Info boxes */}
         <div className="container configuration-types" id="configuration-rect">
-          <div className="configuration-box-wrapper">
-            {leftImg && <div className="configuration-box">
+          <div className={`configuration-box-wrapper row`}>
+            {leftImg && <div className={`configuration-box ${this.columnsActive()}`}>
               <h3 className="headline text-center">{leftHeadline && leftHeadline}</h3>
               <p className="text text-center">{leftText && leftText}</p>
               <div className="image-wrap">
-                {leftImg && <img src={getImageUrl(leftImg)}/>}
+                {/* {leftImg && <img src={getImageUrl(leftImg)}/>} */}
+                {leftImg && <Media type={'image'} data={leftImg} />}
                 {leftUrl && <Button url={leftUrl} classes="btn-primary">View</Button>}
               </div>
             </div>}
-            {middleHeadline && <div className="configuration-box">
+            {middleHeadline && <div className={`configuration-box ${this.columnsActive()}`}>
               <h3 className="headline text-center">{middleHeadline && middleHeadline}</h3>
               <p className="text text-center">{middleText && middleText}</p>
               <div className="image-wrap">
-              {middleImg && <img src={getImageUrl(middleImg)}/>}
+              {middleImg && <Media type={'image'} data={middleImg} />}
                 {middleUrl && <Button url={middleUrl} classes="btn-primary">View</Button>}
               </div>
             </div>}
-            {rightHeadline && <div className="configuration-box">
+            {rightHeadline && <div className={`configuration-box ${this.columnsActive()}`}>
               <h3 className="headline text-center">{rightHeadline && rightHeadline}</h3>
               <p className="text text-center">{rightText && rightText}</p>
               <div className="image-wrap">
-                {rightImg && <img src={getImageUrl(rightImg)}/>}
+                {rightImg && <Media type={'image'} data={rightImg} />}
                 {rightUrl && <Button url={rightUrl} classes="btn-primary">View</Button>}
               </div>
             </div>}
-            {extraHeadline && <div className="configuration-box">
+            {extraHeadline && <div className={`configuration-box ${this.columnsActive()}`}>
               <h3 className="headline text-center">{extraHeadline && extraHeadline}</h3>
               <p className="text text-center">{extraText && extraText}</p>
               <div className="image-wrap">
-                {extraImg && <img src={getImageUrl(extraImg)}/>}
+                {extraImg && <Media type={'image'} data={extraImg} />}
                 {extraUrl && <Button url={extraUrl} classes="btn-primary">View</Button>}
               </div>
             </div>}
@@ -131,20 +145,20 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
           </span></> : '' }
           <div className="container">
             <div className="links-wrapper">
-              {leftHeadline && <Link {...leftUrl} className="config-type-link">
-                {leftImg && <img src={getImageUrl(leftImg)}/>}
+              {leftHeadline && <Link {...leftUrl} className={`config-type-link ${this.columnsActive()}`}>
+                {leftImg && <Media type={'image'} data={leftImg} width={`60`} height={`60`} />}
                 <span className="headline">{leftHeadline && leftHeadline}</span>
               </Link>}
-              {middleHeadline && <Link {...middleUrl} className="config-type-link">
-                {middleImg && <img src={getImageUrl(middleImg)}/>}
+              {middleHeadline && <Link {...middleUrl} className={`config-type-link ${this.columnsActive()}`}>
+                {middleImg && <Media type={'image'} data={middleImg} width={`60`} height={`60`} />}
                 <span className="headline">{middleHeadline && middleHeadline}</span>
               </Link>}
-              {rightHeadline && <Link {...rightUrl} className="config-type-link">
-                {rightImg && <img src={getImageUrl(rightImg)} className="img-under"/>}
+              {rightHeadline && <Link {...rightUrl} className={`config-type-link ${this.columnsActive()}`}>
+                {rightImg && <Media type={'image'} data={rightImg} width={`60`} height={`60`} />}
                 <span className="headline">{rightHeadline && rightHeadline}</span>
               </Link>}
-              {extraHeadline && <Link {...extraUrl} className="config-type-link">
-                {extraImg && <img src={getImageUrl(extraImg)} className="img-under"/>}
+              {extraHeadline && <Link {...extraUrl} className={`config-type-link ${this.columnsActive()}`}>
+                {extraImg && <Media type={'image'} data={extraImg} width={`60`} height={`60`} />}
                 <span className="headline">{extraHeadline && extraHeadline}</span>
               </Link>}
             </div>
