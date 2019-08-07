@@ -5528,13 +5528,10 @@ a {
     padding: 10rem 0; }
     @media (max-width: 768px) {
       .specialCarousel__content {
-        padding: 4rem 0; } }
+        padding: 4rem 1em; } }
     .specialCarousel__content h2 {
       text-align: center;
       padding-bottom: 0; }
-    @media (max-width: 768px) {
-      .specialCarousel__content h3 {
-        margin: 0 3rem; } }
     .specialCarousel__content__info {
       padding: 6.5rem 0 0 0; }
       @media (max-width: 992px) {
@@ -5542,7 +5539,6 @@ a {
           padding: 3.5rem 0; } }
       @media (max-width: 768px) {
         .specialCarousel__content__info:first-child {
-          text-align: center;
           order: 2; } }
       @media (max-width: 540px) {
         .specialCarousel__content__info:first-child {
@@ -5561,14 +5557,11 @@ a {
         .specialCarousel__content__info__description ul {
           list-style: circle;
           list-style-type: circle;
-          list-style-position: inside;
-          text-indent: 0.2rem; }
+          list-style-position: outside;
+          padding-left: 1.2em; }
         .specialCarousel__content__info__description ol {
-          list-style-position: inside;
-          text-indent: 0.2rem; }
-        @media (max-width: 768px) {
-          .specialCarousel__content__info__description {
-            margin: 3rem; } }
+          list-style-position: outside;
+          padding-left: 1.2em; }
         .specialCarousel__content__info__description::-webkit-scrollbar {
           width: 3px;
           height: 8px;
