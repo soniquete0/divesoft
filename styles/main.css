@@ -5871,6 +5871,7 @@ a {
       justify-content: center;
       align-items: center;
       text-align: center;
+      text-transform: uppercase;
       background-color: #f72c2c;
       color: #ffffff; }
       .configuration-types-panel .options-toggler.animate-slidedown {

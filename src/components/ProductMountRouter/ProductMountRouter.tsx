@@ -147,19 +147,19 @@ class ProductMountRouter extends React.Component<ProductMountRouterProps, Produc
           <div className="container">
             <div className="links-wrapper">
             {desktopBackUrl && <Link {...desktopBackUrl} className={`btn-back`}>{desktopBackText}</Link>}
-              {leftHeadline && <Link {...leftUrl} className={`config-type-link ${this.columnsActive()}`}>
+              {leftHeadline && <Link {...leftUrl} className={`config-type-link ${this.columnsActive()}`} onClick={() => this.setState({ panelActive: false})}>
                 {leftImg && <Media type={'image'} data={leftImg} width={`60`} height={`60`} />}
                 <span className="headline">{leftHeadline && leftHeadline}</span>
               </Link>}
-              {middleHeadline && <Link {...middleUrl} className={`config-type-link ${this.columnsActive()}`}>
+              {middleHeadline && <Link {...middleUrl} className={`config-type-link ${this.columnsActive()}`} onClick={() => this.setState({ panelActive: false})}>
                 {middleImg && <Media type={'image'} data={middleImg} width={`60`} height={`60`} />}
                 <span className="headline">{middleHeadline && middleHeadline}</span>
               </Link>}
-              {rightHeadline && <Link {...rightUrl} className={`config-type-link ${this.columnsActive()}`}>
+              {rightHeadline && <Link {...rightUrl} className={`config-type-link ${this.columnsActive()}`} onClick={() => this.setState({ panelActive: false})}>
                 {rightImg && <Media type={'image'} data={rightImg} width={`60`} height={`60`} />}
                 <span className="headline">{rightHeadline && rightHeadline}</span>
               </Link>}
-              {extraHeadline && <Link {...extraUrl} className={`config-type-link ${this.columnsActive()}`}>
+              {extraHeadline && <Link {...extraUrl} className={`config-type-link ${this.columnsActive()}`} onClick={() => this.setState({ panelActive: false})}>
                 {extraImg && <Media type={'image'} data={extraImg} width={`60`} height={`60`} />}
                 <span className="headline">{extraHeadline && extraHeadline}</span>
               </Link>}
