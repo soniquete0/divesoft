@@ -119,9 +119,7 @@ var Header = /** @class */ (function (_super) {
                         { overflow: 'inherit' } :
                         { overflow: 'hidden' } },
                     React.createElement("div", { className: "container" },
-                        React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', style: {
-                                position: _this.state.menuActive ? 'fixed' : 'relative'
-                            } },
+                        React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center' },
                             React.createElement(Hamburger_1.default, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
                             React.createElement("div", { className: "header__logo" },
                                 React.createElement(Link_1.default, { url: (context.websiteData.urlMask === '/' ?
@@ -134,7 +132,17 @@ var Header = /** @class */ (function (_super) {
                                             React.createElement("span", { className: "d-flex no-wrap" },
                                                 navItem.name || navItem.title,
                                                 (navItem.name === 'products' || navItem.children) ?
-                                                    React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdown__arrow' }) : ''))));
+                                                    React.createElement("span", { onClick: function () { return _this.toggleDropdown(); }, className: 'dropdown__arrow' }) : '')),
+                                        navItem.name === _this.state.subMenuVisible &&
+                                            navItem.children ?
+                                            // tslint:disable-next-line: max-line-length
+                                            React.createElement("div", { className: "categoriesSubmenu_wrapper", key: navItem.id, onMouseLeave: _this.hideSubMenu },
+                                                React.createElement("nav", { className: "categoriesSubmenu" },
+                                                    React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
+                                                        // tslint:disable-next-line: max-line-length
+                                                        return React.createElement(Link_1.default, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id }), navItemChild.name);
+                                                    }))))
+                                            : ''));
                                 }))),
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                                 React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.svg", alt: "search", className: "header-ico header-ico_search", style: { cursor: 'pointer' } }),
@@ -172,19 +180,7 @@ var Header = /** @class */ (function (_super) {
                                 React.createElement(Media_1.default, { type: 'image', data: item.img }),
                                 item.title && React.createElement("h5", null, item.title),
                                 item.description && React.createElement("p", null, item.description),
-                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "Detail")))); })))) : '',
-                topNavItems && topNavItems.map(function (navItem, i) {
-                    return (React.createElement(React.Fragment, null, ((navItem.name === _this.state.subMenuVisible)) &&
-                        navItem.children ?
-                        // tslint:disable-next-line: max-line-length
-                        React.createElement("div", { className: "categoriesSubmenu_wrapper", key: navItem.id, onMouseLeave: _this.hideSubMenu },
-                            React.createElement("nav", { className: "categoriesSubmenu" },
-                                React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
-                                    // tslint:disable-next-line: max-line-length
-                                    return React.createElement(Link_1.default, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id }), navItemChild.name);
-                                }))))
-                        : ''));
-                })));
+                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "Detail")))); })))) : ''));
         }));
     };
     Header.prototype.transformNavigationsIntoTree = function (navigation, urls) {

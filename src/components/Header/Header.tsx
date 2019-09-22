@@ -156,7 +156,12 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 }
               >
                 <div className="container">
-                  <div className={'header__wrapper d-flex justify-content-between align-items-center'} >
+                  <div
+                    className={'header__wrapper d-flex justify-content-between align-items-center'}
+                    style={{
+                      position: this.state.menuActive ? 'fixed' : 'relative'
+                    }}
+                  >
                     <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
                     <div className="header__logo">
                       <Link
@@ -183,30 +188,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                                 /> : ''}
                               </span>
                             </Link>
-                            {/* {context.pageData.name === navItem.name ?
-                              <span className={'header__activePage'} /> : ''} */}
-
-                            {/* SUB MENU - start */}
-                            { navItem.name === this.state.subMenuVisible &&
-                              navItem.children ?
-                              // tslint:disable-next-line: max-line-length
-                              <div className="categoriesSubmenu_wrapper" key={navItem.id} onMouseLeave={this.hideSubMenu}>
-                                <nav className="categoriesSubmenu">
-                                  <ul className="categoriesSubmenu_list">
-                                    {
-                                      navItem.children.map((navItemChild) => {
-                                        // tslint:disable-next-line: max-line-length
-                                        return <Link {...navItemChild.url} className="categoriesSubmenu_link" key={navItemChild.id}>
-                                          {navItemChild.name}
-                                        </Link>;
-                                      })
-                                    }
-                                  </ul>
-                                </nav>
-                              </div>
-                              : ''
-                            }
-                            {/* SUB MENU - end */}
                           </li>
                         );
                         })
@@ -233,7 +214,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                           className="header-ico header-ico_user"
                         />
                       </a>
-{/* tslint:disable-next-line: max-line-length */}
+                      {/* tslint:disable-next-line: max-line-length */}
                       <a href="http://93.185.96.70:3014/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
@@ -262,7 +243,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                               </span>}
                             </Link>
                             {/* Phone SUB MENU - start */}
-                            {/* products */}
                             { navItem.name === 'products' && this.state.phoneSubMenuVisible === 'products' ?
                               <div className="dropdownProducts_phone" onClick={this.hideSubMenu}>
                                 {products && <div className="categoriesSubmenu">
@@ -284,7 +264,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                               </div> : ''
                             }
                             {/* other submenus */}
-                            { navItem.name === this.state.phoneSubMenuVisible &&
+                            {navItem.name === this.state.phoneSubMenuVisible &&
                               navItem.children ?
                               // tslint:disable-next-line: max-line-length
                               <div className="categoriesSubmenu_wrapper_phone" key={'phone' + navItem.id}>
@@ -341,6 +321,34 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                 </div> : ''
               }
               {/* PRODUCTS SUB MENU - end */}
+
+              {/* products */}
+              {topNavItems && topNavItems.map((navItem, i) => {
+                return (
+                  <>
+                    {/* SUB MENU - start */}
+                    {((navItem.name === this.state.subMenuVisible)) &&
+                      navItem.children ?
+                      // tslint:disable-next-line: max-line-length
+                      <div className="categoriesSubmenu_wrapper" key={navItem.id} onMouseLeave={this.hideSubMenu}>
+                        <nav className="categoriesSubmenu">
+                          <ul className="categoriesSubmenu_list">
+                            {navItem.children.map((navItemChild) => {
+                              // tslint:disable-next-line: max-line-length
+                              return <Link {...navItemChild.url} className="categoriesSubmenu_link" key={navItemChild.id}>
+                                {navItemChild.name}
+                              </Link>;
+                            })}
+                          </ul>
+                        </nav>
+                      </div>
+                      : ''
+                    }
+                    {/* SUB MENU - end */}
+                  </>
+                );
+                })
+              }
             </>
           );
         }}

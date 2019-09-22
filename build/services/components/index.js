@@ -44,6 +44,7 @@ var ComponentsService = /** @class */ (function () {
             ABOUTRIGHTPICTURE: 'AboutRightPicture',
             PRODUCTCOMPONENTS: 'ProductComponents',
             PRODUCTMOUNTROUTER: 'ProductMountRouter',
+            PRODUCTCROSSROAD: 'ProductCrossRoad',
         };
     }
     /***/
@@ -109,6 +110,8 @@ var ComponentsService = /** @class */ (function () {
                 return components_1.ProductMountRouter;
             case this.Types.CONTACTSMAP:
                 return components_1.ContactsMap;
+            case this.Types.PRODUCTCROSSROAD:
+                return components_1.ProductCrossRoad;
             default:
                 return function () { return React.createElement(components_1.AlertNotFound, { type: "component" }); };
         }

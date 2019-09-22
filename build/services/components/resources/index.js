@@ -54,4 +54,6 @@ var productcomponents = require("./productcomponents.json");
 exports.productcomponents = productcomponents;
 var productmountrouter = require("./productmountrouter.json");
 exports.productmountrouter = productmountrouter;
+var productcrossroad = require("./productcrossroad.json");
+exports.productcrossroad = productcrossroad;
 //# sourceMappingURL=index.js.map

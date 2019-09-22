@@ -1,0 +1,41 @@
+{
+    "name": "ProductCrossRoad",
+    "data": {
+        "links": []
+    },
+    "form": {
+        "schema": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "text",
+                    "title": "Title"
+                },
+                "url": {
+                    "type": "urlAutocomplete",
+                    "title": "URL"
+                },
+                "links": {
+                    "type": "array",
+                    "title": "Links",
+                    "items": {
+                        "properties": {
+                            "title": {
+                                "type": "text",
+                                "title": "Title"
+                            },
+                            "url": {
+                                "type": "urlAutocomplete",
+                                "title": "URL"
+                            },
+                            "highlight": {
+                                "type": "boolean",
+                                "title": "Highlight"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

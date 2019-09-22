@@ -54,4 +54,6 @@ var ProductComponents_1 = require("./ProductComponents");
 exports.ProductComponents = ProductComponents_1.default;
 var ProductMountRouter_1 = require("./ProductMountRouter");
 exports.ProductMountRouter = ProductMountRouter_1.default;
+var ProductCrossRoad_1 = require("./ProductCrossRoad");
+exports.ProductCrossRoad = ProductCrossRoad_1.default;
 //# sourceMappingURL=index.js.map

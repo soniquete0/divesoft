@@ -1,0 +1,34 @@
+.product-crossroad-wrapper {
+    background-color: #f1f1f2;
+    padding: 1.5rem;
+
+    .product-crossroad-container {
+        display: flex;
+        flex-flow: column;
+        flex-direction: row;
+
+        h1 {
+            display: auto;
+            @include max-md { display: none; }
+            font-size: 1em;
+            padding-bottom: 0;
+        }
+        .product-crossroad-list {
+            flex: 1 0px;
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: row;
+
+            li {
+                padding: 0 0 0 15px;
+                width: auto;
+                text-align: center;
+            }
+
+            .highlight a {
+                font-size: 1em;
+                color: $red;
+            }
+        }
+    }
+}

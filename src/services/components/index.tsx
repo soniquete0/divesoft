@@ -29,6 +29,7 @@ import {
   AboutRightPicture,
   ProductComponents,
   ProductMountRouter,
+  ProductCrossRoad,
 } from '../../components';
 
 import * as resources from './resources';
@@ -61,6 +62,7 @@ class ComponentsService {
     ABOUTRIGHTPICTURE: 'AboutRightPicture',
     PRODUCTCOMPONENTS: 'ProductComponents',
     PRODUCTMOUNTROUTER: 'ProductMountRouter',
+    PRODUCTCROSSROAD: 'ProductCrossRoad',
   };
 
   /***/
@@ -126,6 +128,8 @@ class ComponentsService {
         return ProductMountRouter;
       case this.Types.CONTACTSMAP:
         return ContactsMap;
+      case this.Types.PRODUCTCROSSROAD:
+        return ProductCrossRoad;
 
       default:
         return () => <AlertNotFound type="component" />;

@@ -25,6 +25,7 @@ import * as aboutleftpicture from './aboutleftpicture.json';
 import * as aboutrightpicture from './aboutrightpicture.json';
 import * as productcomponents from './productcomponents.json';
 import * as productmountrouter from './productmountrouter.json';
+import * as productcrossroad from './productcrossroad.json';
 
 export {
   def as default,
@@ -54,4 +55,5 @@ export {
   aboutrightpicture,
   productcomponents,
   productmountrouter,
+  productcrossroad,
 };

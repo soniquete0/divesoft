@@ -25,6 +25,7 @@ import ServicePointsMap from './ServicePointsMap';
 import AboutRightPicture from './AboutRightPicture';
 import ProductComponents from './ProductComponents';
 import ProductMountRouter from './ProductMountRouter';
+import ProductCrossRoad from './ProductCrossRoad';
 
 export {
   AlertNotFound,
@@ -54,4 +55,5 @@ export {
   AboutRightPicture,
   ProductComponents,
   ProductMountRouter,
+  ProductCrossRoad,
 };

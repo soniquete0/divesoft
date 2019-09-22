@@ -8,8 +8,8 @@ body {
 }
 
 .topWrapper {
-  padding-top: 100px;
-  @include max-sm { padding-top: 70px; }
+  padding-top: 0;
+  @include max-sm { padding-top: 0; }
 }
 
 .slick-prev {
