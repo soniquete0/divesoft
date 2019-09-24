@@ -34,10 +34,10 @@ var react_apollo_1 = require("react-apollo");
 var react_adopt_1 = require("react-adopt");
 var Search_1 = require("../Search");
 var Link_1 = require("../../partials/Link");
-var Media_1 = require("../../partials/Media");
 var Loader_1 = require("../../partials/Loader");
 var Hamburger_1 = require("./components/Hamburger");
 // import Country from './components/Country/Country';
+// import { useState, useEffect } from 'react';
 var GET_CONTEXT = graphql_tag_1.default(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"], ["\n  {\n    languageData @client\n    pageData @client\n    websiteData @client\n    languagesData @client\n    navigationsData @client\n  }\n"])));
 var GET_PAGES_URLS = graphql_tag_1.default(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"], ["\n  query pagesUrls($language: ID!, $websiteId: ID!) {\n    pagesUrls(where: { language: $language, websiteId: $websiteId }) {\n      id\n      page\n      url\n      name\n      description\n    }\n  }\n"])));
 var ComposedQuery = react_adopt_1.adopt({
@@ -90,13 +90,47 @@ var Header = /** @class */ (function (_super) {
             subMenuVisible: '',
             phoneSubMenuVisible: '',
             showSearch: false,
-            searchQuery: ''
+            searchQuery: '',
+            scrolledPixels: 0,
+            slideMenuIn: true,
         };
+        _this.scrolled = _this.scrolled.bind(_this);
         return _this;
     }
+    Header.prototype.componentDidMount = function () {
+        this.scrolled();
+        return window && window.addEventListener('scroll', this.scrolled);
+    };
+    Header.prototype.componentWillUnmount = function () {
+        return window && window.removeEventListener('scroll', this.scrolled);
+    };
+    // tslint:disable-next-line: no-any
+    Header.prototype.componentDidUpdate = function (_a, prevState) {
+        var _this = this;
+        setTimeout(function () { return _this.setScrolledState(prevState.scrolledPixels); }, 1000);
+    };
+    Header.prototype.setScrolledState = function (prevScroll) {
+        console.log(prevScroll, this.state.scrolledPixels, 'set scrolled state');
+        if (this.state.scrolledPixels > 1000) {
+            prevScroll >= this.state.scrolledPixels
+                ? this.setState({ slideMenuIn: true })
+                : this.setState({ slideMenuIn: false });
+        }
+        else {
+            return this.setState({ slideMenuIn: false });
+        }
+    };
+    Header.prototype.scrolled = function () {
+        this.setState({ scrolledPixels: window.scrollY });
+    };
     Header.prototype.render = function () {
         var _this = this;
-        this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
+        this.state.menuActive
+            ? (document.body.style.overflow = 'hidden')
+            : (document.body.style.overflow = 'visible');
+        this.state.slideMenuIn
+            ? (document.body.style.paddingTop = '100px')
+            : (document.body.style.paddingTop = '0px');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData ||
@@ -114,18 +148,23 @@ var Header = /** @class */ (function (_super) {
             var topNav = 'top';
             var topNavItems = transformedNavigations && transformedNavigations[topNav] ? transformedNavigations[topNav] : [];
             var products = _this.props.data.products;
+            var headerInlineStyle = {
+                overflow: _this.state.menuActive ? 'inherit' : 'hidden',
+            };
+            var submenuStyle = {
+                top: _this.state.slideMenuIn ? _this.state.scrolledPixels + 100 + "px" : '100px'
+            };
             return (React.createElement(React.Fragment, null,
-                React.createElement("header", { className: "header", style: _this.state.menuActive ?
-                        { overflow: 'inherit' } :
-                        { overflow: 'hidden' } },
+                React.createElement("header", { className: "header " + (_this.state.slideMenuIn ? 'slide-in' : ''), style: headerInlineStyle },
                     React.createElement("div", { className: "container" },
-                        React.createElement("div", { className: 'header__wrapper d-flex justify-content-between align-items-center', style: {
-                                position: _this.state.menuActive ? 'fixed' : 'relative'
-                            } },
+                        React.createElement("div", { 
+                            // className={'header__wrapper d-flex justify-content-between align-items-center'}
+                            className: 'header__wrapper' },
                             React.createElement(Hamburger_1.default, { active: _this.state.menuActive, onClick: _this.toggleMenu }),
                             React.createElement("div", { className: "header__logo" },
-                                React.createElement(Link_1.default, { url: (context.websiteData.urlMask === '/' ?
-                                        '' : context.websiteData.urlMask) + "/" + context.languageData.code },
+                                React.createElement(Link_1.default, { url: (context.websiteData.urlMask === '/'
+                                        ? ''
+                                        : context.websiteData.urlMask) + "/" + context.languageData.code },
                                     React.createElement("img", { src: "/assets/divesoft/images/logo.svg", alt: "logo" }))),
                             React.createElement("nav", null,
                                 React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
@@ -148,17 +187,17 @@ var Header = /** @class */ (function (_super) {
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
                             React.createElement("ul", null, topNavItems && topNavItems.map(function (navItem, i) {
                                 return (React.createElement("li", { key: i, style: { position: 'relative' } },
-                                    React.createElement(Link_1.default, __assign({}, navItem.url, { url: _this.canToggle(navItem) }), (navItem.name === 'products' || navItem.children) ?
-                                        React.createElement("span", { className: "d-flex no-wrap", onClick: function () { return _this.submenuVisibility(navItem); } }, navItem.name || navItem.title) :
-                                        React.createElement("span", { className: "d-flex no-wrap", onClick: function (e) { _this.closeMenu(); _this.submenuVisibility(''); } }, navItem.name || navItem.title)),
+                                    React.createElement(Link_1.default, __assign({}, navItem.url, { url: _this.canToggle(navItem) }), (navItem.name === 'products' || navItem.children)
+                                        ?
+                                            React.createElement("span", { className: "d-flex no-wrap", onClick: function () { return _this.submenuVisibility(navItem); } }, navItem.name || navItem.title)
+                                        : React.createElement("span", { className: "d-flex no-wrap", onClick: function (e) { _this.closeMenu(); _this.submenuVisibility(''); } }, navItem.name || navItem.title)),
                                     navItem.name === 'products' && _this.state.phoneSubMenuVisible === 'products' ?
                                         React.createElement("div", { className: "dropdownProducts_phone", onClick: _this.hideSubMenu }, products && React.createElement("div", { className: "categoriesSubmenu" },
-                                            React.createElement("div", { className: "productsPreview__list" }, products.map(function (item, c) { return (React.createElement("div", { key: c, className: 'categoriesSubmenu_list' },
+                                            React.createElement("div", { className: "productsPreview__list" }, products.map(function (item) { return (React.createElement("div", { key: "products" + (item && item.title ? item.title : 'itemTitle'), className: 'categoriesSubmenu_list' },
                                                 React.createElement(Link_1.default, __assign({}, item.url, { onClick: function () { return _this.closeMenu(); }, onBlur: function () { return _this.submenuVisibility(''); }, className: "categoriesSubmenu_link" }), item.title))); })))) : '',
-                                    navItem.name === _this.state.phoneSubMenuVisible &&
-                                        navItem.children ?
-                                        // tslint:disable-next-line: max-line-length
-                                        React.createElement("div", { className: "categoriesSubmenu_wrapper_phone", key: 'phone' + navItem.id },
+                                    navItem.name === _this.state.phoneSubMenuVisible
+                                        && navItem.children
+                                        ? React.createElement("div", { className: "categoriesSubmenu_wrapper_phone", key: 'phone' + navItem.id },
                                             React.createElement("nav", { className: "categoriesSubmenu" },
                                                 React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
                                                     return React.createElement(Link_1.default, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id, onClick: function () { return _this.closeMenu(); }, onBlur: function () { return _this.submenuVisibility(''); } }), navItemChild.name);
@@ -166,24 +205,24 @@ var Header = /** @class */ (function (_super) {
                                         : ''));
                             }))))),
                 _this.state.subMenuVisible === 'products' ?
-                    React.createElement("div", { className: "dropdownProducts", onMouseLeave: _this.hideSubMenu }, products && React.createElement("div", { className: "container" },
-                        React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: i, className: 'col-12 col-lg-6 col-xl-3' },
+                    React.createElement("div", { className: "submenuTiles", onMouseLeave: _this.hideSubMenu, style: submenuStyle }, products && React.createElement("div", { className: "container" },
+                        React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: "products" + i, className: 'col-12 col-lg-6 col-xl-3' },
                             React.createElement("div", { className: 'productsPreview__list__item' },
-                                React.createElement(Media_1.default, { type: 'image', data: item.img }),
                                 item.title && React.createElement("h5", null, item.title),
-                                item.description && React.createElement("p", null, item.description),
                                 React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "Detail")))); })))) : '',
-                topNavItems && topNavItems.map(function (navItem, i) {
-                    return (React.createElement(React.Fragment, null, ((navItem.name === _this.state.subMenuVisible)) &&
-                        navItem.children ?
-                        // tslint:disable-next-line: max-line-length
-                        React.createElement("div", { className: "categoriesSubmenu_wrapper", key: navItem.id, onMouseLeave: _this.hideSubMenu },
-                            React.createElement("nav", { className: "categoriesSubmenu" },
-                                React.createElement("ul", { className: "categoriesSubmenu_list" }, navItem.children.map(function (navItemChild) {
-                                    // tslint:disable-next-line: max-line-length
-                                    return React.createElement(Link_1.default, __assign({}, navItemChild.url, { className: "categoriesSubmenu_link", key: navItemChild.id }), navItemChild.name);
-                                }))))
-                        : ''));
+                topNavItems && topNavItems.map(function (navItem) {
+                    return (React.createElement(React.Fragment, null, ((navItem.name === _this.state.subMenuVisible))
+                        && navItem.children
+                        && React.createElement("div", { className: "submenuTiles", key: navItem.id, onMouseLeave: _this.hideSubMenu, style: submenuStyle },
+                            React.createElement("div", { className: "container" },
+                                React.createElement("nav", { className: "row submenuTiles__list" }, navItem.children.map(function (navItemChild) {
+                                    return (React.createElement("div", { key: "navItem" + navItemChild.name + "key", className: 'submenuItem' },
+                                        React.createElement("div", { className: 'submenuTiles__list__item' },
+                                            navItemChild.img,
+                                            navItemChild.name && React.createElement("h5", null, navItemChild.name),
+                                            navItemChild.description && React.createElement("p", null, navItemChild.description),
+                                            React.createElement(Link_1.default, __assign({}, navItemChild.url, { onClick: _this.hideSubMenu, className: "btn" }), navItemChild.name))));
+                                }))))));
                 })));
         }));
     };

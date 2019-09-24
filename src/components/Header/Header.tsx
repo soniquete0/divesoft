@@ -10,6 +10,7 @@ import Loader from '../../partials/Loader';
 import Button from '../../partials/Button';
 import Hamburger from './components/Hamburger';
 // import Country from './components/Country/Country';
+// import { useState, useEffect } from 'react';
 
 const GET_CONTEXT = gql`
   {
@@ -73,6 +74,8 @@ export interface HeaderState {
   visibleProductsSubMenu: boolean;
   subMenuVisible: string;
   phoneSubMenuVisible: string;
+  scrolledPixels: number;
+  slideMenuIn: boolean;
 }
 
 class Header extends React.Component<HeaderProps, HeaderState> {
@@ -85,8 +88,41 @@ class Header extends React.Component<HeaderProps, HeaderState> {
       subMenuVisible: '',
       phoneSubMenuVisible: '',
       showSearch: false,
-      searchQuery: ''
+      searchQuery: '',
+      scrolledPixels: 0,
+      slideMenuIn: true,
     };
+
+    this.scrolled = this.scrolled.bind(this);
+  }
+
+  componentDidMount() {
+    this.scrolled();
+    return window && window.addEventListener('scroll', this.scrolled);
+  }
+
+  componentWillUnmount() {
+    return window && window.removeEventListener('scroll', this.scrolled);
+  }
+
+  // tslint:disable-next-line: no-any
+  componentDidUpdate({}: any, prevState: any) {
+    setTimeout(() => this.setScrolledState(prevState.scrolledPixels), 1000);
+  }
+
+  setScrolledState(prevScroll: number) {
+    console.log(prevScroll, this.state.scrolledPixels, 'set scrolled state');
+    if (this.state.scrolledPixels > 1000) {
+      prevScroll >= this.state.scrolledPixels
+      ? this.setState({slideMenuIn: true})
+      : this.setState({slideMenuIn: false});
+    } else {
+      return this.setState({slideMenuIn: false});
+    }
+  }
+
+  scrolled() {
+    this.setState({ scrolledPixels: window.scrollY });
   }
 
   closeMenu = () => {
@@ -117,7 +153,13 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   public render() {
-    this.state.menuActive ? (document.body.style.position = 'fixed') : (document.body.style.position = 'static');
+    this.state.menuActive
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'visible');
+
+    this.state.slideMenuIn
+      ? (document.body.style.paddingTop = '100px')
+      : (document.body.style.paddingTop = '0px');
 
     return (
       <ComposedQuery>
@@ -145,28 +187,34 @@ class Header extends React.Component<HeaderProps, HeaderState> {
 
           const { products } = this.props.data ;
 
+          const headerInlineStyle = {
+            overflow: this.state.menuActive ? 'inherit' : 'hidden',
+          };
+
+          const submenuStyle = {
+            top: this.state.slideMenuIn ? `${this.state.scrolledPixels + 100}px` : '100px'
+          }
+
           return (
             <>
               <header
-                className={`header`}
-                style={
-                  this.state.menuActive ?
-                  {overflow: 'inherit'} :
-                  {overflow: 'hidden'}
-                }
+                className={`header ${this.state.slideMenuIn ? 'slide-in' : ''}`}
+                style={headerInlineStyle}
               >
                 <div className="container">
                   <div
-                    className={'header__wrapper d-flex justify-content-between align-items-center'}
-                    style={{
-                      position: this.state.menuActive ? 'fixed' : 'relative'
-                    }}
+                    // className={'header__wrapper d-flex justify-content-between align-items-center'}
+                    className={'header__wrapper'}
+                    // style={{
+                    //   position: this.state.menuActive ? 'fixed' : 'relative'
+                    // }}
                   >
                     <Hamburger active={this.state.menuActive} onClick={this.toggleMenu} />
                     <div className="header__logo">
                       <Link
-                        url={`${context.websiteData.urlMask === '/' ?
-                                '' : context.websiteData.urlMask}/${context.languageData.code}`}
+                        url={`${context.websiteData.urlMask === '/'
+                          ? ''
+                          : context.websiteData.urlMask}/${context.languageData.code}`}
                       >
                         <img src="/assets/divesoft/images/logo.svg" alt="logo" />
                       </Link>
@@ -195,6 +243,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       </ul>
                     </nav>
                     {/* TOP MENU - desktop - end */}
+
                     {/* SEARCH AND LOGIN - start */}
                     <div className={'header__controls d-flex justify-content-between align-items-center'}>
                       <img
@@ -204,7 +253,6 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         className="header-ico header-ico_search"
                         style={{ cursor: 'pointer' }}
                       />
-
                       {this.state.showSearch ?
                         <Search language={context.languageData.code} /> : ''}
                       <a href="http://93.185.96.70:3014/cz/login" className="login-link">
@@ -218,7 +266,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       <a href="http://93.185.96.70:3014/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
-                    {/* <Country /> */}
+
                   </div>
                 </div>
 
@@ -231,69 +279,70 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                           <li key={i} style={{ position: 'relative' }}>
                             {/* tslint:disable-next-line: max-line-length */}
                             <Link {...navItem.url} url={this.canToggle(navItem)}>
-                              {(navItem.name === 'products' || navItem.children) ?
+                              {(navItem.name === 'products' || navItem.children)
+                              ?
                               <span className="d-flex no-wrap"  onClick={() => this.submenuVisibility(navItem)}>
                                 {navItem.name || navItem.title}
-                              </span> :
-                              <span
+                              </span>
+                              : <span
                                 className="d-flex no-wrap"
                                 onClick={(e) => {this.closeMenu(); this.submenuVisibility(''); }}
                               >
                                 {navItem.name || navItem.title}
                               </span>}
                             </Link>
+
                             {/* Phone SUB MENU - start */}
                             { navItem.name === 'products' && this.state.phoneSubMenuVisible === 'products' ?
                               <div className="dropdownProducts_phone" onClick={this.hideSubMenu}>
                                 {products && <div className="categoriesSubmenu">
                                   <div className="productsPreview__list">
-                                    {products.map((item, c) => (
-                                      <div key={c} className={'categoriesSubmenu_list'}>
+                                    {products.map((item) => (
+                                      <div
+                                        key={`products${item && item.title ? item.title : 'itemTitle'}`}
+                                        className={'categoriesSubmenu_list'}
+                                      >
                                         <Link
                                           {...item.url}
                                           onClick={() => this.closeMenu()}
                                           onBlur={() => this.submenuVisibility('')}
                                           className="categoriesSubmenu_link"
                                         >
-                                            {item.title}
+                                          {item.title}
                                         </Link>
                                       </div>
                                     ))}
                                   </div>
                                 </div> }
-                              </div> : ''
-                            }
-                            {/* other submenus */}
-                            {navItem.name === this.state.phoneSubMenuVisible &&
-                              navItem.children ?
-                              // tslint:disable-next-line: max-line-length
-                              <div className="categoriesSubmenu_wrapper_phone" key={'phone' + navItem.id}>
-                                <nav className="categoriesSubmenu">
-                                  <ul className="categoriesSubmenu_list">
-                                    {
-                                      navItem.children.map((navItemChild) => {
-                                        return  <Link
-                                                  {...navItemChild.url}
-                                                  className="categoriesSubmenu_link"
-                                                  key={navItemChild.id}
-                                                  onClick={() => this.closeMenu()}
-                                                  onBlur={() => this.submenuVisibility('')}
-                                        >
-                                          {navItemChild.name}
-                                        </Link>;
-                                      })
-                                    }
-                                  </ul>
-                                </nav>
-                              </div>
-                              : ''
-                            }
-                            {/* Phone SUB MENU - end */}
+                              </div> : ''}
+                              {navItem.name === this.state.phoneSubMenuVisible
+                                && navItem.children
+                                ? <div className="categoriesSubmenu_wrapper_phone" key={'phone' + navItem.id}>
+                                  <nav className="categoriesSubmenu">
+                                    <ul className="categoriesSubmenu_list">
+                                      {
+                                        navItem.children.map((navItemChild) => {
+                                          return  <Link
+                                                    {...navItemChild.url}
+                                                    className="categoriesSubmenu_link"
+                                                    key={navItemChild.id}
+                                                    onClick={() => this.closeMenu()}
+                                                    onBlur={() => this.submenuVisibility('')}
+                                          >
+                                            {navItemChild.name}
+                                          </Link>;
+                                        })
+                                      }
+                                    </ul>
+                                  </nav>
+                                </div>
+                                : ''
+                              }
+                              {/* Phone SUB MENU - end */}
                           </li>
                         );
                         })
                       }
-
                     </ul>
                   </div>
                 </div>
@@ -301,17 +350,20 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               </header>
 
               {/* PRODUCTS SUB MENU - start */}
-              {/* {console.log(products)} */}
               {this.state.subMenuVisible === 'products' ?
-                <div className="dropdownProducts" onMouseLeave={this.hideSubMenu}>
+                <div
+                  className="submenuTiles"
+                  onMouseLeave={this.hideSubMenu}
+                  style={submenuStyle}
+                >
                   {products && <div className="container">
                     <div className="row productsPreview__list">
                       {products.map((item, i) => (
-                        <div key={i} className={'col-12 col-lg-6 col-xl-3'}>
+                        <div key={`products${i}`} className={'col-12 col-lg-6 col-xl-3'}>
                           <div className={'productsPreview__list__item'}>
-                            <Media type={'image'} data={item.img} />
+                            {/* <Media type={'image'} data={item.img} /> */}
                             {item.title && <h5>{item.title}</h5>}
-                            {item.description && <p>{item.description}</p>}
+                            {/* {item.description && <p>{item.description}</p>} */}
                             <Link {...item.url} onClick={this.hideSubMenu} className="btn">Detail</Link>
                           </div>
                         </div>
@@ -322,33 +374,52 @@ class Header extends React.Component<HeaderProps, HeaderState> {
               }
               {/* PRODUCTS SUB MENU - end */}
 
-              {/* products */}
-              {topNavItems && topNavItems.map((navItem, i) => {
+              {/* SUB MENU - start */}
+              {topNavItems && topNavItems.map((navItem) => {
                 return (
                   <>
-                    {/* SUB MENU - start */}
-                    {((navItem.name === this.state.subMenuVisible)) &&
-                      navItem.children ?
-                      // tslint:disable-next-line: max-line-length
-                      <div className="categoriesSubmenu_wrapper" key={navItem.id} onMouseLeave={this.hideSubMenu}>
-                        <nav className="categoriesSubmenu">
-                          <ul className="categoriesSubmenu_list">
-                            {navItem.children.map((navItemChild) => {
-                              // tslint:disable-next-line: max-line-length
-                              return <Link {...navItemChild.url} className="categoriesSubmenu_link" key={navItemChild.id}>
-                                {navItemChild.name}
-                              </Link>;
-                            })}
-                          </ul>
-                        </nav>
-                      </div>
-                      : ''
-                    }
-                    {/* SUB MENU - end */}
-                  </>
-                );
+                    {((navItem.name === this.state.subMenuVisible))
+                      &&  navItem.children
+                      &&  <div
+                            className="submenuTiles"
+                            key={navItem.id}
+                            onMouseLeave={this.hideSubMenu}
+                            style={submenuStyle}
+                          >
+                          <div className="container">
+                            <nav className="row submenuTiles__list">
+                              {navItem.children.map((navItemChild) => {
+                                return (<div
+                                          key={`navItem${navItemChild.name}key`}
+                                          className={'submenuItem'}
+                                >
+                                  <div className={'submenuTiles__list__item'}>
+                                    {navItemChild.img}
+                                    {/* {navItemChild.img && navItemChild.img.length > 0
+                                      ? <Media type={'image'} data={navItemChild.img} />
+                                      : <img src="https://fakeimg.pl/350x200/?text=Placeholder" alt="placeholder" />
+                                    } */}
+                                    {navItemChild.name && <h5>{navItemChild.name}</h5>}
+                                    {navItemChild.description && <p>{navItemChild.description}</p>}
+                                    <Link
+                                      {...navItemChild.url}
+                                      onClick={this.hideSubMenu}
+                                      className="btn"
+                                    >
+                                      {navItemChild.name}
+                                    </Link>
+                                  </div>
+                                </div>);
+                              })}
+                            </nav>
+                          </div>
+                        </div>
+                      }
+                    </>
+                  );
                 })
               }
+            {/* SUB MENU - end */}
             </>
           );
         }}

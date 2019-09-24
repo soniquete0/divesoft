@@ -3695,8 +3695,8 @@ a {
     height: 25px;
     transition: 300ms ease 300ms;
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 12px;
+    top: 8px;
     z-index: 50; }
     .hamburgerHolder .hamburgerActive > div {
       background-color: transparent;
@@ -3749,39 +3749,54 @@ a {
         letter-spacing: 0.64px;
         display: block; } }
 
-.dropdownProducts {
+.dropdownProducts, .submenuTiles {
   top: 100px;
   width: 100%;
   z-index: 400;
   position: absolute;
-  padding: 3rem 0;
+  padding: 1rem 0 3rem;
   background-color: white;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.1); }
   @media (max-width: 1200px) {
-    .dropdownProducts {
+    .dropdownProducts, .submenuTiles {
       display: none; } }
-  .dropdownProducts_phone .productsPreview__list {
+  @media screen and (min-width: 1199px) {
+    .dropdownProducts .submenuTiles__list, .submenuTiles .submenuTiles__list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap; }
+      .dropdownProducts .submenuTiles__list__item, .submenuTiles .submenuTiles__list__item {
+        height: 100%;
+        width: 250px;
+        text-align: center;
+        padding: 20px 10px;
+        margin: 0 8px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url("/assets/divesoft/images/ppbg.jpg"); } }
+  .dropdownProducts_phone .productsPreview__list, .dropdownProducts_phone .submenuTiles__list, .submenuTiles_phone .productsPreview__list, .submenuTiles_phone .submenuTiles__list {
     flex-direction: column; }
-    .dropdownProducts_phone .productsPreview__list__item {
+    .dropdownProducts_phone .productsPreview__list__item, .dropdownProducts_phone .submenuTiles__list__item, .submenuTiles_phone .productsPreview__list__item, .submenuTiles_phone .submenuTiles__list__item {
       display: flex;
       justify-content: stretch;
       background-image: none;
       padding: 0;
       margin-bottom: 1rem; }
-      .dropdownProducts_phone .productsPreview__list__item h5 {
+      .dropdownProducts_phone .productsPreview__list__item h5, .dropdownProducts_phone .submenuTiles__list__item h5, .submenuTiles_phone .productsPreview__list__item h5, .submenuTiles_phone .submenuTiles__list__item h5 {
         flex-grow: 1;
         padding: 0 .5rem;
         text-align: left;
         color: #6c6c6c;
         line-height: 40px; }
-      .dropdownProducts_phone .productsPreview__list__item .btn {
+      .dropdownProducts_phone .productsPreview__list__item .btn, .dropdownProducts_phone .submenuTiles__list__item .btn, .submenuTiles_phone .productsPreview__list__item .btn, .submenuTiles_phone .submenuTiles__list__item .btn {
         width: 100px;
         height: 40px;
         line-height: 40px;
         padding: 0 1rem;
         font-size: 14px;
         color: #fff; }
-        .dropdownProducts_phone .productsPreview__list__item .btn:hover, .dropdownProducts_phone .productsPreview__list__item .btn:visited, .dropdownProducts_phone .productsPreview__list__item .btn:focus {
+        .dropdownProducts_phone .productsPreview__list__item .btn:hover, .dropdownProducts_phone .productsPreview__list__item .btn:visited, .dropdownProducts_phone .productsPreview__list__item .btn:focus, .dropdownProducts_phone .submenuTiles__list__item .btn:hover, .dropdownProducts_phone .submenuTiles__list__item .btn:visited, .dropdownProducts_phone .submenuTiles__list__item .btn:focus, .submenuTiles_phone .productsPreview__list__item .btn:hover, .submenuTiles_phone .productsPreview__list__item .btn:visited, .submenuTiles_phone .productsPreview__list__item .btn:focus, .submenuTiles_phone .submenuTiles__list__item .btn:hover, .submenuTiles_phone .submenuTiles__list__item .btn:visited, .submenuTiles_phone .submenuTiles__list__item .btn:focus {
           color: #fff; }
 
 .d-flex.no-wrap {
@@ -3813,10 +3828,15 @@ a {
   height: 100px;
   align-items: center;
   background-color: #fff;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.05); }
+  top: -100px; }
   @media (max-width: 540px) {
     .header {
       height: 70px; } }
+  .header.slide-in {
+    position: fixed;
+    top: 0;
+    transition: top .3s;
+    transition-delay: .5s; }
   .header__activePage {
     background-color: #e50000;
     position: absolute;
@@ -3829,6 +3849,7 @@ a {
         display: none; } }
   .header__wrapper {
     padding: 15px 0;
+    display: flex;
     position: relative; }
     @media (min-width: 540px) {
       .header__wrapper {
@@ -3905,7 +3926,7 @@ a {
       background-image: url("/assets/divesoft/images/bag.png"); }
       @media (max-width: 540px) {
         .header__controls button, .header__controls a.cart-ico {
-          width: 20px;
+          width: 50px;
           font-size: 1px;
           color: transparent;
           background-color: transparent;
@@ -3927,37 +3948,36 @@ a {
     .header .header__wrapper {
       padding: 10px 0; } }
   @media screen and (max-width: 540px) {
+    .header .header__wrapper {
+      justify-content: space-between; }
     .header .hamburgerHolder {
-      width: 90px; } }
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; } }
   .header .hiddenMenu {
+    display: none;
     margin-top: 10rem;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 400;
     width: 100%;
-    width: 100%;
     height: 100vh;
-    background-color: white;
-    transform: translate3d(0, 0, 0);
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(calc(100% + 100px), 0, 0);
-    box-shadow: 0 0 25px rgba(0, 52, 97, 0.18); }
+    background-color: white; }
     @media (max-width: 540px) {
       .header .hiddenMenu {
-        margin-top: 7rem; } }
+        margin-top: 7rem;
+        display: none; } }
     @media (min-width: 768px) {
       .header .hiddenMenu {
         width: 100%; } }
     .header .hiddenMenu--active {
-      -webkit-transform: translate3d(0, 0, 0);
-              transform: translate3d(0, 0, 0); }
+      display: block; }
     .header .hiddenMenu__wrapper {
-      padding: 100px 30px 50px 30px;
+      padding: 30px 30px 50px 30px;
       overflow-y: scroll;
       max-height: 100%;
-      display: -ms-grid;
-      display: grid;
       height: 100%; }
       @media (min-width: 768px) {
         .header .hiddenMenu__wrapper {
@@ -4000,12 +4020,19 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: stretch; }
+    .header.slide-in {
+      position: fixed;
+      top: 0; }
+      .header.slide-in + .submenuTiles {
+        position: absolute; }
     .header .container {
       display: flex;
+      height: 100px;
       flex: 1; }
       .header .container .header__wrapper {
         width: 100%;
         padding: 0;
+        display: flex;
         justify-content: stretch !important;
         align-items: stretch !important; }
         .header .container .header__wrapper nav {
@@ -4045,20 +4072,24 @@ a {
   header.header .hamburgerHolder {
     display: flex;
     justify-content: left;
+    padding-left: 8px;
     width: 200px; } }
 
 @media screen and (max-width: 539px) {
   header.header .header__logo {
     align-items: center; }
   header.header .header__controls {
-    width: 90px;
+    width: 50px;
     justify-content: flex-end !important; }
     header.header .header__controls > * {
       margin-left: 8px; } }
 
+@media screen and (min-width: 539px) {
+  .header__wrapper {
+    justify-content: space-between; } }
+
 .categoriesSubmenu {
-  display: flex;
-  justify-content: center; }
+  display: flex; }
   .categoriesSubmenu_wrapper {
     position: absolute;
     top: 100px;
@@ -4095,6 +4126,18 @@ a {
   color: #6c6c6c;
   text-align: left;
   padding: 1rem 1rem 1rem 20px; }
+
+@media screen and (max-width: 1199px) {
+  .categoriesSubmenu_wrapper {
+    display: none; } }
+
+@media screen and (min-width: 576px) {
+  .header .hiddenMenu__wrapper {
+    padding-left: 50px; } }
+
+@media screen and (min-width: 576px) and (max-width: 995px) {
+  .header .container {
+    max-width: 100%; } }
 
 .cookiePopup p {
   display: inline;
@@ -5961,7 +6004,8 @@ a {
   .product-crossroad-wrapper .product-crossroad-container {
     display: flex;
     flex-flow: column;
-    flex-direction: row; }
+    flex-direction: row;
+    padding-left: 17px; }
     .product-crossroad-wrapper .product-crossroad-container h1 {
       display: auto;
       font-size: 1em;
