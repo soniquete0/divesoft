@@ -56,15 +56,6 @@ var ComposedQuery = react_adopt_1.adopt({
         }));
     },
 });
-var facebookUrl = {
-    url: 'https://facebook.com'
-};
-var youtubeUrl = {
-    url: 'https://www.youtube.com'
-};
-var instagramUrl = {
-    url: 'https://www.instagram.com'
-};
 var Footer = /** @class */ (function (_super) {
     __extends(Footer, _super);
     function Footer(props) {
@@ -72,7 +63,7 @@ var Footer = /** @class */ (function (_super) {
     }
     Footer.prototype.render = function () {
         var _this = this;
-        var _a = this.props.data, copyrights = _a.copyrights, contacts = _a.contacts;
+        var _a = this.props.data, copyrights = _a.copyrights, contacts = _a.contacts, facebookUrl = _a.facebookUrl, youtubeUrl = _a.youtubeUrl, instagramUrl = _a.instagramUrl;
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData ||
