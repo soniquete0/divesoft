@@ -56,18 +56,6 @@ export interface FooterProps {
   };
 }
 
-const facebookUrl = {
-  url: 'https://facebook.com'
-};
-
-const youtubeUrl = {
-  url: 'https://www.youtube.com'
-};
-
-const instagramUrl = {
-  url: 'https://www.instagram.com'
-};
-
 export interface FooterState {}
 
 class Footer extends React.Component<FooterProps, FooterState> {
@@ -76,7 +64,7 @@ class Footer extends React.Component<FooterProps, FooterState> {
   }
 
   public render() {
-    const { copyrights, contacts } = this.props.data;
+    const { copyrights, contacts, facebookUrl, youtubeUrl, instagramUrl } = this.props.data;
 
     return (
       <ComposedQuery>
