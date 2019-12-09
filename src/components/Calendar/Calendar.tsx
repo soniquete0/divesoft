@@ -202,7 +202,6 @@ class Calendar extends React.Component<CalendarProps, CalendarState> {
             onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
             {data && data.map((item, j) => {
               if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                 return (

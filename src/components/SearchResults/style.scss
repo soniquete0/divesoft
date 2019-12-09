@@ -1,14 +1,11 @@
 .searchResults {
+  display: block;
   padding: 10px 0;
   background: white;
-  top: 148px;
-  position: fixed;
-  left: 0;
   width: 100%;
   z-index: 100;
   transition: 500ms ease;
   border-top: 1px solid #f8f8f8;
-  @include max-sm { top: 118px; }
 
   ::-webkit-scrollbar {
     width: 8px;
@@ -26,6 +23,10 @@
 
   &__holder {
     flex-direction: column;
+
+    &.container {
+      height: calc(70vh);
+    }
 
     &__heading {
       text-transform: uppercase;
@@ -54,7 +55,6 @@
   }
 
   ul {
-    margin-top: 36px;
     max-height: 80vh;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -62,16 +62,14 @@
     box-sizing: border-box;
 
     li {
+      text-align: center;
       a {
         color: $darkGrey;
         letter-spacing: 0.26px;
-        font-size: 1.8rem;
+        font-size: 2em;
+        line-height: 2em;
         transition: 300ms ease;
-
-        @include md {
-          font-size: 1.8rem;
-          letter-spacing: 0.44px;
-        }
+        letter-spacing: 0.44px;
 
         &:hover {
           color: $red;

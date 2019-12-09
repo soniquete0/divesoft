@@ -9,6 +9,7 @@ export interface SearchResultsProps {
   active: boolean;
   handleSearch: (value: string) => void;
   languageCode: string;
+  handleSearchShow: any;
 }
 
 const GET_CONTENT = gql`
@@ -135,7 +136,7 @@ const ComposedQuery = adopt({
 });
 
 const SearchResults = (props: SearchResultsProps) => {
-  const { active, searchQuery, handleSearch, languageCode } = props;
+  const { active, searchQuery, handleSearch, languageCode, handleSearchShow } = props;
 
   return (
     <div className={`searchResults ${active ? 'searchResults--active ' : ''} `}>
@@ -181,13 +182,12 @@ const SearchResults = (props: SearchResultsProps) => {
 
           return (
             <div className={'searchResults__holder container'}>
-              <h2 className="searchResults__holder__heading">Search Results:</h2>
               <ul>
                 {filteredPages && filteredPages.length > 0 &&
                   filteredPages.map((page, index) => (
                     <li key={index}>
                       {page.url && (
-                        <Link to={page.url} onClick={() => handleSearch('')}>
+                        <Link to={page.url} onClick={() => { handleSearch(''); handleSearchShow(); }}>
                           {page.translations[0].name}
                         </Link>
                       )}

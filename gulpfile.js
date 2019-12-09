@@ -53,7 +53,6 @@ function watchSass() {
 
 const watchAll = parallel(watchJs, watchSass);
 
-
 module.exports = {
   build,
   buildJs,

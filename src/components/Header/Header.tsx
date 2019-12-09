@@ -94,6 +94,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     };
 
     this.scrolled = this.scrolled.bind(this);
+    this.handleSearchShow = this.handleSearchShow.bind(this);
   }
 
   componentDidMount() {
@@ -106,12 +107,11 @@ class Header extends React.Component<HeaderProps, HeaderState> {
   }
 
   // tslint:disable-next-line: no-any
-  componentDidUpdate({}: any, prevState: any) {
-    setTimeout(() => this.setScrolledState(prevState.scrolledPixels), 1000);
-  }
+  // componentDidUpdate({}: any, prevState: any) {
+  //   setTimeout(() => this.setScrolledState(prevState.scrolledPixels), 1000);
+  // }
 
   setScrolledState(prevScroll: number) {
-    console.log(prevScroll, this.state.scrolledPixels, 'set scrolled state');
     if (this.state.scrolledPixels > 1000) {
       prevScroll >= this.state.scrolledPixels
       ? this.setState({slideMenuIn: true})
@@ -152,14 +152,18 @@ class Header extends React.Component<HeaderProps, HeaderState> {
     return (item.children || item.name === 'products') ? '#' : item.url.url;
   }
 
-  public render() {
-    this.state.menuActive
-      ? (document.body.style.overflow = 'hidden')
-      : (document.body.style.overflow = 'visible');
+  handleSearchShow = () => {
+    return this.setState({ showSearch: false })
+  }
 
-    this.state.slideMenuIn
-      ? (document.body.style.paddingTop = '100px')
-      : (document.body.style.paddingTop = '0px');
+  public render() {
+    // this.state.menuActive
+    //   ? (document.body.style.overflow = 'hidden')
+    //   : (document.body.style.overflow = 'visible');
+
+    // this.state.slideMenuIn
+    //   ? (document.body.style.paddingTop = '100px')
+    //   : (document.body.style.paddingTop = '0px');
 
     return (
       <ComposedQuery>
@@ -254,8 +258,8 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         style={{ cursor: 'pointer' }}
                       />
                       {this.state.showSearch ?
-                        <Search language={context.languageData.code} /> : ''}
-                      <a href="http://93.185.96.70:3014/cz/login" className="login-link">
+                        <Search handleSearchShow={this.handleSearchShow} language={context.languageData.code} /> : ''}
+                      <a href="http://eshop.divesoft.eu/cz/login" className="login-link">
                         <img
                           src="/assets/divesoft/images/user.svg"
                           alt="account"
@@ -263,7 +267,7 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                         />
                       </a>
                       {/* tslint:disable-next-line: max-line-length */}
-                      <a href="http://93.185.96.70:3014/" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
+                      <a href="http://eshop.divesoft.eu" className={'btn btn_eshop cart-ico'}><span className="text">e-shop</span></a>
                     </div>
                     {/* SEARCH AND LOGIN - end */}
 
@@ -361,10 +365,10 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                       {products.map((item, i) => (
                         <div key={`products${i}`} className={'col-12 col-lg-6 col-xl-3'}>
                           <div className={'productsPreview__list__item'}>
-                            {/* <Media type={'image'} data={item.img} /> */}
                             {item.title && <h5>{item.title}</h5>}
-                            {/* {item.description && <p>{item.description}</p>} */}
-                            <Link {...item.url} onClick={this.hideSubMenu} className="btn">Detail</Link>
+                            <Link {...item.url} onClick={this.hideSubMenu} className="btn">
+                              More &rsaquo;	
+                            </Link>
                           </div>
                         </div>
                       ))}
@@ -389,27 +393,20 @@ class Header extends React.Component<HeaderProps, HeaderState> {
                           <div className="container">
                             <nav className="row submenuTiles__list">
                               {navItem.children.map((navItemChild) => {
-                                return (<div
-                                          key={`navItem${navItemChild.name}key`}
-                                          className={'submenuItem'}
-                                >
-                                  <div className={'submenuTiles__list__item'}>
-                                    {navItemChild.img}
-                                    {/* {navItemChild.img && navItemChild.img.length > 0
-                                      ? <Media type={'image'} data={navItemChild.img} />
-                                      : <img src="https://fakeimg.pl/350x200/?text=Placeholder" alt="placeholder" />
-                                    } */}
-                                    {navItemChild.name && <h5>{navItemChild.name}</h5>}
-                                    {navItemChild.description && <p>{navItemChild.description}</p>}
-                                    <Link
-                                      {...navItemChild.url}
-                                      onClick={this.hideSubMenu}
-                                      className="btn"
-                                    >
-                                      {navItemChild.name}
-                                    </Link>
-                                  </div>
-                                </div>);
+                                return (
+                                  <div key={`products${navItemChild.name}`} className={'col-12 col-lg-6 col-xl-3'}>
+                                  <div className={'productsPreview__list__item'}>
+                                      {/* <Media type={'image'} data={item.img} /> */}
+                                      {navItemChild.name && <h5>{navItemChild.name}</h5>}
+                                      <Link 
+                                        {...navItemChild.url}
+                                        onClick={this.hideSubMenu}
+                                        className="btn"
+                                      >
+                                        More &rsaquo;
+                                      </Link>
+                                    </div>
+                                  </div>);
                               })}
                             </nav>
                           </div>

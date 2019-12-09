@@ -181,7 +181,6 @@ var Calendar = /** @class */ (function (_super) {
                         ? 'disabled'
                         : dateFns.isSameDay(day, selectedDate) ? 'selected' : ''), key: i, onClick: function () { return _this.onDateClick(dateFns.parse(cloneDay)); } },
                     React.createElement("span", { className: "number" }, formattedDate),
-                    React.createElement("span", { className: "bg" }, formattedDate),
                     data && data.map(function (item, j) {
                         if (item.date === myFormatOfDate && dateFns.isSameMonth(day, monthStart)) {
                             return (React.createElement("div", { className: 'cell__content', key: j },

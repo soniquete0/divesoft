@@ -60,7 +60,7 @@ var ComposedQuery = react_adopt_1.adopt({
     },
 });
 var SearchResults = function (props) {
-    var active = props.active, searchQuery = props.searchQuery, handleSearch = props.handleSearch, languageCode = props.languageCode;
+    var active = props.active, searchQuery = props.searchQuery, handleSearch = props.handleSearch, languageCode = props.languageCode, handleSearchShow = props.handleSearchShow;
     return (React.createElement("div", { className: "searchResults " + (active ? 'searchResults--active ' : '') + " " },
         React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.pagesUrls, pagesUrlsData = _b.data, pagesUrlsError = _b.error, pagesUrlsLoading = _b.loading, _c = _a.allPages, allPagesData = _c.data, allPagesError = _c.error, allPagesLoading = _c.loading;
@@ -83,9 +83,8 @@ var SearchResults = function (props) {
                 return __assign({}, p, (pageUrlObj ? { url: pageUrlObj.url } : {}));
             });
             return (React.createElement("div", { className: 'searchResults__holder container' },
-                React.createElement("h2", { className: "searchResults__holder__heading" }, "Search Results:"),
                 React.createElement("ul", null, filteredPages && filteredPages.length > 0 &&
-                    filteredPages.map(function (page, index) { return (React.createElement("li", { key: index }, page.url && (React.createElement(react_router_dom_1.Link, { to: page.url, onClick: function () { return handleSearch(''); } }, page.translations[0].name)))); }))));
+                    filteredPages.map(function (page, index) { return (React.createElement("li", { key: index }, page.url && (React.createElement(react_router_dom_1.Link, { to: page.url, onClick: function () { handleSearch(''); handleSearchShow(); } }, page.translations[0].name)))); }))));
         })));
 };
 exports.default = SearchResults;

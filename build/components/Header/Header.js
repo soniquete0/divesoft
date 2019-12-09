@@ -83,6 +83,9 @@ var Header = /** @class */ (function (_super) {
         _this.canToggle = function (item) {
             return (item.children || item.name === 'products') ? '#' : item.url.url;
         };
+        _this.handleSearchShow = function () {
+            return _this.setState({ showSearch: false });
+        };
         _this.state = {
             menuActive: false,
             showDropdown: false,
@@ -95,6 +98,7 @@ var Header = /** @class */ (function (_super) {
             slideMenuIn: true,
         };
         _this.scrolled = _this.scrolled.bind(_this);
+        _this.handleSearchShow = _this.handleSearchShow.bind(_this);
         return _this;
     }
     Header.prototype.componentDidMount = function () {
@@ -105,12 +109,10 @@ var Header = /** @class */ (function (_super) {
         return window && window.removeEventListener('scroll', this.scrolled);
     };
     // tslint:disable-next-line: no-any
-    Header.prototype.componentDidUpdate = function (_a, prevState) {
-        var _this = this;
-        setTimeout(function () { return _this.setScrolledState(prevState.scrolledPixels); }, 1000);
-    };
+    // componentDidUpdate({}: any, prevState: any) {
+    //   setTimeout(() => this.setScrolledState(prevState.scrolledPixels), 1000);
+    // }
     Header.prototype.setScrolledState = function (prevScroll) {
-        console.log(prevScroll, this.state.scrolledPixels, 'set scrolled state');
         if (this.state.scrolledPixels > 1000) {
             prevScroll >= this.state.scrolledPixels
                 ? this.setState({ slideMenuIn: true })
@@ -124,13 +126,13 @@ var Header = /** @class */ (function (_super) {
         this.setState({ scrolledPixels: window.scrollY });
     };
     Header.prototype.render = function () {
+        // this.state.menuActive
+        //   ? (document.body.style.overflow = 'hidden')
+        //   : (document.body.style.overflow = 'visible');
         var _this = this;
-        this.state.menuActive
-            ? (document.body.style.overflow = 'hidden')
-            : (document.body.style.overflow = 'visible');
-        this.state.slideMenuIn
-            ? (document.body.style.paddingTop = '100px')
-            : (document.body.style.paddingTop = '0px');
+        // this.state.slideMenuIn
+        //   ? (document.body.style.paddingTop = '100px')
+        //   : (document.body.style.paddingTop = '0px');
         return (React.createElement(ComposedQuery, null, function (_a) {
             var _b = _a.getPagesUrls, loading = _b.loading, error = _b.error, data = _b.data, context = _a.context;
             if (!context.navigationsData ||
@@ -178,10 +180,10 @@ var Header = /** @class */ (function (_super) {
                             React.createElement("div", { className: 'header__controls d-flex justify-content-between align-items-center' },
                                 React.createElement("img", { onClick: function () { return _this.setState({ showSearch: !_this.state.showSearch }); }, src: "/assets/divesoft/images/search.svg", alt: "search", className: "header-ico header-ico_search", style: { cursor: 'pointer' } }),
                                 _this.state.showSearch ?
-                                    React.createElement(Search_1.default, { language: context.languageData.code }) : '',
-                                React.createElement("a", { href: "http://93.185.96.70:3014/cz/login", className: "login-link" },
+                                    React.createElement(Search_1.default, { handleSearchShow: _this.handleSearchShow, language: context.languageData.code }) : '',
+                                React.createElement("a", { href: "http://eshop.divesoft.eu/cz/login", className: "login-link" },
                                     React.createElement("img", { src: "/assets/divesoft/images/user.svg", alt: "account", className: "header-ico header-ico_user" })),
-                                React.createElement("a", { href: "http://93.185.96.70:3014/", className: 'btn btn_eshop cart-ico' },
+                                React.createElement("a", { href: "http://eshop.divesoft.eu", className: 'btn btn_eshop cart-ico' },
                                     React.createElement("span", { className: "text" }, "e-shop"))))),
                     React.createElement("div", { className: "hiddenMenu " + (_this.state.menuActive ? 'hiddenMenu--active' : '') },
                         React.createElement("div", { className: 'hiddenMenu__wrapper' },
@@ -209,19 +211,17 @@ var Header = /** @class */ (function (_super) {
                         React.createElement("div", { className: "row productsPreview__list" }, products.map(function (item, i) { return (React.createElement("div", { key: "products" + i, className: 'col-12 col-lg-6 col-xl-3' },
                             React.createElement("div", { className: 'productsPreview__list__item' },
                                 item.title && React.createElement("h5", null, item.title),
-                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "Detail")))); })))) : '',
+                                React.createElement(Link_1.default, __assign({}, item.url, { onClick: _this.hideSubMenu, className: "btn" }), "More \u203A")))); })))) : '',
                 topNavItems && topNavItems.map(function (navItem) {
                     return (React.createElement(React.Fragment, null, ((navItem.name === _this.state.subMenuVisible))
                         && navItem.children
                         && React.createElement("div", { className: "submenuTiles", key: navItem.id, onMouseLeave: _this.hideSubMenu, style: submenuStyle },
                             React.createElement("div", { className: "container" },
                                 React.createElement("nav", { className: "row submenuTiles__list" }, navItem.children.map(function (navItemChild) {
-                                    return (React.createElement("div", { key: "navItem" + navItemChild.name + "key", className: 'submenuItem' },
-                                        React.createElement("div", { className: 'submenuTiles__list__item' },
-                                            navItemChild.img,
+                                    return (React.createElement("div", { key: "products" + navItemChild.name, className: 'col-12 col-lg-6 col-xl-3' },
+                                        React.createElement("div", { className: 'productsPreview__list__item' },
                                             navItemChild.name && React.createElement("h5", null, navItemChild.name),
-                                            navItemChild.description && React.createElement("p", null, navItemChild.description),
-                                            React.createElement(Link_1.default, __assign({}, navItemChild.url, { onClick: _this.hideSubMenu, className: "btn" }), navItemChild.name))));
+                                            React.createElement(Link_1.default, __assign({}, navItemChild.url, { onClick: _this.hideSubMenu, className: "btn" }), "More \u203A"))));
                                 }))))));
                 })));
         }));
